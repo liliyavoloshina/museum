@@ -10,15 +10,16 @@
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
-    "css-loader": "^5.2.4",
+    "css-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
-    "mini-css-extract-plugin": "^1.6.0",
-    "sass": "^1.32.12",
-    "sass-loader": "^11.0.1",
+    "mini-css-extract-plugin": "^2.2.0",
+    "sass": "^1.38.0",
+    "sass-loader": "^12.1.0",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
-  }
+  },
+  "dependencies": {}
 }

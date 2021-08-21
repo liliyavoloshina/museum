@@ -1,22 +1,117 @@
+$welcome-slider-width: 1000px;
+$welcome-slider-height: 810px;
+$welcome-slider-img-height: 750px;
+
 .section-welcome {
   &__container {
     max-width: 1920px;
     margin: 0 auto;
-    background: url('../img/welcome-img.jpg') no-repeat calc(50% + 352px) 100%;
   }
 }
 
 .welcome {
+  position: relative;
+  height: 810px;
+
   &__text {
     width: 598px;
     padding-top: 150px;
-    // padding: 114px 0 246px 0;
+  }
+
+  &__slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $welcome-slider-width;
+    height: $welcome-slider-height;
+    overflow: hidden;
+  }
+}
+
+.welcome-slider {
+  &__slides {
+    position: relative;
+    top: 0;
+    left: -$welcome-slider-width;
+    display: flex;
+    width: 10000px;
+  }
+
+  &__slides.shifting {
+    transition: left 0.2s ease-out;
+  }
+
+  .slide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: $welcome-slider-width;
+    height: $welcome-slider-img-height;
+    border-radius: 2px;
+    background: #ffcf47;
+    cursor: pointer;
+    transition: all 1s;
+  }
+
+  .slide-1 {
+    background-image: url('../img/welcome/1.jpg');
+  }
+
+  .slide-2 {
+    background-image: url('../img/welcome/2.jpg');
+  }
+
+  .slide-3 {
+    background-image: url('../img/welcome/3.jpg');
+  }
+
+  .slide-4 {
+    background-image: url('../img/welcome/4.jpg');
+  }
+
+  .slide-5 {
+    background-image: url('../img/welcome/5.jpg');
+  }
+
+  .control {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50px;
+    margin-top: -20px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+
+  .prev,
+  .next {
+    background-size: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .prev {
+    background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
+    left: -20px;
+  }
+
+  .next {
+    background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
+    right: -20px;
+  }
+
+  .prev:active,
+  .next:active {
+    transform: scale(0.8);
   }
 }
 
 .welcome__text-subtitle {
   padding-top: 25px;
-  // padding: 26px 0 76px 0;
   font-family: $font-base;
   font-weight: 300;
   font-size: 28px;
@@ -26,4 +121,58 @@
 }
 .welcome__text-btn {
   margin-top: 75px;
+}
+
+.welcome-slider-controls {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  width: 60%;
+  height: 120px;
+  background-color: red;
+
+  &__counter {
+    font-family: $font-base;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: $text-light;
+  }
+
+  &__pagination {
+    display: flex;
+  }
+
+  .welcome-slider-pagination-item {
+    width: 20px;
+    height: 20px;
+    background-color: $text-light;
+  }
+
+  .welcome-slider-pagination-item + .welcome-slider-pagination-item {
+    margin-left: 25px;
+  }
+
+  .welcome-slider-pagination-item.active {
+    background-color: $text-gold;
+  }
+
+  &__arrows > button {
+    width: 30px;
+    height: 8px;
+    border: none;
+    outline: none;
+    background-size: contain;
+    background-color: transparent;
+  }
+
+  &-prev {
+    background-image: url('../svg/welcome-arrow-left.svg');
+  }
+  &-next {
+    background-image: url('../svg/welcome-arrow-right.svg');
+  }
 }
