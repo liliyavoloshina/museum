@@ -1,0 +1,164 @@
+.tickets {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 103px;
+
+  &__img {
+    width: 720px;
+    height: 550px;
+  }
+
+  &__img img {
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 50%;
+  }
+
+  &-subtitle {
+    font-family: $font-base;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    color: $text-light;
+  }
+}
+
+.tickets-type {
+  flex-basis: 50%;
+  margin-left: 60px;
+}
+
+.tickets-type-option {
+  display: block;
+  position: relative;
+  margin-top: 50px;
+  padding-left: 40px;
+  font-family: $font-base;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  color: $text-light;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__checkmark {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid $text-light;
+  }
+
+  &__checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  & &__input:checked ~ &__checkmark:after {
+    display: block;
+  }
+
+  & &__checkmark:after {
+    top: 2.8px;
+    left: 2.9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $text-light;
+  }
+}
+
+.tickets-amount {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  & .tickets-subtitle {
+    text-align: right;
+  }
+}
+
+.tickets-amount-option {
+  margin-top: 11px;
+
+  &__label {
+    font-family: $font-base;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    color: $text-light;
+  }
+
+  &__box {
+    display: flex;
+    width: 150px;
+    height: 50px;
+    margin-top: 14px;
+    font-family: $font-base;
+    text-align: center;
+    border: 3px solid $text-light;
+  }
+
+  &__btn {
+    width: 30px;
+    padding-right: 6px;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 37.5px;
+    border: none;
+    color: $text-light;
+    background-color: transparent;
+  }
+
+  &__btn:first-of-type {
+    padding-right: 0;
+    padding-left: 5px;
+  }
+
+  &__btn:hover {
+    color: $text-gold;
+    transition: $quick-transition;
+    cursor: pointer;
+  }
+
+  &__input {
+    width: calc(100% - 60px);
+    padding-left: 9px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    border: none;
+    color: $text-light;
+    background-color: transparent;
+  }
+
+  &:nth-of-type(2n) {
+    margin-top: 35px;
+  }
+}
+
+.total-title {
+  margin-top: 50px;
+  letter-spacing: 1.6px;
+}
+
+.tickets-total {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+}

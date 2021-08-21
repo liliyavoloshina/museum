@@ -1,0 +1,101 @@
+$nav-font-size: 22px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.section {
+  padding: 75px 0;
+}
+
+.section-dark {
+  background-color: $bg-dark;
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    line-height: 50px;
+    letter-spacing: 2px;
+  }
+
+  &__link {
+    font-size: $nav-font-size;
+    font-family: $font-base;
+    font-weight: 200;
+    color: $text-light;
+    text-decoration: none;
+  }
+
+  &__link:hover {
+    color: $text-gold;
+    transition: $link-transition;
+  }
+}
+
+.section-title {
+  font-family: $font-heading;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 90px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: $text-gold;
+}
+
+.section-title--light {
+  color: $text-light;
+}
+
+.underline-title {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    width: 300px;
+    height: 2px;
+    background-color: $dark-red;
+    transition: $base-transition;
+  }
+}
+
+.underline-title--full {
+  position: relative;
+
+  &::after {
+    bottom: -28px;
+    right: 0;
+    width: auto;
+    height: 3px;
+  }
+}

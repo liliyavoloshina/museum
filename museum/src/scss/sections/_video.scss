@@ -1,0 +1,128 @@
+.section-video {
+  padding: 90px 0 75px 0;
+}
+
+.video {
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+  }
+  &-desc {
+    width: 720px;
+    font-family: $font-base;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 43px;
+  }
+}
+
+.media-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1440px;
+  height: 629px;
+  background: url('../img/video.jpg') no-repeat 100% 100%;
+}
+
+.media-panel {
+  display: flex;
+  align-items: center;
+  height: 85px;
+  padding-left: 41px;
+  padding-right: 24px;
+  background-color: $text-dark;
+}
+
+.video__btn {
+  background-size: contain;
+  border: none;
+
+  &-play-big {
+    width: 220px;
+    height: 220px;
+    background: url('../svg/video-btn-play-big.svg') no-repeat 100%
+      100%;
+  }
+
+  &-prev {
+    width: 27px;
+    height: 30px;
+    margin-right: 41px;
+    background: url('../svg/video-btn-prev.svg') no-repeat 100% 100%;
+  }
+
+  &-play-small {
+    width: 23px;
+    height: 30px;
+    margin-right: 41px;
+    background: url('../svg/video-btn-play-small.svg') no-repeat
+      100% 100%;
+  }
+  &-next {
+    width: 28px;
+    height: 30px;
+    margin-right: 41px;
+    background: url('../svg/video-btn-next.svg') no-repeat 100% 100%;
+  }
+
+  &-volume {
+    width: 38px;
+    height: 30px;
+    margin-right: 20px;
+    background: url('../svg/video-btn-volume.svg') no-repeat 100%
+      100%;
+  }
+
+  &-expand {
+    width: 36px;
+    height: 36px;
+    background: url('../svg/video-btn-expand.svg') no-repeat 100%
+      100%;
+  }
+
+  &:hover {
+    filter: invert(67%) sepia(0%) saturate(0%) hue-rotate(3deg) brightness(90%) contrast(92%);
+    cursor: pointer;
+    transition: $quick-transition;
+  }
+}
+
+.video__range {
+  background: linear-gradient(
+    to right,
+    #24809e 0%,
+    #24809e 40%,
+    #c4c4c4 40%,
+    #c4c4c4 100%
+  );
+  border-radius: 8px;
+  height: 7px;
+  outline: none;
+  -webkit-appearance: none;
+  &::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    background: #ffffff;
+  }
+
+  &-progress {
+    width: 820px;
+    margin-right: 41px;
+    background: linear-gradient(
+      to right,
+      #24809e 0%,
+      #24809e 47%,
+      #c4c4c4 47%,
+      #c4c4c4 100%
+    );
+  }
+  &-volume {
+    width: 155px;
+    margin-right: 48px;
+  }
+}

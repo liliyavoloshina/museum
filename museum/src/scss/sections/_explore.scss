@@ -1,0 +1,29 @@
+.explore {
+  display: flex;
+  justify-content: space-between;
+
+  &__text {
+    max-width: 660px;
+  }
+  
+  &__img {
+    padding-top: 15px;
+  }
+}
+
+.explore-desc {
+  padding-top: 25px;
+  font-family: $font-base;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  color: $text-light;
+
+  &__accent {
+    color: $text-gold;
+  }
+}
+
+.explore-desc:first-of-type {
+  padding-top: 107px;
+}

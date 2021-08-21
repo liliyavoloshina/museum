@@ -1,0 +1,28 @@
+$nav-font-size: 22px;
+
+.header {
+  &-container {
+    @include flex-center;
+  }
+}
+
+.header__nav .nav {
+  &__list {
+    @include flex-center;
+    max-width: 720px;
+    height: 50px;
+  }
+
+  &__item {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+
+  &__item:last-child {
+    padding-right: 0;
+  }
+  
+  &__item:first-child {
+    padding-left: 0;
+  }
+}

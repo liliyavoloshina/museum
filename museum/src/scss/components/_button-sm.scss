@@ -1,0 +1,18 @@
+.btn-sm {
+  width: 175px;
+  height: 50px;
+  font-family: $font-base;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 2px;
+  background: $text-light;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: $text-gold;
+    transition: $base-transition;
+    cursor: pointer;
+  }
+}

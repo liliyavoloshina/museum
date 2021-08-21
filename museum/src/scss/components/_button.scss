@@ -1,0 +1,26 @@
+//Button
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 360px;
+  height: 75px;
+  font-family: $font-base;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 2px;
+  line-height: 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  appearance: button;
+  background-color: $dark-red;
+  color: $text-light;
+
+  &:hover {
+    background-color: $text-gold;
+    transition: $base-transition;
+    cursor: pointer;
+  }
+}

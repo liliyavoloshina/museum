@@ -1,0 +1,24 @@
+.section-welcome {
+  &__container {
+    max-width: 1920px;
+    margin: 0 auto;
+    background: url('../img/welcome-img.jpg') no-repeat calc(50% + 352px) 100%;
+  }
+}
+
+.welcome {
+  &__text {
+    width: 598px;
+    padding: 114px 0 246px 0;
+  }
+}
+
+.welcome__text-subtitle {
+  padding: 26px 0 76px 0;
+  font-family: $font-base;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 2px;
+  color: $text-light;
+}

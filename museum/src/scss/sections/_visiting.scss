@@ -1,0 +1,52 @@
+.visiting__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 78px 60px;
+  padding-top: 102px;
+}
+
+.visiting-card-link {
+  display: block;
+  text-decoration: none;
+  color: $text-dark;
+}
+
+.visiting-card {
+  width: 440px;
+  height: 422px;
+
+  &__img {
+    height: 285px;
+    background-size: cover;
+  }
+
+  &__title {
+    padding-top: 25px;
+    font-family: $font-heading;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    padding-top: 20px;
+    font-family: $font-base;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 25.78px;
+  }
+
+  &__desc {
+    padding-top: 11px;
+    font-family: $font-base;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 21.09px;
+  }
+
+  &:hover .underline-title::after {
+    width: 100%;
+  }
+}
