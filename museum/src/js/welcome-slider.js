@@ -2,7 +2,8 @@ const slider = document.querySelector('#welcomeSlider'),
   sliderItems = document.querySelector('#welcomeSlides'),
   prev = document.querySelector('#welcomePrev'),
   next = document.querySelector('#welcomeNext'),
-  paginations = document.querySelectorAll('.welcome-slider-pagination-item')
+  paginations = document.querySelectorAll('.welcome-slider-pagination-item'),
+  counterCurrent = document.querySelector('.welcome-slider-counter-first')
 
 slide(sliderItems, prev, next, paginations)
 
@@ -51,6 +52,7 @@ function slide(items, prev, next, paginations) {
     activeSlideNum = slideNum
 
     dotActive()
+    counterActive()
   }
 
   function dragStart(e) {
@@ -123,6 +125,7 @@ function slide(items, prev, next, paginations) {
 
     allowShift = false
     dotActive()
+    counterActive()
   }
 
   function checkIndex() {
@@ -149,5 +152,9 @@ function slide(items, prev, next, paginations) {
       `.welcome-slider-pagination-item[data-slide="${activeSlideNum}"]`
     )
     active.classList.add('active')
+  }
+
+  function counterActive() {
+    counterCurrent.textContent = `0${activeSlideNum}`
   }
 }

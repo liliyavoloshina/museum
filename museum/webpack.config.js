@@ -62,6 +62,34 @@ module.exports = ({ development }) => ({
   plugins: [
     new MiniCssExtractPlugin({ filename: '[contenthash].css' }),
     new HtmlWebpackPlugin({ template: './index.html' }),
+    new HtmlWebpackPlugin({
+      filename: 'tour1.html',
+      template: 'tours/tour1.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tour2.html',
+      template: 'tours/tour2.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tour3.html',
+      template: 'tours/tour3.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tour4.html',
+      template: 'tours/tour4.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tour5.html',
+      template: 'tours/tour5.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tour6.html',
+      template: 'tours/tour6.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tour7.html',
+      template: 'tours/tour7.html'
+    }),
     new CopyPlugin({
       patterns: [
         {

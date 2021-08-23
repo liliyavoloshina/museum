@@ -27,27 +27,11 @@ $welcome-slider-img-height: 750px;
     z-index: 1;
     width: $welcome-slider-width;
     height: $welcome-slider-height;
-
     overflow: hidden;
   }
 }
 
 .welcome-slider {
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    background: linear-gradient(
-      90deg,
-      #000000 0%,
-      rgba(0, 0, 0, 0.5) 16.19%,
-      rgba(0, 0, 0, 0) 30.73%
-    );
-  }
-
   &__slides {
     position: relative;
     top: 0;
@@ -74,23 +58,53 @@ $welcome-slider-img-height: 750px;
   }
 
   .slide-1 {
-    background-image: url('../img/welcome/1.jpg');
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0.5) 16.19%,
+        rgba(0, 0, 0, 0) 30.73%
+      ),
+      url('../img/welcome/1.jpg');
   }
 
   .slide-2 {
-    background-image: url('../img/welcome/2.jpg');
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0.5) 16.19%,
+        rgba(0, 0, 0, 0) 30.73%
+      ),
+      url('../img/welcome/2.jpg');
   }
 
   .slide-3 {
-    background-image: url('../img/welcome/3.jpg');
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0.5) 16.19%,
+        rgba(0, 0, 0, 0) 30.73%
+      ),
+      url('../img/welcome/3.jpg');
   }
 
   .slide-4 {
-    background-image: url('../img/welcome/4.jpg');
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0.5) 16.19%,
+        rgba(0, 0, 0, 0) 30.73%
+      ),
+      url('../img/welcome/4.jpg');
   }
 
   .slide-5 {
-    background-image: url('../img/welcome/5.jpg');
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0.5) 16.19%,
+        rgba(0, 0, 0, 0) 30.73%
+      ),
+      url('../img/welcome/5.jpg');
   }
 
   .control {
@@ -204,6 +218,7 @@ $welcome-slider-img-height: 750px;
     background-size: contain;
     background-color: transparent;
   }
+
   &__arrows > button:hover {
     filter: invert(58%) sepia(11%) saturate(983%) hue-rotate(356deg)
       brightness(91%) contrast(87%);
@@ -212,7 +227,7 @@ $welcome-slider-img-height: 750px;
   }
 
   &-prev {
-    margin-right: 10px;
+    margin-right: 12px;
     background-image: url('../svg/welcome-arrow-left.svg');
   }
 
