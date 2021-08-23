@@ -47,7 +47,15 @@ function slide(items, prev, next, paginations) {
 
   function paginate() {
     const slideNum = +this.dataset.slide
-    shiftSlide(slideNum)
+    items.classList.add('shifting')
+
+
+    if (allowShift) {
+      posInitial = items.offsetLeft
+      items.style.left = -1000 * (slideNum) + 'px'
+    }
+
+    allowShift = false
   }
 
   function dragStart(e) {
@@ -95,28 +103,22 @@ function slide(items, prev, next, paginations) {
     items.classList.add('shifting')
 
     if (allowShift) {
-      if (!action && dir <= 1) {
+      if (!action) {
         posInitial = items.offsetLeft
-      } else {
-        posInitial = dir * -1000
       }
 
       if (dir == 1) {
-        console.log('dir == 1')
         items.style.left = posInitial - slideSize + 'px'
         index++
       } else if (dir == -1) {
-        console.log('dir == -1')
         items.style.left = posInitial + slideSize + 'px'
         index--
-      } else if (dir > 1) {
-        // items.style.left = posInitial - slideSize + 'px'
-        // index = dir
-        console.log(posInitial)
       }
     }
 
     allowShift = false
+
+    console.log(posInitial, 'posInitial')
   }
 
   function checkIndex() {
