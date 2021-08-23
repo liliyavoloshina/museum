@@ -1,11 +1,12 @@
 const slider = document.querySelector('#welcomeSlider'),
   sliderItems = document.querySelector('#welcomeSlides'),
-  prev = document.querySelector('#prev'),
-  next = document.querySelector('#next')
+  prev = document.querySelector('#welcomePrev'),
+  next = document.querySelector('#welcomeNext'),
+  paginations = document.querySelectorAll('.welcome-slider-pagination-item')
 
-slide(slider, sliderItems, prev, next)
+slide(sliderItems, prev, next, paginations)
 
-function slide(wrapper, items, prev, next) {
+function slide(items, prev, next, paginations) {
   let posX1 = 0,
     posX2 = 0,
     posInitial,
@@ -39,6 +40,15 @@ function slide(wrapper, items, prev, next) {
 
   // Transition events
   items.addEventListener('transitionend', checkIndex)
+
+  paginations.forEach(pag => {
+    pag.addEventListener('click', paginate)
+  })
+
+  function paginate() {
+    const slideNum = +this.dataset.slide
+    shiftSlide(slideNum)
+  }
 
   function dragStart(e) {
     e = e || window.event
@@ -85,16 +95,24 @@ function slide(wrapper, items, prev, next) {
     items.classList.add('shifting')
 
     if (allowShift) {
-      if (!action) {
+      if (!action && dir <= 1) {
         posInitial = items.offsetLeft
+      } else {
+        posInitial = dir * -1000
       }
 
       if (dir == 1) {
+        console.log('dir == 1')
         items.style.left = posInitial - slideSize + 'px'
         index++
       } else if (dir == -1) {
+        console.log('dir == -1')
         items.style.left = posInitial + slideSize + 'px'
         index--
+      } else if (dir > 1) {
+        // items.style.left = posInitial - slideSize + 'px'
+        // index = dir
+        console.log(posInitial)
       }
     }
 
@@ -115,5 +133,6 @@ function slide(wrapper, items, prev, next) {
     }
 
     allowShift = true
+    console.log(index)
   }
 }
