@@ -19,13 +19,16 @@ $video-main-height: 650px;
   }
 }
 
-.video-current {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.video-current-wrapper {
+  position: relative;
   width: 1440px;
   height: $video-main-height;
-  background: url('../img/video.jpg') no-repeat 100% 100%;
+}
+
+.video-current {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .media-panel {
@@ -39,40 +42,54 @@ $video-main-height: 650px;
 
 .video__btn {
   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
   border: none;
 
   &-play-big {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    z-index: 2;
     width: 220px;
     height: 220px;
-    background: url('../svg/video-btn-play-big.svg') no-repeat 100%
-      100%;
+    background: url('../svg/video-btn-play-big.svg');
+    opacity: 1;
+    transition: .7s ease;
+  }
+
+  &-play-big.hidden {
+    opacity: 0;
   }
 
   &-play-small {
     width: 23px;
     height: 30px;
     margin-right: 41px;
-    background: url('../svg/video-btn-play-small.svg') no-repeat
-      100% 100%;
+    background-image: url('../svg/video-btn-play-small.svg');
+  }
+
+  &-play-small.paused {
+    background-image: url('../svg/video-btn-pause-small.svg');
   }
 
   &-volume {
     width: 38px;
     height: 30px;
     margin-right: 20px;
-    background: url('../svg/video-btn-volume.svg') no-repeat 100%
-      100%;
+    background-image: url('../svg/video-btn-volume.svg');
   }
 
   &-expand {
     width: 36px;
     height: 36px;
-    background: url('../svg/video-btn-expand.svg') no-repeat 100%
-      100%;
+    background-image: url('../svg/video-btn-expand.svg');
   }
 
   &:hover {
-    filter: invert(67%) sepia(0%) saturate(0%) hue-rotate(3deg) brightness(90%) contrast(92%);
+    filter: invert(67%) sepia(0%) saturate(0%) hue-rotate(3deg) brightness(90%)
+      contrast(92%);
     cursor: pointer;
     transition: $quick-transition;
   }
@@ -81,8 +98,8 @@ $video-main-height: 650px;
 .video__range {
   background: linear-gradient(
     to right,
-    #24809e 0%,
-    #24809e 40%,
+    #710707 0%,
+    #710707 40%,
     #c4c4c4 40%,
     #c4c4c4 100%
   );
@@ -100,12 +117,12 @@ $video-main-height: 650px;
   }
 
   &-progress {
-    width: 820px;
+    width: 930px;
     margin-right: 41px;
     background: linear-gradient(
       to right,
-      #24809e 0%,
-      #24809e 47%,
+      #710707 0%,
+      #710707 47%,
       #c4c4c4 47%,
       #c4c4c4 100%
     );

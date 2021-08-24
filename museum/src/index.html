@@ -193,11 +193,14 @@
             as Mona Lisa or Hammurabi's Code</p>
         </div>
         <div class="video__media">
-          <div class="video-current">
-            <button class="video__btn video__btn-play-big"></button>
+          <div class="video-current-wrapper">
+            <video class="video-current" poster="./img/video/poster0.jpg" id="currentVideo">
+              <source src="./video/video0.mp4" type="video/mp4" id="currentSource">
+            </video>
+            <button class="video__btn video__btn-play-big" id="videoCurrentMainBtn"></button>
           </div>
           <div class="media-panel">
-            <button class="video__btn video__btn-play-small"></button>
+            <button class="video__btn video__btn-play-small" id="videoCurrentSmallBtn"></button>
             <input class="video__range video__range-progress" id="video-range-progress" value="47" min="0" max="100"
               type="range">
             <button class="video__btn video__btn-volume"></button>
