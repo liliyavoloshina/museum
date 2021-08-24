@@ -81,6 +81,8 @@ $video-main-height: 650px;
     background-image: url('../svg/video-btn-volume.svg');
   }
 
+  &-volume.muted {background-image: url('../svg/video-btn-volume-muted.svg');}
+
   &-expand {
     width: 36px;
     height: 36px;
