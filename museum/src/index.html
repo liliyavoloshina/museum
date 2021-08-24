@@ -192,7 +192,7 @@
           <p class="video-desc">Enter and visit one of the most famous museums in the world and enjoy masterpieces such
             as Mona Lisa or Hammurabi's Code</p>
         </div>
-        <div class="video__media">
+        <div class="video__media" id="fullscreenWrapper">
           <div class="video-current-wrapper">
             <video class="video-current" poster="./img/video/poster0.jpg" id="currentVideo">
               <source src="./video/video0.mp4" type="video/mp4" id="currentSource">
@@ -206,7 +206,7 @@
             <button class="video__btn video__btn-volume" id="currentVideoVolumeBtn"></button>
             <input class="video__range video__range-volume" id="currentVideoVolumeRange" value="0.5" min="0" max="1" step="0.1"
               type="range">
-            <button class="video__btn video__btn-expand"></button>
+            <button class="video__btn video__btn-expand" id="currentVideoFullscreenBtn"></button>
           </div>
         </div>
         <div class="video__slider">

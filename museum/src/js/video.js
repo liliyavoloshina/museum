@@ -3,13 +3,21 @@ const currentSource = document.querySelector('#currentSource')
 const currentVideoBigPlay = document.querySelector('#currentVideoBigPlay')
 const currentVideoSmallPlay = document.querySelector('#currentVideoSmallPlay')
 const currentVideoProgress = document.querySelector('#currentVideoProgress')
-const currentVideoVolumeRange = document.querySelector('#currentVideoVolumeRange')
+const currentVideoVolumeRange = document.querySelector(
+  '#currentVideoVolumeRange'
+)
 const currentVideoVolumeBtn = document.querySelector('#currentVideoVolumeBtn')
+const currentVideoFullscreenBtn = document.querySelector(
+  '#currentVideoFullscreenBtn'
+)
+const fullscreenWrapper = document.querySelector('#fullscreenWrapper')
 
 let currentVideoSrc = './video/video0.mp4'
 currentSource.setAttribute('src', currentVideoSrc)
 currentVideo.load()
 currentVideo.volume = 0.5
+
+let fullscreenMode = false
 
 currentVideo.addEventListener('click', togglePlayBtn)
 currentVideoBigPlay.addEventListener('click', togglePlayBtn)
@@ -17,9 +25,14 @@ currentVideoSmallPlay.addEventListener('click', togglePlayBtn)
 currentVideoVolumeBtn.addEventListener('click', toggleVolumeBtn)
 currentVideoVolumeRange.addEventListener('input', handleVolume)
 currentVideoProgress.addEventListener('input', handleProgress)
-
+currentVideoFullscreenBtn.addEventListener('click', toggleFullscreen)
 currentVideo.addEventListener('timeupdate', watchProgess)
 
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement) {
+    fullscreenWrapper.classList.remove('expanded')
+  } 
+})
 
 function togglePlayBtn() {
   if (currentVideo.paused) {
@@ -67,10 +80,40 @@ function toggleVolumeBtn() {
 function handleVolume() {
   const value = this.value
   currentVideo.volume = value
-  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value * 100}%, #c4c4c4 ${value * 100}%, #c4c4c4 100%)`
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${
+    value * 100
+  }%, #c4c4c4 ${value * 100}%, #c4c4c4 100%)`
 
   if (currentVideo.volume === 0) {
     currentVideo.muted = true
     currentVideoVolumeBtn.classList.add('muted')
+  }
+}
+
+function toggleFullscreen() {
+  if (!fullscreenMode) {
+    fullscreenMode = true
+    if (fullscreenWrapper.requestFullscreen) {
+      fullscreenWrapper.requestFullscreen()
+    } else if (fullscreenWrapper.mozRequestFullScreen) {
+      fullscreenWrapper.mozRequestFullScreen()
+    } else if (fullscreenWrapper.webkitRequestFullscreen) {
+      fullscreenWrapper.webkitRequestFullscreen()
+    } else if (fullscreenWrapper.msRequestFullscreen) {
+      fullscreenWrapper.msRequestFullscreen()
+    }
+    fullscreenWrapper.classList.add('expanded')
+  } else {
+    fullscreenMode = false
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen()
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen()
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen()
+    }
+    fullscreenWrapper.classList.remove('expanded')
   }
 }

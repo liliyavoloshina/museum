@@ -1,4 +1,4 @@
-$video-main-height: 650px;
+$video-media-height: 735px;
 
 .section-video {
   padding: 75px 0;
@@ -17,12 +17,19 @@ $video-main-height: 650px;
     font-size: 22px;
     line-height: 43px;
   }
+  &__media {
+    height: $video-media-height;
+  }
+  &__media.expanded {
+    height: 100%;
+  }
 }
 
 .video-current-wrapper {
   position: relative;
   width: 1440px;
-  height: $video-main-height;
+  // height: 650px;
+  height: 88%;
 }
 
 .video-current {
@@ -34,7 +41,8 @@ $video-main-height: 650px;
 .media-panel {
   display: flex;
   align-items: center;
-  height: 85px;
+  height: 12%;
+  // height: 85px;
   padding-left: 41px;
   padding-right: 24px;
   background-color: $text-dark;
