@@ -94,8 +94,7 @@
       <div class="visiting container">
         <h2 class="section-title underline-title underline-title--full">Virtual tour</h2>
         <div class="visiting__cards">
-          <a class="visiting-card-link"
-            href="tour2.html" target="_blank">
+          <a class="visiting-card-link" href="tour2.html" target="_blank">
             <article class="visiting-card">
               <img class="visiting-card__img" src="./img/royal-palace.jpg" width="440" height="285" alt="Royal Palace">
               <h3 class="visiting-card__title underline-title">Royal Palace</h3>
@@ -104,8 +103,7 @@
             </article>
           </a>
 
-          <a class="visiting-card-link"
-          href="tour3.html" target="_blank">
+          <a class="visiting-card-link" href="tour3.html" target="_blank">
             <article class="visiting-card">
               <img class="visiting-card__img" src="./img/denon-wing.jpg" width="440" height="285" alt="Denon Wing">
               <h3 class="visiting-card__title underline-title">Denon Wing</h3>
@@ -114,8 +112,7 @@
             </article>
           </a>
 
-          <a class="visiting-card-link"
-          href="tour4.html" target="_blank">
+          <a class="visiting-card-link" href="tour4.html" target="_blank">
             <article class="visiting-card">
               <img class="visiting-card__img" src="./img/colonnade-perrault.jpg" width="440" height="285"
                 alt="Colonnade Perrault">
@@ -125,8 +122,7 @@
             </article>
           </a>
 
-          <a class="visiting-card-link"
-          href="tour5.html" target="_blank">
+          <a class="visiting-card-link" href="tour5.html" target="_blank">
             <article class="visiting-card">
               <img class="visiting-card__img" src="./img/greek-hall.jpg" width="440" height="285" alt="Greek hall">
               <h3 class="visiting-card__title underline-title">Greek hall</h3>
@@ -135,8 +131,7 @@
             </article>
           </a>
 
-          <a class="visiting-card-link"
-          href="tour6.html" target="_blank">
+          <a class="visiting-card-link" href="tour6.html" target="_blank">
             <article class="visiting-card">
               <img class="visiting-card__img" src="./img/mona-lisa.jpg" width="440" height="285" alt="Mona Lisa">
               <h3 class="visiting-card__title underline-title">Mona Lisa</h3>
@@ -145,8 +140,7 @@
             </article>
           </a>
 
-          <a class="visiting-card-link"
-          href="tour7.html" target="_blank">
+          <a class="visiting-card-link" href="tour7.html" target="_blank">
             <article class="visiting-card">
               <img class="visiting-card__img" src="./img/night-palace.jpg" width="440" height="285" alt="Night Palace">
               <h3 class="visiting-card__title underline-title">Night Palace</h3>
@@ -174,14 +168,16 @@
           <p class="explore-desc">The cleaning provoked furious protests, not because the picture had been damaged in
             any way, but because it looked different.</p>
         </div>
-        <div class="explore-img explore__img">
-          <div class="explore-img__img">
-            <img src="./img/explore/before.jpg"  height="700">
+        <div class="explore__img">
+          <div class="explore-img">
+
+            <div class="explore-img__img">
+              <img src="./img/explore/before.jpg" height="700">
+            </div>
+            <div class="explore-img__img explore-img-overlay">
+              <img src="./img/explore/after.jpg" height="700">
+            </div>
           </div>
-          <div class="explore-img__img explore-img-overlay">
-            <img src="./img/explore/after.jpg"  height="700" >
-          </div>
-          <!-- <img src="./img/explore.jpg" width="720" height="700" alt="Picture explore"> -->
         </div>
       </div>
     </section>
@@ -189,14 +185,19 @@
     <!-- video section  -->
     <section class="section-video" id="video">
       <div class="video container">
+        <div class="video__text">
+          <h2 class="section-title">
+            Video journey
+          </h2>
+          <p class="video-desc">Enter and visit one of the most famous museums in the world and enjoy masterpieces such
+            as Mona Lisa or Hammurabi's Code</p>
+        </div>
         <div class="video__media">
-          <div class="media-show">
+          <div class="video-current">
             <button class="video__btn video__btn-play-big"></button>
           </div>
           <div class="media-panel">
-            <button class="video__btn video__btn-prev"></button>
             <button class="video__btn video__btn-play-small"></button>
-            <button class="video__btn video__btn-next"></button>
             <input class="video__range video__range-progress" id="video-range-progress" value="47" min="0" max="100"
               type="range">
             <button class="video__btn video__btn-volume"></button>
@@ -205,12 +206,10 @@
             <button class="video__btn video__btn-expand"></button>
           </div>
         </div>
-        <div class="video__text">
-          <h2 class="section-title">
-            Video journey
-          </h2>
-          <p class="video-desc">Enter and visit one of the most famous museums in the world and enjoy masterpieces such
-            as Mona Lisa or Hammurabi's Code</p>
+        <div class="video__slider">
+          <div class="video-slider">
+            <div class="video-slider-item"></div>
+          </div>
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@ function initComparisons() {
     image.parentElement.insertBefore(slider, image)
     slider.classList.add('explore-img-slider')
     
-    slider.style.top = 15 + 'px'
+    slider.style.top = 0 + 'px'
     slider.style.left = width / 1.6 - slider.offsetWidth / 1.6 + 'px'
 
     image.style.width = '63%'
