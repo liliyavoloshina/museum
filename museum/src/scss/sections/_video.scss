@@ -87,7 +87,7 @@ $video-slider-height: 254px;
   &-play-small {
     width: 23px;
     height: 30px;
-    margin-right: 47px;
+    margin-right: 50px;
     background-image: url('../svg/video-btn-play-small.svg');
   }
 
@@ -98,7 +98,7 @@ $video-slider-height: 254px;
   &-volume {
     width: 38px;
     height: 30px;
-    margin-right: 20px;
+    margin-right: 50px;
     background-image: url('../svg/video-btn-volume.svg');
   }
 
@@ -111,6 +111,7 @@ $video-slider-height: 254px;
     height: 36px;
     background-image: url('../svg/video-btn-expand.svg');
   }
+
   &-expand.exit {
     background-image: url('../svg/video-btn-expand-exit.svg');
   }
@@ -127,8 +128,8 @@ $video-slider-height: 254px;
   background: linear-gradient(
     to right,
     #710707 0%,
-    #710707 55%,
-    #c4c4c4 55%,
+    #710707 45%,
+    #c4c4c4 45%,
     #c4c4c4 100%
   );
   border-radius: 8px;
@@ -138,12 +139,12 @@ $video-slider-height: 254px;
 
   &-progress {
     width: 930px;
-    margin-right: 41px;
+    margin-right: 50px;
     background: linear-gradient(
       to right,
       #710707 0%,
-      #710707 55%,
-      #c4c4c4 55%,
+      #710707 54%,
+      #c4c4c4 54%,
       #c4c4c4 100%
     );
   }
@@ -159,7 +160,7 @@ $video-slider-height: 254px;
 
   &-volume {
     width: 155px;
-    margin-right: 48px;
+    margin-right: 50px;
   }
 }
 
@@ -202,7 +203,7 @@ $video-slider-height: 254px;
   &-pagination {
     display: flex;
     justify-content: space-between;
-    width: 180px;
+    width: 190px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 40px;
@@ -212,10 +213,20 @@ $video-slider-height: 254px;
     width: 12px;
     height: 12px;
     background-size: contain;
+    transition: $quick-transition;
+  }
+
+  &-pagination-item:hover {
+    cursor: pointer;
+    filter: invert(14%) sepia(25%) saturate(6681%) hue-rotate(342deg) brightness(60%) contrast(114%);
   }
 
   &-pagination-dot {
     background: url('../svg/video-slider-dot.svg') no-repeat;
+  }
+
+  &-pagination-dot.active {
+    filter: invert(13%) sepia(94%) saturate(0%) hue-rotate(205deg) brightness(60%) contrast(88%);
   }
 
   &-pagination-arrow-prev {

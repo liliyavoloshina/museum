@@ -29,8 +29,6 @@ currentVideoFullscreenBtn.addEventListener('click', toggleFullscreen)
 currentVideo.addEventListener('timeupdate', watchProgess)
 document.addEventListener('fullscreenchange', watchFullscreen)
 
-
-console.log(currentVideoProgress.value)
 function togglePlayBtn() {
   if (currentVideo.paused) {
     currentVideo.play()
