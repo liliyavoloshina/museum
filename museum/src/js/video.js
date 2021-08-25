@@ -27,9 +27,9 @@ currentVideoVolumeRange.addEventListener('input', handleVolume)
 currentVideoProgress.addEventListener('input', handleProgress)
 currentVideoFullscreenBtn.addEventListener('click', toggleFullscreen)
 currentVideo.addEventListener('timeupdate', watchProgess)
-
 document.addEventListener('fullscreenchange', () => {
   if (!document.fullscreenElement) {
+    fullscreenMode = false
     fullscreenWrapper.classList.remove('expanded')
   } 
 })

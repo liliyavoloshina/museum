@@ -1,3 +1,4 @@
+$video-media-width: 1440px;
 $video-media-height: 735px;
 
 .section-video {
@@ -10,6 +11,7 @@ $video-media-height: 735px;
     justify-content: space-between;
     padding-bottom: 75px;
   }
+
   &-desc {
     width: 720px;
     font-family: $font-base;
@@ -17,17 +19,22 @@ $video-media-height: 735px;
     font-size: 22px;
     line-height: 43px;
   }
+
   &__media {
+    width: $video-media-width;
     height: $video-media-height;
   }
+
   &__media.expanded {
+    width: 100%;
     height: 100%;
   }
 }
 
 .video-current-wrapper {
   position: relative;
-  width: 1440px;
+  width: 100%;
+  // width: 1440px;
   // height: 650px;
   height: 88%;
 }
@@ -64,7 +71,7 @@ $video-media-height: 735px;
     height: 220px;
     background: url('../svg/video-btn-play-big.svg');
     opacity: 1;
-    transition: .7s ease;
+    transition: 0.7s ease;
   }
 
   &-play-big.hidden {
@@ -89,7 +96,9 @@ $video-media-height: 735px;
     background-image: url('../svg/video-btn-volume.svg');
   }
 
-  &-volume.muted {background-image: url('../svg/video-btn-volume-muted.svg');}
+  &-volume.muted {
+    background-image: url('../svg/video-btn-volume-muted.svg');
+  }
 
   &-expand {
     width: 36px;
@@ -109,20 +118,21 @@ $video-media-height: 735px;
   background: linear-gradient(
     to right,
     #710707 0%,
-    #710707 40%,
-    #c4c4c4 40%,
+    #710707 50%,
+    #c4c4c4 50%,
     #c4c4c4 100%
   );
   border-radius: 8px;
   height: 7px;
   outline: none;
-  -webkit-appearance: none;
+  appearance: none;
+  
   &::-webkit-slider-thumb {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    -webkit-appearance: none;
-    cursor: ew-resize;
+    appearance: none;
+    cursor: pointer;
     background: #ffffff;
   }
 
@@ -132,13 +142,40 @@ $video-media-height: 735px;
     background: linear-gradient(
       to right,
       #710707 0%,
-      #710707 47%,
-      #c4c4c4 47%,
+      #710707 50%,
+      #c4c4c4 50%,
       #c4c4c4 100%
     );
   }
+
   &-volume {
     width: 155px;
     margin-right: 48px;
+  }
+}
+
+.video__media.expanded {
+  .media-panel {
+    height: 7%;
+  }
+
+  .video-current-wrapper {
+    height: 93%;
+  }
+
+  .video__btn {
+    &-play-big {
+      top: 43%;
+    }
+  }
+
+  .video__range {
+    &-progress {
+      width: 90%;
+    }
+
+    &-volume {
+      width: 10%;
+    }
   }
 }
