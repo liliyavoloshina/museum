@@ -27,13 +27,10 @@ currentVideoVolumeRange.addEventListener('input', handleVolume)
 currentVideoProgress.addEventListener('input', handleProgress)
 currentVideoFullscreenBtn.addEventListener('click', toggleFullscreen)
 currentVideo.addEventListener('timeupdate', watchProgess)
-document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement) {
-    fullscreenMode = false
-    fullscreenWrapper.classList.remove('expanded')
-  } 
-})
+document.addEventListener('fullscreenchange', watchFullscreen)
 
+
+console.log(currentVideoProgress.value)
 function togglePlayBtn() {
   if (currentVideo.paused) {
     currentVideo.play()
@@ -52,10 +49,12 @@ function handleProgress() {
 }
 
 function watchProgess() {
-  const newValue = Math.round((100 / this.duration) * this.currentTime)
-  currentVideoProgress.value = newValue
-  currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${newValue}%, #c4c4c4 ${newValue}%, #c4c4c4 100%)`
-
+  if (!currentVideo.paused) {
+    const newValue = Math.round((100 / this.duration) * this.currentTime)
+    currentVideoProgress.value = newValue
+    currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${newValue}%, #c4c4c4 ${newValue}%, #c4c4c4 100%)`
+  }
+  
   if (this.currentTime === this.duration) {
     currentVideoBigPlay.classList.remove('hidden')
     currentVideoSmallPlay.classList.remove('paused')
@@ -92,7 +91,6 @@ function handleVolume() {
 
 function toggleFullscreen() {
   if (!fullscreenMode) {
-    fullscreenMode = true
     if (fullscreenWrapper.requestFullscreen) {
       fullscreenWrapper.requestFullscreen()
     } else if (fullscreenWrapper.mozRequestFullScreen) {
@@ -102,9 +100,7 @@ function toggleFullscreen() {
     } else if (fullscreenWrapper.msRequestFullscreen) {
       fullscreenWrapper.msRequestFullscreen()
     }
-    fullscreenWrapper.classList.add('expanded')
   } else {
-    fullscreenMode = false
     if (document.exitFullscreen) {
       document.exitFullscreen()
     } else if (document.webkitExitFullscreen) {
@@ -114,6 +110,17 @@ function toggleFullscreen() {
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen()
     }
+  }
+}
+
+function watchFullscreen() {
+  if (!document.fullscreenElement) {
+    fullscreenMode = false
     fullscreenWrapper.classList.remove('expanded')
+    currentVideoFullscreenBtn.classList.remove('exit')
+  } else {
+    fullscreenWrapper.classList.add('expanded')
+    fullscreenMode = true
+    currentVideoFullscreenBtn.classList.add('exit')
   }
 }
