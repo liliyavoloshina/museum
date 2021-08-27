@@ -1,6 +1,5 @@
-$gallery-height: 2050px;
-$gallery-row-gap: 36px;
-$gallery-column-gap: 36px;
+$gallery-height: 2030px;
+$grid-gap: 24px;
 
 .gallery {
   height: $gallery-height;
@@ -9,7 +8,7 @@ $gallery-column-gap: 36px;
   &-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $gallery-row-gap;
+    gap: 0 $grid-gap;
     grid-auto-flow: dense;
     grid-auto-rows: 1fr;
     height: 2850px;
@@ -31,7 +30,7 @@ $gallery-column-gap: 36px;
 
   &-picture:nth-child(3n + 1) {
     grid-column-start: 1;
-    top: calc(24px * 2);
+    top: $grid-gap;
   }
   &-picture:nth-child(2n + 2) {
     transition-delay: .2s;
@@ -43,7 +42,7 @@ $gallery-column-gap: 36px;
 
   &-picture:nth-child(3n + 3) {
     grid-column-start: 3;
-    // top: 24px;
+    top: calc( #{$grid-gap} * 2);
   }
 
   &-picture:nth-child(9) {
