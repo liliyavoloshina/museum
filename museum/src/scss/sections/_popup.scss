@@ -345,6 +345,63 @@ $payment-width: 530px;
     display: flex;
     justify-content: space-between;
   }
+
+  &__card {
+    position: relative;
+    margin-top: 18px;
+  }
+
+  .ticket {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &__count {
+      width: 32px;
+      height: 20px;
+      margin-right: 10px;
+      font-family: $font-base;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      border-radius: 5px;
+      text-align: center;
+      color: #a4a4a3;
+      background-color: $bg-dark;
+    }
+
+    &__type,
+    &__price {
+      font-family: $font-base;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+      color: $bg-dark;
+    }
+
+    &__price {
+      margin-left: auto;
+    }
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 7px;
+    font-size: 32px;
+    font-family: $font-base;
+    line-height: 37px;
+    color: $bg-dark;
+
+    &__label {
+      font-weight: 400;
+    }
+
+    &__price {
+      font-weight: 500;
+    }
+  }
 }
 
 .popup-payment__overview {
@@ -405,62 +462,49 @@ $payment-width: 530px;
   }
 }
 
-.popup-payment {
-  &__tickets {
+.popup-payment__tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px 0;
+  padding: 20px 0 11px;
+  border-bottom: 1px solid $dark-red;
+}
+
+.card-face {
+  width: 360px;
+  height: 215px;
+  padding: 12px 20px 20px 20px;
+  border-radius: 2px;
+  background-color: #bcbcbc;
+
+  &__field {
     display: flex;
     flex-direction: column;
-    gap: 6px 0;
-    padding: 20px 0 11px;
-    border-bottom: 1px solid $dark-red;
-  }
-  .ticket {
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    &__count {
-      width: 32px;
-      height: 20px;
-      margin-right: 10px;
-      font-family: $font-base;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 21px;
-      border-radius: 5px;
-      text-align: center;
-      color: #a4a4a3;
-      background-color: $bg-dark;
-    }
-
-    &__type,
-    &__price {
-      font-family: $font-base;
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 26px;
-      color: $bg-dark;
-    }
-
-    &__price {
-      margin-left: auto;
-    }
-  }
-  &__total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 7px;
-    font-size: 32px;
+    font-size: 11px;
     font-family: $font-base;
-    line-height: 37px;
-    color: $bg-dark;
+    font-weight: 400;
+    line-height: 13px;
+    color: #161615;
 
-    &__label {
-      font-weight: 400;
+    .input {
+      height: 35px;
+      margin-top: 5px;
+      border: 0.567px solid #a4a4a3;
     }
 
-    &__price {
-      font-weight: 500;
+    .number-wrapper {
+      position: relative;
     }
+
+    .input-number {
+      appearance: textfield;
+    }
+    
+    .input-number::-webkit-inner-spin-button,
+    .input-number::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
   }
 }

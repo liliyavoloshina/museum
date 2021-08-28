@@ -1,11 +1,17 @@
 const date = document.querySelector('#date'),
   time = document.querySelector('#time'),
   selectWrapper = document.getElementsByClassName('tickets-select'),
-  selectLength = selectWrapper.length
+  selectLength = selectWrapper.length,
+  incrExpDay = document.querySelector('#incrExpDay'),
+  decrExpDay = document.querySelector('#decrExpDay')
+expDayInput = document.querySelector('#expDay')
 
 date.addEventListener('change', addClass)
 time.addEventListener('change', addClass)
 document.addEventListener('click', closeAllSelect)
+
+incrExpDay.addEventListener('click', increment)
+decrExpDay.addEventListener('click', decrement)
 
 function addClass() {
   this.classList.add('has-value')
@@ -78,4 +84,23 @@ function closeAllSelect(element) {
       selectWrapper[i].classList.add('select-hide')
     }
   }
+}
+
+function increment() {
+  let oldVal = expDayInput.value
+  let newVal = Number(oldVal + 1)
+  expDayInput.value = newVal
+}
+
+function decrement() {
+  let oldVal = Number(expDayInput.value)
+  let newVal = oldVal - 1
+  newVal = newVal.toString().padStart(2, '0')
+
+  if (oldVal === 1 || oldVal === 31) {
+    return
+  }
+
+  console.log(oldVal, newVal)
+  expDayInput.value = newVal
 }

@@ -488,6 +488,23 @@
           <div class="total__price">60 €</div>
         </div>
       </div>
+
+      <div class="popup-payment__card">
+        <div class="card-face">
+          <div>
+            <label class="card-face__field">Card number<input class="input" type="text"></label>
+            <label class="card-face__field">Expiration date
+              <div class="card-input-number">
+                <button class="card-input-number__btn" id="decrExpDay" type="button">–</button>
+                <button class="card-input-number__btn" id="incrExpDay" type="button">+</button>
+                <input class="card-input-number__input" id="expDay" type="number" min="0" max="31" value="03" readonly>
+              </div>
+            </label>
+          </div>
+          <div></div>
+        </div>
+        <div class="card-back"></div>
+      </div>
     </div>
   </div>
 </body>
