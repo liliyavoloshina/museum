@@ -398,9 +398,35 @@
 
       <form class="popup-tickets__form">
         <div class="tickets-date tickets-input tickets-input-selectable">
-          <div class="tickets-date__icon tickets-input__icon"></div>
-          <input class="tickets-date__input tickets-input-selectable__input tickets-input__input" type="date" name="date" id="date">
+          <div class="icon"></div>
+          <input class="input" type="date" name="date" id="date">
         </div>
+        <div class="tickets-time tickets-input tickets-input-selectable">
+          <div class="icon"></div>
+          <input class="input" type="time" name="time" id="time">
+        </div>
+        <div class="tickets-name tickets-input tickets-input-ordinary">
+          <div class="icon"></div>
+          <input class="input" placeholder="Name" type="text" name="name" id="name">
+        </div>
+        <div class="tickets-email tickets-input tickets-input-ordinary">
+          <div class="icon"></div>
+          <input class="input" placeholder="Email" type="email" name="email" id="email">
+        </div>
+        <div class="tickets-phone tickets-input tickets-input-ordinary">
+          <div class="icon"></div>
+          <input class="input" placeholder="Phone" type="tel" name="phone" id="phone">
+        </div>
+        <div class="tickets-select">
+          <div class="icon"></div>
+          <select name="ticket-type" id="ticketType" placeholder="Ticket Type">
+            <option selected>Ticket Type</option>
+            <option value="perm">Permanent exhibition</option>
+            <option value="temp">Temporary exhibition</option>
+            <option value="comb">Combined Admission</option>
+          </select>
+        </div>
+        
       </form>
     </div>
     <div class="popup-payment">

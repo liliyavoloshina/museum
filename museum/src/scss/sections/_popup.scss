@@ -58,39 +58,49 @@ $payment-width: 530px;
     color: $dark-red;
     border-bottom: 2px solid $dark-red;
   }
+
+  &__form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px 0;
+    margin-top: 60px;
+  }
 }
 
 .tickets-input {
   position: relative;
-  width: 190px;
   height: 45px;
   border: 1px solid $bg-dark;
 
-  &__icon {
+  .icon {
     position: absolute;
     top: 30%;
     left: 15px;
     width: 15px;
     height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100%;
   }
 
-  &__input {
+  .input {
     width: 100%;
     height: 100%;
-    padding-left: 50px;
+    padding-left: 44px;
     border: 0;
     outline: none;
   }
 
-  &__input::-webkit-datetime-edit {
+  .input:not(.has-value)::-webkit-datetime-edit {
     color: transparent;
   }
 
-  &__input:focus::-webkit-datetime-edit {
+  .input:focus::-webkit-datetime-edit {
     color: black;
   }
 
-  &__input::before {
+  .input::before {
     position: absolute;
     top: 25%;
     left: 44px;
@@ -101,29 +111,156 @@ $payment-width: 530px;
     color: $text-dark;
   }
 
-  &__input:focus::before {
+  .input:focus::before {
     display: none;
   }
 }
 
 .tickets-input-selectable {
-  &__input::-webkit-calendar-picker-indicator {
+  .input::-webkit-calendar-picker-indicator {
     color: rgba(0, 0, 0, 0);
     opacity: 1;
     display: block;
-    background: url('../svg/triangle.svg') no-repeat;
+    background-image: url('../svg/triangle.svg');
     width: 17px;
     height: 17px;
     border-width: thin;
   }
 }
 
+.tickets-input-ordinary {
+  width: 100%;
+
+  .input::placeholder {
+    font-family: $font-base;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: $bg-dark;
+  }
+}
+
 .tickets-date {
-  &__icon {
-    background: url('../svg/date.svg') no-repeat 100% center;
+  width: 190px;
+
+  .icon {
+    background-image: url('../svg/date.svg');
   }
 
-  &__input::before {
+  .input:not(.has-value):before {
     content: 'Date';
+  }
+}
+
+.tickets-time {
+  width: 190px;
+  .icon {
+    background-image: url('../svg/time.svg');
+  }
+
+  .input:not(.has-value):before {
+    content: 'Time';
+  }
+}
+
+.tickets-name {
+  .icon {
+    background-image: url('../svg/name.svg');
+  }
+}
+
+.tickets-email {
+  .icon {
+    background-image: url('../svg/email.svg');
+  }
+}
+
+.tickets-phone {
+  .icon {
+    background-image: url('../svg/phone.svg');
+  }
+}
+
+.tickets-select {
+  position: relative;
+  height: 45px;
+  width: 100%;
+  font-family: $font-base;
+  font-size: 18px;
+  line-height: 21px;
+  color: $bg-dark;
+  border: 1px solid $bg-dark;
+
+  .icon {
+    position: absolute;
+    top: 30%;
+    left: 15px;
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-image: url('../svg/type.svg');
+  }
+
+  select {
+    display: none;
+  }
+
+  .select-selected {
+    font-weight: 400;
+    background-color: #fff;
+  }
+
+  .select-selected:after {
+    position: absolute;
+    top: 30%;
+    right: 5px;
+    content: '';
+    background: url('../svg/triangle.svg') no-repeat center 100%;
+    background-size: contain;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+  }
+
+  .select-selected.select-arrow-active:after {
+    transform: rotate(180deg);
+  }
+
+  .select-items div,
+  .select-selected {
+    height: 100%;
+    padding-top: 10px;
+    padding-left: 44px;
+    cursor: pointer;
+  }
+
+  .select-items {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    height: 45px;
+    background-color: #fff;
+  }
+
+  .select-items div {
+    font-weight: 300;
+    border-left: 1px solid $bg-dark;
+    border-right: 1px solid $bg-dark;
+  }
+  .select-items div:last-child {
+    border-bottom: 1px solid $bg-dark;
+  }
+
+  .select-hide {
+    display: none;
+  }
+
+  .select-items div:hover,
+  .same-as-selected {
+    background-color: #e7e7e7;
   }
 }
