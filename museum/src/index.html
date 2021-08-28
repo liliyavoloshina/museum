@@ -411,7 +411,7 @@
         </div>
         <div class="tickets-email tickets-input tickets-input-ordinary">
           <div class="icon"></div>
-          <input class="input" placeholder="Email" type="email" name="email" id="email">
+          <input class="input" placeholder="E-mail" type="email" name="email" id="email">
         </div>
         <div class="tickets-phone tickets-input tickets-input-ordinary">
           <div class="icon"></div>
@@ -426,7 +426,26 @@
             <option value="comb">Combined Admission</option>
           </select>
         </div>
-        
+
+        <div class="tickets-entry">
+          <h3 class="tickets-entry__title">Entry ticket</h3>
+          <div class="entry">
+            <div class="label">Basic 18+ (20 €)</div>
+            <div class="amount">
+              <button class="amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+              <input class="input" type="number" min="0" max="100" value="2" readonly>
+              <button class="amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="label">Senior 65+ (10 €)</div>
+            <div class="amount">
+              <button class="amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+              <input class="input" type="number" min="0" max="100" value="2" readonly>
+              <button class="amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
     <div class="popup-payment">
