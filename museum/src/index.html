@@ -433,7 +433,7 @@
             <div class="label">Basic 18+ (20 €)</div>
             <div class="amount">
               <button class="amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
-              <input class="input" type="number" min="0" max="100" value="2" readonly>
+              <input class="input" type="number" min="0" max="20" value="2" readonly>
               <button class="amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
           </div>
@@ -441,7 +441,7 @@
             <div class="label">Senior 65+ (10 €)</div>
             <div class="amount">
               <button class="amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
-              <input class="input" type="number" min="0" max="100" value="2" readonly>
+              <input class="input" type="number" min="0" max="20" value="2" readonly>
               <button class="amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
           </div>
@@ -449,7 +449,45 @@
       </form>
     </div>
     <div class="popup-payment">
-
+      <div class="popup-payment__overview">
+        <div class="info">
+          <h2 class="info__title">Overview</h2>
+          <h2 class="info__subtitle">Tour to Louvre</h2>
+          <div class="info__item">
+            <div class="icon date"></div>
+            <div class="text">Friday, August 19</div>
+          </div>
+          <div class="info__item">
+            <div class="icon time"></div>
+            <div class="text">16 : 30</div>
+          </div>
+          <div class="info__item">
+            <div class="icon check"></div>
+            <div class="text">Temporary exhibition</div>
+          </div>
+        </div>
+        <div class="image">
+          <img src="./img/overview.jpg" width="150" height="120" alt="Overview">
+        </div>
+      </div>
+      <div class="popup-payment__price">
+        <div class="popup-payment__tickets">
+          <div class="ticket">
+            <div class="ticket__count">2</div>
+            <div class="ticket__type">Basic (20 €)</div>
+            <div class="ticket__price">40 €</div>
+          </div>
+          <div class="ticket">
+            <div class="ticket__count">2</div>
+            <div class="ticket__type">Senior (10 €)</div>
+            <div class="ticket__price">20 €</div>
+          </div>
+        </div>
+        <div class="popup-payment__total">
+          <div class="total__label">Total:</div>
+          <div class="total__price">60 €</div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

@@ -16,7 +16,7 @@ $payment-width: 530px;
   flex-wrap: wrap;
   gap: 40px;
   padding: 90px 235px;
-  background-color: red;
+  background-color: #fff;
 
   &-tickets {
     width: $tickets-width;
@@ -271,6 +271,7 @@ $payment-width: 530px;
   width: 100%;
   height: 135px;
   padding: 10px 15px 23px;
+  border: 1px solid $bg-dark;
 
   &__title {
     padding-bottom: 2px;
@@ -325,7 +326,7 @@ $payment-width: 530px;
 
   .input {
     width: 37px;
-    padding-left: 13px;
+    padding-left: 11px;
     text-align: center;
     font-weight: 400;
     font-size: 18px;
@@ -333,5 +334,133 @@ $payment-width: 530px;
     border: 1px solid $bg-dark;
     color: $text-dark;
     background-color: transparent;
+  }
+}
+
+.popup-payment {
+  padding: 25px 30px;
+  border: 1px solid $bg-dark;
+
+  &__overview {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.popup-payment__overview {
+  .info__title {
+    font-family: $font-base;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: #272727;
+  }
+
+  .info__subtitle {
+    padding: 3px 0 11px;
+    font-size: 22px;
+    font-family: $font-base;
+    font-weight: 500;
+    line-height: 26px;
+    color: $dark-red;
+    opacity: 0.9;
+  }
+
+  .info__item {
+    display: flex;
+    align-items: center;
+    gap: 0 15px;
+  }
+
+  .info__item + .info__item {
+    margin-top: 7px;
+  }
+
+  .info__item .icon {
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100%;
+  }
+
+  .info__item .date {
+    background-image: url('../svg/date.svg');
+  }
+
+  .info__item .time {
+    background-image: url('../svg/time.svg');
+  }
+
+  .info__item .check {
+    background-image: url('../svg/check.svg');
+  }
+
+  .info__item .text {
+    font-family: $font-base;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: $bg-dark;
+  }
+}
+
+.popup-payment {
+  &__tickets {
+    display: flex;
+    flex-direction: column;
+    gap: 6px 0;
+    padding: 20px 0 11px;
+    border-bottom: 1px solid $dark-red;
+  }
+  .ticket {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &__count {
+      width: 32px;
+      height: 20px;
+      margin-right: 10px;
+      font-family: $font-base;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      border-radius: 5px;
+      text-align: center;
+      color: #a4a4a3;
+      background-color: $bg-dark;
+    }
+
+    &__type,
+    &__price {
+      font-family: $font-base;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+      color: $bg-dark;
+    }
+
+    &__price {
+      margin-left: auto;
+    }
+  }
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 7px;
+    font-size: 32px;
+    font-family: $font-base;
+    line-height: 37px;
+    color: $bg-dark;
+
+    &__label {
+      font-weight: 400;
+    }
+
+    &__price {
+      font-weight: 500;
+    }
   }
 }
