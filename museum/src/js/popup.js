@@ -7,11 +7,18 @@ const date = document.querySelector('#date'),
   expDayInput = document.querySelector('#expDay'),
   expYearInput = document.querySelector('#expYear'),
   incrExpYear = document.querySelector('#incrExpYear'),
-  decrExpYear = document.querySelector('#decrExpYear')
+  decrExpYear = document.querySelector('#decrExpYear'),
+  openPopup = document.querySelector('#openPopup'),
+  popup = document.querySelector('#popup'),
+  closePopup = document.querySelector('#closePopup'),
+  popupOverlay = document.querySelector('#popupOverlay')
 
 date.addEventListener('change', addClass)
 time.addEventListener('change', addClass)
 document.addEventListener('click', closeAllSelect)
+openPopup.addEventListener('click', toggleForm)
+closePopup.addEventListener('click', toggleForm)
+popupOverlay.addEventListener('click', toggleForm)
 
 incrExpDay.addEventListener('click', incrementDay)
 decrExpDay.addEventListener('click', decrementDay)
@@ -102,6 +109,7 @@ function incrementDay() {
 
   expDayInput.value = newVal
 }
+
 function incrementYear() {
   let oldVal = Number(expYearInput.value)
   let newVal = oldVal + 1
@@ -134,4 +142,8 @@ function decrementYear() {
   }
 
   expYearInput.value = newVal
+}
+
+function toggleForm() {
+  popup.classList.toggle('opened')
 }

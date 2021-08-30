@@ -5,18 +5,30 @@ $payment-width: 530px;
 
 .popup {
   position: fixed;
-  top: calc((100vh - #{$popup-height}) / 2);
-  left: calc((100vw - #{$popup-width} - 21px) / 2);
-  z-index: 100;
-  width: $popup-width;
-  height: $popup-height;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 90px 235px;
-  background-color: #fff;
+  &-content {
+    position: fixed;
+    top: calc((100vh - #{$popup-height}) / 2);
+    left: calc((100vw - #{$popup-width} - 21px) / 2);
+    width: $popup-width;
+    height: $popup-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 90px 235px;
+    background-color: #fff;
+  }
+
+  z-index: -1;
+
+  opacity: 0;
+  transition: $base-transition;
+
+  &.opened {
+    opacity: 1;
+    z-index: 1;
+  }
 
   &-tickets {
     width: $tickets-width;
@@ -28,6 +40,33 @@ $payment-width: 530px;
     width: $payment-width;
     height: 100%;
     background-color: #fff;
+  }
+
+  &-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: url('../svg/popup-close.svg') center no-repeat transparent;
+    background-size: contain;
+    transition: $quick-transition;
+
+    &:hover {
+      cursor: pointer;
+      filter: $filter-gold;
+    }
+  }
+
+  &-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgba(0,0,0,0.7);
   }
 }
 
@@ -63,7 +102,7 @@ $payment-width: 530px;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px 0;
-    margin-top: 60px;
+    margin-top: 61px;
   }
 }
 
@@ -466,21 +505,26 @@ $payment-width: 530px;
   display: flex;
   flex-direction: column;
   gap: 6px 0;
-  padding: 20px 0 11px;
+  padding: 26px 0 11px;
   border-bottom: 1px solid $dark-red;
 }
 
+.popup-payment__card {
+  height: 240px;
+}
+
 .card-face {
+  position: absolute;
+  z-index: 2;
   width: 360px;
   height: 215px;
   padding: 12px 20px 20px 20px;
-  border-radius: 2px;
+  border-radius: 3px;
   background-color: #bcbcbc;
 
   &__field {
     display: flex;
     flex-direction: column;
-    width: 215px;
     margin-bottom: 12px;
     font-size: 11px;
     font-family: $font-base;
@@ -490,17 +534,48 @@ $payment-width: 530px;
 
     .input {
       height: 35px;
-      margin-top: 5px;
+      margin-top: 7px;
       border: 0.567px solid #a4a4a3;
     }
+  }
+
+  .field-wide {
+    width: 100%;
   }
 
   .exp-field {
     display: flex;
     justify-content: space-between;
   }
-}
 
+  .fields-with-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .inputs {
+      width: 215px;
+    }
+
+    .card-labels {
+      margin-top: 20px;
+      .visa {
+        width: 55px;
+        height: 16px;
+        margin-bottom: 17px;
+        background: url('../svg/visa.svg') center 100% no-repeat;
+        background-size: contain;
+      }
+
+      .mastercard {
+        width: 55px;
+        height: 32px;
+        background: url('../svg/mastercard.svg') center 100% no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+}
 
 .card-input-number {
   position: relative;
@@ -529,7 +604,7 @@ $payment-width: 530px;
     border: none;
     border-left: 0.567px solid #a4a4a3;
     background-repeat: no-repeat;
-    background-size: 10px;
+    background-size: 6px;
     background-color: #fff;
 
     &:hover {
@@ -548,5 +623,81 @@ $payment-width: 530px;
     bottom: 0;
     background-position: center 1px;
     background-image: url('../svg/number-decr.svg');
+  }
+}
+
+.card-back {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 215px;
+  border-radius: 3px;
+  background-color: #939393;
+
+  .stripe {
+    width: 100%;
+    height: 48px;
+    margin-top: 26px;
+    background-color: #161615;
+  }
+
+  .cvv-code {
+    width: 75px;
+    align-self: flex-end;
+    margin: 13px 20px;
+    text-align: center;
+    font-family: $font-base;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: #161615;
+
+    .input {
+      width: 75px;
+      height: 35px;
+      margin-top: 5px;
+      border: 0.567px solid #a4a4a3;
+    }
+
+    &__note {
+      padding: 5px 5px 0 14px;
+      text-align: left;
+      font-family: $font-base;
+      font-weight: 400;
+      font-size: 9px;
+      line-height: 11px;
+      color: #161615;
+    }
+  }
+}
+
+.popup-payment__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 220px;
+  height: 45px;
+  margin-top: 23px;
+  margin-left: auto;
+  font-family: $font-base;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  text-decoration: none;
+  appearance: button;
+  border: none;
+  outline: none;
+  background-color: $dark-red;
+  color: $text-light;
+
+  &:hover {
+    background-color: $text-gold;
+    transition: $base-transition;
+    cursor: pointer;
   }
 }

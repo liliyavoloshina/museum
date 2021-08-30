@@ -310,7 +310,7 @@
               <h4 class="tickets-subtitle total-title">Total €<span>220</span></h4>
 
               <div class="tickets-total">
-                <button class="btn-sm">Buy Now</button>
+                <button class="btn-sm" id="openPopup">Buy Now</button>
               </div>
             </div>
           </div>
@@ -388,7 +388,10 @@
       </div>
     </div>
   </footer>
-  <div class="popup">
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup" title="Close Popup"></button>
     <div class="popup-tickets">
       <h2 class="popup-tickets__title">
         <div class="popup-tickets__title-image"></div>
@@ -491,29 +494,52 @@
 
       <div class="popup-payment__card">
         <div class="card-face">
-          <div>
-            <label class="card-face__field">Card number<input class="input" type="text"></label>
-            <label class="card-face__field">Expiration date
-              <div class="exp-field">
-                <div class="card-input-number">
-                  <input class="card-input-number__input" id="expDay" type="number" min="0" max="31" value="03"
-                    readonly>
-                  <button class="card-input-number__btn btn-decr" id="decrExpDay" type="button"></button>
-                  <button class="card-input-number__btn btn-incr" id="incrExpDay" type="button"></button>
+          <div class="fields-with-cards">
+            <div class="inputs">
+              <label class="card-face__field">Card number<input class="input" type="text"></label>
+              <label class="card-face__field">Expiration date
+                <div class="exp-field">
+                  <div class="card-input-number">
+                    <input class="card-input-number__input" id="expDay" type="number" min="0" max="31" value="03"
+                      readonly>
+                    <button class="card-input-number__btn btn-decr" id="decrExpDay" type="button"></button>
+                    <button class="card-input-number__btn btn-incr" id="incrExpDay" type="button"></button>
+                  </div>
+                  <div class="card-input-number">
+                    <input class="card-input-number__input" id="expYear" type="number" min="2020" max="2050"
+                      value="2024" readonly>
+                    <button class="card-input-number__btn btn-decr" id="decrExpYear" type="button"></button>
+                    <button class="card-input-number__btn btn-incr" id="incrExpYear" type="button"></button>
+                  </div>
                 </div>
-                <div class="card-input-number">
-                  <input class="card-input-number__input" id="expYear" type="number" min="2020" max="2050" value="2024"
-                    readonly>
-                  <button class="card-input-number__btn btn-decr" id="decrExpYear" type="button"></button>
-                  <button class="card-input-number__btn btn-incr" id="incrExpYear" type="button"></button>
-                </div>
-              </div>
-            </label>
+              </label>
+            </div>
+            <div class="card-labels">
+              <div class="visa"></div>
+              <div class="mastercard"></div>
+            </div>
           </div>
-          <div></div>
+
+          <label class="card-face__field field-wide">Cardholder name<input class="input" type="text"></label>
         </div>
-        <div class="card-back"></div>
+        <div class="card-back">
+          <div class="stripe"></div>
+          <div class="cvv-code">
+            <label class="cvv-code__label">CVC/CVV
+              <input class="input" type="text">
+            </label>
+            <div class="cvv-code__note">
+              The last <br /> 3 or 4 digits on back <br /> of the card
+            </div>
+          </div>
+        </div>
       </div>
+
+      <button class="popup-payment__btn">
+        Book
+      </button>
     </div>
+    </div>
+    <div class="popup-overlay" id="popupOverlay"></div>
   </div>
 </body>
