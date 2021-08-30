@@ -273,17 +273,16 @@ $payment-width: 530px;
   .select-selected {
     height: 100%;
     padding-top: 10px;
-    padding-left: 44px;
+    padding: 12px 42px;
     cursor: pointer;
   }
 
   .select-items {
     position: absolute;
     top: 44px;
-    left: 0;
-    right: 0;
+    left: -1px;
+    right: -1px;
     z-index: 99;
-    height: 45px;
     background-color: #fff;
   }
 
@@ -365,7 +364,6 @@ $payment-width: 530px;
 
   .input {
     width: 37px;
-    padding-left: 11px;
     text-align: center;
     font-weight: 400;
     font-size: 18px;

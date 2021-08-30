@@ -51,6 +51,7 @@
   &__item {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 48px;
     height: 48px;
     border: 1px solid #fff;
@@ -76,6 +77,22 @@
 
   .youtube-link {
     background-image: url('../svg/youtube.svg');
+  }
+
+  .instagram-link {
+    background-image: url('../svg/instagram.svg');
+  }
+
+  .facebook-link {
+    background-image: url('../svg/facebook.svg');
+  }
+
+  .twitter-link {
+    background-image: url('../svg/twitter.svg');
+  }
+
+  .pinterest-link {
+    background-image: url('../svg/pinterest.svg');
   }
 }
 
