@@ -494,10 +494,19 @@
           <div>
             <label class="card-face__field">Card number<input class="input" type="text"></label>
             <label class="card-face__field">Expiration date
-              <div class="card-input-number">
-                <button class="card-input-number__btn" id="decrExpDay" type="button">–</button>
-                <button class="card-input-number__btn" id="incrExpDay" type="button">+</button>
-                <input class="card-input-number__input" id="expDay" type="number" min="0" max="31" value="03" readonly>
+              <div class="exp-field">
+                <div class="card-input-number">
+                  <input class="card-input-number__input" id="expDay" type="number" min="0" max="31" value="03"
+                    readonly>
+                  <button class="card-input-number__btn btn-decr" id="decrExpDay" type="button"></button>
+                  <button class="card-input-number__btn btn-incr" id="incrExpDay" type="button"></button>
+                </div>
+                <div class="card-input-number">
+                  <input class="card-input-number__input" id="expYear" type="number" min="2020" max="2050" value="2024"
+                    readonly>
+                  <button class="card-input-number__btn btn-decr" id="decrExpYear" type="button"></button>
+                  <button class="card-input-number__btn btn-incr" id="incrExpYear" type="button"></button>
+                </div>
               </div>
             </label>
           </div>

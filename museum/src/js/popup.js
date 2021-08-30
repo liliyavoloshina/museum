@@ -3,15 +3,20 @@ const date = document.querySelector('#date'),
   selectWrapper = document.getElementsByClassName('tickets-select'),
   selectLength = selectWrapper.length,
   incrExpDay = document.querySelector('#incrExpDay'),
-  decrExpDay = document.querySelector('#decrExpDay')
-expDayInput = document.querySelector('#expDay')
+  decrExpDay = document.querySelector('#decrExpDay'),
+  expDayInput = document.querySelector('#expDay'),
+  expYearInput = document.querySelector('#expYear'),
+  incrExpYear = document.querySelector('#incrExpYear'),
+  decrExpYear = document.querySelector('#decrExpYear')
 
 date.addEventListener('change', addClass)
 time.addEventListener('change', addClass)
 document.addEventListener('click', closeAllSelect)
 
-incrExpDay.addEventListener('click', increment)
-decrExpDay.addEventListener('click', decrement)
+incrExpDay.addEventListener('click', incrementDay)
+decrExpDay.addEventListener('click', decrementDay)
+incrExpYear.addEventListener('click', incrementYear)
+decrExpYear.addEventListener('click', decrementYear)
 
 function addClass() {
   this.classList.add('has-value')
@@ -86,21 +91,47 @@ function closeAllSelect(element) {
   }
 }
 
-function increment() {
-  let oldVal = expDayInput.value
-  let newVal = Number(oldVal + 1)
+function incrementDay() {
+  let oldVal = Number(expDayInput.value)
+  let newVal = oldVal + 1
+  newVal = newVal.toString().padStart(2, '0')
+
+  if (oldVal === 31) {
+    return
+  }
+
   expDayInput.value = newVal
 }
+function incrementYear() {
+  let oldVal = Number(expYearInput.value)
+  let newVal = oldVal + 1
 
-function decrement() {
+  if (oldVal === 2050) {
+    return
+  }
+
+  expYearInput.value = newVal
+}
+
+function decrementDay() {
   let oldVal = Number(expDayInput.value)
   let newVal = oldVal - 1
   newVal = newVal.toString().padStart(2, '0')
 
-  if (oldVal === 1 || oldVal === 31) {
+  if (oldVal === 1) {
     return
   }
 
-  console.log(oldVal, newVal)
   expDayInput.value = newVal
+}
+
+function decrementYear() {
+  let oldVal = Number(expYearInput.value)
+  let newVal = oldVal - 1
+
+  if (oldVal === 2020) {
+    return
+  }
+
+  expYearInput.value = newVal
 }
