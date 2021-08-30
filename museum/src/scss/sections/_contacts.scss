@@ -1,3 +1,7 @@
+.section-contacts {
+  padding: 90px 0 75px;
+}
+
 .contacts {
   display: flex;
   justify-content: space-between;
@@ -10,10 +14,6 @@
   
   &__map img {
     object-fit: cover;
-  }
-
-  &__text {
-    padding-top: 10px;
   }
 
   &__subtitle {
@@ -33,5 +33,10 @@
 
   &__info + &__info {
     margin-top: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $bg-dark;
   }
 }

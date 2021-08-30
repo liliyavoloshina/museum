@@ -1,0 +1,9 @@
+$parallax-height: 400px;
+
+.parallax {
+  width: 100%;
+  height: $parallax-height;
+  background-image: url('../img/parallax.jpg');
+  background-size: cover;
+   background-attachment: fixed;
+}

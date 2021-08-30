@@ -1,5 +1,9 @@
-$gallery-height: 2030px;
+$gallery-height: 2037px;
 $grid-gap: 24px;
+
+.section-gallery {
+  padding: 75px 0 0 0;
+}
 
 .gallery {
   height: $gallery-height;
