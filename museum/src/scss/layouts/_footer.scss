@@ -1,5 +1,6 @@
 .footer {
   display: flex;
+  flex-wrap: wrap;
 
   &__logo {
     align-self: flex-start;
@@ -17,7 +18,7 @@
 
 .footer__nav {
   margin-right: 398px;
-  
+
   .nav__list {
     display: flex;
     flex-flow: column wrap;
@@ -47,10 +48,62 @@
     margin-left: 24px;
   }
 
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    padding: 10px;
+  }
+
   &__item:hover {
     filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg)
       brightness(96%) contrast(81%);
     cursor: pointer;
     transition: $link-transition;
+  }
+
+  &__link {
+    display:block;
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .youtube-link {
+    background-image: url('../svg/youtube.svg');
+  }
+}
+
+.footer-copyright-wrapper {
+  margin-top: 40px;
+  border-top: 1px solid #666666;
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
+  font-family: $font-base;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  color: #ffffff;
+
+  a {
+    text-decoration: none;
+    color: #ffffff;
+
+    &:hover {
+      color: $text-gold;
+      transition: $quick-transition;
+    }
   }
 }
