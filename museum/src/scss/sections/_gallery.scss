@@ -6,6 +6,7 @@ $grid-gap: 24px;
 }
 
 .gallery {
+  position: relative;
   height: $gallery-height;
   overflow-y: hidden;
 
@@ -67,5 +68,17 @@ $grid-gap: 24px;
 
   &-picture.short {
     grid-row-end: span 3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
   }
 }

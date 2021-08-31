@@ -7,7 +7,7 @@ buttons.forEach(button => {
     // Get the bounding rectangle of target
     const rect = target.getBoundingClientRect()
 
-    // Mouse position
+    // Mouse position - element position
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
