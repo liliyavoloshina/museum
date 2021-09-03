@@ -6,6 +6,7 @@ headerBtn.addEventListener('click', toggleHeader)
 function toggleHeader() {
   changeImage()
   toggleNav()
+  document.body.style.backgroundColor = "red"
 }
 
 function changeImage() {
