@@ -192,6 +192,11 @@ $video-slider-height: 254px;
     width: $video-slider-width;
     height: $video-slider-height;
     background-color: $text-gold;
+    border: 0;
+  }
+
+  &-item iframe {
+    border: 0;
   }
 
   &-pagination {
