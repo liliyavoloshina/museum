@@ -28,6 +28,8 @@ $nav-font-size: 22px;
     background-position: center;
 
     &.opened {
+      width: 24px;
+      height: 24px;
       background-image: url('../svg/burger-close.svg');
     }
 
@@ -37,30 +39,49 @@ $nav-font-size: 22px;
   }
 }
 
-.header__nav .nav {
-  &__list {
+.header__nav {
+  .nav__list {
     @include flex-center;
     min-width: 770px;
     height: 50px;
-
-    @media screen and (max-width: 1024px) {
-      position: fixed;
-      top: 0;
-      left: 0;
-      flex-direction: column;
-      min-width: 440px;
-    }
   }
 
-  &__item:last-child {
+  .nav__item:last-child {
     padding-right: 0;
   }
 
-  &__item:first-child {
+  .nav__item:first-child {
     padding-left: 0;
   }
 
-  &.mobile {
+  &.opened {
+    left: 0;
+  }
 
+  @media screen and (max-width: 1024px) {
+    position: absolute;
+    top: 130px;
+    left: -100%;
+    bottom: 0;
+    z-index: 100;
+    padding-left: 90px;
+    background-color: $bg-dark;
+    transition: .5s $quick-transition;
+
+    .nav__list {
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 440px;
+      height: auto;
+      padding-top: 10px;
+    }
+
+    .nav__item {
+      margin-bottom: 20px;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 40px;
+      letter-spacing: 2px;
+    }
   }
 }
