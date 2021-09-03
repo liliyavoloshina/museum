@@ -1,5 +1,6 @@
 $gallery-height: 2037px;
-$grid-gap: 24px;
+$grid-row-gap: 24px;
+$grid-col-gap: 36px;
 
 .section-gallery {
   padding: 75px 0 0 0;
@@ -13,9 +14,8 @@ $grid-gap: 24px;
   &-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0 $grid-gap;
+    gap: $grid-row-gap $grid-col-gap;
     grid-auto-flow: dense;
-    grid-auto-rows: 1fr;
     height: 2850px;
     margin-top: 75px;
     overflow: hidden;
@@ -35,10 +35,7 @@ $grid-gap: 24px;
 
   &-picture:nth-child(3n + 1) {
     grid-column-start: 1;
-    top: $grid-gap;
-  }
-  &-picture:nth-child(2n + 2) {
-    transition-delay: .2s;
+    top: calc(#{$grid-row-gap} * 2);
   }
 
   &-picture:nth-child(3n + 2) {
@@ -47,7 +44,11 @@ $grid-gap: 24px;
 
   &-picture:nth-child(3n + 3) {
     grid-column-start: 3;
-    top: calc( #{$grid-gap} * 2);
+    top: $grid-row-gap;
+  }
+
+  &-picture:nth-child(2n + 2) {
+    transition-delay: 0.2s;
   }
 
   &-picture:nth-child(9) {

@@ -16,7 +16,7 @@ $video-slider-height: 254px;
     font-family: $font-base;
     font-weight: 300;
     font-size: 22px;
-    line-height: 43px;
+    line-height: 47px;
   }
 
   &__media {
@@ -37,8 +37,6 @@ $video-slider-height: 254px;
 .video-current-wrapper {
   position: relative;
   width: 100%;
-  // width: 1440px;
-  // height: 650px;
   height: 88%;
 }
 
@@ -52,7 +50,6 @@ $video-slider-height: 254px;
   display: flex;
   align-items: center;
   height: 12%;
-  // height: 85px;
   padding-left: 30px;
   padding-right: 24px;
   background-color: $text-dark;

@@ -32,9 +32,9 @@ sources.map(pic => {
 
     if (height >= 570) {
       img.classList.add('long')
-    } else if (height > 456 && height < 570) {
+    } else if (height >= 456 && height < 570) {
       img.classList.add('medium')
-    } else {
+    } else if (height < 456) {
       img.classList.add('short')
     }
   }
