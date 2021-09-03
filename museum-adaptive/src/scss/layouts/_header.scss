@@ -1,8 +1,39 @@
 $nav-font-size: 22px;
 
+@mixin header-padding() {
+  padding: 75px 0;
+
+  @media only screen and (max-width: 1024px) {
+    padding: 40px 0;
+  }
+}
+
 .header {
+  @include header-padding;
+
   &-container {
     @include flex-center;
+  }
+
+  .nav__open {
+    display: none;
+    width: 32px;
+    height: 18px;
+    border: none;
+    outline: none;
+    background-image: url('../svg/burger.svg');
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.opened {
+      background-image: url('../svg/burger-close.svg');
+    }
+
+    @media only screen and (max-width: 1024px) {
+      display: block;
+    }
   }
 }
 
@@ -11,13 +42,25 @@ $nav-font-size: 22px;
     @include flex-center;
     min-width: 770px;
     height: 50px;
+
+    @media screen and (max-width: 1024px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      min-width: 440px;
+    }
   }
 
   &__item:last-child {
     padding-right: 0;
   }
-  
+
   &__item:first-child {
     padding-left: 0;
+  }
+
+  &.mobile {
+
   }
 }
