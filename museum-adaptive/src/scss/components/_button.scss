@@ -1,14 +1,27 @@
-//Button
+:root {
+ --btn-width: 360px;
+ --btn-height: 75px;
+ --btn-fs: 22px;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --btn-width: 300px;
+    --btn-height: 60px;
+    --btn-fs: 20px;
+  }
+}
+
 .btn {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 360px;
-  height: 75px;
+  width: var(--btn-width);
+  height: var(--btn-height);
   font-family: $font-base;
   font-weight: 200;
-  font-size: 22px;
+  font-size: var(--btn-fs);
   line-height: 26px;
   letter-spacing: 2px;
   line-height: 26px;

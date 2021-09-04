@@ -1,14 +1,35 @@
 :root {
   --welcome-slider-width: 1000px;
   --welcome-slider-img-height: 750px;
+  --welcome-slider-right: 0;
   --welcome-slider-controls-width: 60%;
+  --welcome-slider-controls-height: 120px;
+  --welcome-slider-controls-justify: center;
+  --welcome-slider-controls-fs: 22px;
+  --welcome-slider-pag-width: 16px;
+  --welcome-slider-pag-height: 16px;
+  --welcome-slider-pag-ml: 29px;
+  --welcome-text-pt: 150px;
+  --welcome-subtitle-fs: 28px;
+  --welcome-subtitle-lh: 33px;
+  --welcome-btn-mt: 75px;
 }
 
 @media screen and (max-width: 1024px) {
   :root {
     --welcome-slider-width: 700px;
     --welcome-slider-img-height: 525px;
+    --welcome-slider-right: 20px;
     --welcome-slider-controls-width: 100%;
+    --welcome-slider-controls-justify: flex-end;
+    --welcome-slider-controls-fs: 20px;
+    --welcome-slider-pag-width: 12px;
+    --welcome-slider-pag-height: 12px;
+    --welcome-slider-pag-ml: 26px;
+    --welcome-text-pt: 50px;
+    --welcome-subtitle-fs: 24px;
+    --welcome-subtitle-lh: 28px;
+    --welcome-btn-mt: 50px;
   }
 }
 
@@ -27,13 +48,13 @@
     position: absolute;
     z-index: 2;
     width: 598px;
-    padding-top: 150px;
+    padding-top: var(--welcome-text-pt);
   }
 
   &__slider {
     position: absolute;
     top: 0;
-    right: 0;
+    right: var(--welcome-slider-right);
     z-index: 1;
     width: var(--welcome-slider-width);
   }
@@ -41,6 +62,7 @@
 
 .welcome-slider {
   overflow: hidden;
+
   &__slides {
     position: relative;
     top: 0;
@@ -81,6 +103,7 @@
     cursor: pointer;
     transition: all 1s;
     z-index: 1;
+    background-size: contain;
   }
 
   .slide {
@@ -106,25 +129,26 @@
   padding-top: 25px;
   font-family: $font-base;
   font-weight: 300;
-  font-size: 28px;
-  line-height: 33px;
+  font-size: var(--welcome-subtitle-fs);
+  line-height: var(--welcome-subtitle-lh);
   letter-spacing: 2px;
   color: $text-light;
 }
 
 .welcome__text-btn {
-  margin-top: 75px;
+  margin-top: var(--welcome-btn-mt);
 }
 
 .welcome-slider-controls {
   position: absolute;
   right: 0;
-  bottom: calc(height / 2);
+  bottom: calc(var(--welcome-slider-controls-height) / 2 * -1);
   z-index: 100;
   display: flex;
   align-items: center;
+  justify-content: var(--welcome-slider-controls-justify);
   width: var(--welcome-slider-controls-width);
-  height: 120px;
+  height: var(--welcome-slider-controls-height);
   padding: 40px 75px;
   background-color: $bg-dark;
 
@@ -132,7 +156,7 @@
     margin-right: 45px;
     font-family: $font-base;
     font-weight: 400;
-    font-size: 22px;
+    font-size: var(--welcome-slider-controls-fs);
     line-height: 40px;
     text-transform: uppercase;
     color: $text-light;
@@ -152,8 +176,8 @@
   }
 
   .welcome-slider-pagination-item {
-    width: 15px;
-    height: 15px;
+    width: var(--welcome-slider-pag-width);
+    height: var(--welcome-slider-pag-height);
     background-color: $text-light;
   }
 
@@ -166,7 +190,7 @@
   }
 
   .welcome-slider-pagination-item + .welcome-slider-pagination-item {
-    margin-left: 32px;
+    margin-left: var(--welcome-slider-pag-ml);
   }
 
   .welcome-slider-pagination-item.active {

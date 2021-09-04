@@ -1,5 +1,15 @@
 $nav-font-size: 22px;
 
+:root {
+  --section-title-fs: 80px;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --section-title-fs: 50px;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -68,7 +78,7 @@ html {
 .section-title {
   font-family: $font-heading;
   font-weight: 400;
-  font-size: 80px;
+  font-size: var(--section-title-fs);
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
