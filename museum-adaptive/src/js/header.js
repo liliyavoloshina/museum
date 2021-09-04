@@ -1,12 +1,13 @@
 const headerBtn = document.querySelector('#headerBtn'),
-headerNav = document.querySelector('#headerNav')
+headerNav = document.querySelector('#headerNav'),
+overlayNav = document.querySelector('#overlayNav')
 
 headerBtn.addEventListener('click', toggleHeader)
+overlayNav.addEventListener('click', toggleHeader)
 
 function toggleHeader() {
   changeImage()
   toggleNav()
-  document.body.style.backgroundColor = "red"
 }
 
 function changeImage() {
@@ -15,4 +16,5 @@ function changeImage() {
 
 function toggleNav() {
   headerNav.classList.toggle('opened')
+  overlayNav.classList.toggle('opened')
 }
