@@ -1,8 +1,43 @@
+:root {
+  --visiting-cards-pt: 102px;
+  --visiting-cards-g: 78px 60px;
+  --visiting-card-w: 440px;
+  --visiting-card-h: 422px;
+  --visiting-card-image-h: 285px;
+  --visiting-card-title-fs: 32px;
+  --visiting-card-title-lh: 35px;
+  --visiting-card-title-pt: 25px;
+  --visiting-card-title-ls: 5px;
+  --visiting-card-subtitle-fs: 22px;
+  --visiting-card-desc-fs: 18px;
+  --visiting-card-desc-lh: 21.09px;
+  --visiting-card-desc-pt: 11px;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --visiting-cards-pt: 85px;
+    --visiting-cards-g: 60px 0;
+    --visiting-card-w: 330px;
+    --visiting-card-h: 343px;
+    --visiting-card-image-h: 215px;
+    --visiting-card-title-fs: 28px;
+    --visiting-card-title-lh: 31px;
+    --visiting-card-title-pt: 21px;
+    --visiting-card-title-ls: 3px;
+    --visiting-card-subtitle-fs: 20px;
+    --visiting-card-desc-fs: 16px;
+    --visiting-card-desc-lh: 19px;
+    --visiting-card-desc-pt: 8px;
+  }
+}
+
 .visiting__cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 78px 60px;
-  padding-top: 102px;
+  justify-content: space-evenly;
+  gap: var(--visiting-cards-g);
+  padding-top: var(--visiting-cards-pt);
 }
 
 .visiting-card-link {
@@ -12,21 +47,22 @@
 }
 
 .visiting-card {
-  width: 440px;
-  height: 422px;
+  width: var(--visiting-card-w);
+  height: var(--visiting-card-h);
 
   &__img {
-    height: 285px;
-    background-size: cover;
+    width: 100%;
+    height: var(--visiting-card-image-h);
+    background-size: contain;
   }
 
   &__title {
-    padding-top: 25px;
+    padding-top: var(--visiting-card-title-pt);
     font-family: $font-heading;
     font-weight: 400;
-    font-size: 32px;
-    line-height: 35px;
-    letter-spacing: 5px;
+    font-size: var(--visiting-card-title-fs);
+    line-height: var(--visiting-card-title-lh);
+    letter-spacing: var(--visiting-card-title-ls);
     text-transform: uppercase;
   }
 
@@ -34,16 +70,16 @@
     padding-top: 20px;
     font-family: $font-base;
     font-weight: 200;
-    font-size: 22px;
+    font-size: var(--visiting-card-subtitle-fs);
     line-height: 25.78px;
   }
 
   &__desc {
-    padding-top: 11px;
+    padding-top: var(--visiting-card-desc-pt);
     font-family: $font-base;
     font-weight: 200;
-    font-size: 18px;
-    line-height: 21.09px;
+    font-size: var(--visiting-card-desc-fs);
+    line-height: var(--visiting-card-desc-lh);
   }
 
   &:hover .underline-title::after {

@@ -2,11 +2,23 @@ $nav-font-size: 22px;
 
 :root {
   --section-title-fs: 80px;
+  --section-title-lh: 90px;
+  --container-p: 0;
+  --section-p: 75px 0;
+  --underline-title-full-b: -28px;
+  --underline-title-w: 300px;
+  --underline-title-b: -11px;
 }
 
 @media screen and (max-width: 1024px) {
   :root {
     --section-title-fs: 50px;
+    --section-title-lh: 75px;
+    --container-p: 0 20px;
+    --section-p: 60px 0;
+    --underline-title-full-b: -25px;
+    --underline-title-w: 150px;
+    --underline-title-b: -9px;
   }
 }
 
@@ -23,10 +35,7 @@ html {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-
-  @media screen and (max-width: 1024px) {
-    padding: 0 20px;
-  }
+  padding: var(--container-p);
 }
 
 .visually-hidden {
@@ -41,13 +50,12 @@ html {
 }
 
 .section {
-  padding: 75px 0;
+  padding: var(--section-p);
 }
 
 .section-dark {
   background-color: $bg-dark;
 }
-
 
 .nav {
   &__list {
@@ -79,7 +87,7 @@ html {
   font-family: $font-heading;
   font-weight: 400;
   font-size: var(--section-title-fs);
-  line-height: 90px;
+  line-height: var(--section-title-lh);
   letter-spacing: 5px;
   text-transform: uppercase;
   color: $text-gold;
@@ -95,9 +103,9 @@ html {
   &::after {
     content: '';
     position: absolute;
-    bottom: -11px;
+    bottom: var(--underline-title-b);
     left: 0;
-    width: 300px;
+    width: var(--underline-title-w);
     height: 2px;
     background-color: $dark-red;
     transition: $base-transition;
@@ -108,7 +116,7 @@ html {
   position: relative;
 
   &::after {
-    bottom: -28px;
+    bottom: var(--underline-title-full-b);
     right: 0;
     width: auto;
     height: 3px;
@@ -138,11 +146,9 @@ html {
   animation: scale 0.5s ease-out;
 }
 
-
 @keyframes scale {
   to {
     transform: translate(-50%, -50%) scale(3);
     opacity: 0;
   }
 }
-

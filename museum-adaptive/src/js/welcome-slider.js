@@ -47,14 +47,7 @@ function slide(items, prev, next, paginations) {
     } else {
       index = slideNum
     }
-    // if (slideNum > index) {
-    //   index++
-    // } else {
-    //   index--
-    // }
 
-    console.log(index, 'index')
-    console.log(slideNum, 'slideNum')
     items.style.left = -slideSize * slideNum + 'px'
 
     allowShift = false
