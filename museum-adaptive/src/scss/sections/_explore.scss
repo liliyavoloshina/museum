@@ -1,7 +1,6 @@
-$slider-width: 720px;
-$slider-height: 700px;
-
 :root {
+  --slider-width: 720px;
+  --slider-height: 701px;
   --explore-fd: row;
   --explore-text-mw: 660px;
   --explore-desc-pt: 25px;
@@ -14,6 +13,7 @@ $slider-height: 700px;
 
 @media screen and (max-width: 1024px) {
   :root {
+    --slider-height: 695px;
     --explore-fd: column;
     --explore-text-mw: 100%;
     --explore-desc-pt: 0;
@@ -68,21 +68,21 @@ $slider-height: 700px;
 
 .explore-img {
   position: relative;
-  width: $slider-width;
-  height: $slider-height;
+  width: var(--slider-width);
+  height: var(--slider-height);
 
   &__img {
     position: absolute;
-    width: $slider-width;
-    height: $slider-height;
+    width: var(--slider-width);
+    height: var(--slider-height);
     overflow: hidden;
     user-select: none;
     pointer-events: none;
   }
 
   &__img img {
-    width: $slider-width;
-    height: $slider-height;
+    width: var(--slider-width);
+    height: var(--slider-height);
     object-fit: cover;
   }
 

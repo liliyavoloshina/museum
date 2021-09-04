@@ -1,6 +1,6 @@
 const currentVideo = document.querySelector('#currentVideo')
 const currentSource = document.querySelector('#currentSource')
-const currentVideoBigPlay = document.querySelector('#currentVideoBigPlay')
+const currentVideoBigPlay = document.querySelector('#currentVideoLargePlay')
 const currentVideoSmallPlay = document.querySelector('#currentVideoSmallPlay')
 const currentVideoProgress = document.querySelector('#currentVideoProgress')
 const currentVideoVolumeRange = document.querySelector(
