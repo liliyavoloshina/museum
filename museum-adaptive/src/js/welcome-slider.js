@@ -23,7 +23,6 @@ function slide(items, prev, next, paginations) {
     index = 0,
     allowShift = true,
     activeSlideNum = 1
-
   items.appendChild(cloneFirst)
   items.insertBefore(cloneLast, firstSlide)
   items.onmousedown = dragStart
@@ -37,16 +36,26 @@ function slide(items, prev, next, paginations) {
     pag.addEventListener('click', paginate)
   })
 
+  console.log(index)
+
   function paginate() {
     const slideNum = +this.dataset.slide
     items.classList.add('shifting')
 
-    if (slideNum > index) {
-      index++
+    if (slideNum === 5) {
+      index = 4
     } else {
-      index--
+      index = slideNum
     }
-    items.style.left = -1000 * slideNum + 'px'
+    // if (slideNum > index) {
+    //   index++
+    // } else {
+    //   index--
+    // }
+
+    console.log(index, 'index')
+    console.log(slideNum, 'slideNum')
+    items.style.left = -slideSize * slideNum + 'px'
 
     allowShift = false
     activeSlideNum = slideNum
@@ -148,6 +157,7 @@ function slide(items, prev, next, paginations) {
     paginations.forEach(dot => {
       dot.classList.contains('active') ? dot.classList.remove('active') : ''
     })
+
     const active = document.querySelector(
       `.welcome-slider-pagination-item[data-slide="${activeSlideNum}"]`
     )

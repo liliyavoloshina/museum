@@ -109,13 +109,14 @@ $nav-transition: .2s ease;
   height: 100vh;
   opacity: 0;
   position: fixed;
-  z-index: 99;
+  z-index: -1;
   top: 0;
   overflow: hidden;
   background: rgba(196, 196, 196, 0.2);
   transition: $nav-transition;
 
   &.opened {
+    z-index: 99;
     opacity: 1;
   }
 }

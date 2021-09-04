@@ -1,6 +1,16 @@
-$welcome-slider-width: 1000px;
-$welcome-slider-height: 810px;
-$welcome-slider-img-height: 750px;
+:root {
+  --welcome-slider-width: 1000px;
+  --welcome-slider-img-height: 750px;
+  --welcome-slider-controls-width: 60%;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --welcome-slider-width: 700px;
+    --welcome-slider-img-height: 525px;
+    --welcome-slider-controls-width: 100%;
+  }
+}
 
 .section-welcome {
   &__container {
@@ -25,19 +35,18 @@ $welcome-slider-img-height: 750px;
     top: 0;
     right: 0;
     z-index: 1;
-    width: $welcome-slider-width;
-    height: $welcome-slider-height;
-    overflow: hidden;
+    width: var(--welcome-slider-width);
   }
 }
 
 .welcome-slider {
+  overflow: hidden;
   &__slides {
     position: relative;
     top: 0;
-    left: -$welcome-slider-width;
+    left: -100%;
     display: flex;
-    width: 10000px;
+    width: calc(var(--welcome-slider-width) * 10);
   }
 
   &::before {
@@ -49,7 +58,12 @@ $welcome-slider-img-height: 750px;
     right: 0;
     z-index: 5;
     pointer-events: none;
-    background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
+    background: linear-gradient(
+      90deg,
+      #000000 0%,
+      rgba(0, 0, 0, 0.5) 16.19%,
+      rgba(0, 0, 0, 0) 30.73%
+    );
   }
 
   &__slides.shifting {
@@ -61,67 +75,30 @@ $welcome-slider-img-height: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: $welcome-slider-width;
-    height: $welcome-slider-img-height;
+    width: var(--welcome-slider-width);
+    height: var(--welcome-slider-img-height);
     border-radius: 2px;
     cursor: pointer;
     transition: all 1s;
     z-index: 1;
   }
 
-  .slide-1 {
-    background-image: url('../img/welcome/1.jpg');
-  }
-
-  .slide-2 {
-    background-image: url('../img/welcome/2.jpg');
-  }
-
-  .slide-3 {
-    background-image: url('../img/welcome/3.jpg');
-  }
-
-  .slide-4 {
-    background-image: url('../img/welcome/4.jpg');
-  }
-
-  .slide-5 {
-    background-image: url('../img/welcome/5.jpg');
-  }
-
-  .control {
-    position: absolute;
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50px;
-    margin-top: -20px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-  }
-
-  .prev,
-  .next {
-    background-size: 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-  }
-
-  .prev {
-    background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
-    left: -20px;
-  }
-
-  .next {
-    background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
-    right: -20px;
-  }
-
-  .prev:active,
-  .next:active {
-    transform: scale(0.8);
+  .slide {
+    &-1 {
+      background-image: url('../img/welcome/1.jpg');
+    }
+    &-2 {
+      background-image: url('../img/welcome/2.jpg');
+    }
+    &-3 {
+      background-image: url('../img/welcome/3.jpg');
+    }
+    &-4 {
+      background-image: url('../img/welcome/4.jpg');
+    }
+    &-5 {
+      background-image: url('../img/welcome/5.jpg');
+    }
   }
 }
 
@@ -134,6 +111,7 @@ $welcome-slider-img-height: 750px;
   letter-spacing: 2px;
   color: $text-light;
 }
+
 .welcome__text-btn {
   margin-top: 75px;
 }
@@ -141,11 +119,11 @@ $welcome-slider-img-height: 750px;
 .welcome-slider-controls {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: calc(height / 2);
   z-index: 100;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: var(--welcome-slider-controls-width);
   height: 120px;
   padding: 40px 75px;
   background-color: $bg-dark;
@@ -178,8 +156,11 @@ $welcome-slider-img-height: 750px;
     height: 15px;
     background-color: $text-light;
   }
+
   .welcome-slider-pagination-item:hover {
-    background-color: #9d8665;
+    @media (hover: hover) and (pointer: fine) {
+      background-color: #9d8665;
+    }
     cursor: pointer;
     transition: $link-transition;
   }
@@ -202,8 +183,10 @@ $welcome-slider-img-height: 750px;
   }
 
   &__arrows > button:hover {
-    filter: invert(58%) sepia(11%) saturate(983%) hue-rotate(356deg)
-      brightness(91%) contrast(87%);
+    @media (hover: hover) and (pointer: fine) {
+      filter: invert(58%) sepia(11%) saturate(983%) hue-rotate(356deg)
+        brightness(91%) contrast(87%);
+    }
     cursor: pointer;
     transition: $link-transition;
   }
