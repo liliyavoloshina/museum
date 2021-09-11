@@ -1,25 +1,49 @@
+:root {
+  --section-tickets-p: 75px 0 60px 0;
+  --tickets-pt: 103px;
+  --tickets-g: 60px;
+  --tickets-img-w: 720px;
+  --tickets-img-h: 550px;
+  --tickets-amount-ai: flex-end;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --section-tickets-p: 60px 0;
+    --tickets-pt: 80px;
+    --tickets-g: 80px;
+    --tickets-img-w: 700px;
+    --tickets-img-h: 440px;
+    --tickets-amount-ai: center;
+  }
+}
+
 .section-tickets {
-  padding: 75px 0 60px 0;
+  padding: var(--section-tickets-p);
 }
 
 .tickets {
   display: flex;
-  justify-content: space-between;
-  padding-top: 103px;
+  gap: 0 var(--tickets-g);
+  // gap: 0 var(--tickets-g);
+  padding-top: var(--tickets-pt);
 
   &__img {
-    width: 720px;
-    height: 550px;
+    flex-basis: var(--tickets-img-w);
+    height: var(--tickets-img-h);
   }
 
   &__img img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
   &__info {
     display: flex;
     justify-content: space-between;
-    flex-basis: 50%;
+    flex: 1 1;
+    // flex-basis: 175px;
   }
 
   &-subtitle {
@@ -33,13 +57,16 @@
 
 .tickets-type {
   flex-basis: 50%;
-  margin-left: 60px;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 }
 
 .tickets-type-option {
   display: block;
   position: relative;
-  margin-top: 50px;
+  margin-top: 25px;
   padding-left: 40px;
   font-family: $font-base;
   font-weight: 300;
@@ -48,6 +75,10 @@
   color: $text-dark;
   cursor: pointer;
   user-select: none;
+
+  &:first-of-type {
+  margin-top: 50px;
+  }
 
   &__input {
     position: absolute;
@@ -90,14 +121,15 @@
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: var(--tickets-amount-ai);
+
   & .tickets-subtitle {
     text-align: right;
   }
 }
 
 .tickets-amount-option {
-  margin-top: 11px;
+  margin-top: 25px;
 
   &__label {
     font-family: $font-base;
@@ -133,6 +165,7 @@
     padding-right: 0;
     padding-left: 5px;
   }
+
   &__btn:last-of-type {
     padding-top: 5px;
   }
@@ -155,7 +188,7 @@
   }
 
   &:nth-of-type(2n) {
-    margin-top: 35px;
+    margin-top: 13px;
   }
 }
 
@@ -167,5 +200,5 @@
 .tickets-total {
   display: flex;
   justify-content: flex-end;
-  margin-top: 50px;
+  margin-top: 60px;
 }
