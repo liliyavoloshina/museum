@@ -24,7 +24,7 @@
     --visiting-card-title-fs: 28px;
     --visiting-card-title-lh: 31px;
     --visiting-card-title-pt: 21px;
-    --visiting-card-title-ls: 3px;
+    --visiting-card-title-ls: 5px;
     --visiting-card-subtitle-fs: 20px;
     --visiting-card-desc-fs: 16px;
     --visiting-card-desc-lh: 19px;
@@ -62,8 +62,13 @@
     font-weight: 400;
     font-size: var(--visiting-card-title-fs);
     line-height: var(--visiting-card-title-lh);
-    letter-spacing: var(--visiting-card-title-ls);
+    letter-spacing: 3px;
+    // letter-spacing: var(--visiting-card-title-ls);
     text-transform: uppercase;
+  }
+
+  &__title.spacing-lg {
+    letter-spacing: var(--visiting-card-title-ls);
   }
 
   &__subtitle {

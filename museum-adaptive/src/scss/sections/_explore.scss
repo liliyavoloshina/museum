@@ -37,6 +37,7 @@
   &__img {
     padding-top: var(--explore-img-pt);
     margin: 0 var(--explore-img-m);
+    overflow: hidden;
   }
 }
 

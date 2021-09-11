@@ -5,7 +5,7 @@
   --welcome-slider-right: 0;
   --welcome-slider-controls-width: 60%;
   --welcome-slider-controls-height: 120px;
-  --welcome-slider-controls-justify: center;
+  --welcome-slider-controls-justify: space-between;
   --welcome-slider-controls-fs: 22px;
   --welcome-slider-pag-width: 16px;
   --welcome-slider-pag-height: 16px;
@@ -159,7 +159,6 @@
   background-color: $bg-dark;
 
   &__counter {
-    margin-right: 45px;
     font-family: $font-base;
     font-weight: 400;
     font-size: var(--welcome-slider-controls-fs);
@@ -178,7 +177,9 @@
 
   &__pagination {
     display: flex;
-    margin-right: 45px;
+    justify-content: space-between;
+    gap: 0 25px;
+    margin: 0 45px;
   }
 
   .welcome-slider-pagination-item {
@@ -193,10 +194,6 @@
     }
     cursor: pointer;
     transition: $link-transition;
-  }
-
-  .welcome-slider-pagination-item + .welcome-slider-pagination-item {
-    margin-left: var(--welcome-slider-pag-ml);
   }
 
   .welcome-slider-pagination-item.active {
@@ -222,7 +219,7 @@
   }
 
   &-prev {
-    margin-right: 12px;
+    margin-right: 20px;
     background-image: url('../svg/welcome-arrow-left.svg');
   }
 

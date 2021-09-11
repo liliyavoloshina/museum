@@ -2,14 +2,14 @@
   --video-text-pb: 75px;
   --video-media-h: 650px;
   --video-panel-h: 85px;
-  --video-panel-pl: 30px;
+  --video-panel-p: 30px;
   --video-slider-item-w: 452px;
   --video-slider-item-h: 254px;
   --video-play-large-w: 220px;
   --video-play-large-h: 220px;
   --video-play-sm-mr: 50px;
-  --video-range-progress-mw: 930px;
-  --video-range-volume-w: 155px;
+  --video-range-progress-w: 67%;
+  --video-range-volume-w: 11.23%;
   --video-volume-w: 38px;
   --video-volume-h: 31px;
   --video-volume-ml: 50px;
@@ -23,14 +23,14 @@
     --video-text-pb: 40px;
     --video-media-h: 444px;
     --video-panel-h: 60px;
-    --video-panel-pl: 40px;
+    --video-panel-p: 40px;
     --video-slider-item-w: 300px;
     --video-slider-item-h: 170px;
     --video-play-large-w: 152px;
     --video-play-large-h: 152px;  
     --video-play-sm-mr: 30px;
-    --video-range-progress-mw: 566px;
-    --video-range-volume-w: 141px;
+    --video-range-progress-w: 61%;
+    --video-range-volume-w: 14%;
     --video-volume-w: 26px;
     --video-volume-h: 20px;
     --video-volume-ml: 32px;
@@ -87,10 +87,10 @@
 
 .media-panel {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: var(--video-panel-h);
-  padding-left: var(--video-panel-pl);
-  padding-right: 24px;
+  padding: 0 var(--video-panel-p);
   background-color: $text-dark;
 }
 
@@ -173,7 +173,7 @@
   appearance: none;
 
   &-progress {
-    min-width: var(--video-range-progress-mw);
+    width: var(--video-range-progress-w);
     background: linear-gradient(
       to right,
       #710707 0%,

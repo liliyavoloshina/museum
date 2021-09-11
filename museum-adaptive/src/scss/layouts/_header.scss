@@ -1,16 +1,18 @@
 $nav-font-size: 22px;
 $nav-transition: .2s ease;
 
-@mixin header-padding() {
-  padding: 75px 0;
+:root {
+  --header-p: 50px 0;
+}
 
-  @media only screen and (max-width: 1024px) {
-    padding: 40px 0;
+@media only screen and (max-width: 1024px) {
+  :root {
+    --header-p: 40px 0;
   }
 }
 
 .header {
-  @include header-padding;
+  padding: var(--header-p);
 
   &-container {
     @include flex-center;
