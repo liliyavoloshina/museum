@@ -1,74 +1,96 @@
-$gallery-height: 2033px;
-$grid-row-gap: 24px;
-$grid-col-gap: 36px;
+:root {
+  --section-gallery-p: 75px 0 0 0;
+  --gallery-height: 2033px;
+  --gallery-mt: 75px;
+  --grid-row-gap: 24px;
+  --grid-col-gap: 36px;
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --section-gallery-p: 60px 0 0 0;
+    --gallery-height: 1325px;
+    --gallery-mt: 60px;
+    --grid-row-gap: 24px;
+    --grid-col-gap: 36px;
+  }
+}
 
 .section-gallery {
-  padding: 75px 0 0 0;
+  padding: var(--section-gallery-p);
 }
 
 .gallery {
   position: relative;
-  height: $gallery-height;
+  height: var(--gallery-height);
   overflow-y: hidden;
 
   &-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $grid-row-gap $grid-col-gap;
+    grid-auto-rows: 1fr;
+    contain: layout paint;
+    gap: var(--grid-row-gap) var(--grid-col-gap);
     grid-auto-flow: dense;
     height: 2850px;
-    margin-top: 75px;
+    margin-top: var(--gallery-mt);
     overflow: hidden;
   }
 
-  &-picture {
+  &-wrapper {
     position: relative;
     transition: 1s ease-in-out;
     transform: translateY(50px);
     opacity: 0;
   }
 
-  &-picture.active {
+  &-wrapper.active {
     transform: none;
     opacity: 1;
   }
 
-  &-picture:nth-child(3n + 1) {
+  &-wrapper:nth-child(3n + 1) {
     grid-column-start: 1;
-    top: calc(#{$grid-row-gap} * 2);
+    top: calc(#{var(--grid-row-gap)} * 2);
   }
 
-  &-picture:nth-child(3n + 2) {
+  &-wrapper:nth-child(3n + 2) {
     grid-column-start: 2;
   }
 
-  &-picture:nth-child(3n + 3) {
+  &-wrapper:nth-child(3n + 3) {
     grid-column-start: 3;
-    top: $grid-row-gap;
+    top: calc(#{var(--grid-row-gap)} * 2);
   }
 
-  &-picture:nth-child(2n + 2) {
+  &-wrapper:nth-child(2n + 2) {
     transition-delay: 0.2s;
   }
 
-  &-picture:nth-child(9) {
+  &-wrapper:nth-child(9) {
     grid-row-end: span 4;
   }
 
-  &-picture:nth-child(10) {
+  &-wrapper:nth-child(10) {
     grid-row-end: span 2;
   }
 
-  &-picture.long {
+  &-wrapper.long {
     grid-row-end: span 5;
   }
 
-  &-picture.medium {
+  &-wrapper.medium {
     grid-row-end: span 4;
   }
 
-  &-picture.short {
+  &-wrapper.short {
     grid-row-end: span 3;
+  }
+
+  &-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &::after {

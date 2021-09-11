@@ -21,21 +21,25 @@ const sources = [
 shuffle(sources)
 
 sources.map(pic => {
+  const imgWrapper = document.createElement('div')
+  imgWrapper.classList.add('gallery-wrapper')
+
   const img = document.createElement('img')
   img.classList.add('gallery-picture')
   img.src = pic
   img.alt = 'Gallery Picture'
-  gallery.append(img)
+  gallery.append(imgWrapper)
+  imgWrapper.append(img)
 
   img.onload = function () {
     const height = this.height
 
     if (height >= 570) {
-      img.classList.add('long')
+      imgWrapper.classList.add('long')
     } else if (height >= 456 && height < 570) {
-      img.classList.add('medium')
+      imgWrapper.classList.add('medium')
     } else if (height < 456) {
-      img.classList.add('short')
+      imgWrapper.classList.add('short')
     }
   }
 })
@@ -48,7 +52,7 @@ function shuffle(array) {
 }
 
 
-const pictures = document.querySelectorAll('.gallery-picture')
+const pictures = document.querySelectorAll('.gallery-wrapper')
 let isScrolling = false
 
 document.addEventListener('DOMContentLoaded', scrolling)
