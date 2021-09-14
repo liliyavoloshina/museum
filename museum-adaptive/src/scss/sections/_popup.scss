@@ -110,6 +110,10 @@ $payment-width: 530px;
     line-height: 21px;
     color: $dark-red;
     border-bottom: 2px solid $dark-red;
+
+    @media screen and (max-width: 1024px) {
+      padding: 11px 0;
+    }
   }
 
   &__form {
