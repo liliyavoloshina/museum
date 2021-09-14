@@ -63,8 +63,15 @@
     font-size: var(--visiting-card-title-fs);
     line-height: var(--visiting-card-title-lh);
     letter-spacing: 3px;
-    // letter-spacing: var(--visiting-card-title-ls);
     text-transform: uppercase;
+  }
+
+  .strange-title {
+    letter-spacing: 5px;
+
+    @media screen and (max-width: 1024px) {
+      letter-spacing: 3px;
+    }
   }
 
   &__title.spacing-lg {

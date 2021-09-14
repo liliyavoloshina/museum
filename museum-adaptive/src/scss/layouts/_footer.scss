@@ -1,30 +1,40 @@
+:root {
+  --footer-nav-w: 366px;
+  --footer-logo-mr: 145px;
+  --footer-navlist-cg: 153px;
+}
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    --footer-nav-w: 297px;
+    --footer-logo-mr: 45px;
+    --footer-navlist-cg: 122px;
+  }
+}
+
 .footer {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
 
   &__logo {
     align-self: flex-start;
-    margin-right: 145px;
-  }
-
-  &__nav {
-    align-self: center;
+    margin-right: var(--footer-logo-mr);
   }
 
   &__social {
     align-self: flex-end;
+    margin-left: auto;
   }
 }
 
 .footer__nav {
-  margin-right: 398px;
-
   .nav__list {
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
-    column-gap: 153px;
-    width: 366px;
+    column-gap: var(--footer-navlist-cg);
+    width: var(--footer-nav-w);
     height: 150px;
   }
 
@@ -67,7 +77,7 @@
   }
 
   &__link {
-    display:block;
+    display: block;
     width: 48px;
     height: 48px;
     background-position: center;
@@ -98,7 +108,7 @@
 
 .footer-copyright-wrapper {
   margin-top: 40px;
-  border-top: 1px solid #666666;
+  border-top: 3px solid #666666;
 }
 
 .footer-copyright {
@@ -106,7 +116,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 50px;
   font-family: $font-base;
   font-weight: 200;
   font-size: 22px;
@@ -115,7 +125,7 @@
   color: #ffffff;
 
   .school {
-    margin-left: 47px;
+    margin-left: 75px;
   }
 
   a {
