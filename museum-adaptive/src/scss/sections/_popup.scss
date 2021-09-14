@@ -3,20 +3,35 @@ $popup-height: 845px;
 $tickets-width: 400px;
 $payment-width: 530px;
 
+:root {
+  --popup-w: 1440px;
+  --popup-h: 845px;
+  --popup-p: 90px 235px;
+}
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    --popup-w: 1030px;
+    --popup-h: 768px;
+    --popup-p: 75px 30px;
+  }
+}
+
 .popup {
   position: fixed;
+
   &-content {
     position: fixed;
-    top: calc((100vh - #{$popup-height}) / 2);
-    left: calc((100vw - #{$popup-width} - 21px) / 2);
-    width: $popup-width;
-    height: $popup-height;
+    top: calc((100vh - var(--popup-h)) / 2);
+    left: calc((100vw - var(--popup-w) - 21px) / 2);
+    width: var(--popup-w);
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
-    padding: 90px 235px;
+    padding: var(--popup-p);
     background-color: #fff;
   }
 
@@ -66,7 +81,7 @@ $payment-width: 530px;
     left: 0;
     right: 0;
     z-index: -1;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
   }
 }
 
@@ -326,7 +341,7 @@ $payment-width: 530px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 13px;
+    margin-top: 18px;
   }
 
   .label {
@@ -339,15 +354,15 @@ $payment-width: 530px;
 
   .amount {
     display: flex;
-    width: 111px;
-    height: 28px;
+    width: 106px;
+    height: 25px;
     font-family: $font-base;
     text-align: center;
   }
 
   .amount-btn {
     display: inline-block;
-    width: 37px;
+    width: 35px;
     height: 100%;
     font-size: 18px;
     border: none;
@@ -363,7 +378,7 @@ $payment-width: 530px;
   }
 
   .input {
-    width: 37px;
+    width: 35px;
     text-align: center;
     font-weight: 400;
     font-size: 18px;
@@ -371,6 +386,12 @@ $payment-width: 530px;
     border: 1px solid $bg-dark;
     color: $text-dark;
     background-color: transparent;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 }
 
@@ -385,7 +406,7 @@ $payment-width: 530px;
 
   &__card {
     position: relative;
-    margin-top: 18px;
+    margin-top: 13px;
   }
 
   .ticket {
@@ -467,7 +488,7 @@ $payment-width: 530px;
   }
 
   .info__item + .info__item {
-    margin-top: 7px;
+    margin-top: 5px;
   }
 
   .info__item .icon {
@@ -515,8 +536,8 @@ $payment-width: 530px;
   position: absolute;
   z-index: 2;
   width: 360px;
-  height: 215px;
-  padding: 12px 20px 20px 20px;
+  height: 211px;
+  padding: 15px 20px;
   border-radius: 3px;
   background-color: #bcbcbc;
 
@@ -592,6 +613,11 @@ $payment-width: 530px;
     line-height: 15px;
     border: none;
     color: #161615;
+
+    @media only screen and (max-width: 1024px) {
+      font-size: 12px;
+      line-height: 14px;
+    }
   }
 
   &__btn {
@@ -617,6 +643,7 @@ $payment-width: 530px;
     background-position: center bottom 1px;
     background-image: url('../svg/number-incr.svg');
   }
+
   .btn-decr {
     bottom: 0;
     background-position: center 1px;
@@ -626,13 +653,13 @@ $payment-width: 530px;
 
 .card-back {
   position: absolute;
-  top: 25px;
+  top: 29px;
   right: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   width: 360px;
-  height: 215px;
+  height: 211px;
   border-radius: 3px;
   background-color: #939393;
 
@@ -650,8 +677,10 @@ $payment-width: 530px;
     text-align: center;
     font-family: $font-base;
     font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
+
+    font-size: 12px;
+    line-height: 14px;
+
     color: #161615;
 
     .input {
@@ -666,9 +695,13 @@ $payment-width: 530px;
       text-align: left;
       font-family: $font-base;
       font-weight: 400;
-      font-size: 9px;
-      line-height: 11px;
+      font-size: 10px;
+      line-height: 12px;
       color: #161615;
+
+      @media only screen and (max-width: 1024px) {
+        padding: 7px 5px 0 10px;
+      }
     }
   }
 }
@@ -692,10 +725,15 @@ $payment-width: 530px;
   outline: none;
   background-color: $dark-red;
   color: $text-light;
-  
+
   &:hover {
     background-color: $text-gold;
     transition: $base-transition;
     cursor: pointer;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    font-size: 22px;
+    line-height: 26px;
   }
 }
