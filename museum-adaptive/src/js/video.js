@@ -16,7 +16,7 @@ let currentVideoSrc = './video/video0.mp4'
 currentSource.setAttribute('src', currentVideoSrc)
 currentVideo.load()
 currentVideo.volume = 0.5
-
+ 
 let fullscreenMode = false
 
 currentVideo.addEventListener('click', togglePlayBtn)

@@ -4,7 +4,14 @@
   --tickets-g: 60px;
   --tickets-img-w: 720px;
   --tickets-img-h: 550px;
+  --tickets-amount-w: 150px;
   --tickets-amount-ai: flex-end;
+  --tickets-amount-subtitle-ta: right;
+  --tickets-amount-option-w: 150px;
+  --tickets-amount-option-mt: 25px;
+  --tickets-amount-option-2n-mt: 13px;
+  --tickets-amount-box-mt: 14px;
+  --tickets-title-mt: 54px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -14,7 +21,14 @@
     --tickets-g: 80px;
     --tickets-img-w: 700px;
     --tickets-img-h: 440px;
+    --tickets-amount-w: 175px;
     --tickets-amount-ai: center;
+    --tickets-amount-subtitle-ta: left;
+    --tickets-amount-option-w: 100%;
+    --tickets-amount-option-mt: 30px;
+    --tickets-amount-option-2n-mt: 29px;
+    --tickets-amount-box-mt: 10px;
+    --tickets-title-mt: 25px;
   }
 }
 
@@ -25,7 +39,6 @@
 .tickets {
   display: flex;
   gap: 0 var(--tickets-g);
-  // gap: 0 var(--tickets-g);
   padding-top: var(--tickets-pt);
 
   &__img {
@@ -42,8 +55,13 @@
   &__info {
     display: flex;
     justify-content: space-between;
+    align-content: flex-start;
     flex: 1 1;
-    // flex-basis: 175px;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
 
   &-subtitle {
@@ -56,7 +74,7 @@
 }
 
 .tickets-type {
-  flex-basis: 50%;
+  flex: 1 1 calc(100% - var(--tickets-amount-w));
 
   @media screen and (max-width: 1024px) {
     display: none;
@@ -77,7 +95,7 @@
   user-select: none;
 
   &:first-of-type {
-  margin-top: 50px;
+    margin-top: 50px;
   }
 
   &__input {
@@ -118,18 +136,15 @@
 }
 
 .tickets-amount {
-  flex-basis: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: var(--tickets-amount-ai);
+  flex: 1 1 var(--tickets-amount-w);
 
   & .tickets-subtitle {
-    text-align: right;
+    text-align: var(--tickets-amount-subtitle-ta);
   }
 }
 
 .tickets-amount-option {
-  margin-top: 25px;
+  margin-top: var(--tickets-amount-option-mt);
 
   &__label {
     font-family: $font-base;
@@ -141,9 +156,9 @@
 
   &__box {
     display: flex;
-    width: 150px;
+    width: 100%;
     height: 50px;
-    margin-top: 14px;
+    margin-top: var(--tickets-amount-box-mt);
     font-family: $font-base;
     text-align: center;
     border: 3px solid $text-dark;
@@ -188,17 +203,16 @@
   }
 
   &:nth-of-type(2n) {
-    margin-top: 13px;
+    margin-top: var(--tickets-amount-option-2n-mt)
   }
 }
 
 .total-title {
-  margin-top: 50px;
   letter-spacing: 1.6px;
+  margin-top: var(--tickets-title-mt);
 }
 
 .tickets-total {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 60px;
+  margin-left: auto;
+  margin-top: var(--tickets-title-mt);
 }
