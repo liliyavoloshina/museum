@@ -1,9 +1,7 @@
 const headerBtn = document.querySelector('#headerBtn'),
-headerNav = document.querySelector('#headerNav'),
-overlayNav = document.querySelector('#overlayNav')
+headerNav = document.querySelector('#headerNav')
 
 headerBtn.addEventListener('click', toggleHeader)
-overlayNav.addEventListener('click', toggleHeader)
 
 function toggleHeader() {
   changeImage()
@@ -16,5 +14,15 @@ function changeImage() {
 
 function toggleNav() {
   headerNav.classList.toggle('opened')
-  overlayNav.classList.toggle('opened')
 }
+
+document.addEventListener('click', function(event) {
+  console.log(event.currentTarget)
+  if (
+    headerNav.classList.contains('opened') &&
+    !event.target.closest('#headerBtn') && event.target !== headerNav
+  ) {
+    headerBtn.classList.remove('opened')
+    headerNav.classList.remove('opened')
+  }
+})

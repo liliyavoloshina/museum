@@ -36,8 +36,6 @@ function slide(items, prev, next, paginations) {
     pag.addEventListener('click', paginate)
   })
 
-  console.log(index)
-
   function paginate() {
     const slideNum = +this.dataset.slide
     items.classList.add('shifting')
@@ -59,7 +57,7 @@ function slide(items, prev, next, paginations) {
 
   function dragStart(e) {
     e = e || window.event
-    e.preventDefault()
+    // e.preventDefault()
     posInitial = items.offsetLeft
 
     if (e.type == 'touchstart') {
