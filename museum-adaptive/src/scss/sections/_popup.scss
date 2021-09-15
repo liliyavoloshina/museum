@@ -21,29 +21,31 @@ $payment-width: 530px;
   }
 }
 
+@media only screen and (max-width: 768px) {
+  :root {
+    --popup-w: 1030px;
+    --popup-h: 768px;
+    --popup-p: 30px 30px;
+    --popup-g: 20px 0;
+  }
+}
+
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: -1;
   transform: translate(-50%, -50%);
-
   width: var(--popup-w);
   max-width: 100%;
-
   height: auto;
   max-height: 100%;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   gap: var(--popup-g);
-
   padding: var(--popup-p);
-  background-color: red;
-  // background-color: #fff;
-
+  background-color: #fff;
   opacity: 0;
   transition: $base-transition;
 
@@ -56,8 +58,12 @@ $payment-width: 530px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0 40px;
-    background-color: green;
+    width: 100%;
+    max-width: 970px;
+    // gap: 0 40px;
+    // max-width: 970px;
+    // margin-left: auto;
+    // margin-right: auto;
   }
 
   &-tickets {
@@ -373,7 +379,7 @@ $payment-width: 530px;
     margin-top: 15px;
   }
 
-  .entry + .entry{
+  .entry + .entry {
     margin-top: 18px;
   }
 
@@ -419,15 +425,13 @@ $payment-width: 530px;
     border: 1px solid $bg-dark;
     color: $text-dark;
     background-color: transparent;
-
-    
   }
 
   input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 .popup-payment {
