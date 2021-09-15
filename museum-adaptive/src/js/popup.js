@@ -146,4 +146,5 @@ function decrementYear() {
 
 function toggleForm() {
   popup.classList.toggle('opened')
+  popupOverlay.classList.toggle('opened')
 }

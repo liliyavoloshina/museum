@@ -304,8 +304,6 @@
               </div>
 
               <h4 class="tickets-subtitle total-title">Total €<span>220</span></h4>
-
-
             </div>
 
             <div class="tickets-total">
@@ -390,9 +388,11 @@
     </div>
   </footer>
 
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <button class="popup-close" id="closePopup" title="Close Popup"></button>
+  <div class="popup opened" id="popup">
+    <div class="popup__close">
+      <button class="popup-close-btn" id="closePopup" title="Close Popup"></button>
+    </div>
+    <div class="popup__content">
       <div class="popup-tickets">
         <div class="popup-tickets__title-image"></div>
         <h2 class="popup-tickets__title">
@@ -541,6 +541,8 @@
         </button>
       </div>
     </div>
-    <div class="popup-overlay" id="popupOverlay"></div>
+    
   </div>
+
+  <div class="popup-overlay" id="popupOverlay"></div>
 </body>

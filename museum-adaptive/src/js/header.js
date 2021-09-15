@@ -17,7 +17,6 @@ function toggleNav() {
 }
 
 document.addEventListener('click', function(event) {
-  console.log(event.currentTarget)
   if (
     headerNav.classList.contains('opened') &&
     !event.target.closest('#headerBtn') && event.target !== headerNav

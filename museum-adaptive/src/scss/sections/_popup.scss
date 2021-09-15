@@ -6,36 +6,43 @@ $payment-width: 530px;
 :root {
   --popup-w: 1440px;
   --popup-h: 845px;
-  --popup-p: 90px 235px;
+  --popup-p: 30px 30px 91px;
+  --popup-g: 36px 0;
+  --popup-tickets-w: 400px;
+  --popup-payment-w: 530px;
 }
 
 @media only screen and (max-width: 1024px) {
   :root {
     --popup-w: 1030px;
     --popup-h: 768px;
-    --popup-p: 75px 30px;
+    --popup-p: 30px 30px;
+    --popup-g: 20px 0;
   }
 }
 
 .popup {
   position: fixed;
-
-  &-content {
-    position: fixed;
-    top: calc((100vh - var(--popup-h)) / 2);
-    left: calc((100vw - var(--popup-w) - 21px) / 2);
-    width: var(--popup-w);
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: var(--popup-p);
-    background-color: #fff;
-  }
-
+  top: 50%;
+  left: 50%;
   z-index: -1;
+  transform: translate(-50%, -50%);
+
+  width: var(--popup-w);
+  max-width: 100%;
+
+  height: auto;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--popup-g);
+
+  padding: var(--popup-p);
+  background-color: red;
+  // background-color: #fff;
 
   opacity: 0;
   transition: $base-transition;
@@ -45,22 +52,32 @@ $payment-width: 530px;
     z-index: 100;
   }
 
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0 40px;
+    background-color: green;
+  }
+
   &-tickets {
-    width: $tickets-width;
+    width: var(--popup-tickets-w);
     height: 100%;
     background-color: #fff;
   }
 
   &-payment {
-    width: $payment-width;
-    height: 100%;
+    width: var(--popup-payment-w);
     background-color: #fff;
   }
 
-  &-close {
-    position: absolute;
-    top: 30px;
-    right: 30px;
+  &__close {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+  }
+
+  &-close-btn {
     width: 25px;
     height: 25px;
     border: none;
@@ -77,16 +94,24 @@ $payment-width: 530px;
   &-overlay {
     position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
     z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    transition: $base-transition;
+
+    &.opened {
+      z-index: 99;
+      opacity: 1;
+    }
   }
 }
 
 .popup-tickets {
   &__title {
+    margin-bottom: 12px;
     font-family: $font-heading;
     font-weight: 400;
     font-size: 50px;
@@ -103,16 +128,16 @@ $payment-width: 530px;
   }
 
   &__subtitle {
-    padding: 13px 0;
+    padding-bottom: 10px;
     font-family: $font-base;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
     color: $dark-red;
-    border-bottom: 2px solid $dark-red;
+    border-bottom: 3px solid $dark-red;
 
     @media screen and (max-width: 1024px) {
-      padding: 11px 0;
+      padding-bottom: 11px;
     }
   }
 
@@ -121,7 +146,7 @@ $payment-width: 530px;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px 0;
-    margin-top: 61px;
+    margin-top: 60px;
   }
 }
 
@@ -331,7 +356,7 @@ $payment-width: 530px;
   border: 1px solid $bg-dark;
 
   &__title {
-    padding-bottom: 2px;
+    padding-bottom: 5px;
     font-size: 18px;
     font-family: $font-heading;
     font-weight: 400;
@@ -345,6 +370,10 @@ $payment-width: 530px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
+  }
+
+  .entry + .entry{
     margin-top: 18px;
   }
 
@@ -391,12 +420,14 @@ $payment-width: 530px;
     color: $text-dark;
     background-color: transparent;
 
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
+    
+  }
+
+  input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
-  }
 }
 
 .popup-payment {
@@ -548,11 +579,11 @@ $payment-width: 530px;
   &__field {
     display: flex;
     flex-direction: column;
-    margin-bottom: 12px;
-    font-size: 11px;
+    margin-bottom: 10px;
+    font-size: 12px;
     font-family: $font-base;
     font-weight: 400;
-    line-height: 13px;
+    line-height: 14px;
     color: #161615;
 
     .input {
@@ -695,7 +726,7 @@ $payment-width: 530px;
     }
 
     &__note {
-      padding: 5px 5px 0 14px;
+      padding: 5px 5px 0 12px;
       text-align: left;
       font-family: $font-base;
       font-weight: 400;
@@ -717,7 +748,7 @@ $payment-width: 530px;
   text-align: center;
   width: 220px;
   height: 45px;
-  margin-top: 23px;
+  margin-top: 28px;
   margin-left: auto;
   font-family: $font-base;
   font-weight: 400;
