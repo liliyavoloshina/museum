@@ -1,21 +1,17 @@
-$popup-width: 1440px;
-$popup-height: 845px;
-$tickets-width: 400px;
-$payment-width: 530px;
-
 :root {
   --popup-w: 1440px;
-  --popup-h: 845px;
   --popup-p: 30px 30px 91px;
   --popup-g: 36px 0;
   --popup-tickets-w: 400px;
+  --popup-tickets-title-mb: 12px;
   --popup-payment-w: 530px;
+  --popup-tickets-form-mt: 60px;
+  --popup-tickets-half-w: 190px;
 }
 
 @media only screen and (max-width: 1024px) {
   :root {
-    --popup-w: 1030px;
-    --popup-h: 768px;
+    --popup-w: 590px;
     --popup-p: 30px 30px;
     --popup-g: 20px 0;
   }
@@ -23,10 +19,12 @@ $payment-width: 530px;
 
 @media only screen and (max-width: 768px) {
   :root {
-    --popup-w: 1030px;
-    --popup-h: 768px;
-    --popup-p: 30px 30px;
-    --popup-g: 20px 0;
+    --popup-g: 24.93px 0;
+    --popup-tickets-w: 100%;
+    --popup-payment-w: 100%;
+    --popup-tickets-title-mb: 14.96px;
+    --popup-tickets-form-mt: 39.89px;
+    --popup-tickets-half-w: calc(50% - 14px);
   }
 }
 
@@ -48,6 +46,7 @@ $payment-width: 530px;
   background-color: #fff;
   opacity: 0;
   transition: $base-transition;
+  overflow: auto;
 
   &.opened {
     opacity: 1;
@@ -60,10 +59,10 @@ $payment-width: 530px;
     flex-wrap: wrap;
     width: 100%;
     max-width: 970px;
-    // gap: 0 40px;
-    // max-width: 970px;
-    // margin-left: auto;
-    // margin-right: auto;
+
+    @media only screen and (max-width: 768px) {
+      gap: 50.96px 0;
+    }
   }
 
   &-tickets {
@@ -117,7 +116,7 @@ $payment-width: 530px;
 
 .popup-tickets {
   &__title {
-    margin-bottom: 12px;
+    margin-bottom: var(--popup-tickets-title-mb);
     font-family: $font-heading;
     font-weight: 400;
     font-size: 50px;
@@ -152,7 +151,7 @@ $payment-width: 530px;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px 0;
-    margin-top: 60px;
+    margin-top: var(--popup-tickets-form-mt);
   }
 }
 
@@ -230,7 +229,7 @@ $payment-width: 530px;
 }
 
 .tickets-date {
-  width: 190px;
+  width: var(--popup-tickets-half-w);
 
   .icon {
     background-image: url('../svg/date.svg');
@@ -242,7 +241,7 @@ $payment-width: 530px;
 }
 
 .tickets-time {
-  width: 190px;
+  width: var(--popup-tickets-half-w);
   .icon {
     background-image: url('../svg/time.svg');
   }
