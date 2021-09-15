@@ -36,7 +36,7 @@
   padding-top: var(--tickets-pt);
 
   &__img {
-    flex-basis: var(--tickets-img-w);
+    flex-basis:  var(--tickets-img-w);
     height: var(--tickets-img-h);
   }
 
@@ -50,7 +50,8 @@
     display: flex;
     justify-content: space-between;
     align-content: flex-start;
-    flex: 1 1;
+    flex-basis:   calc(100% - var(--tickets-img-w) - var(--tickets-g));
+    // flex-basis: calc(100% - var(--tickets-img-w) - var(--tickets-g));
     flex-wrap: wrap;
 
     @media screen and (max-width: 1024px) {
@@ -68,7 +69,7 @@
 }
 
 .tickets-type {
-  flex: 1 1 calc(100% - var(--tickets-amount-w));
+  flex: 0 0 calc(100% - var(--tickets-amount-w));
 
   @media screen and (max-width: 1024px) {
     display: none;

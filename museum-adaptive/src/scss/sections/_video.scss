@@ -3,6 +3,7 @@
   --video-media-h: 650px;
   --video-panel-h: 85px;
   --video-panel-p: 30px;
+  --video-slider-pag-pt: 40px;
   --video-slider-item-w: 452px;
   --video-slider-item-h: 254px;
   --video-play-large-w: 220px;
@@ -24,6 +25,7 @@
     --video-media-h: 444px;
     --video-panel-h: 60px;
     --video-panel-p: 40px;
+    --video-slider-pag-pt: 37px;
     --video-slider-item-w: 300px;
     --video-slider-item-h: 170px;
     --video-play-large-w: 152px;
@@ -246,7 +248,7 @@
     width: 200px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 40px;
+    padding-top: var(--video-slider-pag-pt);
   }
 
   &-pagination-item {

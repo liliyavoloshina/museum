@@ -10,6 +10,7 @@
   --welcome-slider-pag-width: 16px;
   --welcome-slider-pag-height: 16px;
   --welcome-slider-pag-ml: 29px;
+  --welcome-slider-pag-g: 0 25px;
   --welcome-text-pt: 150px;
   --welcome-subtitle-fs: 28px;
   --welcome-subtitle-lh: 33px;
@@ -27,7 +28,7 @@
     --welcome-slider-controls-fs: 20px;
     --welcome-slider-pag-width: 12px;
     --welcome-slider-pag-height: 12px;
-    --welcome-slider-pag-ml: 26px;
+    --welcome-slider-pag-g: 0 24px;
     --welcome-text-pt: 50px;
     --welcome-subtitle-fs: 24px;
     --welcome-subtitle-lh: 28px;
@@ -178,7 +179,7 @@
   &__pagination {
     display: flex;
     justify-content: space-between;
-    gap: 0 25px;
+    gap: var(--welcome-slider-pag-g);
     margin: 0 45px;
   }
 
