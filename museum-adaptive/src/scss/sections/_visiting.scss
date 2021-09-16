@@ -32,12 +32,30 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --visiting-cards-pt: 63px;
+    --visiting-cards-g: 38px 0;
+    --visiting-card-w: 280px;
+    --visiting-card-h: 301px;
+    --visiting-card-image-h: 180px;
+    --visiting-card-title-fs: 22px;
+    --visiting-card-title-lh: 24px;
+    --visiting-card-title-ls: 3px;
+    --visiting-card-subtitle-fs: 18px;
+  }
+}
+
 .visiting__cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: var(--visiting-cards-g);
   padding-top: var(--visiting-cards-pt);
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 40px;
+  }
 }
 
 .visiting-card-link {
