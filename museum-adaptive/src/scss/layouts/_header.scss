@@ -11,6 +11,12 @@ $nav-transition: .2s ease;
   }
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --header-p: 25px 0;
+  }
+}
+
 .header {
   padding: var(--header-p);
 

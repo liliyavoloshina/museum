@@ -12,6 +12,7 @@
   --welcome-slider-pag-ml: 29px;
   --welcome-slider-pag-g: 0 25px;
   --welcome-text-pt: 150px;
+  --welcome-title-lh: 90px;
   --welcome-subtitle-fs: 28px;
   --welcome-subtitle-lh: 33px;
   --welcome-btn-mt: 75px;
@@ -36,6 +37,21 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --welcome-container-height: 861px;
+    --welcome-slider-width: 728px;
+    --welcome-slider-img-height: 546px;
+    --welcome-slider-controls-justify: center;
+    --welcome-slider-controls-height: 97px;
+    // --welcome-slider-controls-height: 100px;
+    --welcome-text-pt: 0;
+    --welcome-title-lh: 60px;
+    --welcome-subtitle-fs: 20px;
+    --welcome-subtitle-lh: 23px;
+  }
+}
+
 .section-welcome {
   &__container {
     max-width: 1920px;
@@ -52,10 +68,17 @@
     z-index: 2;
     width: 598px;
     padding-top: var(--welcome-text-pt);
+
+    @media only screen and (max-width: 768px) {
+      position: static;
+      width: 100%;
+      margin-bottom: 47px;
+      text-align: center;
+    }
   }
 
   h2 {
-    line-height: 90px;
+    line-height: var(--welcome-title-lh);
   }
 
   &__slider {
@@ -64,6 +87,11 @@
     right: var(--welcome-slider-right);
     z-index: 1;
     width: var(--welcome-slider-width);
+
+    @media only screen and (max-width: 768px) {
+      top: unset;
+      bottom: calc(0 + var(--welcome-slider-controls-height));
+    }
   }
 }
 
@@ -93,6 +121,8 @@
       rgba(0, 0, 0, 0.5) 16.19%,
       rgba(0, 0, 0, 0) 30.73%
     );
+
+    @media only screen and (max-width: 768px) {display: none;}
   }
 
   &__slides.shifting {
@@ -110,7 +140,8 @@
     cursor: pointer;
     transition: all 1s;
     z-index: 1;
-    background-size: contain;
+    // background-size: contain;
+    background-size: cover;
   }
 
   .slide {
@@ -144,6 +175,10 @@
 
 .welcome__text-btn {
   margin-top: var(--welcome-btn-mt);
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .welcome-slider-controls {
@@ -226,5 +261,9 @@
 
   &-next {
     background-image: url('../svg/welcome-arrow-right.svg');
+  }
+
+  @media screen and (max-width: 768px) {
+    bottom: calc(var(--welcome-slider-controls-height) * -1);
   }
 }
