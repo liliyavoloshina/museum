@@ -1,21 +1,21 @@
 function initComparisons() {
   let isClicked = false
 
-  const image = document.querySelector('.explore-img-overlay')
-  const width = image.offsetWidth
-  const height = image.offsetHeight
+  const overlay = document.querySelector('.explore-img-overlay')
+  // const imageOverlay = overlay.querySelector('img')
+  const width = overlay.offsetWidth
   const slider = document.createElement('div')
 
   compare()
 
   function compare() {
-    image.parentElement.insertBefore(slider, image)
+    overlay.parentElement.insertBefore(slider, overlay)
     slider.classList.add('explore-img-slider')
     
     slider.style.top = 0 + 'px'
     slider.style.left = width / 1.6 - slider.offsetWidth / 1.6 + 'px'
 
-    image.style.width = '63%'
+    overlay.style.width = '63%'
 
     slider.addEventListener('mousedown', onSlideStart)
     slider.addEventListener('touchstart', onSlideStart)
@@ -29,21 +29,24 @@ function initComparisons() {
     event.preventDefault()
     isClicked = true
   }
+
   function onSlideMove(event) {
     if (!isClicked) return
     doSlide(currentPosition(event))
   }
+
   function currentPosition(event = window.event) {
-    let xImage = image.getBoundingClientRect()
+    let xImage = overlay.getBoundingClientRect()
     let x = 0
     x = event.pageX - xImage.left
     if (x < 0) x = 0
     if (x > width) x = width
     return x
   }
+
   function doSlide(x) {
-    image.style.width = x + 'px'
-    slider.style.left = image.offsetWidth - slider.offsetWidth / 2 + 'px'
+    overlay.style.width = x + 'px'
+    slider.style.left = overlay.offsetWidth - slider.offsetWidth / 2 + 'px'
   }
 }
 
