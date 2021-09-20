@@ -93,6 +93,7 @@
 
   &__slider {
     padding-top: var(--video-slider-pt);
+    overflow: hidden;
   }
 }
 
@@ -248,14 +249,28 @@
 }
 
 .video-slider {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  gap: 0 42px;
+  width: calc(var(--video-slider-item-w) * 3);
+
+  &.shifting {
+    transition: left 0.2s ease-out;
+  }
 
   &-item {
+    position: relative;
+    flex: 0 0 var(--video-slider-item-w);
     width: var(--video-slider-item-w);
     height: var(--video-slider-item-h);
     background-color: $text-gold;
     border: 0;
+    transition: all 1s;
+
+    &.shifting {
+      transition: left 0.2s ease-out;
+    }
   }
 
   &-item iframe {

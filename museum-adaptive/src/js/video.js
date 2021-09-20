@@ -122,3 +122,121 @@ function watchFullscreen() {
     currentVideoFullscreenBtn.classList.add('exit')
   }
 }
+
+
+
+const slider = document.querySelector('#videoSlider'),
+  sliderItems = document.querySelector('#videoSlides'),
+  prev = document.querySelector('#videoPrev'),
+  next = document.querySelector('#videoNext'),
+  paginations = document.querySelectorAll('.video-slider-pagination-dot')
+
+slide(sliderItems, prev, next, paginations)
+
+function slide(items, prev, next, paginations) {
+  let posInitial,
+    slides = items.querySelectorAll('.video-slider-item'),
+    slidesLength = slides.length,
+    slideSize = items.querySelector('.video-slider-item').offsetWidth,
+    firstSlide = slides[0],
+    lastSlide = slides[slidesLength - 1],
+    cloneFirst = firstSlide.cloneNode(true),
+    cloneLast = lastSlide.cloneNode(true),
+    index = 0,
+    allowShift = true,
+    activeSlideNum = 1
+
+  items.appendChild(cloneFirst)
+  items.insertBefore(cloneLast, firstSlide)
+  
+  prev.addEventListener('click', () => shiftSlide(-1))
+  next.addEventListener('click', () => shiftSlide(1))
+
+  items.addEventListener('transitionend', checkIndex)
+
+  // paginations.forEach(pag => {
+  //   pag.addEventListener('click', paginate)
+  // })
+
+  // function paginate() {
+  //   const slideNum = +this.dataset.slide
+  //   items.classList.add('shifting')
+
+  //   if (slideNum === 5) {
+  //     index = 4
+  //   } else {
+  //     index = slideNum
+  //   }
+
+  //   items.style.left = -slideSize * slideNum + 'px'
+
+  //   allowShift = false
+  //   activeSlideNum = slideNum
+
+  //   // dotActive()
+  // }
+
+  function shiftSlide(dir) {
+    console.log('shift')
+    items.classList.add('shifting')
+
+    if (allowShift) {
+        posInitial = items.offsetLeft
+        console.log(posInitial)
+
+      if (dir == 1) {
+        items.style.left = posInitial - slideSize + 'px'
+        // items.style.left = posInitial - slideSize + 'px'
+        index++
+        if (activeSlideNum !== 5) {
+          activeSlideNum++
+        } else {
+          activeSlideNum = 1
+        }
+      } else if (dir == -1) {
+        items.style.left = posInitial + slideSize + 'px'
+        index--
+        if (activeSlideNum !== 1) {
+          activeSlideNum--
+        } else {
+          activeSlideNum = 5
+        }
+      }
+    }
+
+    allowShift = false
+
+    // dotActive()
+  }
+
+  function checkIndex() {
+    console.log('transitioned')
+    
+    items.classList.remove('shifting')
+
+    if (index == -1) {
+      items.style.left = -(slidesLength * slideSize) + 'px'
+      index = slidesLength - 1
+    }
+
+    if (index == slidesLength) {
+      items.style.left = -(1 * slideSize) + 'px'
+      index = 0
+    }
+
+    allowShift = true
+  }
+
+  // function dotActive() {
+  //   paginations.forEach(dot => {
+  //     dot.classList.contains('active') ? dot.classList.remove('active') : ''
+  //   })
+
+  //   const active = document.querySelector(
+  //     `.welcome-slider-pagination-item[data-slide="${activeSlideNum}"]`
+  //   )
+  //   active.classList.add('active')
+  // }
+
+}
+
