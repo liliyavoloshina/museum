@@ -2,7 +2,6 @@ function initComparisons() {
   let isClicked = false
 
   const overlay = document.querySelector('.explore-img-overlay')
-  // const imageOverlay = overlay.querySelector('img')
   const width = overlay.offsetWidth
   const slider = document.createElement('div')
 
@@ -15,7 +14,8 @@ function initComparisons() {
     slider.style.top = 0 + 'px'
     slider.style.left = width / 1.6 - slider.offsetWidth / 1.6 + 'px'
 
-    overlay.style.width = '63%'
+    overlay.style.width = '62%'
+    // overlay.style.width = '63%'
 
     slider.addEventListener('mousedown', onSlideStart)
     slider.addEventListener('touchstart', onSlideStart)

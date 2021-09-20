@@ -26,9 +26,7 @@
 @media screen and (max-width: 768px) {
   :root {
     --slider-width: calc(100vw - 44px);
-    // --slider-width: 100%;
-    // --slider-height: 705px;
-    --slider-height: calc(100vw - 60px);
+    --slider-height: calc(100vw - 66px);
     --explore-img-pt: 66px;
   }
 }
@@ -36,7 +34,6 @@
 @media screen and (max-width: 420px) {
   :root {
     --slider-width: 360px;
-    // --slider-width: 100%;
     --slider-height: calc(100vw - 60px);
     --explore-img-pt: 66px;
   }
@@ -56,8 +53,6 @@
   &__img {
     flex: 1 1 var(--slider-width);
     padding-top: var(--explore-img-pt);
-    // max-width: var(--slider-width);
-    // min-width: 380px;
     width: 100%;
   }
 }
@@ -95,11 +90,7 @@
 
 .explore-img {
   position: relative;
-  // width: var(--slider-width);
   height: var(--slider-height);
-  // height: calc(100vw - 60px);
-  // height: var(--slider-height);
-
   max-width: var(--slider-width);
   min-width: 380px;
   overflow: hidden;
@@ -111,8 +102,6 @@
   &__img {
     position: absolute;
     width: 100%;
-    // max-width: var(--slider-width);
-    // height: var(--slider-height);
     overflow: hidden;
     user-select: none;
     pointer-events: none;
@@ -120,12 +109,8 @@
 
   .img-before,
   .img-after {
-    // width: 100%;
-    // width: calc(100vw - 44px);
-    // height: calc(100vw - 60px);
     width: var(--slider-width);
     height: var(--slider-height);
-    // height: 100%;
     object-fit: cover;
 
     @media screen and (max-width: 420px) {
