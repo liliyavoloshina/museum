@@ -90,11 +90,6 @@
     width: 100%;
     height: 100%;
   }
-
-  &__slider {
-    padding-top: var(--video-slider-pt);
-    overflow: hidden;
-  }
 }
 
 .video-current-wrapper {
@@ -248,8 +243,14 @@
   }
 }
 
+.video-slider-wrapper {
+  padding-top: var(--video-slider-pt);
+  overflow: hidden;
+}
+
 .video-slider {
   position: relative;
+  left: calc(var(--video-slider-item-w) * -1);
   display: flex;
   justify-content: space-between;
   gap: 0 42px;

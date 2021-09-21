@@ -3,20 +3,16 @@ const currentSource = document.querySelector('#currentSource')
 const currentVideoBigPlay = document.querySelector('#currentVideoLargePlay')
 const currentVideoSmallPlay = document.querySelector('#currentVideoSmallPlay')
 const currentVideoProgress = document.querySelector('#currentVideoProgress')
-const currentVideoVolumeRange = document.querySelector(
-  '#currentVideoVolumeRange'
-)
+const currentVideoVolumeRange = document.querySelector('#currentVideoVolumeRange')
 const currentVideoVolumeBtn = document.querySelector('#currentVideoVolumeBtn')
-const currentVideoFullscreenBtn = document.querySelector(
-  '#currentVideoFullscreenBtn'
-)
+const currentVideoFullscreenBtn = document.querySelector('#currentVideoFullscreenBtn')
 const fullscreenWrapper = document.querySelector('#fullscreenWrapper')
 
 let currentVideoSrc = './video/video0.mp4'
 currentSource.setAttribute('src', currentVideoSrc)
 currentVideo.load()
 currentVideo.volume = 0.5
- 
+
 let fullscreenMode = false
 
 currentVideo.addEventListener('click', togglePlayBtn)
@@ -52,7 +48,7 @@ function watchProgess() {
     currentVideoProgress.value = newValue
     currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${newValue}%, #c4c4c4 ${newValue}%, #c4c4c4 100%)`
   }
-  
+
   if (this.currentTime === this.duration) {
     currentVideoBigPlay.classList.remove('hidden')
     currentVideoSmallPlay.classList.remove('paused')
@@ -77,9 +73,8 @@ function toggleVolumeBtn() {
 function handleVolume() {
   const value = this.value
   currentVideo.volume = value
-  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${
-    value * 100
-  }%, #c4c4c4 ${value * 100}%, #c4c4c4 100%)`
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value * 100}%, #c4c4c4 ${value *
+    100}%, #c4c4c4 100%)`
 
   if (currentVideo.volume === 0) {
     currentVideo.muted = true
@@ -123,120 +118,116 @@ function watchFullscreen() {
   }
 }
 
-
-
-const slider = document.querySelector('#videoSlider'),
-  sliderItems = document.querySelector('#videoSlides'),
+const sliderWrapper = document.querySelector('#videoSliderWrapper'),
+  slider = document.querySelector('#videoSlider'),
   prev = document.querySelector('#videoPrev'),
   next = document.querySelector('#videoNext'),
+  sliderItems = document.querySelectorAll('.video-slider-item'),
   paginations = document.querySelectorAll('.video-slider-pagination-dot')
 
-slide(sliderItems, prev, next, paginations)
+let posInitial,
+  slidesLength = sliderItems.length,
+  slideGap = getComputedStyle(slider).columnGap.match(/\d+/)[0],
+  slideSize = document.querySelector('.video-slider-item').offsetWidth,
+  slideFullSize = slideSize + slideGap / 2,
+  firstSlide = sliderItems[0],
+  lastSlide = sliderItems[slidesLength - 1],
+  cloneFirst = firstSlide.cloneNode(true),
+  cloneLast = lastSlide.cloneNode(true),
+  index = 0,
+  allowShift = true,
+  activeSlideNum = 1
 
-function slide(items, prev, next, paginations) {
-  let posInitial,
-    slides = items.querySelectorAll('.video-slider-item'),
-    slidesLength = slides.length,
-    slideSize = items.querySelector('.video-slider-item').offsetWidth,
-    firstSlide = slides[0],
-    lastSlide = slides[slidesLength - 1],
-    cloneFirst = firstSlide.cloneNode(true),
-    cloneLast = lastSlide.cloneNode(true),
-    index = 0,
-    allowShift = true,
-    activeSlideNum = 1
+console.log(slidesLength)
 
-  items.appendChild(cloneFirst)
-  items.insertBefore(cloneLast, firstSlide)
-  
-  prev.addEventListener('click', () => shiftSlide(-1))
-  next.addEventListener('click', () => shiftSlide(1))
 
-  items.addEventListener('transitionend', checkIndex)
+slider.appendChild(cloneFirst)
+slider.insertBefore(cloneLast, firstSlide)
 
-  // paginations.forEach(pag => {
-  //   pag.addEventListener('click', paginate)
-  // })
+prev.addEventListener('click', () => shiftSlide(-1))
+next.addEventListener('click', () => shiftSlide(1))
 
-  // function paginate() {
-  //   const slideNum = +this.dataset.slide
-  //   items.classList.add('shifting')
+slider.addEventListener('transitionend', checkIndex)
 
-  //   if (slideNum === 5) {
-  //     index = 4
-  //   } else {
-  //     index = slideNum
-  //   }
+// paginations.forEach(pag => {
+//   pag.addEventListener('click', paginate)
+// })
 
-  //   items.style.left = -slideSize * slideNum + 'px'
+// function paginate() {
+//   const slideNum = +this.dataset.slide
+//   slider.classList.add('shifting')
 
-  //   allowShift = false
-  //   activeSlideNum = slideNum
+//   if (slideNum === 5) {
+//     index = 4
+//   } else {
+//     index = slideNum
+//   }
 
-  //   // dotActive()
-  // }
+//   slider.style.left = -slideSize * slideNum + 'px'
 
-  function shiftSlide(dir) {
-    console.log('shift')
-    items.classList.add('shifting')
+//   allowShift = false
+//   activeSlideNum = slideNum
 
-    if (allowShift) {
-        posInitial = items.offsetLeft
-        console.log(posInitial)
+//   // dotActive()
+// }
 
-      if (dir == 1) {
-        items.style.left = posInitial - slideSize + 'px'
-        // items.style.left = posInitial - slideSize + 'px'
-        index++
-        if (activeSlideNum !== 5) {
-          activeSlideNum++
-        } else {
-          activeSlideNum = 1
-        }
-      } else if (dir == -1) {
-        items.style.left = posInitial + slideSize + 'px'
-        index--
-        if (activeSlideNum !== 1) {
-          activeSlideNum--
-        } else {
-          activeSlideNum = 5
-        }
+function shiftSlide(dir) {
+  console.log(index)
+  slider.classList.add('shifting')
+
+  if (allowShift) {
+    posInitial = slider.offsetLeft
+
+    if (dir == 1) {
+      slider.style.left = posInitial - slideFullSize + 'px'
+      // slides.style.left = posInitial - slideSize + 'px'
+      index++
+      if (activeSlideNum !== 7) {
+        activeSlideNum++
+      } else {
+        activeSlideNum = 1
+      }
+    } else if (dir == -1) {
+      slider.style.left = posInitial + slideFullSize + 'px'
+      index--
+      if (activeSlideNum !== 7) {
+        activeSlideNum--
+      } else {
+        activeSlideNum = 5
       }
     }
-
-    allowShift = false
-
-    // dotActive()
   }
 
-  function checkIndex() {
-    console.log('transitioned')
-    
-    items.classList.remove('shifting')
+  allowShift = false
 
-    if (index == -1) {
-      items.style.left = -(slidesLength * slideSize) + 'px'
-      index = slidesLength - 1
-    }
-
-    if (index == slidesLength) {
-      items.style.left = -(1 * slideSize) + 'px'
-      index = 0
-    }
-
-    allowShift = true
-  }
-
-  // function dotActive() {
-  //   paginations.forEach(dot => {
-  //     dot.classList.contains('active') ? dot.classList.remove('active') : ''
-  //   })
-
-  //   const active = document.querySelector(
-  //     `.welcome-slider-pagination-item[data-slide="${activeSlideNum}"]`
-  //   )
-  //   active.classList.add('active')
-  // }
-
+  // dotActive()
 }
 
+function checkIndex() {
+  console.log('transitioned')
+
+  slider.classList.remove('shifting')
+
+  if (index == -1) {
+    slider.style.left = -(slidesLength * slideFullSize) + 'px'
+    index = slidesLength - 1
+  }
+
+  if (index == slidesLength) {
+    slider.style.left = -(1 * slideFullSize) + 'px'
+    index = 0
+  }
+
+  allowShift = true
+}
+
+// function dotActive() {
+//   paginations.forEach(dot => {
+//     dot.classList.contains('active') ? dot.classList.remove('active') : ''
+//   })
+
+//   const active = document.querySelector(
+//     `.welcome-slider-pagination-item[data-slide="${activeSlideNum}"]`
+//   )
+//   active.classList.add('active')
+// }
