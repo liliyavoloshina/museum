@@ -10,18 +10,16 @@
 @media screen and (max-width: 1024px) {
   :root {
     --section-gallery-p: 60px 0 0 0;
-    --gallery-height: 1080px;
+    --gallery-height: 1325px;
   }
 }
 
 @media screen and (max-width: 768px) {
   :root {
     --section-gallery-p: 40px 0 0 0;
-    --gallery-height: 1325px;
-    --gallery-mt: 60px;
-    --grid-row-gap: 24px;
+    --gallery-height: 1121px;
+    --gallery-mt: 40px;
     --grid-col-gap: 24px;
-    // --grid-template-col: repeat(2, 1fr);
   }
 }
 

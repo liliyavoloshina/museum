@@ -30,6 +30,18 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --tickets-pt: 63px;
+    --tickets-g: 60px;
+    --tickets-img-w: 444px;
+    --tickets-img-h: 340px;
+    --tickets-amount-option-mt: 39px;
+    --tickets-amount-option-2n-mt: 25px;
+    --tickets-title-mt: 39px;
+  }
+}
+
 .tickets {
   display: flex;
   gap: 0 var(--tickets-g);
