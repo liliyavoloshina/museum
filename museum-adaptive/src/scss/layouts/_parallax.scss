@@ -1,9 +1,16 @@
-$parallax-height: 400px;
+:root {
+  --parallax-h: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --parallax-h: 300px;
+  }
+}
 
 .parallax {
   width: 100%;
-  height: $parallax-height;
-  background-image: url('../img/parallax.jpg');
+  height: var(--parallax-h);
+  background: url('../img/parallax.jpg') no-repeat center fixed;
   background-size: cover;
-  background-attachment: fixed;
 }
