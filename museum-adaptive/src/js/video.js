@@ -118,36 +118,34 @@ function watchFullscreen() {
   }
 }
 
-const sliderWrapper = document.querySelector('#videoSliderWrapper'),
-  slider = document.querySelector('#videoSlider'),
+const slider = document.querySelector('#videoSlider'),
   prev = document.querySelector('#videoPrev'),
   next = document.querySelector('#videoNext'),
   sliderItems = document.querySelectorAll('.video-slider-item'),
   paginations = document.querySelectorAll('.video-slider-pagination-dot')
 
-let posInitial,
-  slidesLength = sliderItems.length,
+let slidesLength = sliderItems.length,
   slideGap = getComputedStyle(slider).columnGap.match(/\d+/)[0],
   slideSize = document.querySelector('.video-slider-item').offsetWidth,
-  slideFullSize = slideSize + slideGap / 2,
-  firstSlide = sliderItems[0],
-  lastSlide = sliderItems[slidesLength - 1],
-  cloneFirst = firstSlide.cloneNode(true),
-  cloneLast = lastSlide.cloneNode(true),
+  slideFullSize = slideSize + +slideGap,
   index = 0,
   allowShift = true,
   activeSlideNum = 1
 
-console.log(slidesLength)
+console.log(slideFullSize)
 
+sliderItems.forEach(item => {
+  const clone = item.cloneNode(true)
+  slider.appendChild(clone)
+})
 
-slider.appendChild(cloneFirst)
-slider.insertBefore(cloneLast, firstSlide)
+// slider.appendChild(cloneFirst)
+// slider.insertBefore(cloneLast, firstSlide)
 
-prev.addEventListener('click', () => shiftSlide(-1))
-next.addEventListener('click', () => shiftSlide(1))
+prev.addEventListener('click', () => shiftSlide())
+next.addEventListener('click', () => shiftSlide())
 
-slider.addEventListener('transitionend', checkIndex)
+// slider.addEventListener('transitionend', checkIndex)
 
 // paginations.forEach(pag => {
 //   pag.addEventListener('click', paginate)
@@ -171,55 +169,77 @@ slider.addEventListener('transitionend', checkIndex)
 //   // dotActive()
 // }
 
-function shiftSlide(dir) {
-  console.log(index)
-  slider.classList.add('shifting')
+function shiftSlide() {
+  if (!slider.classList.contains('shifting')) {
+    const posInitial = slider.offsetLeft
 
-  if (allowShift) {
-    posInitial = slider.offsetLeft
+    console.log(posInitial, 'pos')
+    let cycle = false,
+      delta = this.id === 'prev' ? -1 : 1
 
-    if (dir == 1) {
-      slider.style.left = posInitial - slideFullSize + 'px'
-      // slides.style.left = posInitial - slideSize + 'px'
-      index++
-      if (activeSlideNum !== 7) {
-        activeSlideNum++
-      } else {
-        activeSlideNum = 1
-      }
-    } else if (dir == -1) {
-      slider.style.left = posInitial + slideFullSize + 'px'
-      index--
-      if (activeSlideNum !== 7) {
-        activeSlideNum--
-      } else {
-        activeSlideNum = 5
-      }
+    slider.style.left = posInitial + -slideFullSize * delta + 'px'
+
+    activeSlideNum += delta
+    console.log(activeSlideNum, 'active')
+
+    cycle = !!(activeSlideNum === 0 || activeSlideNum > slidesLength)
+
+    if (cycle) {
+      activeSlideNum = activeSlideNum === 0 ? slidesLength : 1
+      slider.style.left = -slideFullSize * (activeSlideNum + 1) + 'px'
     }
   }
-
-  allowShift = false
-
-  // dotActive()
 }
 
-function checkIndex() {
-  console.log('transitioned')
+// function shiftSlide(dir) {
+//   console.log(index)
+//   slider.classList.add('shifting')
 
-  slider.classList.remove('shifting')
+//   if (allowShift) {
+//     posInitial = slider.offsetLeft
 
-  if (index == -1) {
-    slider.style.left = -(slidesLength * slideFullSize) + 'px'
-    index = slidesLength - 1
-  }
+//     if (dir == 1) {
+//       slider.style.left = posInitial - slideFullSize + 'px'
+//       // slides.style.left = posInitial - slideSize + 'px'
+//       index++
+//       if (activeSlideNum !== 7) {
+//         activeSlideNum++
+//       } else {
+//         activeSlideNum = 1
+//       }
+//     } else if (dir == -1) {
+//       slider.style.left = posInitial + slideFullSize + 'px'
+//       index--
+//       if (activeSlideNum !== 7) {
+//         activeSlideNum--
+//       } else {
+//         activeSlideNum = 5
+//       }
+//     }
+//   }
 
-  if (index == slidesLength) {
-    slider.style.left = -(1 * slideFullSize) + 'px'
-    index = 0
-  }
+//   allowShift = false
 
-  allowShift = true
-}
+//   // dotActive()
+// }
+
+// function checkIndex() {
+//   console.log('transitioned')
+
+//   slider.classList.remove('shifting')
+
+//   if (index == -1) {
+//     slider.style.left = -(slidesLength * slideFullSize) + 'px'
+//     index = slidesLength - 1
+//   }
+
+//   if (index == slidesLength) {
+//     slider.style.left = -(1 * slideFullSize) + 'px'
+//     index = 0
+//   }
+
+//   allowShift = true
+// }
 
 // function dotActive() {
 //   paginations.forEach(dot => {
