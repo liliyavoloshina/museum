@@ -57,10 +57,17 @@
     --video-range-progress-w: 100%;
     --video-volume-ml: 0;
     --video-range-volume-w: 76%;
-    --video-slider-pt: 20px;
-    --video-slider-pag-pt: 37px;
+    --video-slider-pt: 23px;
+    --video-slider-g: 20px;
+    --video-slider-pag-pt: 22px;
     --video-slider-item-w: 354px;
     --video-slider-item-h: 199px;
+  }
+}
+
+.section-video {
+  @media screen and (max-width: 768px) {
+    margin-bottom: 40px;
   }
 }
 
@@ -255,14 +262,13 @@
   position: absolute;
   top: 0;
   left: calc((var(--video-slider-item-w) + var(--video-slider-g)) * -3);
-  // left: -3000px;
   display: flex;
   justify-content: space-between;
   gap: 0 var(--video-slider-g);
   width: calc(var(--video-slider-item-w) * 3 + var(--video-slider-g) * 2);
 
   &.shifting {
-    transition: left .8s ease-out;
+    transition: left 0.8s ease-out;
   }
 
   &-item {
@@ -287,18 +293,23 @@
 }
 
 .video-pagination {
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: var(--video-slider-pag-pt);
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: var(--video-slider-pag-pt);
 
   &-item {
     width: 12px;
     height: 12px;
     background-size: contain;
     transition: $quick-transition;
+
+    @media screen and (max-width: 768px) {
+      width: 10px;
+      height: 10px;
+    }
   }
 
   &-item:hover {
@@ -308,6 +319,7 @@
 
   &-dot {
     background: url('../svg/video-slider-dot.svg') no-repeat;
+    background-size: contain;
   }
 
   &-dot.active {
