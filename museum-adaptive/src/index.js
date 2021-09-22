@@ -1,5 +1,6 @@
 import './scss/style.scss'
 import './js/video'
+// import './js/test'
 import './js/welcome-slider'
 import './js/explore-slider'
 import './js/gallery'

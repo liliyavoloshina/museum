@@ -119,121 +119,56 @@ function watchFullscreen() {
 }
 
 const slider = document.querySelector('#videoSlider'),
-  prev = document.querySelector('#videoPrev'),
-  next = document.querySelector('#videoNext'),
-  sliderItems = document.querySelectorAll('.video-slider-item'),
-  paginations = document.querySelectorAll('.video-slider-pagination-dot')
+  items = slider.querySelectorAll('.video-slider-item'),
+  len = items.length,
+  triggers = document.querySelectorAll('.video-control'),
+  itemWidth = document.querySelector('.video-slider-item').offsetWidth,
+  itemGap = getComputedStyle(slider).columnGap.match(/\d+/)[0],
+  itemFullSize = itemWidth + +itemGap,
+  // itemFullSize = itemWidth + +itemGap / 1.5,
+  first = items[0],
+  second = items[1],
+  third = items[2],
+  last = items[len - 1],
+  secondlast = items[len - 2],
+  thirdlast = items[len - 3]
 
-let slidesLength = sliderItems.length,
-  slideGap = getComputedStyle(slider).columnGap.match(/\d+/)[0],
-  slideSize = document.querySelector('.video-slider-item').offsetWidth,
-  slideFullSize = slideSize + +slideGap,
-  first = sliderItems[0],
-  second = sliderItems[1],
-  third = sliderItems[2],
-  last = sliderItems[slidesLength - 1],
-  secondlast = sliderItems[slidesLength - 2],
-  thirdlast = sliderItems[slidesLength - 3],
-  index = 0,
-  allowShift = true,
-  activeSlideNum = 1
+let current = 1,
+  cycle = true
 
-// console.log(slideFullSize)
-// slider.appendChild(firstClone)
-// slider.insertBefore(thirdlast.cloneNode(true), first)
-// slider.insertBefore(secondlast.cloneNode(true), first)
-// slider.insertBefore(last.cloneNode(true), first)
+slider.insertBefore(thirdlast.cloneNode(true), first)
+slider.insertBefore(secondlast.cloneNode(true), first)
+slider.insertBefore(last.cloneNode(true), first)
 
-// slider.appendChild(third.cloneNode(true))
-// slider.appendChild(second.cloneNode(true))
-// slider.appendChild(first.cloneNode(true))
-sliderItems.forEach(item => {
-  const clone = item.cloneNode(true)
-  clone.classList.add('clone')
-  slider.appendChild(clone)
-  // slider.insertBefore(clone, sliderItems[0])
+slider.appendChild(first.cloneNode(true))
+slider.appendChild(second.cloneNode(true))
+slider.appendChild(third.cloneNode(true))
+
+triggers.forEach(btn => {
+  btn.addEventListener('click', go)
 })
 
-prev.addEventListener('click', shiftSlide)
-next.addEventListener('click', shiftSlide)
+function go() {
+  if (!slider.classList.contains('shifting')) {
+    slider.classList.add('shifting')
+    const posInitial = slider.offsetLeft
+    console.log(posInitial)
+    cycle = false
+    let delta = this.id === 'videoPrev' ? -1 : 1
+
+    slider.style.left = posInitial + -itemFullSize * delta + 'px'
+
+    current += delta
+  }
+}
 
 slider.addEventListener('transitionend', checkIndex)
 
-// paginations.forEach(pag => {
-//   pag.addEventListener('click', paginate)
-// })
-
-// function paginate() {
-//   const slideNum = +this.dataset.slide
-//   slider.classList.add('shifting')
-
-//   if (slideNum === 5) {
-//     index = 4
-//   } else {
-//     index = slideNum
-//   }
-
-//   slider.style.left = -slideSize * slideNum + 'px'
-
-//   allowShift = false
-//   activeSlideNum = slideNum
-
-//   // dotActive()
-// }
-
-function shiftSlide() {
-  // console.log(activeSlideNum)
-  // if (!slider.classList.contains('shifting')) {
-    // slider.classList.add('shifting')
-    const posInitial = slider.offsetLeft
-
-    // console.log(posInitial, 'pos')
-    let cycle = false
-    let delta = this.id === 'videoPrev' ? -1 : 1
-
-    slider.style.left = posInitial + -slideFullSize * delta + 'px'
-    // slider.style.left = posInitial + -slideFullSize * delta + 'px'
-
-    activeSlideNum += delta
-
-    console.log(activeSlideNum, 'active')
-
-    cycle = !!(activeSlideNum === 0 || activeSlideNum > slidesLength)
-
-    if (cycle) {
-      activeSlideNum = activeSlideNum === 0 ? slidesLength : 1
-      slider.style.left = -slideFullSize * (activeSlideNum + 1) + 'px'
-    }
-
-    // slider.classList.remove('shifting')
-  // }
+function checkIndex() {
+  slider.classList.remove('shifting')
+  cycle = !!(current === 0 || current > len)
+  if (cycle) {
+    current = current === 0 ? len : 1
+    slider.style.left = -itemFullSize * (current + 2) + 'px'
+  }
 }
-
-// function checkIndex() {
-//   console.log('transitioned')
-
-//   slider.classList.remove('shifting')
-
-//   if (index == -1) {
-//     slider.style.left = -(slidesLength * slideFullSize) + 'px'
-//     index = slidesLength - 1
-//   }
-
-//   if (index == slidesLength) {
-//     slider.style.left = -(1 * slideFullSize) + 'px'
-//     index = 0
-//   }
-
-//   allowShift = true
-// }
-
-// function dotActive() {
-//   paginations.forEach(dot => {
-//     dot.classList.contains('active') ? dot.classList.remove('active') : ''
-//   })
-
-//   const active = document.querySelector(
-//     `.welcome-slider-pagination-item[data-slide="${activeSlideNum}"]`
-//   )
-//   active.classList.add('active')
-// }
