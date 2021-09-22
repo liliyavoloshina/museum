@@ -128,24 +128,36 @@ let slidesLength = sliderItems.length,
   slideGap = getComputedStyle(slider).columnGap.match(/\d+/)[0],
   slideSize = document.querySelector('.video-slider-item').offsetWidth,
   slideFullSize = slideSize + +slideGap,
+  first = sliderItems[0],
+  second = sliderItems[1],
+  third = sliderItems[2],
+  last = sliderItems[slidesLength - 1],
+  secondlast = sliderItems[slidesLength - 2],
+  thirdlast = sliderItems[slidesLength - 3],
   index = 0,
   allowShift = true,
   activeSlideNum = 1
 
-console.log(slideFullSize)
+// console.log(slideFullSize)
+// slider.appendChild(firstClone)
+// slider.insertBefore(thirdlast.cloneNode(true), first)
+// slider.insertBefore(secondlast.cloneNode(true), first)
+// slider.insertBefore(last.cloneNode(true), first)
 
+// slider.appendChild(third.cloneNode(true))
+// slider.appendChild(second.cloneNode(true))
+// slider.appendChild(first.cloneNode(true))
 sliderItems.forEach(item => {
   const clone = item.cloneNode(true)
+  clone.classList.add('clone')
   slider.appendChild(clone)
+  // slider.insertBefore(clone, sliderItems[0])
 })
 
-// slider.appendChild(cloneFirst)
-// slider.insertBefore(cloneLast, firstSlide)
+prev.addEventListener('click', shiftSlide)
+next.addEventListener('click', shiftSlide)
 
-prev.addEventListener('click', () => shiftSlide())
-next.addEventListener('click', () => shiftSlide())
-
-// slider.addEventListener('transitionend', checkIndex)
+slider.addEventListener('transitionend', checkIndex)
 
 // paginations.forEach(pag => {
 //   pag.addEventListener('click', paginate)
@@ -170,16 +182,20 @@ next.addEventListener('click', () => shiftSlide())
 // }
 
 function shiftSlide() {
-  if (!slider.classList.contains('shifting')) {
+  // console.log(activeSlideNum)
+  // if (!slider.classList.contains('shifting')) {
+    // slider.classList.add('shifting')
     const posInitial = slider.offsetLeft
 
-    console.log(posInitial, 'pos')
-    let cycle = false,
-      delta = this.id === 'prev' ? -1 : 1
+    // console.log(posInitial, 'pos')
+    let cycle = false
+    let delta = this.id === 'videoPrev' ? -1 : 1
 
     slider.style.left = posInitial + -slideFullSize * delta + 'px'
+    // slider.style.left = posInitial + -slideFullSize * delta + 'px'
 
     activeSlideNum += delta
+
     console.log(activeSlideNum, 'active')
 
     cycle = !!(activeSlideNum === 0 || activeSlideNum > slidesLength)
@@ -188,40 +204,10 @@ function shiftSlide() {
       activeSlideNum = activeSlideNum === 0 ? slidesLength : 1
       slider.style.left = -slideFullSize * (activeSlideNum + 1) + 'px'
     }
-  }
+
+    // slider.classList.remove('shifting')
+  // }
 }
-
-// function shiftSlide(dir) {
-//   console.log(index)
-//   slider.classList.add('shifting')
-
-//   if (allowShift) {
-//     posInitial = slider.offsetLeft
-
-//     if (dir == 1) {
-//       slider.style.left = posInitial - slideFullSize + 'px'
-//       // slides.style.left = posInitial - slideSize + 'px'
-//       index++
-//       if (activeSlideNum !== 7) {
-//         activeSlideNum++
-//       } else {
-//         activeSlideNum = 1
-//       }
-//     } else if (dir == -1) {
-//       slider.style.left = posInitial + slideFullSize + 'px'
-//       index--
-//       if (activeSlideNum !== 7) {
-//         activeSlideNum--
-//       } else {
-//         activeSlideNum = 5
-//       }
-//     }
-//   }
-
-//   allowShift = false
-
-//   // dotActive()
-// }
 
 // function checkIndex() {
 //   console.log('transitioned')
