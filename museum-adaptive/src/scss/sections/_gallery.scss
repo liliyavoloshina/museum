@@ -65,6 +65,10 @@
   &-wrapper:nth-child(3n + 1) {
     grid-column-start: 1;
     top: calc(var(--grid-row-gap) * 2);
+
+    @media (max-width: 768px) {
+      top: 0;
+    }
   }
 
   &-wrapper:nth-child(3n + 2) {
@@ -74,6 +78,10 @@
   &-wrapper:nth-child(3n + 3) {
     grid-column-start: 3;
     top: calc(#{var(--grid-row-gap)} * 2);
+
+    @media (max-width: 768px) {
+      top: 0;
+    }
   }
 
   &-wrapper:nth-child(2n + 2) {
