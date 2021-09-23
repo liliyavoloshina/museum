@@ -20,6 +20,7 @@
 
 @media only screen and (max-width: 768px) {
   :root {
+    --popup-w: 590px;
     --popup-g: 24.93px 0;
     --popup-tickets-w: 100%;
     --popup-payment-w: 100%;
@@ -440,6 +441,10 @@
   padding: 25px 30px;
   border: 1px solid $bg-dark;
 
+  @media only screen and (max-width: 768px) {
+    padding: 25px 15px;
+  }
+
   &__overview {
     display: flex;
     justify-content: space-between;
@@ -448,6 +453,10 @@
   &__card {
     position: relative;
     margin-top: 13px;
+
+    @media only screen and (max-width: 768px) {
+      margin-top: 18px;
+    }
   }
 
   .ticket {
