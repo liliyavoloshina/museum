@@ -56,7 +56,7 @@
   padding-top: var(--tickets-pt);
 
   &__img {
-    flex-basis:  var(--tickets-img-w);
+    flex-basis: var(--tickets-img-w);
     height: var(--tickets-img-h);
   }
 
@@ -70,7 +70,7 @@
     display: flex;
     justify-content: space-between;
     align-content: flex-start;
-    flex-basis:   calc(100% - var(--tickets-img-w) - var(--tickets-g));
+    flex-basis: calc(100% - var(--tickets-img-w) - var(--tickets-g));
     // flex-basis: calc(100% - var(--tickets-img-w) - var(--tickets-g));
     flex-wrap: wrap;
 
@@ -218,13 +218,18 @@
   }
 
   &:nth-of-type(2n) {
-    margin-top: var(--tickets-amount-option-2n-mt)
+    margin-top: var(--tickets-amount-option-2n-mt);
   }
 }
 
 .total-title {
   letter-spacing: 1.6px;
   margin-top: var(--tickets-title-mt);
+  
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .tickets-total {

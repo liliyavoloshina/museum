@@ -1,5 +1,5 @@
 $nav-font-size: 22px;
-$nav-transition: .2s ease;
+$nav-transition: 0.2s ease;
 
 :root {
   --header-p: 50px 0;
@@ -31,17 +31,19 @@ $nav-transition: .2s ease;
     border: none;
     outline: none;
     z-index: 100;
-    background-image: url('../svg/burger.svg');
+    background: url('../svg/burger.svg') transparent no-repeat center;
     background-size: contain;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
     transition: $nav-transition;
 
     &.opened {
       width: 24px;
       height: 24px;
       background-image: url('../svg/burger-close.svg');
+
+      @media only screen and (max-width: 768px) {
+        position: fixed;
+        right: 25px;
+      }
     }
 
     @media only screen and (max-width: 1024px) {
@@ -71,6 +73,9 @@ $nav-transition: .2s ease;
 
   &.opened {
     left: 0;
+    @media screen and (max-width: 768px) {
+      right: 0;
+    }
   }
 
   .nav__arrow {
@@ -122,10 +127,9 @@ $nav-transition: .2s ease;
       .logo {
         width: 100%;
       }
-      
     }
 
-    .nav__arrow  {
+    .nav__arrow {
       display: block;
     }
   }
