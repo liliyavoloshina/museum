@@ -8,12 +8,14 @@ $nav-transition: 0.2s ease;
 @media only screen and (max-width: 1024px) {
   :root {
     --header-p: 40px 0;
+    // --header-p: 40px 0;
     --header-nav-pt: 40px;
   }
 }
 
 @media screen and (max-width: 768px) {
   :root {
+    --header-p: 40px 0px 22px;
     --header-nav-pt: 35px;
   }
 }
@@ -43,8 +45,8 @@ $nav-transition: 0.2s ease;
 
       @media only screen and (max-width: 768px) {
         position: fixed;
-      right: 21px;
-      top: 44px;
+        right: 21px;
+        top: 44px;
       }
     }
 
@@ -97,6 +99,7 @@ $nav-transition: 0.2s ease;
     z-index: 100;
     padding-top: var(--header-nav-pt);
     background-color: $bg-dark;
+    overflow: auto;
     transition: $nav-transition;
 
     .nav__list {
