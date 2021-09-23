@@ -52,6 +52,20 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --welcome-container-height: 544px;
+    --welcome-slider-width: 380px;
+    --welcome-slider-img-height: 285px;
+    --welcome-slider-controls-height: 80px;
+
+    --welcome-text-pt: 0;
+    --welcome-title-lh: 60px;
+    --welcome-subtitle-fs: 20px;
+    --welcome-subtitle-lh: 23px;
+  }
+}
+
 .section-welcome {
   &__container {
     max-width: 1920px;
@@ -88,9 +102,18 @@
     z-index: 1;
     width: var(--welcome-slider-width);
 
+    // max-width: var(--welcome-slider-width);
+    // min-width: 380px;
+    overflow: hidden;
+
     @media only screen and (max-width: 768px) {
+      right: unset;
       top: unset;
       bottom: calc(0 + var(--welcome-slider-controls-height));
+
+      width: calc(100% - 40px);
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
@@ -115,14 +138,11 @@
     right: 0;
     z-index: 5;
     pointer-events: none;
-    background: linear-gradient(
-      90deg,
-      #000000 0%,
-      rgba(0, 0, 0, 0.5) 16.19%,
-      rgba(0, 0, 0, 0) 30.73%
-    );
+    background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
 
-    @media only screen and (max-width: 768px) {display: none;}
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__slides.shifting {
@@ -247,8 +267,7 @@
 
   &__arrows > button:hover {
     @media (hover: hover) and (pointer: fine) {
-      filter: invert(58%) sepia(11%) saturate(983%) hue-rotate(356deg)
-        brightness(91%) contrast(87%);
+      filter: invert(58%) sepia(11%) saturate(983%) hue-rotate(356deg) brightness(91%) contrast(87%);
     }
     cursor: pointer;
     transition: $link-transition;
