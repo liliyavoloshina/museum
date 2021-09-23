@@ -10,6 +10,10 @@
   --tickets-amount-option-mt: 25px;
   --tickets-amount-option-2n-mt: 13px;
   --tickets-amount-box-mt: 14px;
+  --tickets-amount-option-btn-w: 30px;
+  --tickets-amount-option-btn-pr: 10px;
+  --tickets-amount-option-btn-1-pl: 5px;
+  --tickets-amount-option-btn-fs: 32px;
   --tickets-title-mt: 54px;
 }
 
@@ -38,6 +42,10 @@
     --tickets-img-h: 340px;
     --tickets-amount-option-mt: 39px;
     --tickets-amount-option-2n-mt: 25px;
+    --tickets-amount-option-btn-w: 36px;
+    --tickets-amount-option-btn-pr: 17px;
+    --tickets-amount-option-btn-1-pl: 9px;
+    --tickets-amount-option-btn-fs: 36px;
     --tickets-title-mt: 39px;
   }
 }
@@ -172,9 +180,9 @@
   }
 
   &__btn {
-    width: 30px;
+    width: var(--tickets-amount-option-btn-w);
     padding-bottom: 10px;
-    padding-right: 10px;
+    padding-right: var(--tickets-amount-option-btn-pr);
     font-weight: 300;
     font-size: 32px;
     line-height: 37.5px;
@@ -185,7 +193,7 @@
 
   &__btn:first-of-type {
     padding-right: 0;
-    padding-left: 5px;
+    padding-left: var(--tickets-amount-option-btn-1-pl);
   }
 
   &__btn:last-of-type {
