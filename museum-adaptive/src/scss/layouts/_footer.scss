@@ -67,6 +67,10 @@
     height: 150px;
   }
 
+  .nav__item {
+    line-height:0;
+}
+
   .nav__link {
     font-size: var(--footer-nav-fs);
     line-height: var(--footer-nav-lh);
