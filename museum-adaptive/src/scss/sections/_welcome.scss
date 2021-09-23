@@ -1,6 +1,8 @@
 :root {
   --welcome-container-height: 810px;
-  --welcome-slider-width: 1000px;
+  --welcome-slider-width: calc(69.44%);
+  // --welcome-slider-width: 1000px;
+  // --welcome-slider-img-height: calc(100%);
   --welcome-slider-img-height: 750px;
   --welcome-slider-right: 0;
   --welcome-slider-controls-width: 60%;
@@ -21,7 +23,8 @@
 @media screen and (max-width: 1024px) {
   :root {
     --welcome-container-height: 585px;
-    --welcome-slider-width: 700px;
+    --welcome-slider-width: calc(69.44%);
+    // --welcome-slider-width: 700px;
     --welcome-slider-img-height: 525px;
     --welcome-slider-right: 20px;
     --welcome-slider-controls-width: 100%;
@@ -40,7 +43,8 @@
 @media screen and (max-width: 768px) {
   :root {
     --welcome-container-height: 861px;
-    --welcome-slider-width: 728px;
+    --welcome-slider-width: calc(100vw - 40px);
+    // --welcome-slider-width: 728px;
     --welcome-slider-img-height: 546px;
     --welcome-slider-controls-justify: center;
     --welcome-slider-controls-height: 97px;
@@ -55,7 +59,8 @@
 @media screen and (max-width: 420px) {
   :root {
     --welcome-container-height: 544px;
-    --welcome-slider-width: 380px;
+    --welcome-slider-width: calc(100vw - 40px);
+    // --welcome-slider-width: 380px;
     --welcome-slider-img-height: 285px;
     --welcome-slider-controls-height: 80px;
 
@@ -101,6 +106,7 @@
     right: var(--welcome-slider-right);
     z-index: 1;
     width: var(--welcome-slider-width);
+    height: calc(100vw - 100%);
 
     // max-width: var(--welcome-slider-width);
     // min-width: 380px;
@@ -120,6 +126,7 @@
 
 .welcome-slider {
   overflow: hidden;
+  height: 100%;
 
   &__slides {
     position: relative;
@@ -127,6 +134,7 @@
     left: -100%;
     display: flex;
     width: calc(var(--welcome-slider-width) * 10);
+    height: 100%;
   }
 
   &::before {
@@ -155,13 +163,16 @@
     flex-direction: column;
     justify-content: center;
     width: var(--welcome-slider-width);
-    height: var(--welcome-slider-img-height);
+    height: 100%;
+    // height: var(--welcome-slider-img-height);
     border-radius: 2px;
     cursor: pointer;
     transition: all 1s;
     z-index: 1;
-    // background-size: contain;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    // background-position: bottom;
+    // background-size: cover;
   }
 
   .slide {

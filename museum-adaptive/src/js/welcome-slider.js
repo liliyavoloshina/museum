@@ -7,14 +7,11 @@ const slider = document.querySelector('#welcomeSlider'),
 
 
 const changeSize = () => {
-  // console.log(slideSize, 'slideSize')
-  console.log(sliderItems.querySelector('.slide').offsetWidth, 'new')
-  // console.log(getComputedStyle(sliderItems.querySelector('.slide')).width, 'new')
-  // console.log(getComputedStyle(sliderItems.querySelector('.slide')).width.match(/\d+/)[0], 'new')
+  slideSize = sliderItems.querySelector('.slide').offsetWidth
+  console.log(slideSize)
 }
 window.addEventListener('resize', changeSize)
 
-// slide(sliderItems, prev, next, paginations)
 
 let posX1 = 0,
   posX2 = 0,
