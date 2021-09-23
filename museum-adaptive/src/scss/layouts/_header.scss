@@ -8,12 +8,13 @@ $nav-transition: 0.2s ease;
 @media only screen and (max-width: 1024px) {
   :root {
     --header-p: 40px 0;
+    --header-nav-pt: 40px;
   }
 }
 
 @media screen and (max-width: 768px) {
   :root {
-    --header-p: 25px 0;
+    --header-nav-pt: 35px;
   }
 }
 
@@ -42,7 +43,8 @@ $nav-transition: 0.2s ease;
 
       @media only screen and (max-width: 768px) {
         position: fixed;
-        right: 25px;
+      right: 21px;
+      top: 44px;
       }
     }
 
@@ -73,6 +75,7 @@ $nav-transition: 0.2s ease;
 
   &.opened {
     left: 0;
+
     @media screen and (max-width: 768px) {
       right: 0;
     }
@@ -92,7 +95,7 @@ $nav-transition: 0.2s ease;
     left: -100%;
     bottom: 0;
     z-index: 100;
-    padding-top: 40px;
+    padding-top: var(--header-nav-pt);
     background-color: $bg-dark;
     transition: $nav-transition;
 
@@ -103,6 +106,10 @@ $nav-transition: 0.2s ease;
       height: auto;
       padding-top: 75px;
       padding-left: 55px;
+
+      @media screen and (max-width: 768px) {
+        padding-top: 60px;
+      }
     }
 
     .nav__item {
@@ -131,6 +138,55 @@ $nav-transition: 0.2s ease;
 
     .nav__arrow {
       display: block;
+    }
+  }
+
+  .header-images {
+    display: none;
+    flex-flow: row wrap;
+    gap: 20px;
+    width: calc(100% - 110px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+    }
+  }
+
+  .image {
+    background-size: cover;
+  }
+
+  .image-one {
+    flex: 1 1 100%;
+    height: 194px;
+    background-image: url('../img/header/header1.jpg');
+  }
+  .image-two {
+    flex: 1 1 25%;
+    height: 161px;
+    background-image: url('../img/header/header2.jpg');
+  }
+  .image-three {
+    flex: 1 1 25%;
+    height: 161px;
+    background-image: url('../img/header/header3.jpg');
+  }
+
+  .header-social {
+    display: none;
+    width: calc(100% - 110px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    padding-top: 35px;
+    border-top: 1px solid #fff;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: center;
     }
   }
 }
