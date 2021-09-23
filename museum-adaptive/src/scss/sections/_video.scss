@@ -53,10 +53,10 @@
     --video-play-large-t: 38%;
     --video-play-large-l: 44%;
     --video-panel-p: 30px;
-    --video-play-sm-mr: 35px;
+    --video-play-sm-mr: 30px;
     --video-range-progress-w: 100%;
     --video-volume-ml: 0;
-    --video-range-volume-w: 76%;
+    --video-range-volume-w: 73%;
     --video-slider-pt: 23px;
     --video-slider-g: 20px;
     --video-slider-pag-pt: 22px;
@@ -199,6 +199,10 @@
     height: 5px;
   }
 
+  @media screen and (max-width: 768px) {
+    background: linear-gradient(to right, #710707 0%, #710707 40%, #c4c4c4 40%, #c4c4c4 100%);
+  }
+
   &-progress {
     width: var(--video-range-progress-w);
     background: linear-gradient(to right, #710707 0%, #710707 54%, #c4c4c4 54%, #c4c4c4 100%);
@@ -266,6 +270,7 @@
   justify-content: space-between;
   gap: 0 var(--video-slider-g);
   width: calc(var(--video-slider-item-w) * 3 + var(--video-slider-g) * 2);
+  height: 100%;
 
   &.shifting {
     transition: left 0.8s ease-out;
@@ -273,21 +278,16 @@
 
   &-item {
     position: relative;
-    flex: 0 0 var(--video-slider-item-w);
     width: var(--video-slider-item-w);
     height: var(--video-slider-item-h);
-    background-color: $text-gold;
-    border: 0;
-    transition: all 1s;
-
-    &.shifting {
-      transition: left 0.2s ease-out;
-    }
+    flex: 0 0 var(--video-slider-item-w);
   }
 
   &-item iframe {
+    display: block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
     border: 0;
   }
 }

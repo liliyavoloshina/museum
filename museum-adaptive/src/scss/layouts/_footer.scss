@@ -4,6 +4,12 @@
   --footer-navlist-cg: 153px;
   --footer-section-p: 75px 0 52px;
   --footer-social-list-pb: 16px;
+  --footer-nav-fs: 22px;
+  --footer-nav-lh: 50px;
+  
+  --footer-copy-mt: 50px;
+  --footer-copy-fs: 22px;
+  --footer-copy-lh: 22px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -11,8 +17,23 @@
     --footer-nav-w: 297px;
     --footer-logo-mr: 45px;
     --footer-navlist-cg: 122px;
-    --footer-section-p: 56px  0 50px;
+    --footer-section-p: 56px 0 50px;
     --footer-social-list-pb: 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --footer-nav-w: 393px;
+    --footer-logo-mr: 101px;
+    --footer-navlist-cg: 133px;
+    --footer-section-p: 40px 0 50px;
+    --footer-social-list-pb: 0px;
+    --footer-nav-fs: 18px;
+    --footer-nav-lh: 43px;
+    --footer-copy-mt: 39px;
+    --footer-copy-fs: 22px;
+    --footer-copy-lh: 22px;
   }
 }
 
@@ -46,11 +67,9 @@
     height: 150px;
   }
 
-  .nav__item {
-    font-family: $font-base;
-    font-weight: 200;
-    font-size: 22px;
-    line-height: 50px;
+  .nav__link {
+    font-size: var(--footer-nav-fs);
+    line-height: var(--footer-nav-lh);
     letter-spacing: 2px;
   }
 }
@@ -78,8 +97,7 @@
   }
 
   &__item:hover {
-    filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg)
-      brightness(96%) contrast(81%);
+    filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg) brightness(96%) contrast(81%);
     cursor: pointer;
     transition: $link-transition;
   }
@@ -112,6 +130,11 @@
   .pinterest-link {
     background-image: url('../svg/pinterest.svg');
   }
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 30px;
+    margin-right: 94px;
+  }
 }
 
 .footer-copyright-wrapper {
@@ -124,11 +147,11 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 50px;
+  margin-top: var(--footer-copy-mt);
   font-family: $font-base;
   font-weight: 200;
-  font-size: 22px;
-  line-height: 22px;
+  font-size: var(--footer-copy-fs);
+  line-height: var(--footer-copy-lh);
   letter-spacing: 2px;
   color: #ffffff;
 
