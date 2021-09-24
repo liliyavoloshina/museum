@@ -8,7 +8,10 @@ const slider = document.querySelector('#welcomeSlider'),
 
 const changeSize = () => {
   slideSize = sliderItems.querySelector('.slide').offsetWidth
-  console.log(slideSize, 'slidesize')
+  document.documentElement.style.setProperty(
+    '--scrollbar-width',
+    window.innerWidth - document.documentElement.clientWidth + 'px'
+  )
 }
 window.addEventListener('resize', changeSize)
 
