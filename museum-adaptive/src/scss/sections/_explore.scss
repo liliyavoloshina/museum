@@ -33,9 +33,9 @@
 
 @media screen and (max-width: 420px) {
   :root {
-    --slider-width: 360px;
-    --slider-height: calc(100vw - 60px);
-    --explore-img-pt: 66px;
+    --slider-width: 380px;
+    --slider-height: calc(100vw - 53px);
+    --explore-img-pt: 62px;
   }
 }
 
@@ -54,6 +54,7 @@
     flex: 1 1 var(--slider-width);
     padding-top: var(--explore-img-pt);
     width: 100%;
+    // overflow: hidden;
   }
 }
 
@@ -92,7 +93,7 @@
   position: relative;
   height: var(--slider-height);
   max-width: var(--slider-width);
-  min-width: 380px;
+  // min-width: 380px;
   overflow: hidden;
 
   @media screen and (max-width: 1024px) {
@@ -114,7 +115,7 @@
     object-fit: cover;
 
     @media screen and (max-width: 420px) {
-      width: calc(100vw - 50px);
+      width: calc(100vw - 40px);
     }
   }
 

@@ -48,7 +48,8 @@
 
 @media screen and (max-width: 420px) {
   :root {
-    --visiting-cards-g: 34px 0;
+    --visiting-cards-g: 40px 0;
+    --visiting-card-h: 295px;
     --visiting-card-title-fs: 18px;
     --visiting-card-title-lh: 20px;
     --visiting-card-title-ls: 5px;
@@ -66,6 +67,10 @@
 
   @media screen and (max-width: 768px) {
     margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 420px) {
+    margin-bottom: 0;
   }
 }
 

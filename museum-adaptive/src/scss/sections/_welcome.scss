@@ -53,12 +53,10 @@
 @media screen and (max-width: 420px) {
   :root {
     --welcome-container-height: 539px;
-    --welcome-slider-width: calc(100vw - 40px);
     --welcome-slider-img-height: 285px;
     --welcome-slider-controls-height: 80px;
     --welcome-slider-pag-size: 7px;
     --welcome-slider-pag-g: 0 10px;
-    --welcome-slider-controls-width: calc(100vw - 40px);
     --welcome-slider-controls-fs: 16px;
     --welcome-text-pt: 0;
     --welcome-title-lh: 40px;

@@ -5,20 +5,33 @@ function initComparisons() {
   const width = overlay.offsetWidth
   const slider = document.createElement('div')
 
+  const changeSize = () => {
+    overlay.style.width = '62%'
+    slider.style.left = overlay.offsetWidth - slider.offsetWidth / 2 + 'px'
+
+    console.log(document.body.clientWidth)
+
+  }
+  window.addEventListener('resize', changeSize)
+
   compare()
 
   function compare() {
     overlay.parentElement.insertBefore(slider, overlay)
     slider.classList.add('explore-img-slider')
-    
+
     slider.style.top = 0 + 'px'
     slider.style.left = width / 1.6 - slider.offsetWidth / 1.6 + 'px'
 
     overlay.style.width = '62%'
-    // overlay.style.width = '63%'
+
+    if (document.body.clientWidth < 558) {
+      overlay.style.width = '58%'
+    }
 
     slider.addEventListener('mousedown', onSlideStart)
     slider.addEventListener('touchstart', onSlideStart)
+
     window.addEventListener('mouseup', () => (isClicked = false))
     window.addEventListener('touchstop', () => (isClicked = false))
     window.addEventListener('mousemove', onSlideMove)
@@ -26,7 +39,9 @@ function initComparisons() {
   }
 
   function onSlideStart(event) {
-    event.preventDefault()
+    if (event.cancelable) {
+      event.preventDefault()
+    }
     isClicked = true
   }
 
@@ -46,7 +61,13 @@ function initComparisons() {
 
   function doSlide(x) {
     overlay.style.width = x + 'px'
+
     slider.style.left = overlay.offsetWidth - slider.offsetWidth / 2 + 'px'
+
+    if (document.body.clientWidth < 558) {
+      console.log(overlay.style.width)
+      slider.style.left = overlay.offsetWidth - slider.offsetWidth / 4 + 'px'
+    }
   }
 }
 
