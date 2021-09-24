@@ -1,8 +1,6 @@
 :root {
   --welcome-container-height: 810px;
-  // --welcome-slider-width: calc(69.44%);
   --welcome-slider-width: 1000px;
-  // --welcome-slider-img-height: calc(100%);
   --welcome-slider-img-height: 750px;
   --welcome-slider-right: 0;
   --welcome-slider-controls-width: 60%;
@@ -22,7 +20,6 @@
 @media screen and (max-width: 1024px) {
   :root {
     --welcome-container-height: 585px;
-    // --welcome-slider-width: calc(69.44%);
     --welcome-slider-width: 700px;
     --welcome-slider-img-height: 525px;
     --welcome-slider-right: 20px;
@@ -42,11 +39,9 @@
   :root {
     --welcome-container-height: 861px;
     --welcome-slider-width: calc(100vw - 40px);
-    // --welcome-slider-width: 728px;
     --welcome-slider-img-height: 546px;
     --welcome-slider-controls-justify: center;
     --welcome-slider-controls-height: 97px;
-    // --welcome-slider-controls-height: 100px;
     --welcome-text-pt: 0;
     --welcome-title-lh: 60px;
     --welcome-subtitle-fs: 20px;
@@ -58,11 +53,11 @@
   :root {
     --welcome-container-height: 539px;
     --welcome-slider-width: calc(100vw - 40px);
-    // --welcome-slider-width: 380px;
     --welcome-slider-img-height: 285px;
     --welcome-slider-controls-height: 80px;
     --welcome-slider-pag-size: 7px;
     --welcome-slider-pag-g: 0 10px;
+    --welcome-slider-controls-width: calc(100vw - 40px);
     --welcome-slider-controls-fs: 16px;
     --welcome-text-pt: 0;
     --welcome-title-lh: 40px;
@@ -106,15 +101,12 @@
     right: var(--welcome-slider-right);
     z-index: 1;
     width: var(--welcome-slider-width);
-    min-width: 380px;
     height: 100%;
     overflow: hidden;
 
     @media only screen and (max-width: 768px) {
       right: unset;
-      // bottom: var(--welcome-slider-controls-height);
       height: calc(var(--welcome-slider-img-height) + var(--welcome-slider-controls-height));
-      width: calc(100% - 40px);
       margin-left: auto;
       margin-right: auto;
     }
@@ -161,15 +153,12 @@
     justify-content: center;
     width: var(--welcome-slider-width);
     height: 100%;
-    // height: var(--welcome-slider-img-height);
     border-radius: 2px;
     cursor: pointer;
     transition: all 1s;
     z-index: 1;
     background-size: contain;
     background-repeat: no-repeat;
-    // background-position: bottom;
-    // background-size: cover;
   }
 
   .slide {
@@ -213,7 +202,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  // bottom: calc(var(--welcome-slider-controls-height) / 2 * -1);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -222,6 +210,10 @@
   height: var(--welcome-slider-controls-height);
   padding: 40px 75px;
   background-color: $bg-dark;
+
+  @media screen and (max-width: 420px) {
+    left: 0;
+  }
 
   &__counter {
     font-family: $font-base;
