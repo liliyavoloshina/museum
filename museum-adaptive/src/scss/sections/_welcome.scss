@@ -1,7 +1,7 @@
 :root {
   --welcome-container-height: 810px;
-  --welcome-slider-width: calc(69.44%);
-  // --welcome-slider-width: 1000px;
+  // --welcome-slider-width: calc(69.44%);
+  --welcome-slider-width: 1000px;
   // --welcome-slider-img-height: calc(100%);
   --welcome-slider-img-height: 750px;
   --welcome-slider-right: 0;
@@ -9,8 +9,7 @@
   --welcome-slider-controls-height: 120px;
   --welcome-slider-controls-justify: space-between;
   --welcome-slider-controls-fs: 22px;
-  --welcome-slider-pag-width: 16px;
-  --welcome-slider-pag-height: 16px;
+  --welcome-slider-pag-size: 16px;
   --welcome-slider-pag-ml: 29px;
   --welcome-slider-pag-g: 0 25px;
   --welcome-text-pt: 150px;
@@ -23,15 +22,14 @@
 @media screen and (max-width: 1024px) {
   :root {
     --welcome-container-height: 585px;
-    --welcome-slider-width: calc(69.44%);
-    // --welcome-slider-width: 700px;
+    // --welcome-slider-width: calc(69.44%);
+    --welcome-slider-width: 700px;
     --welcome-slider-img-height: 525px;
     --welcome-slider-right: 20px;
     --welcome-slider-controls-width: 100%;
     --welcome-slider-controls-justify: flex-end;
     --welcome-slider-controls-fs: 20px;
-    --welcome-slider-pag-width: 12px;
-    --welcome-slider-pag-height: 12px;
+    --welcome-slider-pag-size: 12px;
     --welcome-slider-pag-g: 0 24px;
     --welcome-text-pt: 50px;
     --welcome-subtitle-fs: 24px;
@@ -58,16 +56,18 @@
 
 @media screen and (max-width: 420px) {
   :root {
-    --welcome-container-height: 544px;
+    --welcome-container-height: 539px;
     --welcome-slider-width: calc(100vw - 40px);
     // --welcome-slider-width: 380px;
     --welcome-slider-img-height: 285px;
     --welcome-slider-controls-height: 80px;
-
+    --welcome-slider-pag-size: 7px;
+    --welcome-slider-pag-g: 0 10px;
+    --welcome-slider-controls-fs: 16px;
     --welcome-text-pt: 0;
-    --welcome-title-lh: 60px;
-    --welcome-subtitle-fs: 20px;
-    --welcome-subtitle-lh: 23px;
+    --welcome-title-lh: 40px;
+    --welcome-subtitle-fs: 16px;
+    --welcome-subtitle-lh: 19px;
   }
 }
 
@@ -102,21 +102,18 @@
 
   &__slider {
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: var(--welcome-slider-right);
     z-index: 1;
     width: var(--welcome-slider-width);
-    height: calc(100vw - 100%);
-
-    // max-width: var(--welcome-slider-width);
-    // min-width: 380px;
+    min-width: 380px;
+    height: 100%;
     overflow: hidden;
 
     @media only screen and (max-width: 768px) {
       right: unset;
-      top: unset;
-      bottom: calc(0 + var(--welcome-slider-controls-height));
-
+      // bottom: var(--welcome-slider-controls-height);
+      height: calc(var(--welcome-slider-img-height) + var(--welcome-slider-controls-height));
       width: calc(100% - 40px);
       margin-left: auto;
       margin-right: auto;
@@ -215,7 +212,8 @@
 .welcome-slider-controls {
   position: absolute;
   right: 0;
-  bottom: calc(var(--welcome-slider-controls-height) / 2 * -1);
+  bottom: 0;
+  // bottom: calc(var(--welcome-slider-controls-height) / 2 * -1);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -236,10 +234,18 @@
 
   .welcome-slider-counter-first {
     margin-right: 10px;
+
+    @media screen and (max-width: 420px) {
+      margin-right: 5px;
+    }
   }
 
   .welcome-slider-counter-current {
     margin-left: 10px;
+
+    @media screen and (max-width: 420px) {
+      margin-left:5px;
+    }
   }
 
   &__pagination {
@@ -247,11 +253,15 @@
     justify-content: space-between;
     gap: var(--welcome-slider-pag-g);
     margin: 0 45px;
+
+    @media screen and (max-width: 420px) {
+      margin: 0 25px;
+    }
   }
 
   .welcome-slider-pagination-item {
-    width: var(--welcome-slider-pag-width);
-    height: var(--welcome-slider-pag-height);
+    width: var(--welcome-slider-pag-size);
+    height: var(--welcome-slider-pag-size);
     background-color: $text-light;
   }
 
@@ -267,6 +277,10 @@
     background-color: $text-gold;
   }
 
+  &__arrows {
+    display: flex;
+  }
+
   &__arrows > button {
     width: 30px;
     height: 8px;
@@ -274,6 +288,11 @@
     outline: none;
     background-size: contain;
     background-color: transparent;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: 420px) {
+      width: 20px;
+    }
   }
 
   &__arrows > button:hover {
@@ -287,13 +306,13 @@
   &-prev {
     margin-right: 20px;
     background-image: url('../svg/welcome-arrow-left.svg');
+
+    @media screen and (max-width: 420px) {
+      margin-right: 15px;
+    }
   }
 
   &-next {
     background-image: url('../svg/welcome-arrow-right.svg');
-  }
-
-  @media screen and (max-width: 768px) {
-    bottom: calc(var(--welcome-slider-controls-height) * -1);
   }
 }

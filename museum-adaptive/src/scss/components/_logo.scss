@@ -1,22 +1,38 @@
-$logo-font-size: 28px;
+:root {
+  --logo-w: 195px;
+  --logo-fs: 28px;
+  --logo-lh: 50px;
+  --logo-img-w: 50px;
+  --logo-img-h: 34px;
+}
+
+@media screen and (max-width: 420px) {
+  :root {
+    --logo-w: 133px;
+    --logo-fs: 16px;
+    --logo-lh: 18px;
+    --logo-img-w: 29px;
+    --logo-img-h: 16px;
+  }
+}
 
 .logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 195px;
+  width: var(--logo-w);
   height: 50px;
   text-decoration: none;
 
   &__img {
-    width: 50px;
-    height: 34px;
+    width: var(--logo-img-w);
+    height: var(--logo-img-h);
     background: url('../svg/logo.svg') no-repeat;
     background-size: contain;
   }
 
   &__text {
-    font-size: $logo-font-size;
+    font-size: var(--logo-fs);
     font-weight: 400;
     font-family: $font-heading;
     line-height: 50px;
@@ -26,8 +42,7 @@ $logo-font-size: 28px;
   }
 
   &:hover {
-    filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg)
-      brightness(96%) contrast(81%);
+    filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg) brightness(96%) contrast(81%);
     cursor: pointer;
     transition: $link-transition;
   }

@@ -8,7 +8,7 @@ const slider = document.querySelector('#welcomeSlider'),
 
 const changeSize = () => {
   slideSize = sliderItems.querySelector('.slide').offsetWidth
-  console.log(slideSize)
+  console.log(slideSize, 'slidesize')
 }
 window.addEventListener('resize', changeSize)
 
