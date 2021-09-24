@@ -6,3 +6,8 @@ import './js/welcome-slider'
 // import './js/popup'
 import './js/styling'
 import './js/header'
+
+document.documentElement.style.setProperty(
+  '--scrollbar-width',
+  window.innerWidth - document.documentElement.clientWidth + 'px'
+)

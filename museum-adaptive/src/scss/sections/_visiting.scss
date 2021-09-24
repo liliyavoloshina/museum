@@ -46,6 +46,18 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --visiting-cards-g: 33px 0;
+    --visiting-card-h: 302px;
+    --visiting-card-title-fs: 18px;
+    --visiting-card-title-lh: 20px;
+    --visiting-card-title-ls: 5px;
+    --visiting-card-subtitle-fs: 16px;
+    --visiting-card-desc-pt: 11px;
+  }
+}
+
 .visiting__cards {
   display: flex;
   flex-wrap: wrap;
@@ -90,6 +102,10 @@
     @media screen and (max-width: 1024px) {
       letter-spacing: 3px;
     }
+
+    @media screen and (max-width: 420px) {
+      letter-spacing: 5px;
+    }
   }
 
   &__title.spacing-lg {
@@ -102,6 +118,14 @@
     font-weight: 200;
     font-size: var(--visiting-card-subtitle-fs);
     line-height: 25.78px;
+
+    @media screen and (max-width: 768px) {
+      line-height: 19px;
+    }
+
+    @media screen and (max-width: 420px) {
+      padding-top: 20px;
+    }
   }
 
   &__desc {
