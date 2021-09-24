@@ -10,8 +10,8 @@ function initComparisons() {
     slider.style.left = overlay.offsetWidth - slider.offsetWidth / 2 + 'px'
 
     console.log(document.body.clientWidth)
-
   }
+
   window.addEventListener('resize', changeSize)
 
   compare()
@@ -25,8 +25,14 @@ function initComparisons() {
 
     overlay.style.width = '62%'
 
-    if (document.body.clientWidth < 558) {
+    if (document.body.clientWidth > 420 && document.body.clientWidth < 1024) {
+      overlay.style.width = '60%'
+      slider.style.left = width / 1.6 - slider.offsetWidth / 1.1 + 'px'
+    }
+
+    if (document.body.clientWidth <= 420) {
       overlay.style.width = '58%'
+      slider.style.left = width / 1.6 - slider.offsetWidth / 2 + 'px'
     }
 
     slider.addEventListener('mousedown', onSlideStart)

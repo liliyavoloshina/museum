@@ -65,6 +65,21 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --video-text-pb: 18px;
+    --video-media-h: 172px;
+    --video-play-large-w: 50px;
+    --video-play-large-t: 35%;
+    --video-panel-p: 20px;
+    --video-play-sm-mr: 26px;
+    --video-slider-pt: 40px;
+    --video-slider-item-w: 180px;
+    --video-slider-item-h: 100px;
+    --video-slider-pag-pt: 40px;
+  }
+}
+
 .section-video {
   @media screen and (max-width: 768px) {
     margin-bottom: 40px;
@@ -222,6 +237,15 @@
     appearance: none;
     cursor: pointer;
     background: #ffffff;
+
+    @media screen and (max-width: 768px) {
+      width: 13px;
+      height: 13px;
+    }
+    @media screen and (max-width: 420px) {
+      width: 10px;
+      height: 10px;
+    }
   }
 
   &-volume {
@@ -309,6 +333,11 @@
     @media screen and (max-width: 768px) {
       width: 10px;
       height: 10px;
+    }
+
+    @media screen and (max-width: 420px) {
+      width: 8px;
+      height: 8px;
     }
   }
 
