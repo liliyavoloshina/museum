@@ -46,8 +46,6 @@ paginations.forEach(pag => {
   pag.addEventListener('click', paginate)
 })
 
-console.log(slideSize)
-
 function paginate() {
   const slideNum = +this.dataset.slide
   sliderItems.classList.add('shifting')

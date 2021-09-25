@@ -137,7 +137,9 @@ const slider = tns({
       gutter: 20,
     },
   },
+  lazyload: true,
   navContainer: '.video-nav',
+  navAsThumbnails: true,
   prevButton: '#videoPrev',
   nextButton: '#videoNext'
 })
