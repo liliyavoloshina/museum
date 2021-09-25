@@ -32,11 +32,19 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --contacts-subtitle-fs: 16px;
+    --contacts-subtitle-lh: 19px;
+    --contacts-info-fs: 16px;
+    --contacts-info-lh: 19px;
+  }
+}
+
 .contacts {
   display: flex;
   justify-content: space-between;
   padding-top: var(--contacts-pt);
-
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -52,9 +60,13 @@
     }
 
     @media screen and (max-width: 768px) {
-     margin-top: 40px;
-     min-width: 100%;
+      margin-top: 40px;
+      min-width: 100%;
       height: 476px;
+    }
+
+    @media screen and (max-width: 420px) {
+      height: 248px;
     }
   }
 
@@ -89,6 +101,6 @@
   }
 
   @media screen and (max-width: 768px) {
-   padding-bottom: 27px;
-   }
+    padding-bottom: 27px;
+  }
 }
