@@ -24,6 +24,12 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --gallery-height: 677px;
+  }
+}
+
 .section-gallery {
   padding: var(--section-gallery-p);
 }
