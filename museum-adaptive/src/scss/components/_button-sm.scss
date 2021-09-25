@@ -10,10 +10,15 @@
   color: $text-light;
   background: $text-dark;
   border-radius: 2px;
+  border: none;
 
   &:hover {
     background-color: $text-gold;
     transition: $base-transition;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 420px) {
+    font-size: 16px;
   }
 }

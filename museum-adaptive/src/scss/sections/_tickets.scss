@@ -15,6 +15,10 @@
   --tickets-amount-option-btn-1-pl: 5px;
   --tickets-amount-option-btn-fs: 32px;
   --tickets-title-mt: 54px;
+  --tickets-subtitle-fs: 28px;
+  --tickets-subtitle-lh: 33px;
+  --tickets-amount-option-label-fs: 22px;
+  --tickets-amount-option-label-lh: 26px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -50,10 +54,30 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  :root {
+    --tickets-img-w: 0;
+    --tickets-img-h: 160px;
+    --tickets-amount-option-mt: 20px;
+    --tickets-amount-option-2n-mt: 20px;
+    --tickets-amount-subtitle-ta: center;
+    --tickets-amount-box-mt: 14px;
+    --tickets-subtitle-fs: 16px;
+    --tickets-subtitle-lh: 19px;
+    --tickets-amount-option-label-fs: 16px;
+    --tickets-amount-option-label-lh: 19px;
+    --tickets-title-mt: 41px;
+  }
+}
+
 .tickets {
   display: flex;
   gap: 0 var(--tickets-g);
   padding-top: var(--tickets-pt);
+
+  @media screen and (max-width: 420px) {
+    flex-direction: column;
+  }
 
   &__img {
     flex-basis: var(--tickets-img-w);
@@ -71,19 +95,24 @@
     justify-content: space-between;
     align-content: flex-start;
     flex-basis: calc(100% - var(--tickets-img-w) - var(--tickets-g));
-    // flex-basis: calc(100% - var(--tickets-img-w) - var(--tickets-g));
     flex-wrap: wrap;
 
     @media screen and (max-width: 1024px) {
       flex-direction: column;
+    }
+
+    @media screen and (max-width: 420px) {
+      flex-basis: 100%;
+      align-content: center;
+      margin-top: 40px;
     }
   }
 
   &-subtitle {
     font-family: $font-base;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 33px;
+    font-size: var(--tickets-subtitle-fs);
+    line-height: var(--tickets-subtitle-lh);
     color: $text-dark;
   }
 }
@@ -164,8 +193,8 @@
   &__label {
     font-family: $font-base;
     font-weight: 300;
-    font-size: 22px;
-    line-height: 26px;
+    font-size: var(--tickets-amount-option-label-fs);
+    line-height: var(--tickets-amount-option-label-lh);
     color: $text-dark;
   }
 
@@ -225,10 +254,14 @@
 .total-title {
   letter-spacing: 1.6px;
   margin-top: var(--tickets-title-mt);
-  
+
   @media screen and (max-width: 768px) {
     display: flex;
     justify-content: space-between;
+  }
+
+  @media screen and (max-width: 420px) {
+    justify-content: center;
   }
 }
 
