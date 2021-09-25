@@ -1,3 +1,5 @@
+import { tns } from 'tiny-slider/src/tiny-slider'
+
 const currentVideo = document.querySelector('#currentVideo')
 const currentSource = document.querySelector('#currentSource')
 const currentVideoBigPlay = document.querySelector('#currentVideoLargePlay')
@@ -118,3 +120,24 @@ function watchFullscreen() {
   }
 }
 
+const slider = tns({
+  container: '.video-slider',
+  loop: true,
+  responsive: {
+    '1024': {
+      items: 3,
+      gutter: 42,
+    },
+    '768': {
+      items: 2,
+      gutter: 20,
+    },
+    '420': {
+      items: 2,
+      gutter: 20,
+    },
+  },
+  navContainer: '.video-nav',
+  prevButton: '#videoPrev',
+  nextButton: '#videoNext'
+})
