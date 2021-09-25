@@ -324,6 +324,10 @@
   margin-right: auto;
   padding-top: var(--video-slider-pag-pt);
 
+  @media screen and (max-width: 420px) {
+    width: 172px;
+  }
+
   &-item {
     width: 12px;
     height: 12px;

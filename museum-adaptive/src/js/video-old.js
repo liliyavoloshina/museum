@@ -118,3 +118,57 @@ function watchFullscreen() {
   }
 }
 
+const slider = document.querySelector('#videoSlider'),
+  items = slider.querySelectorAll('.video-slider-item'),
+  len = items.length,
+  triggers = document.querySelectorAll('.video-control'),
+  itemWidth = document.querySelector('.video-slider-item').offsetWidth,
+  itemGap = getComputedStyle(slider).columnGap.match(/\d+/)[0],
+  itemFullSize = itemWidth + +itemGap,
+  // itemFullSize = itemWidth + +itemGap / 1.5,
+  first = items[0],
+  second = items[1],
+  third = items[2],
+  last = items[len - 1],
+  secondlast = items[len - 2],
+  thirdlast = items[len - 3]
+
+let current = 1,
+  cycle = true
+
+slider.insertBefore(thirdlast.cloneNode(true), first)
+slider.insertBefore(secondlast.cloneNode(true), first)
+slider.insertBefore(last.cloneNode(true), first)
+
+slider.appendChild(first.cloneNode(true))
+slider.appendChild(second.cloneNode(true))
+slider.appendChild(third.cloneNode(true))
+
+triggers.forEach(btn => {
+  btn.addEventListener('click', go)
+})
+
+function go() {
+  if (!slider.classList.contains('shifting')) {
+    slider.classList.add('shifting')
+    const posInitial = slider.offsetLeft
+    console.log(posInitial)
+    cycle = false
+    let delta = this.id === 'videoPrev' ? -1 : 1
+
+    slider.style.left = posInitial + -itemFullSize * delta + 'px'
+
+    current += delta
+  }
+}
+
+slider.addEventListener('transitionend', checkIndex)
+
+function checkIndex() {
+  slider.classList.remove('shifting')
+  cycle = !!(current === 0 || current > len)
+  if (cycle) {
+    current = current === 0 ? len : 1
+    slider.style.left = -itemFullSize * (current + 2) + 'px'
+  }
+}

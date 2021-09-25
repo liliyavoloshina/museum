@@ -8,8 +8,6 @@ function initComparisons() {
   const changeSize = () => {
     overlay.style.width = '62%'
     slider.style.left = overlay.offsetWidth - slider.offsetWidth / 2 + 'px'
-
-    console.log(document.body.clientWidth)
   }
 
   window.addEventListener('resize', changeSize)
