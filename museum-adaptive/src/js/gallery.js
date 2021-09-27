@@ -1,5 +1,35 @@
 const gallery = document.querySelector('.gallery-container')
 
+// var Modernizr = require('./modernizr')
+
+// modernizr.build(
+//   {
+//     minify: true,
+//     options: ['setClasses'],
+//     'feature-detects': ['test/img/webp']
+//   },
+//   function(result) {
+//     console.log(result) // the build
+//   }
+// )
+// Modernizr.on('webp', function (result) {
+//   // `result == Modernizr.webp`
+//   console.log(result);  // either `true` or `false`
+//   if (result) {
+//     // Has WebP support
+//   }
+//   else {
+//     // No WebP support
+//   }
+// })
+
+// modernizr.on( 'webp', function( result ) {
+//   console.log(result)
+//   if ( result ) {
+//     console.log(result); // true or false;
+//   }
+// });
+
 const sources = [
   '../img/gallery/galery1.jpg',
   '../img/gallery/galery2.jpg',
@@ -31,7 +61,7 @@ sources.map(pic => {
   gallery.append(imgWrapper)
   imgWrapper.append(img)
 
-  img.onload = function () {
+  img.onload = function() {
     const height = this.height
 
     if (height >= 570) {
@@ -51,7 +81,6 @@ function shuffle(array) {
   }
 }
 
-
 const pictures = document.querySelectorAll('.gallery-wrapper')
 let isScrolling = false
 
@@ -60,7 +89,7 @@ window.addEventListener('scroll', throttleScroll, false)
 
 function throttleScroll(e) {
   if (isScrolling == false) {
-    window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function() {
       scrolling(e)
       isScrolling = false
     })

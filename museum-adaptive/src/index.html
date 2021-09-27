@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
   <meta charset="UTF-8">
@@ -14,6 +14,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/modernizr.js"></script>
 </head>
 
 <body>
@@ -226,10 +227,19 @@
         <div class="explore__img">
           <div class="explore-img">
             <div class="explore-img__img">
-              <img class="img-after" src="./img/explore/after.jpg" alt="Reproduction After">
+              Night Palace
+              <picture>
+                <source type="image/webp" srcset="./img/explore/after.webp">
+                <source type="image/jpeg" srcset="./img/explore/after.jpg">
+                <img class="img-after" src="./img/explore/after.webp" alt="Reproduction After">
+              </picture>
             </div>
             <div class="explore-img__img explore-img-overlay">
-              <img class="img-before" src="./img/explore/before.jpg" alt="Reproduction Before">
+              <picture>
+                <source type="image/webp" srcset="./img/explore/before.webp">
+                <source type="image/jpeg" srcset="./img/explore/before.jpg">
+                <img class="img-before" src="./img/explore/before.webp" alt="Reproduction Before">
+              </picture>
             </div>
           </div>
         </div>
@@ -320,7 +330,11 @@
         </h2>
         <div class="tickets">
           <div class="tickets__img">
-            <img src="./img/tickets.jpg" alt="Tickets">
+            <picture>
+              <source type="image/webp" srcset="./img/tickets.webp">
+              <source type="image/jpeg" srcset="./img/tickets.jpg">
+              <img src="./img/tickets.webp" alt="Tickets">
+            </picture>
           </div>
           <div class="tickets__info">
             <div class="tickets-type">
