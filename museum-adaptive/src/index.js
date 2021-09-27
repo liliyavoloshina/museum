@@ -4,7 +4,7 @@ import './js/welcome-slider'
 import './js/explore-slider'
 import './js/video'
 import './js/gallery'
-// import './js/popup'
+import './js/popup'
 import './js/styling'
 
 document.documentElement.style.setProperty(
