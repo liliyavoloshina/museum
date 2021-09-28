@@ -11,6 +11,14 @@
 .parallax {
   width: 100%;
   height: var(--parallax-h);
-  background: url('../img/parallax.jpg') no-repeat center fixed;
+  background: no-repeat center fixed;
   background-size: cover;
+
+  .no-webp & {
+    background-image: url('../img/parallax.jpg');
+  }
+
+  .webp & {
+    background-image: url('../img/parallax.webp');
+  }
 }

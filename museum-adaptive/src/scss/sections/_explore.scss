@@ -19,7 +19,6 @@
     --explore-desc-fot-pt: 85px;
     --explore-desc-br-d: none;
     --explore-desc-fs: 20px;
-    // --explore-desc-fs: 16px;
     --explore-img-pt: 55px;
   }
 }
@@ -125,9 +124,16 @@
     z-index: 9;
     width: 40px;
     height: 100%;
-    background: url('../img/explore/explore-slider.png');
     background-size: contain;
     background-repeat: no-repeat;
     cursor: ew-resize;
+  }
+
+  .no-webp &-slider  {
+    background: url('../img/explore/explore-slider.png');
+  }
+
+  .webp &-slider  {
+    background: url('../img/explore/explore-slider.webp');
   }
 }
