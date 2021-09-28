@@ -308,7 +308,9 @@
   }
 
   select {
-    display: none;
+    position: absolute;
+    left: -999px;
+    z-index: -999;
   }
 
   .select-selected {
