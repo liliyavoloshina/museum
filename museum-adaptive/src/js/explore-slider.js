@@ -36,10 +36,10 @@ function initComparisons() {
     slider.addEventListener('mousedown', onSlideStart)
     slider.addEventListener('touchstart', onSlideStart)
 
-    window.addEventListener('mouseup', () => (isClicked = false))
-    window.addEventListener('touchstop', () => (isClicked = false))
-    window.addEventListener('mousemove', onSlideMove)
-    window.addEventListener('touchmove', onSlideMove)
+    window.addEventListener('mouseup', () => (isClicked = false), {passive: true})
+    window.addEventListener('touchstop', () => (isClicked = false), {passive: true})
+    window.addEventListener('mousemove', onSlideMove, {passive: true})
+    window.addEventListener('touchmove', onSlideMove, {passive: true})
   }
 
   function onSlideStart(event) {

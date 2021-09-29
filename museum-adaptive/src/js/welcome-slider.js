@@ -36,9 +36,9 @@ let posX1 = 0,
 sliderItems.appendChild(cloneFirst)
 sliderItems.insertBefore(cloneLast, firstSlide)
 sliderItems.onmousedown = dragStart
-sliderItems.addEventListener('touchstart', dragStart)
-sliderItems.addEventListener('touchend', dragEnd)
-sliderItems.addEventListener('touchmove', dragAction)
+sliderItems.addEventListener('touchstart', dragStart, {passive: true})
+sliderItems.addEventListener('touchend', dragEnd, {passive: true})
+sliderItems.addEventListener('touchmove', dragAction, {passive: true})
 prev.addEventListener('click', () => shiftSlide(-1))
 next.addEventListener('click', () => shiftSlide(1))
 sliderItems.addEventListener('transitionend', checkIndex)

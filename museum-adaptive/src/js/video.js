@@ -126,16 +126,16 @@ const slider = tns({
   responsive: {
     '1024': {
       items: 3,
-      gutter: 42,
+      gutter: 42
     },
     '768': {
       items: 2,
-      gutter: 20,
+      gutter: 20
     },
     '420': {
       items: 2,
-      gutter: 20,
-    },
+      gutter: 20
+    }
   },
   lazyload: true,
   navContainer: '.video-nav',
@@ -143,3 +143,26 @@ const slider = tns({
   prevButton: '#videoPrev',
   nextButton: '#videoNext'
 })
+
+function setVideoFrames() {
+  window.setTimeout(function() {
+    let youtubeIframes = document.querySelectorAll('.lazy-youtube')
+
+    if (youtubeIframes !== null) {
+      for (let i = 0; i < youtubeIframes.length; i++) {
+        youtubeIframes[i].src = youtubeIframes[i].getAttribute('data-src')
+      }
+    }
+  }, 2000)
+}
+
+if (window.addEventListener)
+  // W3C DOM
+  window.addEventListener('load', setVideoFrames, false)
+else if (window.attachEvent) {
+  // IE DOM
+  window.attachEvent('onload', setVideoFrames)
+} else {
+  //NO SUPPORT, lauching right now
+  setVideoFrames()
+}

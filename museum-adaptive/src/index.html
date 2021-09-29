@@ -90,11 +90,11 @@
           <div class="welcome__slider">
             <div class="welcome-slider" id="welcomeSlider">
               <div class="welcome-slider__slides" id="welcomeSlides">
-                <span class="slide slide-1"></span>
-                <span class="slide slide-2"></span>
-                <span class="slide slide-3"></span>
-                <span class="slide slide-4"></span>
-                <span class="slide slide-5"></span>
+                <span class="slide slide-1 lazyload"></span>
+                <span class="slide slide-2 lazyload"></span>
+                <span class="slide slide-3 lazyload"></span>
+                <span class="slide slide-4 lazyload"></span>
+                <span class="slide slide-5 lazyload"></span>
               </div>
             </div>
 
@@ -130,9 +130,9 @@
           <a class="visiting-card-link" href="tour2.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" srcset="./img/visiting/royal-palace.webp">
-                <source type="image/jpeg" srcset="./img/visiting/royal-palace.jpg">
-                <img class="visiting-card__img" src="./img/visiting/royal-palace.webp" alt="Royal Palace">
+                <source type="image/webp" data-srcset="./img/visiting/royal-palace.webp">
+                <source type="image/jpeg" data-srcset="./img/visiting/royal-palace.jpg">
+                <img class="visiting-card__img lazyload" data-src="./img/visiting/royal-palace.webp" alt="Royal Palace">
               </picture>
               <h3 class="visiting-card__title spacing-lg underline-title">Royal Palace</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -142,9 +142,9 @@
           <a class="visiting-card-link" href="tour3.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" srcset="./img/visiting/denon-wing.webp">
-                <source type="image/jpeg" srcset="./img/visiting/denon-wing.jpg">
-                <img class="visiting-card__img" src="./img/visiting/denon-wing.webp" alt="Denon Wing">
+                <source type="image/webp" data-srcset="./img/visiting/denon-wing.webp">
+                <source type="image/jpeg" data-srcset="./img/visiting/denon-wing.jpg">
+                <img class="visiting-card__img lazyload" data-src="./img/visiting/denon-wing.webp" alt="Denon Wing">
               </picture>
               <h3 class="visiting-card__title spacing-lg underline-title">Denon Wing</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -155,9 +155,10 @@
           <a class="visiting-card-link" href="tour4.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" srcset="./img/visiting/colonnade-perrault.webp">
-                <source type="image/jpeg" srcset="./img/visiting/colonnade-perrault.jpg">
-                <img class="visiting-card__img" src="./img/visiting/colonnade-perrault.webp" alt="Colonnade Perrault">
+                <source type="image/webp" data-srcset="./img/visiting/colonnade-perrault.webp">
+                <source type="image/jpeg" data-srcset="./img/visiting/colonnade-perrault.jpg">
+                <img class="visiting-card__img lazyload" data-src="./img/visiting/colonnade-perrault.webp"
+                  alt="Colonnade Perrault">
               </picture>
               <h3 class="visiting-card__title underline-title strange-title">Colonnade Perrault</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -168,9 +169,9 @@
           <a class="visiting-card-link" href="tour5.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" srcset="./img/visiting/greek-hall.webp">
-                <source type="image/jpeg" srcset="./img/visiting/greek-hall.jpg">
-                <img class="visiting-card__img" src="./img/visiting/greek-hall.webp" alt="Greek hall">
+                <source type="image/webp" data-srcset="./img/visiting/greek-hall.webp">
+                <source type="image/jpeg" data-srcset="./img/visiting/greek-hall.jpg">
+                <img class="visiting-card__img lazyload" data-src="./img/visiting/greek-hall.webp" alt="Greek hall">
               </picture>
               <h3 class="visiting-card__title spacing-lg underline-title">Greek hall</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -181,9 +182,9 @@
           <a class="visiting-card-link" href="tour6.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" srcset="./img/visiting/mona-lisa.webp">
-                <source type="image/jpeg" srcset="./img/visiting/mona-lisa.jpg">
-                <img class="visiting-card__img" src="./img/visiting/mona-lisa.webp" alt="Mona Lisa">
+                <source type="image/webp" data-srcset="./img/visiting/mona-lisa.webp">
+                <source type="image/jpeg" data-srcset="./img/visiting/mona-lisa.jpg">
+                <img class="visiting-card__img lazyload" data-src="./img/visiting/mona-lisa.webp" alt="Mona Lisa">
               </picture>
               <h3 class="visiting-card__title underline-title strange-title">Mona Lisa</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -194,9 +195,9 @@
           <a class="visiting-card-link" href="tour7.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" srcset="./img/visiting/night-palace.webp">
-                <source type="image/jpeg" srcset="./img/visiting/night-palace.jpg">
-                <img class="visiting-card__img" src="./img/visiting/night-palace.webp" alt="Night Palace">
+                <source type="image/webp" data-srcset="./img/visiting/night-palace.webp">
+                <source type="image/jpeg" data-srcset="./img/visiting/night-palace.jpg">
+                <img class="visiting-card__img lazyload" data-src="./img/visiting/night-palace.webp" alt="Night Palace">
               </picture>
               <h3 class="visiting-card__title underline-title strange-title">Night Palace</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -228,16 +229,16 @@
             <div class="explore-img__img">
               Night Palace
               <picture>
-                <source type="image/webp" srcset="./img/explore/after.webp">
-                <source type="image/jpeg" srcset="./img/explore/after.jpg">
-                <img class="img-after" src="./img/explore/after.webp" alt="Reproduction After">
+                <source type="image/webp" data-srcset="./img/explore/after.webp">
+                <source type="image/jpeg" data-srcset="./img/explore/after.jpg">
+                <img class="img-after lazyload" data-src="./img/explore/after.webp" alt="Reproduction After">
               </picture>
             </div>
             <div class="explore-img__img explore-img-overlay">
               <picture>
-                <source type="image/webp" srcset="./img/explore/before.webp">
-                <source type="image/jpeg" srcset="./img/explore/before.jpg">
-                <img class="img-before" src="./img/explore/before.webp" alt="Reproduction Before">
+                <source type="image/webp" data-srcset="./img/explore/before.webp">
+                <source type="image/jpeg" data-srcset="./img/explore/before.jpg">
+                <img class="img-before lazyload" data-src="./img/explore/before.webp" alt="Reproduction Before">
               </picture>
             </div>
           </div>
@@ -274,25 +275,66 @@
         </div>
         <div class="video-slider" id="videoSlider">
           <div class="video-slider-item">
-            <iframe src="https://www.youtube.com/embed/zp1BXPX8jcU?&modestbranding=1" loading="lazy"
-              allowfullscreen></iframe>
+            <a class="video-slider-item__link" href="https://youtu.be/neHA4MJwpnY">
+              <picture>
+                <source srcset="https://i.ytimg.com/vi_webp/neHA4MJwpnY/maxresdefault.webp" type="image/webp">
+                <img class="video-slider-item__media" src="https://i.ytimg.com/vi/neHA4MJwpnY/maxresdefault.jpg"
+                  alt="1. Пилот, разборы, ответы и лайвы">
+              </picture>
+            </a>
+            <button class="video-slider-item__button-play" aria-label="Запустить видео">
+              <svg width="68" height="48" viewBox="0 0 68 48">
+                <path class="video-slider-item__button-play-shape"
+                  d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z">
+                </path>
+                <path class="video-slider-item__button-play-icon" d="M 45,24 27,14 27,34"></path>
+              </svg>
+            </button>
+            <button class="video-slider-item__button-share" aria-label="Поделиться"></button>
+          </div> 
+          <!-- <div class="video-slider-item">
+            <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/zp1BXPX8jcU?&modestbranding=1"
+            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+            html,body{height:100%}
+            img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
+            span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+            </style>
+            <a href=https://www.youtube.com/embed/zp1BXPX8jcU?&modestbranding=1?autoplay=1>
+            <img src=https://i.ytimg.com/vi/neHA4MJwpnY/maxresdefault.jpg alt='Demo video'>
+            <span>▶</span>
+            </a>"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="Demo video">
+        </iframe>
+            <button class="video-slider-item__button-share" aria-label="Поделиться"></button>
+          </div> -->
+
+          <!-- <div class="video-slider-item">
+            <iframe class="lazy-youtube" data-src="https://www.youtube.com/embed/zp1BXPX8jcU?&modestbranding=1" loading="lazy"
+              allowfullscreen width="560" height="315"></iframe>
+          </div> -->
+          <!--
+          <div class="video-slider-item">
+            <iframe class="lazy-youtube" data-src="https://www.youtube.com/embed/Vi5D6FKhRmo?&modestbranding=1" loading="lazy"
+              allowfullscreen width="560" height="315"></iframe>
           </div>
           <div class="video-slider-item">
-            <iframe src="https://www.youtube.com/embed/Vi5D6FKhRmo?&modestbranding=1" loading="lazy"
-              allowfullscreen></iframe>
+            <iframe class="lazy-youtube" data-src="https://www.youtube.com/embed/NOhDysLnTvY?modestbranding=1" loading="lazy"
+              allowfullscreen width="560" height="315"></iframe>
           </div>
           <div class="video-slider-item">
-            <iframe src="https://www.youtube.com/embed/NOhDysLnTvY?modestbranding=1" loading="lazy"
-              allowfullscreen></iframe>
+            <ifram class="lazy-youtube" data-src="https://www.youtube.com/embed/aWmJ5DgyWPI?modestbranding=1" loading="lazy"
+              allowfullscreen width="560" height="315"></ifram>
           </div>
           <div class="video-slider-item">
-            <iframe src="https://www.youtube.com/embed/aWmJ5DgyWPI?modestbranding=1" loading="lazy"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-slider-item">
-            <iframe src="https://www.youtube.com/embed/2OR0OCr6uRE?modestbranding=1" loading="lazy"
-              allowfullscreen></iframe>
-          </div>
+            <ifram class="lazy-youtube" data-src="https://www.youtube.com/embed/2OR0OCr6uRE?modestbranding=1" loading="lazy"
+              allowfullscreen width="560" height="315"></ifram>
+          </div> -->
         </div>
         <div class="video-pagination">
           <div class="video-pagination__arrow-prev video-pagination__item" id="videoPrev"></div>
@@ -330,9 +372,9 @@
         <div class="tickets">
           <div class="tickets__img">
             <picture>
-              <source type="image/webp" srcset="./img/tickets.webp">
-              <source type="image/jpeg" srcset="./img/tickets.jpg">
-              <img src="./img/tickets.webp" alt="Tickets">
+              <source type="image/webp" data-srcset="./img/tickets.webp">
+              <source type="image/jpeg" data-srcset="./img/tickets.jpg">
+              <img data-src="./img/tickets.webp" class="lazyload" alt="Tickets">
             </picture>
           </div>
           <div class="tickets__info">
@@ -405,7 +447,11 @@
             <p class="contacts__info">mail: <a href="mailto:info@louvre.fr">info@louvre.fr</a></p>
           </div>
           <div class="contacts__map">
-            <img src="./img/map.png" alt="Contacts Map">
+            <picture>
+              <source type="image/webp" data-srcset="./img/map.webp">
+              <source type="image/png" data-srcset="./img/map.png">
+              <img class="lazyload" data-src="./img/map.webp" alt="Contacts Map">
+            </picture>
           </div>
         </div>
       </div>
