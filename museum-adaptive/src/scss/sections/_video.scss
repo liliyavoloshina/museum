@@ -324,6 +324,40 @@
     border: none;
   }
 
+  &-item__header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 13px 35px 10px 13px;
+    width: 100%;
+    height: 65px;
+
+    .image {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      background: url('../img/channel-icon.png');
+      background-size: contain;
+    }
+
+    .title {
+      font-family: $font-base;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 38px;
+      color: #ffffff;
+    }
+
+    .settings {
+      width: 4px;
+      height: 16px;
+      margin-left: auto;
+      background: url('../svg/iframe-set.svg');
+      background-size: contain;
+    }
+  }
+
   &-item__button-play {
     position: absolute;
     top: 50%;
@@ -351,7 +385,6 @@
       outline: none;
     }
   }
-
 
   &-item:hover &-item__button-play-shape,
   &-item__button-play:focus &-item__button-play-shape {
