@@ -138,31 +138,32 @@ const slider = tns({
     }
   },
   lazyload: true,
+  speed: 2000,
   navContainer: '.video-nav',
   navAsThumbnails: true,
   prevButton: '#videoPrev',
   nextButton: '#videoNext'
 })
 
-function setVideoFrames() {
-  window.setTimeout(function() {
-    let youtubeIframes = document.querySelectorAll('.lazy-youtube')
+// function setVideoFrames() {
+//   window.setTimeout(function() {
+//     let youtubeIframes = document.querySelectorAll('.lazy-youtube')
 
-    if (youtubeIframes !== null) {
-      for (let i = 0; i < youtubeIframes.length; i++) {
-        youtubeIframes[i].src = youtubeIframes[i].getAttribute('data-src')
-      }
-    }
-  }, 2000)
-}
+//     if (youtubeIframes !== null) {
+//       for (let i = 0; i < youtubeIframes.length; i++) {
+//         youtubeIframes[i].src = youtubeIframes[i].getAttribute('data-src')
+//       }
+//     }
+//   }, 2000)
+// }
 
-if (window.addEventListener)
-  // W3C DOM
-  window.addEventListener('load', setVideoFrames, false)
-else if (window.attachEvent) {
-  // IE DOM
-  window.attachEvent('onload', setVideoFrames)
-} else {
-  //NO SUPPORT, lauching right now
-  setVideoFrames()
-}
+// if (window.addEventListener)
+//   // W3C DOM
+//   window.addEventListener('load', setVideoFrames, false)
+// else if (window.attachEvent) {
+//   // IE DOM
+//   window.attachEvent('onload', setVideoFrames)
+// } else {
+//   //NO SUPPORT, lauching right now
+//   setVideoFrames()
+// }

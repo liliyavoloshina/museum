@@ -1,15 +1,15 @@
 function findVideos() {
-  let videos = document.querySelectorAll('.video-slider-item')
-
+  const videos = document.querySelectorAll('.video-slider-item__wrapper')
   for (let i = 0; i < videos.length; i++) {
     setupVideo(videos[i])
   }
 }
 
 function setupVideo(video) {
+  console.log(video)
   let link = video.querySelector('.video-slider-item__link')
   let button = video.querySelector('.video-slider-item__button-play')
-  let id = link.href.match(/([^\/]+$)/)[0]
+  let id = link.dataset.id
 
   video.addEventListener('click', () => {
     let iframe = createIframe(id)
