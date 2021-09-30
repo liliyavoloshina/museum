@@ -12,7 +12,7 @@
 @media only screen and (max-width: 1024px) {
   :root {
     --popup-w: 100%;
-    --popup-p: 30px 30px;
+    --popup-p: 30px 26px;
     --popup-g: 20px 0;
   }
 }
@@ -20,6 +20,7 @@
 @media only screen and (max-width: 768px) {
   :root {
     --popup-w: 590px;
+    --popup-p: 30px 30px;
     --popup-g: 24.93px 0;
     --popup-tickets-w: 100%;
     --popup-payment-w: 100%;
@@ -539,6 +540,10 @@
     line-height: 37px;
     color: $bg-dark;
 
+    @media only screen and (max-width: 768px) {
+      padding-top: 12px;
+    }
+
     @media only screen and (max-width: 420px) {
       padding-top: 11px;
     }
@@ -625,6 +630,10 @@
 
 .popup-payment__card {
   height: 240px;
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 15px;
+  }
 
   @media only screen and (max-width: 420px) {
     margin-top: 14px;

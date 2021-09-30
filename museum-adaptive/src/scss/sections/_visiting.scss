@@ -7,7 +7,7 @@
   --visiting-card-title-fs: 32px;
   --visiting-card-title-lh: 35px;
   --visiting-card-title-pt: 25px;
-  --visiting-card-title-ls: 5px;
+  --visiting-card-title-ls: 3px;
   --visiting-card-subtitle-fs: 22px;
   --visiting-card-desc-fs: 18px;
   --visiting-card-desc-lh: 21.09px;
@@ -24,7 +24,7 @@
     --visiting-card-title-fs: 28px;
     --visiting-card-title-lh: 31px;
     --visiting-card-title-pt: 21px;
-    --visiting-card-title-ls: 5px;
+    --visiting-card-title-ls: 3px;
     --visiting-card-subtitle-fs: 20px;
     --visiting-card-desc-fs: 16px;
     --visiting-card-desc-lh: 19px;
@@ -96,24 +96,8 @@
     font-weight: 400;
     font-size: var(--visiting-card-title-fs);
     line-height: var(--visiting-card-title-lh);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-
-  .strange-title {
-    letter-spacing: 5px;
-
-    @media screen and (max-width: 1024px) {
-      letter-spacing: 3px;
-    }
-
-    @media screen and (max-width: 420px) {
-      letter-spacing: 5px;
-    }
-  }
-
-  &__title.spacing-lg {
     letter-spacing: var(--visiting-card-title-ls);
+    text-transform: uppercase;
   }
 
   &__subtitle {

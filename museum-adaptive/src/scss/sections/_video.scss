@@ -20,6 +20,7 @@
   --video-slider-mt: 40px;
   --video-pag-w: 200px;
   --video-pag-item-size: 12px;
+  --iframe-header-p: 13px 35px 10px 13px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -40,6 +41,7 @@
     --video-expand-ml: 31px;
     --video-slider-pag-pt: 37px;
     --video-slider-item-h: 170px;
+    --iframe-header-p: 4px 35px 10px 10px;
   }
 }
 
@@ -326,7 +328,7 @@
     top: 0;
     display: flex;
     align-items: center;
-    padding: 13px 35px 10px 13px;
+    padding: var(--iframe-header-p);
     width: 100%;
     height: 65px;
 
@@ -334,23 +336,28 @@
       width: 40px;
       height: 40px;
       margin-right: 10px;
-      background: url('../img/channel-icon.png');
+      background: url('../img/channel-icon.png') no-repeat;
       background-size: contain;
     }
 
     .title {
+      width: 71%;
+      // width: 178px;
       font-family: $font-base;
       font-weight: 300;
       font-size: 18px;
       line-height: 38px;
       color: #ffffff;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .settings {
       width: 4px;
       height: 16px;
       margin-left: auto;
-      background: url('../svg/iframe-set.svg');
+      background: url('../svg/iframe-set.svg') no-repeat;
       background-size: contain;
     }
   }

@@ -1,5 +1,5 @@
 $nav-font-size: 22px;
-$nav-transition: 0.2s ease;
+$nav-transition: 0.5s ease;
 
 :root {
   --header-p: 50px 0;
@@ -114,8 +114,8 @@ $nav-transition: 0.2s ease;
     z-index: 100;
     padding-top: var(--header-nav-pt);
     background-color: $bg-dark;
-    overflow: auto;
     transition: $nav-transition;
+    overflow-y: scroll;
 
     .nav__list {
       flex-direction: column;
@@ -161,6 +161,22 @@ $nav-transition: 0.2s ease;
     .nav__arrow {
       display: block;
     }
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   right: -200px;
+    //   z-index: 99;
+    //   width: 200px;
+    //   pointer-events: none;
+    //   background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
+  
+    //   @media only screen and (max-width: 768px) {
+    //     display: none;
+    //   }
+    // }
   }
 
   .header-images {

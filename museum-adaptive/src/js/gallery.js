@@ -11,11 +11,9 @@ insertImages(sources)
 function checkWebpSupport() {
   const canvas = document.createElement('canvas')
   if (!!(canvas.getContext && canvas.getContext('2d'))) {
-    // was able or not to get WebP representation
     document.querySelector('html').classList.add('webp')
     return canvas.toDataURL('image/webp').indexOf('data:image/webp') == 0
   } else {
-    // very old browser like IE 8, canvas not supported
     document.querySelector('html').classList.add('no-webp')
     return false
   }
