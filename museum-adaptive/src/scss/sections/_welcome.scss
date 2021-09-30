@@ -1,12 +1,14 @@
 :root {
   --welcome-container-height: 810px;
-  --welcome-slider-width: 1000px;
+  --welcome-slider-width: 52vw;
   --welcome-slider-img-height: 750px;
   --welcome-slider-right: 0;
   --welcome-slider-controls-width: 60%;
   --welcome-slider-controls-height: 120px;
   --welcome-slider-controls-justify: space-between;
   --welcome-slider-controls-fs: 22px;
+  --welcome-slider-pag-w: 39%;
+  --welcome-slider-pag-p: 6% 7%;
   --welcome-slider-pag-size: 16px;
   --welcome-slider-pag-ml: 29px;
   --welcome-slider-pag-g: 0 25px;
@@ -17,15 +19,23 @@
   --welcome-btn-mt: 75px;
 }
 
+@media screen and (min-width: 1025px) and (max-width: 1900px) {
+  :root {
+    --welcome-slider-controls-width: 100%;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   :root {
     --welcome-container-height: 585px;
-    --welcome-slider-width: 700px;
+    --welcome-slider-width: 70vw;
     --welcome-slider-img-height: 525px;
     --welcome-slider-right: 20px;
     --welcome-slider-controls-width: 100%;
     --welcome-slider-controls-justify: flex-end;
     --welcome-slider-controls-fs: 20px;
+    --welcome-slider-pag-p: 7% 11%;
+    --welcome-slider-pag-m: 0 8% 0 9%;
     --welcome-slider-pag-size: 12px;
     --welcome-slider-pag-g: 0 24px;
     --welcome-text-pt: 50px;
@@ -37,13 +47,14 @@
 
 @media screen and (max-width: 768px) {
   :root {
-    --welcome-container-height: 861px;
+    --welcome-container-height: auto;
     --welcome-slider-width: calc(100vw - 40px - var(--scrollbar-width));
     --welcome-slider-img-height: 546px;
     --welcome-slider-controls-justify: center;
     --welcome-slider-controls-width: calc(100vw - 40px);
     --welcome-slider-controls-height: 97px;
     --welcome-text-pt: 0;
+    --welcome-slider-pag-m: 0 8%;
     --welcome-title-lh: 60px;
     --welcome-subtitle-fs: 20px;
     --welcome-subtitle-lh: 23px;
@@ -52,7 +63,7 @@
 
 @media screen and (max-width: 420px) {
   :root {
-    --welcome-container-height: 539px;
+    // --welcome-container-height: 88vw;
     --welcome-slider-img-height: 285px;
     --welcome-slider-controls-height: 80px;
     --welcome-slider-pag-size: 7px;
@@ -73,12 +84,19 @@
 }
 
 .welcome {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   height: var(--welcome-container-height);
 
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__text {
     position: absolute;
-    z-index: 2;
+    z-index: 6;
     width: 598px;
     padding-top: var(--welcome-text-pt);
 
@@ -94,35 +112,93 @@
     line-height: var(--welcome-title-lh);
   }
 
-  &__slider {
-    position: absolute;
-    bottom: 0;
-    right: var(--welcome-slider-right);
-    z-index: 1;
-    width: var(--welcome-slider-width);
-    height: 100%;
-    overflow: hidden;
+  // &__slider {
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: var(--welcome-slider-right);
+  //   z-index: 1;
+  //   width: var(--welcome-slider-width);
+  //   height: 100%;
+  //   overflow: hidden;
 
-    @media only screen and (max-width: 768px) {
-      right: unset;
-      height: calc(var(--welcome-slider-img-height) + var(--welcome-slider-controls-height));
-      margin-left: auto;
-      margin-right: auto;
-    }
+  //   @media only screen and (max-width: 768px) {
+  //     right: unset;
+  //     height: calc(var(--welcome-slider-img-height) + var(--welcome-slider-controls-height));
+  //     margin-left: auto;
+  //     margin-right: auto;
+  //   }
+  // }
+}
+
+.welcome-slider-wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: var(--welcome-slider-width);
+  height: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding-right: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: static;
+    padding-right: 0;
+    height: 84vw;
+  }
+
+  @media screen and (max-width: 420px) {
+    height: 88vw;
   }
 }
 
 .welcome-slider {
+  position: relative;
   overflow: hidden;
   height: 100%;
+  cursor: pointer;
 
   &__slides {
-    position: relative;
-    top: 0;
-    left: -100%;
-    display: flex;
-    width: calc(var(--welcome-slider-width) * 10);
+    position: absolute;
+    left: 0;
+    bottom: calc(var(--welcome-slider-controls-height) / 2);
+    width: 100%;
     height: 100%;
+
+    @media screen and (max-width: 768px) {
+      bottom: 0;
+    }
+  }
+
+  .slide {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-color: #030303;
+
+    @media screen and (max-width: 768px) {
+      background-position: top;
+    }
+
+    &-1 {
+      background-image: url('../img/welcome/1.webp');
+    }
+    &-2 {
+      background-image: url('../img/welcome/2.webp');
+    }
+    &-3 {
+      background-image: url('../img/welcome/3.webp');
+    }
+    &-4 {
+      background-image: url('../img/welcome/4.webp');
+    }
+    &-5 {
+      background-image: url('../img/welcome/5.webp');
+    }
   }
 
   &::before {
@@ -138,43 +214,6 @@
 
     @media only screen and (max-width: 768px) {
       display: none;
-    }
-  }
-
-  &__slides.shifting {
-    transition: left 0.2s ease-out;
-  }
-
-  .slide {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: var(--welcome-slider-width);
-    height: 100%;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 1s;
-    z-index: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  .slide {
-    &-1 {
-      background-image: url('../img/welcome/1.webp');
-    }
-    &-2 {
-      background-image: url('../img/welcome/2.webp');
-    }
-    &-3 {
-      background-image: url('../img/welcome/3.webp');
-    }
-    &-4 {
-      background-image: url('../img/welcome/4.webp');
-    }
-    &-5 {
-      background-image: url('../img/welcome/5.webp');
     }
   }
 }
@@ -197,7 +236,7 @@
   }
 }
 
-.welcome-slider-controls {
+.welcome-slider__controls {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -207,23 +246,23 @@
   justify-content: var(--welcome-slider-controls-justify);
   width: var(--welcome-slider-controls-width);
   height: var(--welcome-slider-controls-height);
-  padding: 40px 75px;
+  padding: var(--welcome-slider-pag-p);
   background-color: $bg-dark;
 
   @media screen and (max-width: 420px) {
     left: 0;
   }
+}
 
-  &__counter {
-    font-family: $font-base;
-    font-weight: 400;
-    font-size: var(--welcome-slider-controls-fs);
-    line-height: 40px;
-    text-transform: uppercase;
-    color: $text-light;
-  }
+.welcome-slider-counter {
+  font-family: $font-base;
+  font-weight: 400;
+  font-size: var(--welcome-slider-controls-fs);
+  line-height: 40px;
+  text-transform: uppercase;
+  color: $text-light;
 
-  .welcome-slider-counter-first {
+  &-first {
     margin-right: 10px;
 
     @media screen and (max-width: 420px) {
@@ -231,48 +270,48 @@
     }
   }
 
-  .welcome-slider-counter-current {
+  &-current {
     margin-left: 10px;
 
     @media screen and (max-width: 420px) {
-      margin-left:5px;
+      margin-left: 5px;
     }
   }
+}
 
-  &__pagination {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--welcome-slider-pag-g);
-    margin: 0 45px;
+.welcome-slider__pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--welcome-slider-pag-g);
+  margin: var(--welcome-slider-pag-m);
 
-    @media screen and (max-width: 420px) {
-      margin: 0 25px;
-    }
+  @media screen and (max-width: 420px) {
+    margin: 0 25px;
   }
 
-  .welcome-slider-pagination-item {
+  &-item {
     width: var(--welcome-slider-pag-size);
     height: var(--welcome-slider-pag-size);
     background-color: $text-light;
-  }
 
-  .welcome-slider-pagination-item:hover {
-    @media (hover: hover) and (pointer: fine) {
-      background-color: #9d8665;
+    &:hover {
+      @media (hover: hover) and (pointer: fine) {
+        background-color: #9d8665;
+      }
+      cursor: pointer;
+      transition: $link-transition;
     }
-    cursor: pointer;
-    transition: $link-transition;
-  }
 
-  .welcome-slider-pagination-item.active {
-    background-color: $text-gold;
+    &.active {
+      background-color: $text-gold;
+    }
   }
+}
 
-  &__arrows {
-    display: flex;
-  }
+.welcome-slider__arrows {
+  display: flex;
 
-  &__arrows > button {
+  & > button {
     width: 30px;
     height: 8px;
     border: none;
@@ -286,24 +325,24 @@
     }
   }
 
-  &__arrows > button:hover {
+  & > button:hover {
     @media (hover: hover) and (pointer: fine) {
       filter: invert(58%) sepia(11%) saturate(983%) hue-rotate(356deg) brightness(91%) contrast(87%);
     }
     cursor: pointer;
     transition: $link-transition;
   }
+}
 
-  &-prev {
-    margin-right: 20px;
-    background-image: url('../svg/welcome-arrow-left.svg');
+.welcome-slider-prev {
+  margin-right: 20px;
+  background-image: url('../svg/welcome-arrow-left.svg');
 
-    @media screen and (max-width: 420px) {
-      margin-right: 15px;
-    }
+  @media screen and (max-width: 420px) {
+    margin-right: 15px;
   }
+}
 
-  &-next {
-    background-image: url('../svg/welcome-arrow-right.svg');
-  }
+.welcome-slider-next {
+  background-image: url('../svg/welcome-arrow-right.svg');
 }

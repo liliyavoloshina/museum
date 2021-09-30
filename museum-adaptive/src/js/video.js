@@ -120,6 +120,36 @@ function watchFullscreen() {
   }
 }
 
+let windowWidth = document.documentElement.clientWidth
+if (windowWidth === 420) {
+  currentVideoProgress.value = 40
+  currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${40}%, #c4c4c4 ${40}%, #c4c4c4 100%)`
+}
+if (windowWidth === 768) {
+  currentVideoProgress.value = 31
+  currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${31}%, #c4c4c4 ${31}%, #c4c4c4 100%)`
+}
+if (windowWidth === 1024) {
+  currentVideoProgress.value = 41
+  currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${41}%, #c4c4c4 ${41}%, #c4c4c4 100%)`
+}
+
+window.addEventListener('resize', () => {
+  windowWidth = document.documentElement.clientWidth
+  if (windowWidth === 420) {
+    currentVideoProgress.value = 40
+    currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${40}%, #c4c4c4 ${40}%, #c4c4c4 100%)`
+  }
+  if (windowWidth === 768) {
+    currentVideoProgress.value = 31
+    currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${31}%, #c4c4c4 ${31}%, #c4c4c4 100%)`
+  }
+  if (windowWidth === 1024) {
+    currentVideoProgress.value = 41
+    currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${41}%, #c4c4c4 ${41}%, #c4c4c4 100%)`
+  }
+})
+
 const slider = tns({
   container: '.video-slider',
   loop: true,

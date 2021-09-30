@@ -342,7 +342,6 @@
 
     .title {
       width: 71%;
-      // width: 178px;
       font-family: $font-base;
       font-weight: 300;
       font-size: 18px;
@@ -423,6 +422,10 @@
     height: var(--video-pag-item-size);
     background-size: contain;
     transition: $quick-transition;
+
+    &.tns-nav-active {
+      filter: invert(13%) sepia(94%) saturate(0%) hue-rotate(205deg) brightness(60%) contrast(88%);
+    }
   }
 
   &__item:hover {
@@ -452,6 +455,4 @@
   }
 }
 
-.tns-nav-active {
-  filter: invert(13%) sepia(94%) saturate(0%) hue-rotate(205deg) brightness(60%) contrast(88%);
-}
+
