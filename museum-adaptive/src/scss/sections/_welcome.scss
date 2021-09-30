@@ -1,16 +1,12 @@
 :root {
   --welcome-container-height: 810px;
   --welcome-slider-width: 52vw;
-  --welcome-slider-img-height: 750px;
-  --welcome-slider-right: 0;
   --welcome-slider-controls-width: 60%;
   --welcome-slider-controls-height: 120px;
   --welcome-slider-controls-justify: space-between;
   --welcome-slider-controls-fs: 22px;
-  --welcome-slider-pag-w: 39%;
   --welcome-slider-pag-p: 6% 7%;
   --welcome-slider-pag-size: 16px;
-  --welcome-slider-pag-ml: 29px;
   --welcome-slider-pag-g: 0 25px;
   --welcome-text-pt: 150px;
   --welcome-title-lh: 90px;
@@ -19,7 +15,7 @@
   --welcome-btn-mt: 75px;
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1900px) {
+@media screen and (min-width: 767px) and (max-width: 1900px) {
   :root {
     --welcome-slider-controls-width: 100%;
   }
@@ -29,9 +25,6 @@
   :root {
     --welcome-container-height: 585px;
     --welcome-slider-width: 70vw;
-    --welcome-slider-img-height: 525px;
-    --welcome-slider-right: 20px;
-    --welcome-slider-controls-width: 100%;
     --welcome-slider-controls-justify: flex-end;
     --welcome-slider-controls-fs: 20px;
     --welcome-slider-pag-p: 7% 11%;
@@ -49,7 +42,6 @@
   :root {
     --welcome-container-height: auto;
     --welcome-slider-width: calc(100vw - 40px - var(--scrollbar-width));
-    --welcome-slider-img-height: 546px;
     --welcome-slider-controls-justify: center;
     --welcome-slider-controls-width: calc(100vw - 40px);
     --welcome-slider-controls-height: 97px;
@@ -63,8 +55,6 @@
 
 @media screen and (max-width: 420px) {
   :root {
-    // --welcome-container-height: 88vw;
-    --welcome-slider-img-height: 285px;
     --welcome-slider-controls-height: 80px;
     --welcome-slider-pag-size: 7px;
     --welcome-slider-pag-g: 0 10px;
@@ -111,23 +101,6 @@
   h2 {
     line-height: var(--welcome-title-lh);
   }
-
-  // &__slider {
-  //   position: absolute;
-  //   bottom: 0;
-  //   right: var(--welcome-slider-right);
-  //   z-index: 1;
-  //   width: var(--welcome-slider-width);
-  //   height: 100%;
-  //   overflow: hidden;
-
-  //   @media only screen and (max-width: 768px) {
-  //     right: unset;
-  //     height: calc(var(--welcome-slider-img-height) + var(--welcome-slider-controls-height));
-  //     margin-left: auto;
-  //     margin-right: auto;
-  //   }
-  // }
 }
 
 .welcome-slider-wrapper {
