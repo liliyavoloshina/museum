@@ -51,6 +51,10 @@
   }
 
   &__map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
     max-width: 960px;
     height: 620px;
 
@@ -68,6 +72,35 @@
     @media screen and (max-width: 420px) {
       height: 248px;
     }
+  }
+
+  @media (max-width: 1024px) {
+    .mapboxgl-ctrl-bottom-right {
+      display: none;
+    }
+    .mapboxgl-ctrl-bottom-left {
+      display: none;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .mapboxgl-ctrl-bottom-left {
+      display: block;
+    }
+  }
+  
+
+  &__map {
+    
+    
+    // height: 620px;
+
+    // @media (max-width: 1024px) {
+    //   .map {
+    //     width: calc(100vw - 330px);
+    //     height: calc(65vw - 212px);
+    //   }
+    // }
   }
 
   &__map img {
