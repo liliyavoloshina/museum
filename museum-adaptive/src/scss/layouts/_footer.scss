@@ -16,7 +16,7 @@
     --footer-nav-w: 313px;
     --footer-logo-mr: 45px;
     --footer-navlist-cg: 99px;
-    --footer-section-p: 56px 0 50px;
+    --footer-section-p: 52px 0 50px;
     --footer-social-list-pb: 15px;
   }
 }
@@ -26,7 +26,7 @@
     --footer-nav-w: 393px;
     --footer-logo-mr: 101px;
     --footer-navlist-cg: 117px;
-    --footer-section-p: 40px 0 50px;
+    --footer-section-p: 43px 0 50px;
     --footer-social-list-pb: 0px;
     --footer-nav-fs: 18px;
     --footer-nav-lh: 43px;
@@ -83,8 +83,27 @@
   .nav__item {
     flex: 1 1 20%;
 
+    @media only screen and (max-width: 768px) {
+      line-height: 47px;
+    }
     @media only screen and (max-width: 420px) {
       flex: 1 1 10%;
+
+      &:nth-child(5) {
+        order: 2;
+      }
+      &:nth-child(4) {
+        order: 3;
+      }
+      &:nth-child(3) {
+        order: 4;
+      }
+      &:nth-child(2) {
+        order: 5;
+      }
+      &:nth-child(6) {
+        order: 6;
+      }
     }
   }
 
@@ -157,12 +176,12 @@
   }
 
   @media only screen and (max-width: 768px) {
-    margin-top: 30px;
+    margin-top: 36px;
     margin-right: 95px;
   }
 
   @media only screen and (max-width: 420px) {
-    margin-top: 24px;
+    margin-top: 28px;
     margin-left: auto;
     margin-right: auto;
   }

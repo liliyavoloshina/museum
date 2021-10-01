@@ -41,6 +41,11 @@
   }
 }
 
+.section-contacts {
+  @media screen and (max-width: 1024px) {padding-bottom: 67px;}
+  @media screen and (max-width: 768px) {padding-bottom: 39px;}
+}
+
 .contacts {
   display: flex;
   justify-content: space-between;
@@ -87,26 +92,6 @@
     .mapboxgl-ctrl-bottom-left {
       display: block;
     }
-  }
-  
-
-  &__map {
-    
-    
-    // height: 620px;
-
-    // @media (max-width: 1024px) {
-    //   .map {
-    //     width: calc(100vw - 330px);
-    //     height: calc(65vw - 212px);
-    //   }
-    // }
-  }
-
-  &__map img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
   &__subtitle {

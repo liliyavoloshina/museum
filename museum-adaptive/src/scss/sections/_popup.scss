@@ -623,13 +623,14 @@
   padding: 20px 0 11px;
   border-bottom: 1px solid $dark-red;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 768px) {
     padding: 23px 0 11px;
   }
 }
 
 .popup-payment__card {
   height: 240px;
+  margin-bottom: 24px;
 
   @media only screen and (max-width: 768px) {
     margin-top: 15px;
@@ -797,8 +798,13 @@
     margin-top: 26px;
     background-color: #161615;
 
+    @media only screen and (max-width: 768px) {
+      margin-top: 22px;
+    }
+
     @media only screen and (max-width: 420px) {
       height: 45px;
+      margin-top: 28px;
     }
   }
 
@@ -845,7 +851,7 @@
       @media only screen and (max-width: 420px) {
         font-size: 9px;
         line-height: 11px;
-        padding: 7px 9px 0 13px;
+        padding: 3px 9px 0 13px;
       }
     }
   }
@@ -858,7 +864,6 @@
   text-align: center;
   width: 220px;
   height: 45px;
-  margin-top: 28px;
   margin-left: auto;
   font-family: $font-base;
   font-weight: 400;

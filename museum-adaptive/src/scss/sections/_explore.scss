@@ -54,7 +54,6 @@
     flex: 1 1 var(--slider-width);
     padding-top: var(--explore-img-pt);
     width: 100%;
-    // overflow: hidden;
   }
 }
 
@@ -93,10 +92,9 @@
   position: relative;
   height: var(--slider-height);
   max-width: var(--slider-width);
-  // min-width: 380px;
   overflow: hidden;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1438px) {
     margin: 0 auto;
   }
 

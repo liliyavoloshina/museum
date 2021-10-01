@@ -1,6 +1,7 @@
 :root {
   --welcome-container-height: 810px;
   --welcome-slider-width: 52vw;
+  --welcome-slider-height: 45vw;
   --welcome-slider-controls-width: 60%;
   --welcome-slider-controls-height: 120px;
   --welcome-slider-controls-justify: space-between;
@@ -25,6 +26,7 @@
   :root {
     --welcome-container-height: 585px;
     --welcome-slider-width: 70vw;
+    --welcome-slider-height: 57vw;
     --welcome-slider-controls-justify: flex-end;
     --welcome-slider-controls-fs: 20px;
     --welcome-slider-pag-p: 7% 11%;
@@ -106,11 +108,11 @@
 .welcome-slider-wrapper {
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   width: var(--welcome-slider-width);
-  height: 100%;
+  height: var(--welcome-slider-height);
 
   @media screen and (max-width: 1024px) {
     padding-right: 20px;
@@ -213,7 +215,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: var(--welcome-slider-controls-justify);

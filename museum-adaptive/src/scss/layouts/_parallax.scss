@@ -21,4 +21,12 @@
   .webp & {
     background-image: url('../img/parallax.webp');
   }
+
+  @media screen and (max-width: 1024px) {
+    background-size: 190%;
+  }
+
+  @media screen and (max-width: 420px) {
+    background-size: 407%;
+  }
 }
