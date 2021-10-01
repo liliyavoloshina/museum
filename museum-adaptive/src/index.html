@@ -8,11 +8,11 @@
   <title>museum</title>
   <link rel="icon" href="./favicon.ico">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+  <link rel="preload"  as="style"
+  rel="stylesheet preload prefetch"  href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"> 
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -91,11 +91,11 @@
           <div class="welcome-slider-wrapper">
             <div class="welcome-slider">
               <div class="welcome-slider__slides" id="welcomeSlider">
-                <div class="slide slide-1 lazyload"></div>
-                <div class="slide slide-2 lazyload"></div>
-                <div class="slide slide-3 lazyload"></div>
-                <div class="slide slide-4 lazyload"></div>
-                <div class="slide slide-5 lazyload"></div>
+                <div class="slide slide-1"></div>
+                <div class="slide slide-2"></div>
+                <div class="slide slide-3"></div>
+                <div class="slide slide-4"></div>
+                <div class="slide slide-5"></div>
               </div>
 
               <div class="welcome-slider__controls">
@@ -130,9 +130,9 @@
           <a class="visiting-card-link" href="tour2.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" data-srcset="./img/visiting/royal-palace.webp">
-                <source type="image/jpeg" data-srcset="./img/visiting/royal-palace.jpg">
-                <img class="visiting-card__img lazyload" data-src="./img/visiting/royal-palace.webp" alt="Royal Palace">
+                <source type="image/webp" srcset="./img/visiting/royal-palace.webp">
+                <source type="image/jpeg" srcset="./img/visiting/royal-palace.jpg">
+                <img class="visiting-card__img" src="./img/visiting/royal-palace.webp" alt="Royal Palace">
               </picture>
               <h3 class="visiting-card__title underline-title">Royal Palace</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -142,9 +142,9 @@
           <a class="visiting-card-link" href="tour3.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" data-srcset="./img/visiting/denon-wing.webp">
-                <source type="image/jpeg" data-srcset="./img/visiting/denon-wing.jpg">
-                <img class="visiting-card__img lazyload" data-src="./img/visiting/denon-wing.webp" alt="Denon Wing">
+                <source type="image/webp" srcset="./img/visiting/denon-wing.webp">
+                <source type="image/jpeg" srcset="./img/visiting/denon-wing.jpg">
+                <img class="visiting-card__img" src="./img/visiting/denon-wing.webp" alt="Denon Wing">
               </picture>
               <h3 class="visiting-card__title underline-title">Denon Wing</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -155,9 +155,9 @@
           <a class="visiting-card-link" href="tour4.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" data-srcset="./img/visiting/colonnade-perrault.webp">
-                <source type="image/jpeg" data-srcset="./img/visiting/colonnade-perrault.jpg">
-                <img class="visiting-card__img lazyload" data-src="./img/visiting/colonnade-perrault.webp"
+                <source type="image/webp" srcset="./img/visiting/colonnade-perrault.webp">
+                <source type="image/jpeg" srcset="./img/visiting/colonnade-perrault.jpg">
+                <img class="visiting-card__img" src="./img/visiting/colonnade-perrault.webp"
                   alt="Colonnade Perrault">
               </picture>
               <h3 class="visiting-card__title underline-title">Colonnade Perrault</h3>
@@ -169,9 +169,9 @@
           <a class="visiting-card-link" href="tour5.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" data-srcset="./img/visiting/greek-hall.webp">
-                <source type="image/jpeg" data-srcset="./img/visiting/greek-hall.jpg">
-                <img class="visiting-card__img lazyload" data-src="./img/visiting/greek-hall.webp" alt="Greek hall">
+                <source type="image/webp" srcset="./img/visiting/greek-hall.webp">
+                <source type="image/jpeg" srcset="./img/visiting/greek-hall.jpg">
+                <img class="visiting-card__img" src="./img/visiting/greek-hall.webp" alt="Greek hall">
               </picture>
               <h3 class="visiting-card__title underline-title">Greek hall</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -182,9 +182,9 @@
           <a class="visiting-card-link" href="tour6.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" data-srcset="./img/visiting/mona-lisa.webp">
-                <source type="image/jpeg" data-srcset="./img/visiting/mona-lisa.jpg">
-                <img class="visiting-card__img lazyload" data-src="./img/visiting/mona-lisa.webp" alt="Mona Lisa">
+                <source type="image/webp" srcset="./img/visiting/mona-lisa.webp">
+                <source type="image/jpeg" srcset="./img/visiting/mona-lisa.jpg">
+                <img class="visiting-card__img" src="./img/visiting/mona-lisa.webp" alt="Mona Lisa">
               </picture>
               <h3 class="visiting-card__title underline-title">Mona Lisa</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -195,9 +195,9 @@
           <a class="visiting-card-link" href="tour7.html" target="_blank">
             <article class="visiting-card">
               <picture>
-                <source type="image/webp" data-srcset="./img/visiting/night-palace.webp">
-                <source type="image/jpeg" data-srcset="./img/visiting/night-palace.jpg">
-                <img class="visiting-card__img lazyload" data-src="./img/visiting/night-palace.webp" alt="Night Palace">
+                <source type="image/webp" srcset="./img/visiting/night-palace.webp">
+                <source type="image/jpeg" srcset="./img/visiting/night-palace.jpg">
+                <img class="visiting-card__img" src="./img/visiting/night-palace.webp" alt="Night Palace">
               </picture>
               <h3 class="visiting-card__title underline-title">Night Palace</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -228,16 +228,16 @@
           <div class="explore-img">
             <div class="explore-img__img">
               <picture>
-                <source type="image/webp" data-srcset="./img/explore/after.webp">
-                <source type="image/jpeg" data-srcset="./img/explore/after.jpg">
-                <img class="img-after lazyload" data-src="./img/explore/after.webp" alt="Reproduction After">
+                <source type="image/webp" srcset="./img/explore/after.webp">
+                <source type="image/jpeg" srcset="./img/explore/after.jpg">
+                <img class="img-after" src="./img/explore/after.webp" alt="Reproduction After">
               </picture>
             </div>
             <div class="explore-img__img explore-img-overlay">
               <picture>
-                <source type="image/webp" data-srcset="./img/explore/before.webp">
-                <source type="image/jpeg" data-srcset="./img/explore/before.jpg">
-                <img class="img-before lazyload" data-src="./img/explore/before.webp" alt="Reproduction Before">
+                <source type="image/webp" srcset="./img/explore/before.webp">
+                <source type="image/jpeg" srcset="./img/explore/before.jpg">
+                <img class="img-before" src="./img/explore/before.webp" alt="Reproduction Before">
               </picture>
             </div>
           </div>
@@ -278,9 +278,9 @@
             <div class="video-slider-item__wrapper">
               <a class="video-slider-item__link" href="https://youtu.be/aWmJ5DgyWPI" data-id="aWmJ5DgyWPI">
                 <picture>
-                  <source type="image/webp" data-srcset="./img/video/poster3.webp">
-                  <source type="image/jpeg" data-srcset="./img/video/poster3.jpg">
-                  <img class="video-slider-item__media lazyload" data-src="./img/video/poster3.webp"
+                  <source type="image/webp" srcset="./img/video/poster3.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster3.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster3.webp"
                     alt="Exposition Video">
                 </picture>
               </a>
@@ -304,9 +304,9 @@
             <div class="video-slider-item__wrapper">
               <a class="video-slider-item__link" href="https://youtu.be/Vi5D6FKhRmo" data-id="Vi5D6FKhRmo">
                 <picture>
-                  <source type="image/webp" data-srcset="./img/video/poster1.webp">
-                  <source type="image/jpeg" data-srcset="./img/video/poster1.jpg">
-                  <img class="video-slider-item__media lazyload" data-src="./img/video/poster1.webp"
+                  <source type="image/webp" srcset="./img/video/poster1.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster1.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster1.webp"
                     alt="Au Louvre Video">
                 </picture>
               </a>
@@ -330,9 +330,9 @@
             <div class="video-slider-item__wrapper">
               <a class="video-slider-item__link" href="https://youtu.be/NOhDysLnTvY" data-id="NOhDysLnTvY">
                 <picture>
-                  <source type="image/webp" data-srcset="./img/video/poster2.webp">
-                  <source type="image/jpeg" data-srcset="./img/video/poster2.jpg">
-                  <img class="video-slider-item__media lazyload" data-src="./img/video/poster2.webp"
+                  <source type="image/webp" srcset="./img/video/poster2.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster2.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster2.webp"
                     alt="Promenade Video">
                 </picture>
               </a>
@@ -356,9 +356,9 @@
             <div class="video-slider-item__wrapper">
               <a class="video-slider-item__link" href="https://youtu.be/aWmJ5DgyWPI" data-id="aWmJ5DgyWPI">
                 <picture>
-                  <source type="image/webp" data-srcset="./img/video/poster4.webp">
-                  <source type="image/jpeg" data-srcset="./img/video/poster4.jpg">
-                  <img class="video-slider-item__media lazyload" data-src="./img/video/poster4.webp"
+                  <source type="image/webp" srcset="./img/video/poster4.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster4.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster4.webp"
                     alt="Petits contes de Printemps Video">
                 </picture>
               </a>
@@ -382,9 +382,9 @@
             <div class="video-slider-item__wrapper">
               <a class="video-slider-item__link" href="https://youtu.be/zp1BXPX8jcU" data-id="zp1BXPX8jcU">
                 <picture>
-                  <source type="image/webp" data-srcset="./img/video/poster0.webp">
-                  <source type="image/jpeg" data-srcset="./img/video/poster0.jpg">
-                  <img class="video-slider-item__media lazyload" data-src="./img/video/poster0.webp"
+                  <source type="image/webp" srcset="./img/video/poster0.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster0.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster0.webp"
                     alt="Welcome to the Louvre Video">
                 </picture>
               </a>
@@ -441,9 +441,9 @@
         <div class="tickets">
           <div class="tickets__img">
             <picture>
-              <source type="image/webp" data-srcset="./img/tickets.webp">
-              <source type="image/jpeg" data-srcset="./img/tickets.jpg">
-              <img data-src="./img/tickets.webp" class="lazyload" alt="Tickets">
+              <source type="image/webp" srcset="./img/tickets.webp">
+              <source type="image/jpeg" srcset="./img/tickets.jpg">
+              <img src="./img/tickets.webp" class=" alt="Tickets">
             </picture>
           </div>
           <div class="tickets__info">

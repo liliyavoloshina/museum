@@ -1,5 +1,4 @@
 import './scss/style.scss'
-import './js/lazyless'
 import './js/header'
 import './js/welcome-slider'
 import './js/explore-slider'
