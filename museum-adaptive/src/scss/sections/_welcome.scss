@@ -113,6 +113,8 @@
   flex-direction: column;
   width: var(--welcome-slider-width);
   height: var(--welcome-slider-height);
+  max-height: 864px;
+  max-width: 1440px;
 
   @media screen and (max-width: 1024px) {
     padding-right: 20px;
@@ -277,7 +279,7 @@
       transition: $link-transition;
     }
 
-    &.tns-nav-active {
+    &.tns-nav-active, &.active {
       background-color: $text-gold;
     }
   }

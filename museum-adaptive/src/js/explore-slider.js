@@ -29,7 +29,7 @@ function initComparisons() {
     }
 
     if (document.body.clientWidth <= 420) {
-      overlay.style.width = '58%'
+      overlay.style.width = '59%'
       slider.style.left = width / 1.6 - slider.offsetWidth / 2 + 'px'
     }
 
