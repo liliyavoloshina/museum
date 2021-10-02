@@ -102,14 +102,14 @@
 
   &__subtitle {
     margin-bottom: var(--contacts-subtitle-mb);
-    font-family: $font-base;
+    font-family: var(--font-base);
     font-weight: 500;
     font-size: var(--contacts-subtitle-fs);
     line-height: var(--contacts-subtitle-lh);
   }
 
   &__info {
-    font-family: $font-base;
+    font-family: var(--font-base);
     font-weight: 300;
     font-size: var(--contacts-info-fs);
     line-height: var(--contacts-info-lh);
@@ -121,7 +121,7 @@
 
   a {
     text-decoration: none;
-    color: $bg-dark;
+    color: var(--bg-dark);
   }
 
   @media screen and (max-width: 768px) {

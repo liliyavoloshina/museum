@@ -136,7 +136,7 @@
   &__item:hover {
     filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg) brightness(96%) contrast(81%);
     cursor: pointer;
-    transition: $link-transition;
+    transition: var(--link-transition);
   }
 
   &__item + &__item {
@@ -203,7 +203,7 @@
   align-items: center;
   width: 100%;
   margin-top: var(--footer-copy-mt);
-  font-family: $font-base;
+  font-family: var(--font-base);
   font-weight: 200;
   font-size: var(--footer-copy-fs);
   line-height: var(--footer-copy-lh);
@@ -223,8 +223,8 @@
     color: #ffffff;
 
     &:hover {
-      color: $text-gold;
-      transition: $quick-transition;
+      color: var(--text-gold);
+      transition: var(--quick-transition);
     }
   }
 }

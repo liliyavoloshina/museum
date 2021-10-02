@@ -109,11 +109,11 @@
   }
 
   &-subtitle {
-    font-family: $font-base;
+    font-family: var(--font-base);
     font-weight: 700;
     font-size: var(--tickets-subtitle-fs);
     line-height: var(--tickets-subtitle-lh);
-    color: $text-dark;
+    color: var(--text-dark);
   }
 }
 
@@ -130,11 +130,11 @@
   position: relative;
   margin-top: 25px;
   padding-left: 40px;
-  font-family: $font-base;
+  font-family: var(--font-base);
   font-weight: 300;
   font-size: 22px;
   line-height: 26px;
-  color: $text-dark;
+  color: var(--text-dark);
   cursor: pointer;
   user-select: none;
 
@@ -156,7 +156,7 @@
     width: 17px;
     background-color: transparent;
     border-radius: 50%;
-    border: 2px solid $text-dark;
+    border: 2px solid var(--text-dark);
   }
 
   &__checkmark:after {
@@ -175,7 +175,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: $text-dark;
+    background: var(--text-dark);
   }
 }
 
@@ -191,11 +191,11 @@
   margin-top: var(--tickets-amount-option-mt);
 
   &__label {
-    font-family: $font-base;
+    font-family: var(--font-base);
     font-weight: 300;
     font-size: var(--tickets-amount-option-label-fs);
     line-height: var(--tickets-amount-option-label-lh);
-    color: $text-dark;
+    color: var(--text-dark);
   }
 
   &__box {
@@ -203,9 +203,9 @@
     width: 100%;
     height: 50px;
     margin-top: var(--tickets-amount-box-mt);
-    font-family: $font-base;
+    font-family: var(--font-base);
     text-align: center;
-    border: 3px solid $text-dark;
+    border: 3px solid var(--text-dark);
   }
 
   &__btn {
@@ -216,7 +216,7 @@
     font-size: 32px;
     line-height: 37.5px;
     border: none;
-    color: $text-dark;
+    color: var(--text-dark);
     background-color: transparent;
   }
 
@@ -230,8 +230,8 @@
   }
 
   &__btn:hover {
-    color: $text-gold;
-    transition: $quick-transition;
+    color: var(--text-gold);
+    transition: var(--quick-transition);
     cursor: pointer;
   }
 
@@ -242,7 +242,7 @@
     font-size: 22px;
     line-height: 26px;
     border: none;
-    color: $text-dark;
+    color: var(--text-dark);
     background-color: transparent;
   }
 

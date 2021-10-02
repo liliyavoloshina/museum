@@ -104,7 +104,7 @@
 
   &-desc {
     width: 720px;
-    font-family: $font-base;
+    font-family: var(--font-base);
     font-weight: 300;
     font-size: 22px;
     line-height: 47px;
@@ -142,7 +142,7 @@
   align-items: center;
   height: var(--video-panel-h);
   padding: 0 var(--video-panel-p);
-  background-color: $text-dark;
+  background-color:var(--text-dark);
 
   @media screen and (max-width: 768px) {
     position: relative;
@@ -209,7 +209,7 @@
   &:hover {
     filter: invert(67%) sepia(0%) saturate(0%) hue-rotate(3deg) brightness(90%) contrast(92%);
     cursor: pointer;
-    transition: $quick-transition;
+    transition: var(--quick-transition);
   }
 }
 
@@ -364,7 +364,7 @@
 
     .title {
       width: 71%;
-      font-family: $font-base;
+      font-family: var(--font-base);
       font-weight: 300;
       font-size: 18px;
       line-height: 38px;
@@ -448,7 +448,7 @@
     height: var(--video-pag-item-size);
     background-size: contain;
     background-repeat: no-repeat;
-    transition: $quick-transition;
+    transition: var(--quick-transition);
 
     &.tns-nav-active, &.active {
       filter: invert(13%) sepia(94%) saturate(0%) hue-rotate(205deg) brightness(60%) contrast(88%);

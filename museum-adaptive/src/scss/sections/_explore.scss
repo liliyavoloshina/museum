@@ -59,14 +59,14 @@
 
 .explore-desc {
   padding-top: var(--explore-desc-pt);
-  font-family: $font-base;
+  font-family: var(--font-base);
   font-weight: 300;
   font-size: var(--explore-desc-fs);
   line-height: 38px;
-  color: $text-light;
+  color: var(--text-light);
 
   &__accent {
-    color: $text-gold;
+    color: var(--text-gold);
   }
 
   br {

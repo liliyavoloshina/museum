@@ -34,16 +34,16 @@
   &__text {
     font-size: var(--logo-fs);
     font-weight: 400;
-    font-family: $font-heading;
+    font-family: var(--font-heading);
     line-height: 50px;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: $text-light;
+    color:var(--text-light);
   }
 
   &:hover {
     filter: invert(55%) sepia(8%) saturate(1451%) hue-rotate(356deg) brightness(96%) contrast(81%);
     cursor: pointer;
-    transition: $link-transition;
+    transition: var(--link-transition);
   }
 }

@@ -70,7 +70,7 @@ html {
 }
 
 .section-dark {
-  background-color: $bg-dark;
+  background-color: var(--bg-dark);
 }
 
 .nav {
@@ -87,30 +87,30 @@ html {
 
   &__link {
     font-size: $nav-font-size;
-    font-family: $font-base;
+    font-family: var(--font-base);
     font-weight: 200;
-    color: $text-light;
+    color: var(--text-light);
     text-decoration: none;
   }
 
   &__link:hover {
-    color: $text-gold;
-    transition: $link-transition;
+    color: var(--text-gold);
+    transition: var(--link-transition);
   }
 }
 
 .section-title {
-  font-family: $font-heading;
+  font-family: var(--font-heading);
   font-weight: 400;
   font-size: var(--section-title-fs);
   line-height: var(--section-title-lh);
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: $text-gold;
+  color: var(--text-gold);
 }
 
 .section-title--light {
-  color: $text-light;
+  color: var(--text-light);
 }
 
 .underline-title {
@@ -123,8 +123,8 @@ html {
     left: 0;
     width: var(--underline-title-w);
     height: 2px;
-    background-color: $dark-red;
-    transition: $base-transition;
+    background-color: var(--dark-red);
+    transition: var(--base-transition);
   }
 }
 
