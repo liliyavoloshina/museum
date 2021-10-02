@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 1024px) {
   :root {
-    --contacts-pt: 80px;
+    --contacts-pt: 83px;
     --contacts-subtitle-mb: 35px;
     --contacts-subtitle-fs: 24px;
     --contacts-subtitle-lh: 28px;
@@ -42,7 +42,7 @@
 }
 
 .section-contacts {
-  @media screen and (max-width: 1024px) {padding-bottom: 67px;}
+  @media screen and (max-width: 1024px) {padding-bottom: 64px;}
   @media screen and (max-width: 768px) {padding-bottom: 39px;}
 }
 
@@ -56,12 +56,18 @@
   }
 
   &__map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // width: 100%;
     max-width: 960px;
     height: 620px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+    }
 
     @media (max-width: 1024px) {
       width: calc(100vw - 330px);
