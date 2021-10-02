@@ -4,13 +4,14 @@
 @import 'abstract/_abstracts-dir';
 
 //Base Styles
-@import 'base/_base-dir';
+// @import 'base/_base-dir';
 
 //Components
-@import 'components/_components-dir';
+// @import 'components/_components-dir';
 
 //Layout
-@import 'layouts/_layouts-dir';
+// @import 'layouts/_layouts-dir';
+@import 'layouts/parallax';
 
 // Sections
 @import 'sections/_sections-dir';

@@ -19,9 +19,10 @@ const devServer = isDev =>
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
-  entry: fs.existsSync(path.resolve(__dirname, 'src', 'index.ts'))
-    ? './index.ts'
-    : './index.js',
+  entry: {
+    main: [fs.existsSync(path.resolve(__dirname, 'src', 'index.ts')) ? './index.ts' : './index.js'],
+    crit: [fs.existsSync(path.resolve(__dirname, 'src', 'crit.ts')) ? './crit.ts' : './crit.js']
+  },
   context: path.resolve(__dirname, 'src'),
   output: {
     filename: 'bundle.[contenthash].js',
@@ -49,19 +50,25 @@ module.exports = ({ development }) => ({
       },
       {
         test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.s[ac]ss$/i,
+        include: path.resolve(__dirname, './src/scss/'),
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[contenthash].css' }),
-    new HtmlWebpackPlugin({ template: './index.html' }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      chunks : ['crit'],
+      // excludeAssets: [/style.*.css/]
+    }),
     new HtmlWebpackPlugin({
       filename: 'tour1.html',
       template: 'tours/tour1.html'
@@ -96,13 +103,7 @@ module.exports = ({ development }) => ({
           from: '**/*',
           context: path.resolve(__dirname, './src'),
           globOptions: {
-            ignore: [
-              '**/*.js',
-              '**/*.ts',
-              '**/*.scss',
-              '**/*.sass',
-              '**/*.html'
-            ]
+            ignore: ['**/*.js', '**/*.ts', '**/*.scss', '**/*.sass', '**/*.html']
           },
           noErrorOnMissing: true,
           force: true
