@@ -15,6 +15,7 @@ const devServer = isDev =>
           contentBase: '/'
         }
       }
+      
 
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
@@ -66,8 +67,7 @@ module.exports = ({ development }) => ({
     }),
     new HtmlWebpackPlugin({
       template: './index.html',
-      chunks : ['crit'],
-      // excludeAssets: [/style.*.css/]
+      chunks: development ? '' : ['crit'],
     }),
     new HtmlWebpackPlugin({
       filename: 'tour1.html',
