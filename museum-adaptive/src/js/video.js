@@ -40,8 +40,8 @@ currentVideoProgress.addEventListener('input', handleProgress)
 // }
 
 function handleProgress() {
-  const newTime = (this.value / 100) * currentVideo.duration
-  currentVideo.currentTime = newTime
+  const newValue = this.value
+  currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${newValue}%, #c4c4c4 ${newValue}%, #c4c4c4 100%)`
 }
 
 // function watchProgess() {
@@ -117,22 +117,21 @@ function handleVolume() {
 //     fullscreenWrapper.classList.add('expanded')
 //     fullscreenMode = true
 //     currentVideoFullscreenBtn.classList.add('exit')
-//   } 
+//   }
 // }
-
 
 watchWindow()
 
 function watchWindow() {
-  if (window.matchMedia("(max-width: 1024px)").matches) {
+  if (window.matchMedia('(max-width: 1024px)').matches) {
     currentVideoProgress.value = 40
     currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${40}%, #c4c4c4 ${40}%, #c4c4c4 100%)`
   }
-  if (window.matchMedia("(max-width: 768px)").matches) {
+  if (window.matchMedia('(max-width: 768px)').matches) {
     currentVideoProgress.value = 31
     currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${31}%, #c4c4c4 ${31}%, #c4c4c4 100%)`
   }
-  if (window.matchMedia("(max-width: 420px)").matches) {
+  if (window.matchMedia('(max-width: 420px)').matches) {
     currentVideoProgress.value = 40
     currentVideoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${40}%, #c4c4c4 ${40}%, #c4c4c4 100%)`
   }

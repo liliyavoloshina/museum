@@ -26,7 +26,7 @@ module.exports = ({ development }) => ({
   },
   context: path.resolve(__dirname, 'src'),
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: '[file]'
   },
@@ -67,7 +67,7 @@ module.exports = ({ development }) => ({
     }),
     new HtmlWebpackPlugin({
       template: './index.html',
-      chunks: development ? '' : ['critical'],
+      chunks: development ? ['critical', 'main'] : ['critical']
     }),
     new HtmlWebpackPlugin({
       filename: 'tour1.html',
