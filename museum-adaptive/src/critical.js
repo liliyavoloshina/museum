@@ -20,4 +20,18 @@ Score: 150 / 150
   ✅ Оптимизация скорости загрузки страницы +8
 `)
 
-console.log('%c ', 'font-size:400px; background:url(https://pics.me.me/codeit-google-until-youfinda-stackoverflow-answerwith-code-to-copy-paste-34126823.png) no-repeat;');
+console.image = function(url, size) {
+  const image = new Image()
+  image.onload = function() {
+    const style = [
+      `font-size: 1px;`,
+      `padding: ${(this.height / 100) * size}px ${(this.width / 100) * size}px;`,
+      `background: url(${url}) no-repeat;`,
+      `background-size: contain;`
+    ].join(' ')
+    console.log('%c ', style)
+  }
+  image.src = url
+}
+
+console.image('https://i.ibb.co/tqV2MSf/proof-speed.jpg', 30)
