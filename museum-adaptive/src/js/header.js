@@ -1,11 +1,13 @@
 const headerBtn = document.querySelector('#headerBtn'),
-headerNav = document.querySelector('#headerNav')
+headerNav = document.querySelector('#headerNav'),
+welcomeText = document.querySelector('.welcome__text')
 
 headerBtn.addEventListener('click', toggleHeader)
 
 function toggleHeader() {
   changeImage()
   toggleNav()
+  welcomeText.classList.toggle('hidden')
 }
 
 function changeImage() {
@@ -23,5 +25,6 @@ document.addEventListener('click', function(event) {
   ) {
     headerBtn.classList.remove('opened')
     headerNav.classList.remove('opened')
+    welcomeText.classList.toggle('hidden')
   }
 })

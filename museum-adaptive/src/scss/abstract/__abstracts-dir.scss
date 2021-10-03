@@ -2,6 +2,14 @@
 Abstract settings, helpers, mixins and variables
 */
 
+.bad {
+  border: 1px solid red;
+}
+
+.badParent {
+  background-color: pink
+}
+
 //Variables
 @import "variables";
 
@@ -10,3 +18,4 @@ Abstract settings, helpers, mixins and variables
 
 // Fonts
 @import "fonts";
+

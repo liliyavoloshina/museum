@@ -36,13 +36,19 @@
   }
 }
 
+@media only screen and (max-width: 450px) {
+  :root {
+    --footer-nav-w: auto;
+  }
+}
+
 @media only screen and (max-width: 420px) {
   :root {
     --footer-section-p: 24px 0 40px;
     --footer-nav-w: auto;
     --footer-nav-fs: 16px;
     --footer-nav-lh: 19px;
-    --footer-navlist-cg: 23%;
+    --footer-navlist-cg: 12%;
     --footer-copy-fs: 16px;
   }
 }
@@ -87,22 +93,25 @@
       line-height: 47px;
     }
     @media only screen and (max-width: 420px) {
-      flex: 1 1 10%;
       line-height: 50px;
 
       &:nth-child(5) {
+        text-align: center;
         order: 2;
       }
       &:nth-child(4) {
+        text-align: center;
         order: 3;
       }
       &:nth-child(3) {
         order: 4;
       }
       &:nth-child(2) {
+        text-align: center;
         order: 5;
       }
       &:nth-child(6) {
+        text-align: center;
         order: 6;
       }
     }

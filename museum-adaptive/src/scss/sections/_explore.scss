@@ -28,6 +28,7 @@
     --slider-width: calc(100vw - 44px);
     --slider-height: calc(100vw - 66px);
     --explore-img-pt: 66px;
+    --explore-desc-fs: 16px;
   }
 }
 
@@ -94,7 +95,7 @@
   max-width: var(--slider-width);
   overflow: hidden;
 
-  @media screen and (max-width: 1438px) {
+  @media screen and (max-width: 1439px) {
     margin: 0 auto;
   }
 
@@ -123,6 +124,11 @@
     width: 40px;
     height: 100%;
     cursor: ew-resize;
+
+    @media screen and (max-width: 768px) {
+      height: 105%;
+    }
+  
   }
 
   .no-webp &-slider  {

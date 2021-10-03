@@ -17,7 +17,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 981px) {
   :root {
     --popup-w: 590px;
     --popup-p: 30px 30px;
@@ -25,9 +25,19 @@
     --popup-tickets-w: 100%;
     --popup-payment-w: 100%;
     --popup-tickets-title-mb: 14.96px;
+    --popup-content-g: 50.96px 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
     --popup-tickets-form-mt: 39.89px;
     --popup-tickets-half-w: calc(50% - 14px);
   }
+}
+
+@media only screen and (max-width: 550px) {
+
 }
 
 @media only screen and (max-width: 420px) {
@@ -65,10 +75,7 @@
     flex-wrap: wrap;
     width: 100%;
     max-width: 970px;
-
-    @media only screen and (max-width: 768px) {
-      gap: 50.96px 0;
-    }
+    gap: var(--popup-content-g);
   }
 
   &-tickets {
@@ -474,14 +481,14 @@
     background-repeat: no-repeat;
     background-size: contain;
 
-    .no-webp &   {
+    .no-webp & {
       background-image: url('../img/overview.jpg');
     }
-  
-    .webp &   {
+
+    .webp & {
       background-image: url('../img/overview.webp');
     }
-    
+
     @media only screen and (max-width: 420px) {
       width: 120px;
       height: 96px;
@@ -630,13 +637,14 @@
 
 .popup-payment__card {
   height: 240px;
-  margin-bottom: 24px;
+  // margin-bottom: 24px;
 
   @media only screen and (max-width: 768px) {
     margin-top: 15px;
   }
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 550px) {
+  // @media only screen and (max-width: 420px) {
     margin-top: 14px;
     position: static;
     height: auto;
@@ -652,7 +660,8 @@
   border-radius: 3px;
   background-color: #bcbcbc;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 550px) {
+  // @media only screen and (max-width: 420px) {
     position: static;
     width: 100%;
     height: auto;
@@ -787,7 +796,8 @@
   border-radius: 3px;
   background-color: #939393;
 
-  @media only screen and (max-width: 420px) {
+  @media only screen and (max-width: 550px) {
+  // @media only screen and (max-width: 420px) {
     position: static;
     width: 100%;
   }
@@ -875,6 +885,7 @@
   outline: none;
   background-color: var(--dark-red);
   color: var(--text-light);
+  margin-top: 28px;
 
   &:hover {
     background-color: var(--text-gold);
@@ -887,6 +898,11 @@
     line-height: 26px;
   }
 
+  @media only screen and (max-width: 768px) {
+    margin-top: 25px;
+    margin-bottom: 3px;
+  }
+  
   @media only screen and (max-width: 420px) {
     margin-top: 42px;
     font-size: 20px;

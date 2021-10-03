@@ -1,12 +1,11 @@
-$nav-font-size: 22px;
-$nav-transition: 0.5s ease;
-
 :root {
   --header-p: 50px 0;
+  --nav-transition: 0.5s ease;
 }
 
 @media only screen and (max-width: 1024px) {
   :root {
+    --header-h: 715px;
     --header-p: 40px 0;
     --header-nav-pt: 40px;
   }
@@ -14,13 +13,15 @@ $nav-transition: 0.5s ease;
 
 @media screen and (max-width: 768px) {
   :root {
-    --header-p: 40px 0px 22px;
+    --header-h: 971px;
+    --header-p: 36px 0px 25px;
     --header-nav-pt: 35px;
   }
 }
 
 @media screen and (max-width: 420px) {
   :root {
+    --header-h: 634px;
     --header-p: 20px 0px 26px;
     --header-nav-pt: 19px;
   }
@@ -42,22 +43,27 @@ $nav-transition: 0.5s ease;
     z-index: 100;
     background: url('../svg/burger.svg') transparent no-repeat center;
     background-size: contain;
-    transition: $nav-transition;
+    transition: var(--nav-transition);
+    cursor: pointer;
+
+    &:hover {
+      filter: var(--filter-gold);
+    }
 
     &.opened {
       width: 24px;
       height: 24px;
       background-image: url('../svg/burger-close.svg');
 
-      @media only screen and (max-width: 768px) {
-        position: fixed;
-        right: 21px;
-        top: 44px;
-      }
+      // @media only screen and (max-width: 768px) {
+      //   position: fixed;
+      //   right: 21px;
+      //   top: 44px;
+      // }
 
-      @media screen and (max-width: 420px) {
-        top: 33px;
-      }
+      // @media screen and (max-width: 420px) {
+      //   top: 33px;
+      // }
     }
 
     @media only screen and (max-width: 1024px) {
@@ -68,6 +74,7 @@ $nav-transition: 0.5s ease;
     @media only screen and (max-width: 768px) {
       margin-bottom: 15px;
     }
+
     @media only screen and (max-width: 420px) {
       margin-bottom: 0;
     }
@@ -110,15 +117,17 @@ $nav-transition: 0.5s ease;
   }
 
   @media screen and (max-width: 1024px) {
-    position: fixed;
+    position: absolute;
+    // position: fixed;
     top: 0;
     left: -100%;
-    bottom: 0;
+    height: var(--header-h);
+    // bottom: 0;
     z-index: 100;
     padding-top: var(--header-nav-pt);
     background-color: var(--bg-dark);
-    transition: $nav-transition;
-    overflow-y: scroll;
+    transition: var(--nav-transition);
+    overflow-y: auto;
 
     .nav__list {
       flex-direction: column;
@@ -175,7 +184,7 @@ $nav-transition: 0.5s ease;
     //   width: 200px;
     //   pointer-events: none;
     //   background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
-  
+
     //   @media only screen and (max-width: 768px) {
     //     display: none;
     //   }

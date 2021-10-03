@@ -7,7 +7,7 @@
   --visiting-card-title-fs: 32px;
   --visiting-card-title-lh: 35px;
   --visiting-card-title-pt: 25px;
-  --visiting-card-title-ls: 3px;
+  --visiting-card-title-ls: 5px;
   --visiting-card-subtitle-fs: 22px;
   --visiting-card-desc-fs: 18px;
   --visiting-card-desc-lh: 21.09px;
@@ -48,6 +48,7 @@
 
 @media screen and (max-width: 420px) {
   :root {
+    --visiting-cards-pt: 61px;
     --visiting-cards-g: 40px 0;
     --visiting-card-h: 295px;
     --visiting-card-title-fs: 18px;
