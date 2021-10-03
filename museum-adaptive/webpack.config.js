@@ -22,7 +22,7 @@ module.exports = ({ development }) => ({
   devtool: development ? 'inline-source-map' : false,
   entry: {
     main: [fs.existsSync(path.resolve(__dirname, 'src', 'index.ts')) ? './index.ts' : './index.js'],
-    crit: [fs.existsSync(path.resolve(__dirname, 'src', 'crit.ts')) ? './crit.ts' : './crit.js']
+    critical: [fs.existsSync(path.resolve(__dirname, 'src', 'critical.ts')) ? './critical.ts' : './critical.js']
   },
   context: path.resolve(__dirname, 'src'),
   output: {
@@ -67,7 +67,7 @@ module.exports = ({ development }) => ({
     }),
     new HtmlWebpackPlugin({
       template: './index.html',
-      chunks: development ? '' : ['crit'],
+      chunks: development ? '' : ['critical'],
     }),
     new HtmlWebpackPlugin({
       filename: 'tour1.html',
