@@ -680,9 +680,9 @@
     let deferCssLink = document.getElementsByTagName('link')[0];
     deferCssLink.parentNode.insertBefore(deferCss, deferCssLink);
 
-    // let deferJs = document.createElement('script');
-    // deferJs.src = 'main.js';
-    // let deferJsScript = document.getElementsByTagName('script')[0];
-    // deferJsScript.parentNode.insertBefore(deferJs, deferJsScript);
+    let deferJs = document.createElement('script');
+    deferJs.src = 'main.js';
+    let deferJsScript = document.getElementsByTagName('script')[0];
+    deferJsScript.parentNode.insertBefore(deferJs, deferJsScript);
   </script>
 </body>
