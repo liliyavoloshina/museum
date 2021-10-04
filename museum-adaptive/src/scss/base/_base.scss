@@ -1,10 +1,9 @@
-$nav-font-size: 22px;
-
 :root {
   --container-p: 0;
   --section-p: 75px 0;
   --section-title-fs: 80px;
   --section-title-lh: 90px;
+  --nav-font-size: 22px;
   --underline-title-full-b: -28px;
   --underline-title-w: 300px;
   --underline-title-b: -11px;
@@ -16,6 +15,7 @@ $nav-font-size: 22px;
     --section-p: 61px 0;
     --section-title-fs: 50px;
     --section-title-lh: 75px;
+    --nav-font-size: 20px;
     --underline-title-full-b: -22px;
     --underline-title-w: 150px;
     --underline-title-b: -13px;
@@ -86,7 +86,7 @@ html {
   }
 
   &__link {
-    font-size: $nav-font-size;
+    font-size: var(--nav-font-size);
     font-family: var(--font-base);
     font-weight: 200;
     color: var(--text-light);

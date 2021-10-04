@@ -54,16 +54,6 @@
       width: 24px;
       height: 24px;
       background-image: url('../svg/burger-close.svg');
-
-      // @media only screen and (max-width: 768px) {
-      //   position: fixed;
-      //   right: 21px;
-      //   top: 44px;
-      // }
-
-      // @media screen and (max-width: 420px) {
-      //   top: 33px;
-      // }
     }
 
     @media only screen and (max-width: 1024px) {
@@ -118,11 +108,9 @@
 
   @media screen and (max-width: 1024px) {
     position: absolute;
-    // position: fixed;
     top: 0;
     left: -100%;
     height: var(--header-h);
-    // bottom: 0;
     z-index: 100;
     padding-top: var(--header-nav-pt);
     background-color: var(--bg-dark);
@@ -159,6 +147,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-weight: 300;
     }
 
     .nav__logo {
@@ -173,22 +162,6 @@
     .nav__arrow {
       display: block;
     }
-
-    // &::after {
-    //   content: '';
-    //   position: absolute;
-    //   top: 0;
-    //   bottom: 0;
-    //   right: -200px;
-    //   z-index: 99;
-    //   width: 200px;
-    //   pointer-events: none;
-    //   background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
-
-    //   @media only screen and (max-width: 768px) {
-    //     display: none;
-    //   }
-    // }
   }
 
   .header-images {

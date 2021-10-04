@@ -19,7 +19,7 @@
     --explore-desc-fot-pt: 85px;
     --explore-desc-br-d: none;
     --explore-desc-fs: 20px;
-    --explore-img-pt: 55px;
+    --explore-img-pt: 62px;
   }
 }
 
@@ -63,7 +63,8 @@
   font-family: var(--font-base);
   font-weight: 300;
   font-size: var(--explore-desc-fs);
-  line-height: 38px;
+  // line-height: 38px;
+  line-height: 36px;
   color: var(--text-light);
 
   &__accent {
@@ -128,7 +129,6 @@
     @media screen and (max-width: 768px) {
       height: 105%;
     }
-  
   }
 
   .no-webp &-slider  {

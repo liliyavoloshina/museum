@@ -6,6 +6,11 @@
   --logo-img-h: 34px;
 }
 
+@media screen and (max-width: 1024px) {
+  :root {
+    --logo-w: 199px;
+  }
+}
 @media screen and (max-width: 768px) {
   :root {
     --logo-w: 201px;
