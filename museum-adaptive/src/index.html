@@ -85,6 +85,10 @@
             <div class="welcome-slider">
               <div class="welcome-slider__slides" id="welcomeSlider">
                 <div class="slide slide-1"></div>
+                <div class="slide slide-2"></div>
+                <div class="slide slide-3"></div>
+                <div class="slide slide-4"></div>
+                <div class="slide slide-5"></div>
               </div>
 
               <div class="welcome-slider__controls">
@@ -122,7 +126,8 @@
               <picture>
                 <source type="image/webp" srcset="./img/visiting/royal-palace.webp">
                 <source type="image/jpeg" srcset="./img/visiting/royal-palace.jpg">
-                <img class="visiting-card__img" loading="lazy" src="./img/visiting/royal-palace.webp" alt="Royal Palace">
+                <img class="visiting-card__img" loading="lazy" src="./img/visiting/royal-palace.webp"
+                  alt="Royal Palace">
               </picture>
               <h3 class="visiting-card__title underline-title">Royal Palace</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -147,7 +152,8 @@
               <picture>
                 <source type="image/webp" srcset="./img/visiting/colonnade-perrault.webp">
                 <source type="image/jpeg" srcset="./img/visiting/colonnade-perrault.jpg">
-                <img class="visiting-card__img" loading="lazy" src="./img/visiting/colonnade-perrault.webp" alt="Colonnade Perrault">
+                <img class="visiting-card__img" loading="lazy" src="./img/visiting/colonnade-perrault.webp"
+                  alt="Colonnade Perrault">
               </picture>
               <h3 class="visiting-card__title underline-title">Colonnade Perrault</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -186,7 +192,8 @@
               <picture>
                 <source type="image/webp" srcset="./img/visiting/night-palace.webp">
                 <source type="image/jpeg" srcset="./img/visiting/night-palace.jpg">
-                <img class="visiting-card__img" loading="lazy" src="./img/visiting/night-palace.webp" alt="Night Palace">
+                <img class="visiting-card__img" loading="lazy" src="./img/visiting/night-palace.webp"
+                  alt="Night Palace">
               </picture>
               <h3 class="visiting-card__title underline-title">Night Palace</h3>
               <h4 class="visiting-card__subtitle">360° Virtual Tour</h4>
@@ -269,7 +276,8 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster3.webp">
                   <source type="image/jpeg" srcset="./img/video/poster3.jpg">
-                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster3.webp" alt="Exposition Video">
+                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster3.webp"
+                    alt="Exposition Video">
                 </picture>
               </a>
               <div class="video-slider-item__header">
@@ -294,7 +302,8 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster1.webp">
                   <source type="image/jpeg" srcset="./img/video/poster1.jpg">
-                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster1.webp" alt="Au Louvre Video">
+                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster1.webp"
+                    alt="Au Louvre Video">
                 </picture>
               </a>
               <div class="video-slider-item__header">
@@ -319,7 +328,8 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster2.webp">
                   <source type="image/jpeg" srcset="./img/video/poster2.jpg">
-                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster2.webp" alt="Promenade Video">
+                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster2.webp"
+                    alt="Promenade Video">
                 </picture>
               </a>
               <div class="video-slider-item__header">
@@ -674,15 +684,24 @@
   <div class="popup-overlay" id="popupOverlay"></div>
 
   <script>
-    let deferCss = document.createElement('link');
-    deferCss.rel = 'stylesheet';
-    deferCss.href = 'main.css';
-    let deferCssLink = document.getElementsByTagName('link')[0];
-    deferCssLink.parentNode.insertBefore(deferCss, deferCssLink);
+    function deferLink(link, type) {
+      if (type === 'link') {
+        let lazyEl = document.createElement('link')
+        lazyEl.rel = 'stylesheet'
+        lazyEl.href = link
+        let lazyLink = document.getElementsByTagName('link')[0]
+        lazyLink.parentNode.insertBefore(lazyEl, lazyLink)
+      }
+      if (type === 'script') {
+        let lazyEl = document.createElement('script')
+        lazyEl.src = link
+        let lazyLink = document.getElementsByTagName('script')[0]
+        lazyLink.parentNode.insertBefore(lazyEl, lazyLink)
+      }
+    }
 
-    let deferJs = document.createElement('script');
-    deferJs.src = 'main.js';
-    let deferJsScript = document.getElementsByTagName('script')[0];
-    deferJsScript.parentNode.insertBefore(deferJs, deferJsScript);
+    deferLink('main.css', 'link')
+    deferLink('https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css', 'link')
+    deferLink('main.js', 'script');
   </script>
 </body>

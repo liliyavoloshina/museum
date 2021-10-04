@@ -4,7 +4,7 @@ const welcomeSlider = tns({
   container: '#welcomeSlider',
   loop: true,
   mouseDrag: true,
-  speed: 1500,
+  // speed: 1500,
   lazyload: true,
   navContainer: '#welcomePag',
   navAsThumbnails: true,

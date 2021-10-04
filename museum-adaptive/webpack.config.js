@@ -67,7 +67,7 @@ module.exports = ({ development }) => ({
     }),
     new HtmlWebpackPlugin({
       template: './index.html',
-      chunks: development ? ['critical', 'main'] : ['critical']
+      chunks: ['critical']
     }),
     new HtmlWebpackPlugin({
       filename: 'tour1.html',
