@@ -44,13 +44,14 @@ function insertImages(sources) {
     imgWrapper.append(img)
 
     img.onload = function() {
-      const height = this.height
-
-      if (height >= 570) {
-        imgWrapper.classList.add('long')
-      } else if (height >= 456 && height < 570) {
+      const height = img.naturalHeight
+      
+      console.log(height, img)
+      if (height >= 464 && height < 580) {
         imgWrapper.classList.add('medium')
-      } else if (height < 456) {
+      } else if (height >= 580) {
+        imgWrapper.classList.add('long')
+      } else {
         imgWrapper.classList.add('short')
       }
     }

@@ -120,6 +120,8 @@ function handleVolume() {
 //   }
 // }
 
+window.addEventListener('resize', watchWindow())
+
 watchWindow()
 
 function watchWindow() {
