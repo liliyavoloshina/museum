@@ -45,8 +45,6 @@ function insertImages(sources) {
 
     img.onload = function() {
       const height = img.naturalHeight
-      
-      console.log(height, img)
       if (height >= 464 && height < 580) {
         imgWrapper.classList.add('medium')
       } else if (height >= 580) {
