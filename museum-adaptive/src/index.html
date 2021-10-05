@@ -26,7 +26,7 @@
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="#visiting">Visiting <span class="nav__arrow"></span></a></li>
           <li class="nav__item"><a class="nav__link" href="#explore">Explore<span class="nav__arrow"></span></a></li>
-          <li class="nav__item"><a class="nav__link" href="#video">Video<span class="nav__arrow"></span></a></li>
+          <li class="nav__item"><a class="nav__link" href="#videoSection">Video<span class="nav__arrow"></span></a></li>
           <li class="nav__item"><a class="nav__link" href="#gallery">Gallery<span class="nav__arrow"></span></a></li>
           <li class="nav__item"><a class="nav__link" href="#tickets">Tickets<span class="nav__arrow"></span></a></li>
           <li class="nav__item"><a class="nav__link" href="#contacts">Contacts<span class="nav__arrow"></span></a></li>
@@ -242,7 +242,7 @@
     </section>
 
     <!-- video section  -->
-    <section class="section section-video" id="video">
+    <section class="section section-video" id="videoSection">
       <div class="video container">
         <div class="video__text">
           <h2 class="section-title">
@@ -252,20 +252,22 @@
             as Mona Lisa or Hammurabi's Code</p>
         </div>
         <div class="video__media" id="fullscreenWrapper">
+          
           <div class="video-current-wrapper">
-            <video class="video-current" poster="./img/video/poster0.webp" id="currentVideo">
-              <source src="./video/video0.mp4" type="video/mp4" id="currentSource">
+            <div class="video-info-popup" id="videoInfoPopup"></div>
+            <video class="video-current" poster="./img/video/poster0.webp" id="video">
+              <source src="./video/video0.mp4" type="video/mp4" id="videoSource">
             </video>
-            <button class="video__btn video__btn-play-large" id="currentVideoLargePlay"></button>
+            <button class="video__btn video__btn-play-large" id="videoLargePlay"></button>
           </div>
           <div class="media-panel">
-            <button class="video__btn video__btn-play-small" id="currentVideoSmallPlay"></button>
-            <input class="video__range video__range-progress" id="currentVideoProgress" value="54" min="0" max="100"
+            <button class="video__btn video__btn-play-small" id="videoSmallPlay"></button>
+            <input class="video__range video__range-progress" id="videoProgress" value="0" min="0" max="100"
               type="range">
-            <button class="video__btn video__btn-volume" id="currentVideoVolumeBtn"></button>
-            <input class="video__range video__range-volume" id="currentVideoVolumeRange" value="0.4" min="0" max="1"
+            <button class="video__btn video__btn-volume" id="videoVolumeBtn"></button>
+            <input class="video__range video__range-volume" id="videoVolumeRange" value="0.4" min="0" max="1"
               step="0.1" type="range">
-            <button class="video__btn video__btn-expand" id="currentVideoFullscreenBtn"></button>
+            <button class="video__btn video__btn-expand" id="videoFullscreenBtn"></button>
           </div>
         </div>
 
@@ -276,7 +278,7 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster3.webp">
                   <source type="image/jpeg" srcset="./img/video/poster3.jpg">
-                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster3.webp"
+                  <img class="video-slider-item__media" src="./img/video/poster3.webp"
                     alt="Exposition Video">
                 </picture>
               </a>
@@ -302,7 +304,7 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster1.webp">
                   <source type="image/jpeg" srcset="./img/video/poster1.jpg">
-                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster1.webp"
+                  <img class="video-slider-item__media" src="./img/video/poster1.webp"
                     alt="Au Louvre Video">
                 </picture>
               </a>
@@ -328,7 +330,7 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster2.webp">
                   <source type="image/jpeg" srcset="./img/video/poster2.jpg">
-                  <img class="video-slider-item__media" loading="lazy" src="./img/video/poster2.webp"
+                  <img class="video-slider-item__media" src="./img/video/poster2.webp"
                     alt="Promenade Video">
                 </picture>
               </a>
@@ -347,12 +349,64 @@
               </button>
             </div>
           </div>
+
+          <div class="video-slider-item">
+            <div class="video-slider-item__wrapper">
+              <a class="video-slider-item__link" href="https://youtu.be/aWmJ5DgyWPI" data-id="aWmJ5DgyWPI">
+                <picture>
+                  <source type="image/webp" srcset="./img/video/poster4.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster4.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster4.webp"
+                    alt="Petits contes de Printemps Video">
+                </picture>
+              </a>
+              <div class="video-slider-item__header">
+                <div class="image"></div>
+                <div class="title">Petits contes de Printemps</div>
+                <div class="settings"></div>
+              </div>
+              <button class="video-slider-item__button-play" aria-label="Запустить видео">
+                <svg width="68" height="48" viewBox="0 0 68 48">
+                  <path class="video-slider-item__button-play-shape"
+                    d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z">
+                  </path>
+                  <path class="video-slider-item__button-play-icon" d="M 45,24 27,14 27,34"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-slider-item">
+            <div class="video-slider-item__wrapper">
+              <a class="video-slider-item__link" href="https://youtu.be/zp1BXPX8jcU" data-id="zp1BXPX8jcU">
+                <picture>
+                  <source type="image/webp" srcset="./img/video/poster0.webp">
+                  <source type="image/jpeg" srcset="./img/video/poster0.jpg">
+                  <img class="video-slider-item__media" src="./img/video/poster0.webp"
+                    alt="Welcome to the Louvre Video">
+                </picture>
+              </a>
+              <div class="video-slider-item__header">
+                <div class="image"></div>
+                <div class="title">Welcome to the Louvre</div>
+                <div class="settings"></div>
+              </div>
+              <button class="video-slider-item__button-play" aria-label="Запустить видео">
+                <svg width="68" height="48" viewBox="0 0 68 48">
+                  <path class="video-slider-item__button-play-shape"
+                    d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z">
+                  </path>
+                  <path class="video-slider-item__button-play-icon" d="M 45,24 27,14 27,34"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="video-pagination">
           <div class="video-pagination__arrow-prev video-pagination__item" id="videoPrev"></div>
           <div class="video-nav">
-            <div class="video-nav__dot video-pagination__item active"></div>
+            <div class="video-nav__dot video-pagination__item"></div>
             <div class="video-nav__dot video-pagination__item"></div>
             <div class="video-nav__dot video-pagination__item"></div>
             <div class="video-nav__dot video-pagination__item"></div>
@@ -490,7 +544,7 @@
           <li class="nav__item"><a class="nav__link" href="#gallery">Gallery</a></li>
           <li class="nav__item"><a class="nav__link" href="#explore">Explore</a></li>
           <li class="nav__item"><a class="nav__link" href="#tickets">Tickets</a></li>
-          <li class="nav__item"><a class="nav__link" href="#video">Video</a></li>
+          <li class="nav__item"><a class="nav__link" href="#videoSection">Video</a></li>
           <li class="nav__item"><a class="nav__link" href="#contacts">Contacts</a></li>
         </ul>
       </nav>
