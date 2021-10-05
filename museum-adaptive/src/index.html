@@ -220,23 +220,19 @@
           <p class="explore-desc">The cleaning provoked furious protests, not because the picture had been damaged in
             any way, but because it looked different.</p>
         </div>
-        <div class="explore__img">
-          <div class="explore-img">
-            <div class="explore-img__img">
-              <picture>
-                <source type="image/webp" srcset="./img/explore/after.webp">
-                <source type="image/jpeg" srcset="./img/explore/after.jpg">
-                <img class="img-after" loading="lazy" src="./img/explore/after.webp" alt="Reproduction After">
-              </picture>
-            </div>
-            <div class="explore-img__img explore-img-overlay">
-              <picture>
-                <source type="image/webp" srcset="./img/explore/before.webp">
-                <source type="image/jpeg" srcset="./img/explore/before.jpg">
-                <img class="img-before" loading="lazy" src="./img/explore/before.webp" alt="Reproduction Before">
-              </picture>
-            </div>
-          </div>
+        <div class="explore-slider">
+          <picture>
+            <source type="image/webp" srcset="./img/explore/after.webp">
+            <source type="image/jpeg" srcset="./img/explore/after.jpg">
+            <img class="explore-slider__after" id="exploreAfter" loading="lazy" src="./img/explore/after.webp" alt="Reproduction After">
+          </picture>
+          <picture>
+            <source type="image/webp" srcset="./img/explore/before.webp">
+            <source type="image/jpeg" srcset="./img/explore/before.jpg">
+            <img class="explore-slider__before" id="exploreBefore"  loading="lazy" src="./img/explore/before.webp" alt="Reproduction Before">
+          </picture>
+          <div class="explore-slider__resizer" id="exploreResizer"></div>
+          <input class="explore-slider__range" id="exploreRange" type="range" min="0" max="100" value="61" />
         </div>
       </div>
     </section>
@@ -252,7 +248,7 @@
             as Mona Lisa or Hammurabi's Code</p>
         </div>
         <div class="video__media" id="fullscreenWrapper">
-          
+
           <div class="video-current-wrapper">
             <div class="video-info-popup" id="videoInfoPopup"></div>
             <video class="video-current" poster="./img/video/poster0.webp" id="video">
@@ -265,8 +261,8 @@
             <input class="video__range video__range-progress" id="videoProgress" value="0" min="0" max="100"
               type="range">
             <button class="video__btn video__btn-volume" id="videoVolumeBtn"></button>
-            <input class="video__range video__range-volume" id="videoVolumeRange" value="0.4" min="0" max="1"
-              step="0.1" type="range">
+            <input class="video__range video__range-volume" id="videoVolumeRange" value="0.4" min="0" max="1" step="0.1"
+              type="range">
             <button class="video__btn video__btn-expand" id="videoFullscreenBtn"></button>
           </div>
         </div>
@@ -278,8 +274,7 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster3.webp">
                   <source type="image/jpeg" srcset="./img/video/poster3.jpg">
-                  <img class="video-slider-item__media" src="./img/video/poster3.webp"
-                    alt="Exposition Video">
+                  <img class="video-slider-item__media" src="./img/video/poster3.webp" alt="Exposition Video">
                 </picture>
               </a>
               <div class="video-slider-item__header">
@@ -304,8 +299,7 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster1.webp">
                   <source type="image/jpeg" srcset="./img/video/poster1.jpg">
-                  <img class="video-slider-item__media" src="./img/video/poster1.webp"
-                    alt="Au Louvre Video">
+                  <img class="video-slider-item__media" src="./img/video/poster1.webp" alt="Au Louvre Video">
                 </picture>
               </a>
               <div class="video-slider-item__header">
@@ -330,8 +324,7 @@
                 <picture>
                   <source type="image/webp" srcset="./img/video/poster2.webp">
                   <source type="image/jpeg" srcset="./img/video/poster2.jpg">
-                  <img class="video-slider-item__media" src="./img/video/poster2.webp"
-                    alt="Promenade Video">
+                  <img class="video-slider-item__media" src="./img/video/poster2.webp" alt="Promenade Video">
                 </picture>
               </a>
               <div class="video-slider-item__header">
