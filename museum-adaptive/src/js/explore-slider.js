@@ -10,8 +10,7 @@ function compare() {
   
   before.style.clipPath = `polygon(0% 0%, ${compareValue}% 0%, ${compareValue}% 100%, 0% 100%)`
 
-  reiszer.style.left = `calc(${compareValue}% - 10px)`
-  // reiszer.style.left = `${compareValue} - 10px%`
+  reiszer.style.left = `calc(${compareValue}% - 20px)`
 }
 
 compare()

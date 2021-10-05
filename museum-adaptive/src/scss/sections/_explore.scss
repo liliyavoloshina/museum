@@ -50,12 +50,6 @@
   &__text {
     flex: 1 1 var(--explore-text-mw);
   }
-
-  &__img {
-    flex: 1 1 var(--slider-width);
-    padding-top: var(--explore-img-pt);
-    width: 100%;
-  }
 }
 
 .explore-desc {
@@ -91,16 +85,23 @@
 
 .explore-slider {
   position: relative;
+  flex: 1 1 var(--slider-width);
+  margin-top: var(--explore-img-pt);
+  // width: 100%;
   height: 700px;
-  width: 720px;
+  // width: 720px;
   overflow: hidden;
+  user-select: none;
+
+  @media screen and (max-width: 1439px) {
+    margin: 0 auto;
+  }
 
   &__resizer {
     position: absolute;
     top: 0;
-    left: 61%;
+    left: 59.5%;
     bottom: 0;
-    z-index: 9;
     width: 40px;
     height: 100%;
     cursor: pointer;
@@ -121,22 +122,11 @@
 
   &__range {
     position: relative;
-    width: 100%;
-    // width: calc(100% + 40px);
-    // margin-left: -20px;
+    width: calc(100% - 40px);
+    margin-right: 20px;
     height: 100%;
     cursor: pointer;
-    color: transparent;
-    background-color: transparent;
-    outline: 0;
-
-    &::-webkit-slider-thumb {
-      appearance: none;
-      height: 100%;
-      // background-color: transparent;
-      // background-size: contain;
-      // cursor: pointer;
-    }
+    opacity: 0;
   }
 }
 
@@ -149,55 +139,3 @@
   background: url('../img/explore/explore-slider.webp') no-repeat;
   background-size: contain;
 }
-
-// .explore-img {
-//   position: relative;
-//   height: var(--slider-height);
-//   max-width: var(--slider-width);
-//   overflow: hidden;
-
-//   @media screen and (max-width: 1439px) {
-//     margin: 0 auto;
-//   }
-
-//   &__img {
-//     position: absolute;
-//     width: 100%;
-//     overflow: hidden;
-//     user-select: none;
-//     pointer-events: none;
-//   }
-
-//   .img-before,
-//   .img-after {
-//     width: var(--slider-width);
-//     height: var(--slider-height);
-//     object-fit: cover;
-
-//     @media screen and (max-width: 420px) {
-//       width: calc(100vw - 40px);
-//     }
-//   }
-
-//   &-slider {
-//     position: absolute;
-//     z-index: 9;
-//     width: 40px;
-//     height: 100%;
-//     cursor: ew-resize;
-
-//     @media screen and (max-width: 768px) {
-//       height: 105%;
-//     }
-//   }
-
-//   .no-webp &-slider {
-//     background: url('../img/explore/explore-slider.png') no-repeat;
-//     background-size: contain;
-//   }
-
-//   .webp &-slider {
-//     background: url('../img/explore/explore-slider.webp') no-repeat;
-//     background-size: contain;
-//   }
-// }
