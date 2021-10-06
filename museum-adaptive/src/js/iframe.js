@@ -31,46 +31,41 @@ function createPlayer(id) {
     width: '640',
     videoId: id,
     events: {
-      onStateChange: onPlayerStateChange
+      onStateChange: function onPlayerStateChange(event) {
+        // console.log(isSomethingPlaying, 'somethinf')
+        console.log(playerCurrentlyPlaying, 'playerCurrentlyPlaying')
+        // if (event.data == YT.PlayerState.PAUSED) {
+        //   console.log('Paused')
+        // }
+      
+        if (event.data == YT.PlayerState.PLAYING) {
+          if (videoPlaying) {
+            pauseVideo()
+          }
+          const iframes = document.querySelectorAll('iframe')
+      
+          iframes.forEach(iframe => {
+            if (iframe.id !== id) {
+              iframe.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+            }
+          })
+        }
+      }
     }
   })
 }
 
+
+
 loadPlayer()
 
-function onPlayerStateChange(newState) {
-  // console.log(isSomethingPlaying, 'somethinf')
-  console.log(playerCurrentlyPlaying, 'playerCurrentlyPlaying')
-  // if (event.data == YT.PlayerState.PAUSED) {
-  //   console.log('Paused')
-  // }
+// isIframePlaying = true
+// {
+//   if (playerCurrentlyPlaying != null && playerCurrentlyPlaying != player_id)
+//     callPlayer(playerCurrentlyPlaying, 'pauseVideo')
+//   playerCurrentlyPlaying = player_id
+// }
 
-  if (newState.data == 1) {
-    heap.track('Video Playing')
-  } else if (newState.data == 0) {
-    heap.track('Video Finished')
-  } else if (newState.data == 2) {
-    heap.track('Video Paused')
-  }
-
-  // if (event.data == YT.PlayerState.PLAYING) {
-  //   if (videoPlaying) {
-  //     pauseVideo()
-  //   }
-  //   if (playerCurrentlyPlaying) {
-  //     stopIframes()
-  //     playerCurrentlyPlaying = true
-  //     player.playVideo()
-  //   }
-  // }
-  // isIframePlaying = true
-  // {
-  //   if (playerCurrentlyPlaying != null && playerCurrentlyPlaying != player_id)
-  //     callPlayer(playerCurrentlyPlaying, 'pauseVideo')
-  //   playerCurrentlyPlaying = player_id
-  // }
-
-  // if (event.data == YT.PlayerState.ENDED) {
-  //   end()
-  // }
-}
+// if (event.data == YT.PlayerState.ENDED) {
+//   end()
+// }
