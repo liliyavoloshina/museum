@@ -1,42 +1,76 @@
-function findVideos() {
-  const videos = document.querySelectorAll('.video-slider-item__wrapper')
-  for (let i = 0; i < videos.length; i++) {
-    setupVideo(videos[i])
+import { stopIframes, pauseVideo, videoPlaying } from './video'
+
+let playerCurrentlyPlaying = false
+// let isSomethingPlaying = (videoPlaying === true || playerCurrentlyPlaying === true) ? true : false
+// let isSomethingPlaying = (videoPlaying === true || playerCurrentlyPlaying === true) ? true : false
+
+function loadPlayer() {
+  if (typeof YT == 'undefined' || typeof YT.Player == 'undefined') {
+    var tag = document.createElement('script')
+    tag.src = 'https://www.youtube.com/iframe_api'
+    var firstScriptTag = document.getElementsByTagName('script')[0]
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+    window.onYouTubePlayerAPIReady = function() {
+      onYouTubeIframeAPIReady()
+    }
   }
 }
 
-function setupVideo(video) {
-  let link = video.querySelector('.video-slider-item__link')
-  let button = video.querySelector('.video-slider-item__button-play')
-  let id = link.dataset.id
+const videoList = ['aWmJ5DgyWPI', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', 'zp1BXPX8jcU']
 
-  video.addEventListener('click', () => {
-    let iframe = createIframe(id)
-
-    link.remove()
-    button.remove()
-    video.appendChild(iframe)
+function onYouTubeIframeAPIReady() {
+  videoList.forEach(video => {
+    createPlayer(video)
   })
-
-  link.removeAttribute('href')
-  video.classList.add('video-slider-item--enabled')
 }
 
-function createIframe(id) {
-  let iframe = document.createElement('iframe')
-
-  iframe.setAttribute('allowfullscreen', '')
-  iframe.setAttribute('allow', 'autoplay')
-  iframe.setAttribute('src', generateURL(id))
-  iframe.classList.add('video-slider-item__media')
-
-  return iframe
+function createPlayer(id) {
+  return new YT.Player(id, {
+    height: '390',
+    width: '640',
+    videoId: id,
+    events: {
+      onStateChange: onPlayerStateChange
+    }
+  })
 }
 
-function generateURL(id) {
-  let query = '?rel=0&showinfo=0&autoplay=1'
+loadPlayer()
 
-  return 'https://www.youtube.com/embed/' + id + query
+function onPlayerStateChange(newState) {
+  // console.log(isSomethingPlaying, 'somethinf')
+  console.log(playerCurrentlyPlaying, 'playerCurrentlyPlaying')
+  // if (event.data == YT.PlayerState.PAUSED) {
+  //   console.log('Paused')
+  // }
+
+  if (newState.data == 1) {
+    heap.track('Video Playing')
+  } else if (newState.data == 0) {
+    heap.track('Video Finished')
+  } else if (newState.data == 2) {
+    heap.track('Video Paused')
+  }
+
+  // if (event.data == YT.PlayerState.PLAYING) {
+  //   if (videoPlaying) {
+  //     pauseVideo()
+  //   }
+  //   if (playerCurrentlyPlaying) {
+  //     stopIframes()
+  //     playerCurrentlyPlaying = true
+  //     player.playVideo()
+  //   }
+  // }
+  // isIframePlaying = true
+  // {
+  //   if (playerCurrentlyPlaying != null && playerCurrentlyPlaying != player_id)
+  //     callPlayer(playerCurrentlyPlaying, 'pauseVideo')
+  //   playerCurrentlyPlaying = player_id
+  // }
+
+  // if (event.data == YT.PlayerState.ENDED) {
+  //   end()
+  // }
 }
-
-findVideos()

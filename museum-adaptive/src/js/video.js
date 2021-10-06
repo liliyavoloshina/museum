@@ -11,14 +11,35 @@ const videoFullscreenBtn = document.querySelector('#videoFullscreenBtn')
 const fullscreenWrapper = document.querySelector('#fullscreenWrapper')
 const videoInfoPopup = document.querySelector('#videoInfoPopup')
 
-let videoSrc = './video/video0.mp4'
+let videoSources = {
+  1: {
+    src: './video/video0.mp4',
+    poster: './img/video/poster0.webp'
+  },
+  2: {
+    src: './video/video1.mp4',
+    poster: './img/video/poster1.webp'
+  },
+  3: {
+    src: './video/video2.mp4',
+    poster: './img/video/poster2.webp'
+  },
+  4: {
+    src: './video/video3.mp4',
+    poster: './img/video/poster3.webp'
+  },
+  5: {
+    src: './video/video4.mp4',
+    poster: './img/video/poster4.webp'
+  }
+}
+let videoPlaying = false
 let videoVolume = 0.5
 let videoSpeed = video.playbackRate
-videoSource.setAttribute('src', videoSrc)
-video.load()
-video.volume = videoVolume
-
 let fullscreenMode = false
+
+setVideo()
+video.volume = videoVolume
 
 video.addEventListener('click', togglePlay)
 videoLargePlay.addEventListener('click', togglePlay)
@@ -55,29 +76,63 @@ document.addEventListener('keydown', e => {
   }
 })
 
-function togglePopup() {
-  videoInfoPopup.textContent = `${videoSpeed}x`
-  videoInfoPopup.classList.toggle('show')
+function setVideo(index = 1) {
+  const videoSrc = videoSources[index].src
+  const videoPoster = videoSources[index].poster
+  videoSource.setAttribute('src', videoSrc)
+  video.setAttribute('poster', videoPoster)
+  videoVolume = 0.5
+  videoSpeed = 1
+  pauseVideo()
+  videoProgress.value = 0
+  changeProgressBar(0)
+  unmuteVideo()
+  video.load()
+}
 
-  setTimeout(() => {
-    videoInfoPopup.classList.remove('show')
-  }, 500)
+function changeVideo() {
+  const currentIndex = slider.getInfo().displayIndex
+  setVideo(currentIndex)
+  stopIframes()
+}
+
+function playVideo() {
+  video.play()
+  videoPlaying = true
+  videoLargePlay.classList.add('hidden')
+  videoSmallPlay.classList.add('paused')
+}
+
+function pauseVideo() {
+  video.pause()
+  videoPlaying = false
+  videoLargePlay.classList.remove('hidden')
+  videoSmallPlay.classList.remove('paused')
 }
 
 function togglePlay() {
   if (video.paused) {
-    video.play()
-    videoLargePlay.classList.add('hidden')
-    videoSmallPlay.classList.add('paused')
+    stopIframes()
+    playVideo()
   } else {
-    video.pause()
-    videoLargePlay.classList.remove('hidden')
-    videoSmallPlay.classList.remove('paused')
+    pauseVideo()
   }
 }
 
 function changeProgressBar(value) {
   videoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
+}
+
+function changeVolumeBar(value) {
+  videoVolumeRange.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
+}
+
+function stopIframes() {
+  const iframes = document.querySelectorAll('iframe')
+  console.log('stopifrmaes')
+  iframes.forEach(iframe => {
+    iframe.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+  })
 }
 
 function handleProgress() {
@@ -100,19 +155,26 @@ function watchProgess() {
   }
 }
 
+function muteVideo() {
+  video.muted = true
+  videoVolumeBtn.classList.add('muted')
+  videoVolumeRange.value = 0
+  changeVolumeBar(0)
+}
+
+function unmuteVideo() {
+  video.muted = false
+  video.volume = videoVolume
+  videoVolumeBtn.classList.remove('muted')
+  videoVolumeRange.value = video.volume
+  changeVolumeBar(videoVolume * 100)
+}
+
 function toggleMute() {
   if (video.muted) {
-    video.muted = false
-    video.volume = videoVolume
-    videoVolumeBtn.classList.remove('muted')
-    videoVolumeRange.value = video.volume
-    videoVolumeRange.style.background = `linear-gradient(to right, #710707 0%, #710707 ${videoVolume *
-      100}%, #c4c4c4 ${videoVolume * 100}%, #c4c4c4 100%)`
+    unmuteVideo()
   } else {
-    video.muted = true
-    videoVolumeBtn.classList.add('muted')
-    videoVolumeRange.value = 0
-    videoVolumeRange.style.background = `linear-gradient(to right, #710707 0%, #710707 0%, #c4c4c4 0%, #c4c4c4 100%)`
+    muteVideo()
   }
 }
 
@@ -182,6 +244,15 @@ function watchFullscreen() {
   }
 }
 
+function togglePopup() {
+  videoInfoPopup.textContent = `${videoSpeed}x`
+  videoInfoPopup.classList.toggle('show')
+
+  setTimeout(() => {
+    videoInfoPopup.classList.remove('show')
+  }, 500)
+}
+
 const slider = tns({
   container: '.video-slider',
   loop: true,
@@ -207,3 +278,7 @@ const slider = tns({
   prevButton: '#videoPrev',
   nextButton: '#videoNext'
 })
+
+slider.events.on('transitionStart', changeVideo)
+
+export { stopIframes, pauseVideo, videoPlaying }
