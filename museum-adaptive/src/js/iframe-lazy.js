@@ -7,38 +7,24 @@ function loadPlayer() {
     var firstScriptTag = document.getElementsByTagName('script')[0]
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-    // window.onYouTubePlayerAPIReady = function() {
-    //   onYouTubeIframeAPIReady()
-    // }
+    window.onYouTubePlayerAPIReady = function() {
+      onYouTubeIframeAPIReady()
+    }
   }
 }
 
-var playerInfoList = [
-  { id: 'player', height: '390', width: '640', videoId: 'aWmJ5DgyWPI' },
-  { id: 'player2', height: '390', width: '640', videoId: 'Vi5D6FKhRmo' }
-]
+const videoList = ['2OR0OCr6uRE', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', 'zp1BXPX8jcU']
 
-// function onYouTubeIframeAPIReady() {
-//   for (var i = 0; i < playerInfoList.length; i++) {
-//     createPlayer(playerInfoList[i])
-//   }
-// }
-function createPlayer(playerInfo) {
-  return new YT.Player(playerInfo.id, {
-    height: playerInfo.height,
-    width: playerInfo.width,
-    videoId: playerInfo.videoId,
-    events: {
-      onStateChange: onPlayerStateChange
-    }
+function onYouTubeIframeAPIReady() {
+  videoList.forEach(video => {
+    createPlayer(video)
   })
 }
 
 loadPlayer()
 
 function findVideos() {
-  // const videos = document.querySelectorAll('.video-slider-item')
-  const videos = document.querySelectorAll('.video-slider-item__wrapper')
+  const videos = document.querySelectorAll('.video-slider-item')
   for (let i = 0; i < videos.length; i++) {
     setupVideo(videos[i])
   }
@@ -55,51 +41,59 @@ function setupVideo(video) {
     link.remove()
     button.remove()
     // video.appendChild(iframe)
-
-
-    createPlayer({ id: 'player', height: '390', width: '640', videoId: 'aWmJ5DgyWPI' })
-    loadPlayer()
-
-
+    // createPlayer(id)
   })
 
   link.removeAttribute('href')
   video.classList.add('video-slider-item--enabled')
 }
 
-function onPlayerStateChange(event) {
-  console.log(event)
-  if (event.data == YT.PlayerState.PAUSED) {
-    console.log('Paused')
-  }
 
-  if (event.data == YT.PlayerState.PLAYING) {
-    console.log('Playing')
-  }
+// function createIframe(id) {
+//   let iframe = document.createElement('iframe')
+//   iframe.setAttribute('allowfullscreen', '')
+//   iframe.setAttribute('allow', 'autoplay')
+//   iframe.setAttribute('src', generateURL(id))
+//   iframe.id = id
+//   iframe.classList.add('video-slider-item__media')
 
-  if (event.data == YT.PlayerState.ENDED) {
-    end()
-  }
-}
+//   return iframe
+// }
 
-function createIframe(id) {
-  let iframe = document.createElement('iframe')
-  iframe.setAttribute('allowfullscreen', '')
-  iframe.setAttribute('allow', 'autoplay')
-  iframe.setAttribute('src', generateURL(id))
-  iframe.id = id
-  iframe.classList.add('video-slider-item__media')
+function createPlayer(id) {
+  console.log('createPlayer', id)
+  return new YT.Player(id, {
+    height: '390',
+    width: '640',
+    videoId: id,
+    playerVars: {
+      origin: 'https://localhost:8080'
+    },
+    events: {
+      onStateChange: function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+          if (videoPlaying) {
+            pauseVideo()
+          }
+          const iframes = document.querySelectorAll('iframe')
 
-  return iframe
+          iframes.forEach(iframe => {
+            if (iframe.id !== id) {
+              iframe.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+            }
+          })
+        }
+      }
+    }
+  })
 }
 
 function generateURL(id) {
   let query = '?rel=0&autoplay=1&enablejsapi=1'
-  // let query = '?rel=0&showinfo=0&autoplay=1&enablejsapi=1&version=3'
 
   return `https://www.youtube.com/embed/${id}${query}`
 }
 
-findVideos()
+// findVideos()
 
 export { isIframePlaying }

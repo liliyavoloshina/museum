@@ -1,7 +1,7 @@
 import './scss/style.scss'
 import './js/explore-slider'
-import './js/video'
 import './js/iframe'
+import './js/video'
 import './js/gallery'
 import './js/popup'
 import './js/styling'

@@ -1,71 +1,79 @@
-import { stopIframes, pauseVideo, videoPlaying } from './video'
-
-let playerCurrentlyPlaying = false
-// let isSomethingPlaying = (videoPlaying === true || playerCurrentlyPlaying === true) ? true : false
-// let isSomethingPlaying = (videoPlaying === true || playerCurrentlyPlaying === true) ? true : false
+import { pauseVideo, videoPlaying, initSlider } from './video'
 
 function loadPlayer() {
-  if (typeof YT == 'undefined' || typeof YT.Player == 'undefined') {
-    var tag = document.createElement('script')
-    tag.src = 'https://www.youtube.com/iframe_api'
-    var firstScriptTag = document.getElementsByTagName('script')[0]
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+  var tag = document.createElement('script')
+  tag.src = 'https://www.youtube.com/iframe_api'
+  var firstScriptTag = document.getElementsByTagName('script')[0]
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-    window.onYouTubePlayerAPIReady = function() {
-      onYouTubeIframeAPIReady()
-    }
+  window.onYouTubePlayerAPIReady = function() {
+    convertId()
+    onYouTubeIframeAPIReady()
   }
 }
 
-const videoList = ['aWmJ5DgyWPI', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', 'zp1BXPX8jcU']
+const slides = document.querySelectorAll('.video-slider-item')
+
 
 function onYouTubeIframeAPIReady() {
-  videoList.forEach(video => {
-    createPlayer(video)
+  slides.forEach(slide => {
+    createPlayer(slide.dataset)
   })
 }
 
-function createPlayer(id) {
-  return new YT.Player(id, {
+function convertId() {
+  const dataset = []
+
+  slides.forEach(slide => {
+    let id = slide.dataset.id
+    
+    let count = 0
+    if (dataset.includes(id)) {
+
+      dataset.forEach(duplicate => {
+        if (duplicate === id || duplicate === `${id}-${count}`) {
+          count++
+        }
+      })
+    }
+
+    slide.dataset.id = id
+    slide.dataset.number = `${id}-${count}`
+    dataset.push(id)
+  })
+}
+
+function createPlayer(data) {
+  const number = data.number
+  const id = data.id
+  return new YT.Player(document.querySelector(`[data-number="${number}"]`), {
     height: '390',
     width: '640',
     videoId: id,
+    playerVars: {
+      id: number,
+      origin: 'https://localhost:8080'
+    },
     events: {
-      onStateChange: function onPlayerStateChange(event) {
-        // console.log(isSomethingPlaying, 'somethinf')
-        console.log(playerCurrentlyPlaying, 'playerCurrentlyPlaying')
-        // if (event.data == YT.PlayerState.PAUSED) {
-        //   console.log('Paused')
-        // }
-      
-        if (event.data == YT.PlayerState.PLAYING) {
-          if (videoPlaying) {
-            pauseVideo()
-          }
-          const iframes = document.querySelectorAll('iframe')
-      
-          iframes.forEach(iframe => {
-            if (iframe.id !== id) {
-              iframe.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
-            }
-          })
-        }
-      }
+      onStateChange: event => onPlayerStateChange(event, number)
     }
   })
 }
 
+function onPlayerStateChange(event, number) {
+  console.log('onPlayerStateChange')
+  const iframes = document.querySelectorAll('iframe')
+  if (event.data == YT.PlayerState.PLAYING) {
+    if (videoPlaying) {
+      pauseVideo()
+    }
 
+    iframes.forEach(iframe => {
+      if (iframe.dataset.number !== number) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+      }
+    })
+  }
+}
 
 loadPlayer()
-
-// isIframePlaying = true
-// {
-//   if (playerCurrentlyPlaying != null && playerCurrentlyPlaying != player_id)
-//     callPlayer(playerCurrentlyPlaying, 'pauseVideo')
-//   playerCurrentlyPlaying = player_id
-// }
-
-// if (event.data == YT.PlayerState.ENDED) {
-//   end()
-// }
