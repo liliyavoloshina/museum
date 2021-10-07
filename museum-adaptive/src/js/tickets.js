@@ -1,4 +1,4 @@
-const total = document.querySelector('#ticketsTotal'),
+const totalSection = document.querySelector('#ticketsTotalSection'),
   permOption = document.querySelector('#permOption'),
   tempOption = document.querySelector('#tempOption'),
   combOption = document.querySelector('#combOption'),
@@ -8,8 +8,6 @@ const total = document.querySelector('#ticketsTotal'),
   seniorIncr = document.querySelector('#seniorIncr'),
   seniorAmountInput = document.querySelector('#seniorAmount'),
   basicAmountInput = document.querySelector('#basicAmount')
-
-// function changeType() {}
 
 class TicketsTotal {
   constructor() {
@@ -22,12 +20,12 @@ class TicketsTotal {
   increment(age) {
     if (age === 'basic') {
       if (this.basicAmount === 20) return
-      basicAmountInput.stepUp(1)
+      this.changeBasicAmount(this.basicAmount + 1)
       this.basicAmount++
     }
     if (age === 'senior') {
       if (this.seniorAmount === 20) return
-      seniorAmountInput.stepUp(1)
+      this.changeSeniorAmount(this.seniorAmount + 1)
       this.seniorAmount++
     }
 
@@ -37,33 +35,75 @@ class TicketsTotal {
   decrement(age) {
     if (age === 'basic') {
       if (this.basicAmount === 0) return
-      basicAmountInput.stepDown(1)
+      this.changeBasicAmount(this.basicAmount - 1)
       this.basicAmount--
     }
     if (age === 'senior') {
       if (this.seniorAmount === 0) return
-      seniorAmountInput.stepDown(1)
+      this.changeSeniorAmount(this.seniorAmount - 1)
       this.seniorAmount--
     }
 
     this.caclulate()
   }
 
+  changeBasicAmount(value) {
+    basicAmountInput.value = value
+  }
+
+  changeSeniorAmount(value) {
+    seniorAmountInput.value = value
+  }
+
+  changeType(type) {
+    this.type = type
+    this.caclulate()
+  }
+
+  setValue() {
+    const total = localStorage.getItem('tickets-total-museum')
+    const type = localStorage.getItem('tickets-type-museum')
+    const basicAmount = localStorage.getItem('tickets-basic-museum')
+    const seniorAmount = localStorage.getItem('tickets-senior-museum')
+
+    if (total) {
+      totalSection.textContent = total
+    }
+    if (type) {
+      const types = document.querySelectorAll('.tickets-type-option__input')
+      types.forEach(input => {
+        input.dataset.id === type ? (input.checked = true) : (input.checked = false)
+      })
+    }
+    if (basicAmount) {
+      basicAmountInput.value = basicAmount
+    }
+    if (seniorAmount) {
+      seniorAmountInput.value = seniorAmount
+    }
+  }
+
   caclulate() {
-    const totalSection = document.querySelector('#ticketsTotalSection')
     let typeSum = this.type === 'perm' ? 20 : this.type === 'temp' ? 25 : 40
     let basicAmount = typeSum * this.basicAmount
-    let seniorAmount = typeSum / 2 * this.seniorAmount
+    let seniorAmount = (typeSum / 2) * this.seniorAmount
     let total = basicAmount + seniorAmount
     totalSection.textContent = total
+
+    localStorage.setItem('tickets-total-museum', total)
+    localStorage.setItem('tickets-type-museum', this.type)
+    localStorage.setItem('tickets-basic-museum', this.basicAmount)
+    localStorage.setItem('tickets-senior-museum', this.seniorAmount)
   }
 }
 
 const ticketsTotal = new TicketsTotal()
+ticketsTotal.setValue()
 basicIncr.addEventListener('click', () => ticketsTotal.increment('basic'))
 basicDecr.addEventListener('click', () => ticketsTotal.decrement('basic'))
 seniorIncr.addEventListener('click', () => ticketsTotal.increment('senior'))
 seniorDecr.addEventListener('click', () => ticketsTotal.decrement('senior'))
-// basicIncr.addEventListener('click', ticketsTotal.increment('basic'))
 
-// (20 €, 25 €, 40 € для Basic и половина этой стоимости для Senior).
+permOption.addEventListener('click', () => ticketsTotal.changeType('perm'))
+tempOption.addEventListener('click', () => ticketsTotal.changeType('temp'))
+combOption.addEventListener('click', () => ticketsTotal.changeType('comb'))

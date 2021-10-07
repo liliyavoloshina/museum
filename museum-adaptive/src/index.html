@@ -322,15 +322,15 @@
             <div class="tickets-type">
               <h4 class="tickets-subtitle">Ticket Type</h4>
               <label class="tickets-type-option">Permanent exhibition
-                <input class="tickets-type-option__input" id="permOption" type="radio" name="ticket-type" checked>
+                <input class="tickets-type-option__input" id="permOption" data-id="perm" type="radio" name="ticket-type" checked>
                 <span class="tickets-type-option__checkmark"></span>
               </label>
               <label class="tickets-type-option">Temporary exhibition
-                <input class="tickets-type-option__input" id="tempOption" type="radio" name="ticket-type">
+                <input class="tickets-type-option__input" id="tempOption" data-id="temp" type="radio" name="ticket-type">
                 <span class="tickets-type-option__checkmark"></span>
               </label>
               <label class="tickets-type-option">Combined Admission
-                <input class="tickets-type-option__input" id="combOption" type="radio" name="ticket-type">
+                <input class="tickets-type-option__input" id="combOption" data-id="comb" type="radio" name="ticket-type">
                 <span class="tickets-type-option__checkmark"></span>
               </label>
             </div>
@@ -341,7 +341,7 @@
                 <label class="tickets-amount-option__label" for="tickets-amount-basic">Basic 18+</label>
                 <div class="tickets-amount-option__box">
                   <button class="tickets-amount-option__btn" type="button" id="basicDecr">–</button>
-                  <input class="tickets-amount-option__input" id="basicAmount" type="number" min="0" max="100" value="1"
+                  <input class="tickets-amount-option__input" id="basicAmount" type="number" min="0" max="100" value="0"
                     readonly>
                   <button class="tickets-amount-option__btn" type="button" id="basicIncr">+</button>
                 </div>
@@ -351,7 +351,7 @@
                 <div class="tickets-amount-option__box">
                   <button class="tickets-amount-option__btn" type="button" id="seniorDecr">–</button>
                   <input class="tickets-amount-option__input" id="seniorAmount" type="number" min="0" max="100"
-                    value="1" readonly>
+                    value="0" readonly>
                   <button class="tickets-amount-option__btn" id="seniorIncr" type="button">+</button>
                 </div>
               </div>
