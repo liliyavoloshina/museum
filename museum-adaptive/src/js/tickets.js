@@ -1,7 +1,5 @@
 import {selectedType, optionList} from './popup'
 
-console.log(optionList)
-
 const totalSection = document.querySelector('#ticketsTotalSection'),
   permOption = document.querySelector('#permOption'),
   tempOption = document.querySelector('#tempOption'),
@@ -12,7 +10,8 @@ const totalSection = document.querySelector('#ticketsTotalSection'),
   seniorIncr = document.querySelector('#seniorIncr'),
   seniorAmountInput = document.querySelector('#seniorAmount'),
   basicAmountInput = document.querySelector('#basicAmount'),
-  
+  ticketType = document.querySelector('#ticketType')
+  ticketType.addEventListener('select', () => console.log('change'))
 
 class TicketsTotal {
   constructor() {
@@ -65,6 +64,7 @@ class TicketsTotal {
     selectedType.innerHTML = type === 'perm' ? 'Permanent exhibition' : type === 'temp' ? 'Temporary exhibition' : 'Combined Admission'
     const options = optionList.querySelectorAll('div')
     const optionIdx = type === 'perm' ? 0 : type === 'temp' ? 1 : 2
+    options.forEach(option => option.classList.remove('same-as-selected'))
     options[optionIdx].setAttribute('class', 'same-as-selected')
   }
 

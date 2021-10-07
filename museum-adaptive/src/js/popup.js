@@ -29,7 +29,8 @@ function addClass() {
   this.classList.add('has-value')
 }
 
-let selected, optionList
+let selected, optionList, 
+// changedValue
 
 for (let i = 0; i < selectLength; i++) {
   const selectedElement = selectWrapper[i].getElementsByTagName('select')[0]
@@ -56,6 +57,8 @@ for (let i = 0; i < selectLength; i++) {
 
       for (let i = 0; i < originalSelectLength; i++) {
         if (originalSelect.options[i].innerHTML == this.innerHTML) {
+          // changedValue = originalSelect.options[i].value
+          // changedValue = originalSelect.options[i].value
           originalSelect.selectedIndex = i
           originalSelectedItem.innerHTML = this.innerHTML
           const itemAsSelected = this.parentNode.getElementsByClassName('same-as-selected')
@@ -67,6 +70,10 @@ for (let i = 0; i < selectLength; i++) {
           break
         }
       }
+
+      originalSelectedItem.addEventListener('click', () => {
+        changeType(changedValue)
+      })
       originalSelectedItem.click()
     })
     fakeOptionList.appendChild(fakeOptionItem)
@@ -84,6 +91,7 @@ function closeAllSelect(element) {
   const arrayNo = []
   const selectedItems = document.getElementsByClassName('select-items')
   const selectedItem = document.getElementsByClassName('select-selected')
+  selectedItems[0].classList.add('select-hide')
   const selectedItemsLength = selectedItems.length
   const selectedItemLength = selectedItem.length
   for (let i = 0; i < selectedItemLength; i++) {
