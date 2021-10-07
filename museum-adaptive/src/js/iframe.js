@@ -1,4 +1,13 @@
-import { pauseVideo, videoPlaying, initSlider } from './video'
+import { tns } from 'tiny-slider/src/tiny-slider'
+import { pauseVideo, videoPlaying, changeVideo } from './video'
+
+let slider
+
+initSlider()
+
+slider.events.on('transitionStart', () => changeVideo(slider.getInfo().displayIndex))
+
+const slides = document.querySelectorAll('.video-slider-item')
 
 function loadPlayer() {
   var tag = document.createElement('script')
@@ -12,24 +21,21 @@ function loadPlayer() {
   }
 }
 
-const slides = document.querySelectorAll('.video-slider-item')
-
-
 function onYouTubeIframeAPIReady() {
   slides.forEach(slide => {
     createPlayer(slide.dataset)
   })
 }
 
+// function that add additional dataset attr to iframes
 function convertId() {
   const dataset = []
 
   slides.forEach(slide => {
     let id = slide.dataset.id
-    
+
     let count = 0
     if (dataset.includes(id)) {
-
       dataset.forEach(duplicate => {
         if (duplicate === id || duplicate === `${id}-${count}`) {
           count++
@@ -61,7 +67,6 @@ function createPlayer(data) {
 }
 
 function onPlayerStateChange(event, number) {
-  console.log('onPlayerStateChange')
   const iframes = document.querySelectorAll('iframe')
   if (event.data == YT.PlayerState.PLAYING) {
     if (videoPlaying) {
@@ -74,6 +79,34 @@ function onPlayerStateChange(event, number) {
       }
     })
   }
+}
+
+function initSlider() {
+  slider = tns({
+    container: '#videoSlider',
+    loop: true,
+    responsive: {
+      '1024': {
+        items: 3,
+        gutter: 42
+      },
+      '768': {
+        items: 2,
+        gutter: 20
+      },
+      '420': {
+        items: 2,
+        gutter: 20
+      }
+    },
+    preventActionWhenRunning: true,
+    lazyload: true,
+    speed: 900,
+    navContainer: '.video-nav',
+    navAsThumbnails: true,
+    prevButton: '#videoPrev',
+    nextButton: '#videoNext'
+  })
 }
 
 loadPlayer()

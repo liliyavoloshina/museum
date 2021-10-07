@@ -1,4 +1,3 @@
-import { tns } from 'tiny-slider/src/tiny-slider'
 
 const video = document.querySelector('#video')
 const videoSource = document.querySelector('#videoSource')
@@ -38,7 +37,6 @@ let videoPlaying = false
 let videoVolume = 0.5
 let videoSpeed = video.playbackRate
 let fullscreenMode = false
-let slider
 
 setVideo()
 video.volume = videoVolume
@@ -92,8 +90,7 @@ function setVideo(index = 1) {
   video.load()
 }
 
-function changeVideo() {
-  const currentIndex = slider.getInfo().displayIndex
+function changeVideo(currentIndex) {
   setVideo(currentIndex)
   stopIframes()
 }
@@ -121,10 +118,6 @@ function togglePlay() {
   }
 }
 
-// function findAllIframes() {
-//   const iframes = document.querySelectorAll('')
-// }
-
 function changeProgressBar(value) {
   videoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
 }
@@ -135,7 +128,6 @@ function changeVolumeBar(value) {
 
 function stopIframes() {
   const iframes = document.querySelectorAll('iframe')
-  console.log('stopifrmaes')
   iframes.forEach(iframe => {
     iframe.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
   })
@@ -183,8 +175,6 @@ function toggleMute() {
     muteVideo()
   }
 }
-
-initSlider()
 
 function handleVolume() {
   const value = this.value
@@ -261,35 +251,6 @@ function togglePopup() {
   }, 500)
 }
 
-function initSlider() {
-  console.log('initSlider')
-  slider = tns({
-    container: '#videoSlider',
-    loop: true,
-    responsive: {
-      '1024': {
-        items: 3,
-        gutter: 42
-      },
-      '768': {
-        items: 2,
-        gutter: 20
-      },
-      '420': {
-        items: 2,
-        gutter: 20
-      }
-    },
-    preventActionWhenRunning: true,
-    lazyload: true,
-    speed: 900,
-    navContainer: '.video-nav',
-    navAsThumbnails: true,
-    prevButton: '#videoPrev',
-    nextButton: '#videoNext'
-  })
 
-  slider.events.on('transitionStart', changeVideo)
-}
 
-export { stopIframes, pauseVideo, videoPlaying, initSlider }
+export { pauseVideo, videoPlaying, changeVideo }
