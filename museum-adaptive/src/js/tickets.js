@@ -39,6 +39,7 @@ class TicketsTotal {
       this.basicAmount--
     }
     if (age === 'senior') {
+      console.log('sen decrement');
       if (this.seniorAmount === 0) return
       this.changeSeniorAmount(this.seniorAmount - 1)
       this.seniorAmount--
@@ -69,16 +70,21 @@ class TicketsTotal {
     if (total) {
       totalSection.textContent = total
     }
+
     if (type) {
       const types = document.querySelectorAll('.tickets-type-option__input')
       types.forEach(input => {
         input.dataset.id === type ? (input.checked = true) : (input.checked = false)
       })
     }
+
     if (basicAmount) {
+      this.basicAmount = basicAmount
       basicAmountInput.value = basicAmount
     }
+
     if (seniorAmount) {
+      this.seniorAmount = seniorAmount
       seniorAmountInput.value = seniorAmount
     }
   }
