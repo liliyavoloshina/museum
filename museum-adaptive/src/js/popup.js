@@ -29,36 +29,38 @@ function addClass() {
   this.classList.add('has-value')
 }
 
-for (i = 0; i < selectLength; i++) {
+let selected, optionList
+
+for (let i = 0; i < selectLength; i++) {
   const selectedElement = selectWrapper[i].getElementsByTagName('select')[0]
   const selectedElementLength = selectedElement.length
 
   const fakeSelectedItem = document.createElement('div')
   fakeSelectedItem.setAttribute('class', 'select-selected')
-  fakeSelectedItem.innerHTML =
-    selectedElement.options[selectedElement.selectedIndex].innerHTML
+  fakeSelectedItem.innerHTML = selectedElement.options[selectedElement.selectedIndex].innerHTML
   selectWrapper[i].appendChild(fakeSelectedItem)
+
+  selected = fakeSelectedItem
 
   const fakeOptionList = document.createElement('div')
   fakeOptionList.setAttribute('class', 'select-items select-hide')
+  optionList = fakeOptionList
 
-  for (j = 1; j < selectedElementLength; j++) {
+  for (let j = 1; j < selectedElementLength; j++) {
     const fakeOptionItem = document.createElement('div')
     fakeOptionItem.innerHTML = selectedElement.options[j].innerHTML
-    fakeOptionItem.addEventListener('click', function (e) {
-      const originalSelect =
-        this.parentNode.parentNode.getElementsByTagName('select')[0]
+    fakeOptionItem.addEventListener('click', function(e) {
+      const originalSelect = this.parentNode.parentNode.getElementsByTagName('select')[0]
       const originalSelectLength = originalSelect.length
       const originalSelectedItem = this.parentNode.previousSibling
 
-      for (i = 0; i < originalSelectLength; i++) {
+      for (let i = 0; i < originalSelectLength; i++) {
         if (originalSelect.options[i].innerHTML == this.innerHTML) {
           originalSelect.selectedIndex = i
           originalSelectedItem.innerHTML = this.innerHTML
-          const itemAsSelected =
-            this.parentNode.getElementsByClassName('same-as-selected')
+          const itemAsSelected = this.parentNode.getElementsByClassName('same-as-selected')
           const itemAsSelectedLength = itemAsSelected.length
-          for (k = 0; k < itemAsSelectedLength; k++) {
+          for (let k = 0; k < itemAsSelectedLength; k++) {
             itemAsSelected[k].removeAttribute('class')
           }
           this.setAttribute('class', 'same-as-selected')
@@ -70,7 +72,7 @@ for (i = 0; i < selectLength; i++) {
     fakeOptionList.appendChild(fakeOptionItem)
   }
   selectWrapper[i].appendChild(fakeOptionList)
-  fakeSelectedItem.addEventListener('click', function (e) {
+  fakeSelectedItem.addEventListener('click', function(e) {
     e.stopPropagation()
     closeAllSelect(this)
     this.nextSibling.classList.toggle('select-hide')
@@ -84,14 +86,14 @@ function closeAllSelect(element) {
   const selectedItem = document.getElementsByClassName('select-selected')
   const selectedItemsLength = selectedItems.length
   const selectedItemLength = selectedItem.length
-  for (i = 0; i < selectedItemLength; i++) {
+  for (let i = 0; i < selectedItemLength; i++) {
     if (element == selectedItem[i]) {
       arrayNo.push(i)
     } else {
       selectedItem[i].classList.remove('select-arrow-active')
     }
   }
-  for (i = 0; i < selectedItemsLength; i++) {
+  for (let i = 0; i < selectedItemsLength; i++) {
     if (arrayNo.indexOf(i)) {
       selectWrapper[i].classList.add('select-hide')
     }
@@ -148,3 +150,5 @@ function toggleForm() {
   popup.classList.toggle('opened')
   popupOverlay.classList.toggle('opened')
 }
+
+export { selected as selectedType, optionList }

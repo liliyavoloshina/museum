@@ -1,10 +1,10 @@
 import './scss/style.scss'
 import './js/explore-slider'
-import './js/video-slider'
-import './js/video'
+// import './js/video-slider'
+// import './js/video'
 import './js/gallery'
-import './js/tickets'
 import './js/popup'
+import './js/tickets'
 import './js/styling'
 
 document.documentElement.style.setProperty(

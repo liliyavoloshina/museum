@@ -1,3 +1,7 @@
+import {selectedType, optionList} from './popup'
+
+console.log(optionList)
+
 const totalSection = document.querySelector('#ticketsTotalSection'),
   permOption = document.querySelector('#permOption'),
   tempOption = document.querySelector('#tempOption'),
@@ -7,7 +11,8 @@ const totalSection = document.querySelector('#ticketsTotalSection'),
   seniorDecr = document.querySelector('#seniorDecr'),
   seniorIncr = document.querySelector('#seniorIncr'),
   seniorAmountInput = document.querySelector('#seniorAmount'),
-  basicAmountInput = document.querySelector('#basicAmount')
+  basicAmountInput = document.querySelector('#basicAmount'),
+  
 
 class TicketsTotal {
   constructor() {
@@ -56,8 +61,16 @@ class TicketsTotal {
     seniorAmountInput.value = value
   }
 
+  changeTypeSelect(type) {
+    selectedType.innerHTML = type === 'perm' ? 'Permanent exhibition' : type === 'temp' ? 'Temporary exhibition' : 'Combined Admission'
+    const options = optionList.querySelectorAll('div')
+    const optionIdx = type === 'perm' ? 0 : type === 'temp' ? 1 : 2
+    options[optionIdx].setAttribute('class', 'same-as-selected')
+  }
+
   changeType(type) {
     this.type = type
+    this.changeTypeSelect(type)
     this.caclulate()
   }
 
@@ -76,6 +89,7 @@ class TicketsTotal {
       types.forEach(input => {
         input.dataset.id === type ? (input.checked = true) : (input.checked = false)
       })
+      this.changeTypeSelect(type)
     }
 
     if (basicAmount) {
