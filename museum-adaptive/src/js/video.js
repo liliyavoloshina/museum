@@ -1,4 +1,3 @@
-
 const video = document.querySelector('#video')
 const videoSource = document.querySelector('#videoSource')
 const videoLargePlay = document.querySelector('#videoLargePlay')

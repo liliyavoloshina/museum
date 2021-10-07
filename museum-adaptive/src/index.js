@@ -1,8 +1,9 @@
 import './scss/style.scss'
 import './js/explore-slider'
-import './js/iframe'
+import './js/video-slider'
 import './js/video'
 import './js/gallery'
+import './js/tickets'
 import './js/popup'
 import './js/styling'
 

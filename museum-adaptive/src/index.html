@@ -224,12 +224,14 @@
           <picture>
             <source type="image/webp" srcset="./img/explore/after.webp">
             <source type="image/jpeg" srcset="./img/explore/after.jpg">
-            <img class="explore-slider__after" id="exploreAfter" loading="lazy" src="./img/explore/after.webp" alt="Reproduction After">
+            <img class="explore-slider__after" id="exploreAfter" loading="lazy" src="./img/explore/after.webp"
+              alt="Reproduction After">
           </picture>
           <picture>
             <source type="image/webp" srcset="./img/explore/before.webp">
             <source type="image/jpeg" srcset="./img/explore/before.jpg">
-            <img class="explore-slider__before" id="exploreBefore"  loading="lazy" src="./img/explore/before.webp" alt="Reproduction Before">
+            <img class="explore-slider__before" id="exploreBefore" loading="lazy" src="./img/explore/before.webp"
+              alt="Reproduction Before">
           </picture>
           <div class="explore-slider__resizer" id="exploreResizer"></div>
           <input class="explore-slider__range" id="exploreRange" type="range" min="0" max="100" value="59.5" />
@@ -266,7 +268,6 @@
             <button class="video__btn video__btn-expand" id="videoFullscreenBtn"></button>
           </div>
         </div>
-
 
         <div class="video-slider" id="videoSlider">
           <div class="video-slider-item" data-id="zp1BXPX8jcU" id="zp1BXPX8jcU"></div>
@@ -321,15 +322,15 @@
             <div class="tickets-type">
               <h4 class="tickets-subtitle">Ticket Type</h4>
               <label class="tickets-type-option">Permanent exhibition
-                <input class="tickets-type-option__input" type="radio" name="ticket-type" checked>
+                <input class="tickets-type-option__input" id="permOption" type="radio" name="ticket-type" checked>
                 <span class="tickets-type-option__checkmark"></span>
               </label>
               <label class="tickets-type-option">Temporary exhibition
-                <input class="tickets-type-option__input" type="radio" name="ticket-type">
+                <input class="tickets-type-option__input" id="tempOption" type="radio" name="ticket-type">
                 <span class="tickets-type-option__checkmark"></span>
               </label>
-              <label class="tickets-type-option">Combined Admissionn
-                <input class="tickets-type-option__input" type="radio" name="ticket-type">
+              <label class="tickets-type-option">Combined Admission
+                <input class="tickets-type-option__input" id="combOption" type="radio" name="ticket-type">
                 <span class="tickets-type-option__checkmark"></span>
               </label>
             </div>
@@ -339,27 +340,23 @@
               <div class="tickets-amount-option">
                 <label class="tickets-amount-option__label" for="tickets-amount-basic">Basic 18+</label>
                 <div class="tickets-amount-option__box">
-                  <button class="tickets-amount-option__btn" type="button"
-                    onclick="this.nextElementSibling.stepDown()">–</button>
-                  <input class="tickets-amount-option__input" id="tickets-amount-basic" type="number" min="0" max="100"
-                    value="1" readonly>
-                  <button class="tickets-amount-option__btn" type="button"
-                    onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button class="tickets-amount-option__btn" type="button" id="basicDecr">–</button>
+                  <input class="tickets-amount-option__input" id="basicAmount" type="number" min="0" max="100" value="1"
+                    readonly>
+                  <button class="tickets-amount-option__btn" type="button" id="basicIncr">+</button>
                 </div>
               </div>
               <div class="tickets-amount-option">
                 <label class="tickets-amount-option__label" for="tickets-amount-basic">Senior 65+</label>
                 <div class="tickets-amount-option__box">
-                  <button class="tickets-amount-option__btn" type="button"
-                    onclick="this.nextElementSibling.stepDown()">–</button>
-                  <input class="tickets-amount-option__input" id="tickets-amount-senior" type="number" min="0" max="100"
+                  <button class="tickets-amount-option__btn" type="button" id="seniorDecr">–</button>
+                  <input class="tickets-amount-option__input" id="seniorAmount" type="number" min="0" max="100"
                     value="1" readonly>
-                  <button class="tickets-amount-option__btn" type="button"
-                    onclick="this.previousElementSibling.stepUp()">+</button>
+                  <button class="tickets-amount-option__btn" id="seniorIncr" type="button">+</button>
                 </div>
               </div>
 
-              <h4 class="tickets-subtitle total-title">Total €<span>220</span></h4>
+              <h4 class="tickets-subtitle total-title">Total €<span id="ticketsTotalSection">0</span></h4>
             </div>
 
             <div class="tickets-total">
