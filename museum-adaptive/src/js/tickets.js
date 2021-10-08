@@ -1,18 +1,23 @@
-import { selectedType, optionList, updateCustomSelectChecked } from './popup'
+import { updateCustomSelectChecked } from './popup'
 
-const totalSection = document.querySelector('#ticketsTotalSection'),
-  permOption = document.querySelector('#permOption'),
+const permOption = document.querySelector('#permOption'),
   tempOption = document.querySelector('#tempOption'),
   combOption = document.querySelector('#combOption'),
-  basicDecr = document.querySelector('#basicDecr'),
-  basicIncr = document.querySelector('#basicIncr'),
-  seniorDecr = document.querySelector('#seniorDecr'),
-  seniorIncr = document.querySelector('#seniorIncr'),
-  seniorAmountInput = document.querySelector('#seniorAmount'),
-  basicAmountInput = document.querySelector('#basicAmount'),
+  basicDecr = document.querySelectorAll('.basicDecr'),
+  basicIncr = document.querySelectorAll('.basicIncr'),
+  seniorDecr = document.querySelectorAll('.seniorDecr'),
+  seniorIncr = document.querySelectorAll('.seniorIncr'),
   elSelectCustom = document.querySelector('#selectCustom'),
   elSelectCustomOpts = elSelectCustom.children[1],
-  customOptsList = Array.from(elSelectCustomOpts.children)
+  customOptsList = Array.from(elSelectCustomOpts.children),
+  basicAmountDisplay = document.querySelectorAll('.basicAmountDisplay'),
+  seniorAmountDisplay = document.querySelectorAll('.seniorAmountDisplay'),
+  ticketsTypeForm = document.querySelector('#ticketsTypeForm'),
+  basicTypeSums = document.querySelectorAll('.basicTypeSum'),
+  seniorTypeSums = document.querySelectorAll('.seniorTypeSum'),
+  basicTotalPrice = document.querySelector('#basicTotalPrice'),
+  seniorTotalPrice = document.querySelector('#seniorTotalPrice'),
+  ticketsTotalSum = document.querySelectorAll('.ticketsTotalSum')
 
 class TicketsTotal {
   constructor() {
@@ -20,44 +25,60 @@ class TicketsTotal {
     this.basicAmount = 0
     this.seniorAmount = 0
     this.type = 'perm'
+    this.typeSum = 20
+    this.basicTicketsPrice = 20
+    this.seniorTicketsPrice = 10
   }
 
   increment(age) {
     if (age === 'basic') {
       if (this.basicAmount === 20) return
       this.basicAmount++
-      this.changeBasicAmount(this.basicAmount)
+      this.changeBasicAmount()
     }
+
     if (age === 'senior') {
       if (this.seniorAmount === 20) return
       this.seniorAmount++
-      this.changeSeniorAmount(this.seniorAmount)
+      this.changeSeniorAmount()
     }
 
-    this.caclulate()
+    this.recalculate()
   }
 
   decrement(age) {
     if (age === 'basic') {
       if (this.basicAmount === 0) return
       this.basicAmount--
-      this.changeBasicAmount(this.basicAmount)
+      this.changeBasicAmount()
     }
     if (age === 'senior') {
       if (this.seniorAmount === 0) return
       this.seniorAmount--
-      this.changeSeniorAmount(this.seniorAmount)
+      this.changeSeniorAmount()
     }
 
-    this.caclulate()
+    this.recalculate()
   }
 
-  changeBasicAmount(value) {
-    basicAmountInput.value = value
+  changeBasicAmount() {
+    basicAmountDisplay.forEach(el => {
+      el.value ? el.value = this.basicAmount : el.textContent = this.basicAmount
+    })
+
+    // how to do this before window is closed???
+    localStorage.setItem('tickets-basic-museum', this.basicAmount)
   }
 
-  changeSeniorAmount(value) {
-    seniorAmountInput.value = value
+  changeSeniorAmount() {
+    seniorAmountDisplay.forEach(el => {
+      el.value ? el.value = this.seniorAmount : el.textContent = this.seniorAmount
+    })
+
+    // seniorAmountDisplay.textContent = this.seniorAmount
+
+    // how to do this before window is closed???
+    localStorage.setItem('tickets-senior-museum', this.seniorAmount)
   }
 
   changeType(type) {
@@ -65,8 +86,12 @@ class TicketsTotal {
 
     this.changeTypeForm()
     this.changeTypeSection()
+    this.changeTypeSum()
 
-    this.caclulate()
+    this.recalculate()
+
+    // how to do this before window is closed???
+    localStorage.setItem('tickets-type-museum', this.type)
   }
 
   changeTypeSection() {
@@ -83,18 +108,55 @@ class TicketsTotal {
         : this.type === 'temp'
         ? 'Temporary exhibition'
         : 'Combined Admission'
-
+    ticketsTypeForm.textContent = text
     updateCustomSelectChecked(this.type, text)
   }
 
-  setValue() {
+  changeTypeSum() {
+    this.typeSum = this.type === 'perm' ? 20 : this.type === 'temp' ? 25 : 40
+
+    basicTypeSums.forEach(el => {
+      el.textContent = this.typeSum
+    })
+    seniorTypeSums.forEach(el => {
+      el.textContent = this.typeSum / 2
+    })
+  }
+
+  recalculate() {
+    this.calcTicketsTotalPrice()
+
+    this.total = this.basicTicketsPrice + this.seniorTicketsPrice
+
+    ticketsTotalSum.forEach(totalEl => {
+      totalEl.textContent = this.total
+    })
+
+    // how to do this before window is closed???
+    localStorage.setItem('tickets-total-museum', this.total)
+  }
+
+  calcTicketsTotalPrice() {
+    this.basicTicketsPrice = this.typeSum * this.basicAmount
+    this.seniorTicketsPrice = (this.typeSum / 2) * this.seniorAmount
+
+    basicTotalPrice.textContent = this.basicTicketsPrice
+    seniorTotalPrice.textContent = this.seniorTicketsPrice
+  }
+
+  getLocalStorage() {
     const total = localStorage.getItem('tickets-total-museum')
     const type = localStorage.getItem('tickets-type-museum')
     const basicAmount = localStorage.getItem('tickets-basic-museum')
     const seniorAmount = localStorage.getItem('tickets-senior-museum')
 
     if (total) {
-      totalSection.textContent = total
+      this.total = total
+      ticketsTotalSum.forEach(totalEl => {
+        totalEl.textContent = this.total
+      })
+      // basicTotalPrice.textContent = basicTotal
+      // seniorTotalPrice.textContent = seniorTotal
     }
 
     if (type) {
@@ -103,35 +165,43 @@ class TicketsTotal {
 
     if (basicAmount) {
       this.basicAmount = basicAmount
-      basicAmountInput.value = basicAmount
+      this.changeBasicAmount()
     }
 
     if (seniorAmount) {
       this.seniorAmount = seniorAmount
-      seniorAmountInput.value = seniorAmount
+      this.changeSeniorAmount()
     }
+
+    this.calcTicketsTotalPrice()
   }
 
-  caclulate() {
-    let typeSum = this.type === 'perm' ? 20 : this.type === 'temp' ? 25 : 40
-    let basicAmount = typeSum * this.basicAmount
-    let seniorAmount = (typeSum / 2) * this.seniorAmount
-    let total = basicAmount + seniorAmount
-    totalSection.textContent = total
-
-    localStorage.setItem('tickets-total-museum', total)
-    localStorage.setItem('tickets-type-museum', this.type)
+  setLocalStorage() {
+    console.log('set', this.total)
     localStorage.setItem('tickets-basic-museum', this.basicAmount)
+    localStorage.setItem('tickets-type-museum', this.type)
+    localStorage.setItem('tickets-total-museum', this.total)
     localStorage.setItem('tickets-senior-museum', this.seniorAmount)
   }
 }
 
 const ticketsTotal = new TicketsTotal()
-ticketsTotal.setValue()
-basicIncr.addEventListener('click', () => ticketsTotal.increment('basic'))
-basicDecr.addEventListener('click', () => ticketsTotal.decrement('basic'))
-seniorIncr.addEventListener('click', () => ticketsTotal.increment('senior'))
-seniorDecr.addEventListener('click', () => ticketsTotal.decrement('senior'))
+
+basicIncr.forEach(btn => {
+  btn.addEventListener('click', () => ticketsTotal.increment('basic'))
+})
+
+basicDecr.forEach(btn => {
+  btn.addEventListener('click', () => ticketsTotal.decrement('basic'))
+})
+
+seniorIncr.forEach(btn => {
+  btn.addEventListener('click', () => ticketsTotal.increment('senior'))
+})
+
+seniorDecr.forEach(btn => {
+  btn.addEventListener('click', () => ticketsTotal.decrement('senior'))
+})
 
 permOption.addEventListener('click', () => ticketsTotal.changeType('perm'))
 tempOption.addEventListener('click', () => ticketsTotal.changeType('temp'))
@@ -148,3 +218,5 @@ customOptsList.forEach(elOption => {
     ticketsTotal.changeType(value)
   })
 })
+
+window.addEventListener('load', ticketsTotal.getLocalStorage())

@@ -343,23 +343,23 @@
               <div class="tickets-amount-option">
                 <label class="tickets-amount-option__label" for="tickets-amount-basic">Basic 18+</label>
                 <div class="tickets-amount-option__box">
-                  <button class="tickets-amount-option__btn" type="button" id="basicDecr">–</button>
-                  <input class="tickets-amount-option__input" id="basicAmount" type="number" min="0" max="100" value="0"
+                  <button class="tickets-amount-option__btn basicDecr" type="button">–</button>
+                  <input class="tickets-amount-option__input basicAmountDisplay" type="number" min="0" max="20" value="0"
                     readonly>
-                  <button class="tickets-amount-option__btn" type="button" id="basicIncr">+</button>
+                  <button class="tickets-amount-option__btn basicIncr" type="button">+</button>
                 </div>
               </div>
               <div class="tickets-amount-option">
                 <label class="tickets-amount-option__label" for="tickets-amount-basic">Senior 65+</label>
                 <div class="tickets-amount-option__box">
-                  <button class="tickets-amount-option__btn" type="button" id="seniorDecr">–</button>
-                  <input class="tickets-amount-option__input" id="seniorAmount" type="number" min="0" max="100"
+                  <button class="tickets-amount-option__btn seniorDecr" type="button">–</button>
+                  <input class="tickets-amount-option__input seniorAmountDisplay" type="number" min="0" max="20"
                     value="0" readonly>
-                  <button class="tickets-amount-option__btn" id="seniorIncr" type="button">+</button>
+                  <button class="tickets-amount-option__btn seniorIncr" type="button">+</button>
                 </div>
               </div>
 
-              <h4 class="tickets-subtitle total-title">Total €<span id="ticketsTotalSection">0</span></h4>
+              <h4 class="tickets-subtitle total-title">Total €<span class="ticketsTotalSum">0</span></h4>
             </div>
 
             <div class="tickets-total">
@@ -515,19 +515,19 @@
           <div class="tickets-entry">
             <h3 class="tickets-entry__title">Entry ticket</h3>
             <div class="entry">
-              <div class="label">Basic 18+ (20 €)</div>
+              <div class="label">Basic 18+ (<span class="basicTypeSum">20</span> €)</div>
               <div class="amount">
-                <button class="amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
-                <input class="input" type="number" min="0" max="20" value="2" readonly>
-                <button class="amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button class="amount-btn basicDecr" type="button">–</button>
+                <input class="input basicAmountDisplay" type="number" min="0" max="20" value="0" readonly>
+                <button class="amount-btn basicIncr" type="button">+</button>
               </div>
             </div>
             <div class="entry">
-              <div class="label">Senior 65+ (10 €)</div>
+              <div class="label">Senior 65+ (<span class="seniorTypeSum">10</span> €)</div>
               <div class="amount">
-                <button class="amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
-                <input class="input" type="number" min="0" max="20" value="2" readonly>
-                <button class="amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                <button class="amount-btn seniorDecr" type="button">–</button>
+                <input class="input seniorAmountDisplay" type="number" min="0" max="20" value="0" readonly>
+                <button class="amount-btn seniorIncr" type="button">+</button>
               </div>
             </div>
           </div>
@@ -548,7 +548,7 @@
             </div>
             <div class="info__item">
               <div class="icon check"></div>
-              <div class="text">Temporary exhibition</div>
+              <div class="text" id="ticketsTypeForm">Temporary exhibition</div>
             </div>
           </div>
           <div class="image"></div>
@@ -556,19 +556,19 @@
         <div class="popup-payment__price">
           <div class="popup-payment__tickets">
             <div class="ticket">
-              <div class="ticket__count">2</div>
-              <div class="ticket__type">Basic (20 €)</div>
-              <div class="ticket__price">40 €</div>
+              <div class="ticket__count basicAmountDisplay">0</div>
+              <div class="ticket__type">Basic (<span class="basicTypeSum">20</span> €)</div>
+              <div class="ticket__price"><span id="basicTotalPrice">0</span> €</div>
             </div>
             <div class="ticket">
-              <div class="ticket__count">2</div>
-              <div class="ticket__type">Senior (10 €)</div>
-              <div class="ticket__price">20 €</div>
+              <div class="ticket__count seniorAmountDisplay">0</div>
+              <div class="ticket__type">Senior (<span class="seniorTypeSum">10</span> €)</div>
+              <div class="ticket__price"><span id="seniorTotalPrice">0</span> €</div>
             </div>
           </div>
           <div class="popup-payment__total">
             <div class="total__label">Total:</div>
-            <div class="total__price">60 €</div>
+            <div class="total__price"><span class="ticketsTotalSum">0</span> €</div>
           </div>
         </div>
 
