@@ -37,7 +37,6 @@
 }
 
 @media only screen and (max-width: 550px) {
-
 }
 
 @media only screen and (max-width: 420px) {
@@ -180,8 +179,8 @@
 
   .icon {
     position: absolute;
-    top: 30%;
-    left: 14px;
+    top: 50%;
+    transform: translate(86%, -50%);
     width: 15px;
     height: 15px;
     background-size: contain;
@@ -288,25 +287,21 @@
 .tickets-phone {
   .icon {
     height: 23px;
-    left: 13px;
     background-image: url('../svg/phone.svg');
   }
 }
 
-.tickets-select {
+.select-wrapper {
   position: relative;
   height: 45px;
   width: 100%;
-  font-family: var(--font-base);
-  font-size: 18px;
-  line-height: 21px;
-  color: var(--bg-dark);
-  border: 1px solid var(--bg-dark);
 
-  .icon {
+  &::before {
+    content: '';
     position: absolute;
-    top: 30%;
-    left: 15px;
+    top: 50%;
+    transform: translate(110%, -50%);
+    z-index: 20;
     width: 15px;
     height: 15px;
     background-size: contain;
@@ -314,23 +309,62 @@
     background-position: 100%;
     background-image: url('../svg/type.svg');
   }
+}
 
-  select {
-    position: absolute;
-    left: -999px;
-    z-index: -999;
+.select-native,
+.select-custom {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-base);
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--bg-dark);
+}
+
+.select-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+@media (hover: hover) {
+  .select-custom {
+    display: block;
   }
-
-  .select-selected {
-    font-weight: 400;
-    background-color: #fff;
+  .select-native:focus + .select-custom {
+    display: none;
   }
+}
 
-  .select-selected:after {
-    position: absolute;
-    top: 30%;
-    right: 15px;
+.select-native:focus,
+.select-custom.isActive .select-custom-trigger {
+  outline: none;
+  box-shadow: white 0 0 0 2px, var(--dark-red) 0 0 0 4px;
+}
+
+.select-native,
+.select-custom-trigger {
+  border: 1px solid var(--bg-dark);
+}
+
+.select-native {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-custom-trigger {
+  position: relative;
+  padding: 13px 43px;
+  cursor: pointer;
+  background-color: #fff;
+
+  &:after {
     content: '';
+    position: absolute;
+    top: 29%;
+    right: 15px;
     background: url('../svg/triangle.svg') no-repeat center 100%;
     background-size: contain;
     display: inline-block;
@@ -338,44 +372,49 @@
     height: 17px;
   }
 
-  .select-selected.select-arrow-active:after {
+  .select-custom.isActive &:after {
     transform: rotate(180deg);
   }
 
-  .select-items div,
-  .select-selected {
-    height: 100%;
-    padding-top: 10px;
-    padding: 12px 42px;
+  &:hover {
+    border-color: var(--text-gold);
+  }
+}
+
+.select-custom-options {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border: 1px solid var(--bg-dark);
+  border-top: 0;
+  background-color: #fff;
+  z-index: 1;
+  display: none;
+}
+
+.select-custom.isActive .select-custom-options {
+  display: block;
+}
+
+.select-custom-option {
+  position: relative;
+  padding-top: 10px;
+  padding: 12px 42px;
+
+  &.isHover,
+  &:hover {
+    background-color: #e7e7e7;
     cursor: pointer;
   }
+}
 
-  .select-items {
-    position: absolute;
-    top: 44px;
-    left: -1px;
-    right: -1px;
-    z-index: 99;
-    background-color: #fff;
-  }
-
-  .select-items div {
-    font-weight: 300;
-    border-left: 1px solid var(--bg-dark);
-    border-right: 1px solid var(--bg-dark);
-  }
-  .select-items div:last-child {
-    border-bottom: 1px solid var(--bg-dark);
-  }
-
-  .select-hide {
-    display: none;
-  }
-
-  .select-items div:hover,
-  .same-as-selected {
-    background-color: #e7e7e7;
-  }
+.select-custom-option:not(:last-of-type)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .tickets-entry {
@@ -644,7 +683,7 @@
   }
 
   @media only screen and (max-width: 550px) {
-  // @media only screen and (max-width: 420px) {
+    // @media only screen and (max-width: 420px) {
     margin-top: 14px;
     position: static;
     height: auto;
@@ -661,7 +700,7 @@
   background-color: #bcbcbc;
 
   @media only screen and (max-width: 550px) {
-  // @media only screen and (max-width: 420px) {
+    // @media only screen and (max-width: 420px) {
     position: static;
     width: 100%;
     height: auto;
@@ -797,7 +836,7 @@
   background-color: #939393;
 
   @media only screen and (max-width: 550px) {
-  // @media only screen and (max-width: 420px) {
+    // @media only screen and (max-width: 420px) {
     position: static;
     width: 100%;
   }
@@ -902,7 +941,7 @@
     margin-top: 25px;
     margin-bottom: 3px;
   }
-  
+
   @media only screen and (max-width: 420px) {
     margin-top: 42px;
     font-size: 20px;

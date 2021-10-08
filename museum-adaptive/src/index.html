@@ -322,15 +322,18 @@
             <div class="tickets-type">
               <h4 class="tickets-subtitle">Ticket Type</h4>
               <label class="tickets-type-option">Permanent exhibition
-                <input class="tickets-type-option__input" id="permOption" data-id="perm" type="radio" name="ticket-type" checked>
+                <input class="tickets-type-option__input" id="permOption" data-id="perm" type="radio" name="ticket-type"
+                  checked>
                 <span class="tickets-type-option__checkmark"></span>
               </label>
               <label class="tickets-type-option">Temporary exhibition
-                <input class="tickets-type-option__input" id="tempOption" data-id="temp" type="radio" name="ticket-type">
+                <input class="tickets-type-option__input" id="tempOption" data-id="temp" type="radio"
+                  name="ticket-type">
                 <span class="tickets-type-option__checkmark"></span>
               </label>
               <label class="tickets-type-option">Combined Admission
-                <input class="tickets-type-option__input" id="combOption" data-id="comb" type="radio" name="ticket-type">
+                <input class="tickets-type-option__input" id="combOption" data-id="comb" type="radio"
+                  name="ticket-type">
                 <span class="tickets-type-option__checkmark"></span>
               </label>
             </div>
@@ -451,7 +454,7 @@
     </div>
   </footer>
 
-  <div class="popup" id="popup">
+  <div class="popup opened" id="popup">
     <div class="popup__close">
       <button class="popup-close-btn" id="closePopup" title="Close Popup"></button>
     </div>
@@ -484,14 +487,29 @@
             <div class="icon"></div>
             <input class="input" placeholder="Phone" type="tel" name="phone" id="phone">
           </div>
-          <div class="tickets-select">
-            <div class="icon"></div>
-            <select name="ticket-type" id="ticketType">
-              <option selected>Ticket Type</option>
+
+          <div class="select-wrapper">
+            <select class="select-native" id="selectNative" aria-labelledby="jobLabel">
+              <option value="sel" disabled="" selected="">Ticket Type</option>
               <option value="perm">Permanent exhibition</option>
               <option value="temp">Temporary exhibition</option>
               <option value="comb">Combined Admission</option>
             </select>
+
+            <div class="select-custom" id="selectCustom" aria-hidden="true">
+              <div class="select-custom-trigger">Ticket Type</div>
+              <div class="select-custom-options">
+                <div class="select-custom-option" data-value="perm">
+                  Permanent exhibition
+                </div>
+                <div class="select-custom-option" data-value="temp">
+                  Temporary exhibition
+                </div>
+                <div class="select-custom-option" data-value="comb">
+                  Combined Admission
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="tickets-entry">

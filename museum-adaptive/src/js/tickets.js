@@ -9,9 +9,7 @@ const totalSection = document.querySelector('#ticketsTotalSection'),
   seniorDecr = document.querySelector('#seniorDecr'),
   seniorIncr = document.querySelector('#seniorIncr'),
   seniorAmountInput = document.querySelector('#seniorAmount'),
-  basicAmountInput = document.querySelector('#basicAmount'),
-  ticketType = document.querySelector('#ticketType')
-  ticketType.addEventListener('select', () => console.log('change'))
+  basicAmountInput = document.querySelector('#basicAmount')
 
 class TicketsTotal {
   constructor() {
@@ -70,7 +68,7 @@ class TicketsTotal {
 
   changeType(type) {
     this.type = type
-    this.changeTypeSelect(type)
+    // this.changeTypeSelect(type)
     this.caclulate()
   }
 
@@ -89,7 +87,7 @@ class TicketsTotal {
       types.forEach(input => {
         input.dataset.id === type ? (input.checked = true) : (input.checked = false)
       })
-      this.changeTypeSelect(type)
+      // this.changeTypeSelect(type)
     }
 
     if (basicAmount) {
@@ -127,3 +125,4 @@ seniorDecr.addEventListener('click', () => ticketsTotal.decrement('senior'))
 permOption.addEventListener('click', () => ticketsTotal.changeType('perm'))
 tempOption.addEventListener('click', () => ticketsTotal.changeType('temp'))
 combOption.addEventListener('click', () => ticketsTotal.changeType('comb'))
+

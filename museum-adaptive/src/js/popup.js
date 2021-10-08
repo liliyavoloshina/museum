@@ -1,7 +1,5 @@
 const date = document.querySelector('#date'),
   time = document.querySelector('#time'),
-  selectWrapper = document.getElementsByClassName('tickets-select'),
-  selectLength = selectWrapper.length,
   incrExpDay = document.querySelector('#incrExpDay'),
   decrExpDay = document.querySelector('#decrExpDay'),
   expDayInput = document.querySelector('#expDay'),
@@ -15,7 +13,6 @@ const date = document.querySelector('#date'),
 
 date.addEventListener('change', addClass)
 time.addEventListener('change', addClass)
-document.addEventListener('click', closeAllSelect)
 openPopup.addEventListener('click', toggleForm)
 closePopup.addEventListener('click', toggleForm)
 popupOverlay.addEventListener('click', toggleForm)
@@ -29,84 +26,159 @@ function addClass() {
   this.classList.add('has-value')
 }
 
-let selected, optionList, 
-// changedValue
+const elSelectNative = document.querySelector('#selectNative')
+const elSelectCustom = document.querySelector('#selectCustom')
+const elSelectCustomBox = elSelectCustom.children[0]
+const elSelectCustomOpts = elSelectCustom.children[1]
+const customOptsList = Array.from(elSelectCustomOpts.children)
+const optionsCount = customOptsList.length
+const defaultLabel = elSelectCustomBox.getAttribute('data-value')
 
-for (let i = 0; i < selectLength; i++) {
-  const selectedElement = selectWrapper[i].getElementsByTagName('select')[0]
-  const selectedElementLength = selectedElement.length
+let optionChecked = ''
+let optionHoveredIndex = -1
 
-  const fakeSelectedItem = document.createElement('div')
-  fakeSelectedItem.setAttribute('class', 'select-selected')
-  fakeSelectedItem.innerHTML = selectedElement.options[selectedElement.selectedIndex].innerHTML
-  selectWrapper[i].appendChild(fakeSelectedItem)
+// Toggle custom select visibility when clicking the box
+elSelectCustomBox.addEventListener('click', (e) => {
+  const isClosed = !elSelectCustom.classList.contains('isActive')
 
-  selected = fakeSelectedItem
-
-  const fakeOptionList = document.createElement('div')
-  fakeOptionList.setAttribute('class', 'select-items select-hide')
-  optionList = fakeOptionList
-
-  for (let j = 1; j < selectedElementLength; j++) {
-    const fakeOptionItem = document.createElement('div')
-    fakeOptionItem.innerHTML = selectedElement.options[j].innerHTML
-    fakeOptionItem.addEventListener('click', function(e) {
-      const originalSelect = this.parentNode.parentNode.getElementsByTagName('select')[0]
-      const originalSelectLength = originalSelect.length
-      const originalSelectedItem = this.parentNode.previousSibling
-
-      for (let i = 0; i < originalSelectLength; i++) {
-        if (originalSelect.options[i].innerHTML == this.innerHTML) {
-          // changedValue = originalSelect.options[i].value
-          // changedValue = originalSelect.options[i].value
-          originalSelect.selectedIndex = i
-          originalSelectedItem.innerHTML = this.innerHTML
-          const itemAsSelected = this.parentNode.getElementsByClassName('same-as-selected')
-          const itemAsSelectedLength = itemAsSelected.length
-          for (let k = 0; k < itemAsSelectedLength; k++) {
-            itemAsSelected[k].removeAttribute('class')
-          }
-          this.setAttribute('class', 'same-as-selected')
-          break
-        }
-      }
-
-      originalSelectedItem.addEventListener('click', () => {
-        changeType(changedValue)
-      })
-      originalSelectedItem.click()
-    })
-    fakeOptionList.appendChild(fakeOptionItem)
+  if (isClosed) {
+    openSelectCustom()
+  } else {
+    closeSelectCustom()
   }
-  selectWrapper[i].appendChild(fakeOptionList)
-  fakeSelectedItem.addEventListener('click', function(e) {
-    e.stopPropagation()
-    closeAllSelect(this)
-    this.nextSibling.classList.toggle('select-hide')
-    this.classList.toggle('select-arrow-active')
+})
+
+function openSelectCustom() {
+  elSelectCustom.classList.add('isActive')
+  // Remove aria-hidden in case this was opened by a user
+  // who uses AT (e.g. Screen Reader) and a mouse at the same time.
+  elSelectCustom.setAttribute('aria-hidden', false)
+
+  if (optionChecked) {
+    const optionCheckedIndex = customOptsList.findIndex(
+      (el) => el.getAttribute('data-value') === optionChecked
+    )
+    updateCustomSelectHovered(optionCheckedIndex)
+  }
+
+  // Add related event listeners
+  document.addEventListener('click', watchClickOutside)
+  document.addEventListener('keydown', supportKeyboardNavigation)
+}
+
+function closeSelectCustom() {
+  elSelectCustom.classList.remove('isActive')
+
+  elSelectCustom.setAttribute('aria-hidden', true)
+
+  updateCustomSelectHovered(-1)
+
+  // Remove related event listeners
+  document.removeEventListener('click', watchClickOutside)
+  document.removeEventListener('keydown', supportKeyboardNavigation)
+}
+
+function updateCustomSelectHovered(newIndex) {
+  const prevOption = elSelectCustomOpts.children[optionHoveredIndex]
+  const option = elSelectCustomOpts.children[newIndex]
+
+  if (prevOption) {
+    prevOption.classList.remove('isHover')
+  }
+  if (option) {
+    option.classList.add('isHover')
+  }
+
+  optionHoveredIndex = newIndex
+}
+
+function updateCustomSelectChecked(value, text) {
+  const prevValue = optionChecked
+
+  const elPrevOption = elSelectCustomOpts.querySelector(
+    `[data-value="${prevValue}"`
+  )
+  const elOption = elSelectCustomOpts.querySelector(`[data-value="${value}"`)
+
+  if (elPrevOption) {
+    elPrevOption.classList.remove('isActive')
+  }
+
+  if (elOption) {
+    elOption.classList.add('isActive')
+  }
+
+  elSelectCustomBox.textContent = text
+  optionChecked = value
+}
+
+function watchClickOutside(event) {
+  const didClickedOutside = !elSelectCustom.contains(event.target)
+  if (didClickedOutside) {
+    closeSelectCustom()
+  }
+}
+
+function supportKeyboardNavigation(event) {
+  // press down -> go next
+  if (event.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
+    let index = optionHoveredIndex
+    event.preventDefault() // prevent page scrolling
+    updateCustomSelectHovered(optionHoveredIndex + 1)
+  }
+
+  // press up -> go previous
+  if (event.keyCode === 38 && optionHoveredIndex > 0) {
+    event.preventDefault() // prevent page scrolling
+    updateCustomSelectHovered(optionHoveredIndex - 1)
+  }
+
+  // press Enter or space -> select the option
+  if (event.keyCode === 13 || event.keyCode === 32) {
+    event.preventDefault()
+
+    const option = elSelectCustomOpts.children[optionHoveredIndex]
+    const value = option && option.getAttribute('data-value')
+
+    if (value) {
+      elSelectNative.value = value
+      updateCustomSelectChecked(value, option.textContent)
+    }
+    closeSelectCustom()
+  }
+
+  // press ESC -> close selectCustom
+  if (event.keyCode === 27) {
+    closeSelectCustom()
+  }
+}
+
+// Update selectCustom value when selectNative is changed.
+elSelectNative.addEventListener('change', (e) => {
+  const value = e.target.value
+  const elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll(
+    `[data-value="${value}"]`
+  )[0]
+
+  updateCustomSelectChecked(value, elRespectiveCustomOption.textContent)
+})
+
+// Update selectCustom value when an option is clicked or hovered
+customOptsList.forEach(function (elOption, index) {
+  elOption.addEventListener('click', (e) => {
+    const value = e.target.getAttribute('data-value')
+
+    // Sync native select to have the same value
+    elSelectNative.value = value
+    console.log(elSelectNative.value)
+    updateCustomSelectChecked(value, e.target.textContent)
+    closeSelectCustom()
   })
-}
 
-function closeAllSelect(element) {
-  const arrayNo = []
-  const selectedItems = document.getElementsByClassName('select-items')
-  const selectedItem = document.getElementsByClassName('select-selected')
-  selectedItems[0].classList.add('select-hide')
-  const selectedItemsLength = selectedItems.length
-  const selectedItemLength = selectedItem.length
-  for (let i = 0; i < selectedItemLength; i++) {
-    if (element == selectedItem[i]) {
-      arrayNo.push(i)
-    } else {
-      selectedItem[i].classList.remove('select-arrow-active')
-    }
-  }
-  for (let i = 0; i < selectedItemsLength; i++) {
-    if (arrayNo.indexOf(i)) {
-      selectWrapper[i].classList.add('select-hide')
-    }
-  }
-}
+  elOption.addEventListener('mouseenter', (e) => {
+    updateCustomSelectHovered(index)
+  })
+})
 
 function incrementDay() {
   let oldVal = Number(expDayInput.value)
@@ -159,4 +231,4 @@ function toggleForm() {
   popupOverlay.classList.toggle('opened')
 }
 
-export { selected as selectedType, optionList }
+// export { selected as selectedType, optionList }
