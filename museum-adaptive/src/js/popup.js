@@ -15,7 +15,6 @@ const ticketsDate = document.querySelector('#ticketsDateInput'),
 
 ticketsDate.addEventListener('change', addClass)
 ticketsDate.addEventListener('change', changeDate)
-// ticketsDate.addEventListener('click', changeDate )
 time.addEventListener('change', addClass)
 openPopup.addEventListener('click', toggleForm)
 closePopup.addEventListener('click', toggleForm)
@@ -31,8 +30,8 @@ const year = presentDate.getFullYear()
 const month = presentDate.getMonth()
 const day = presentDate.getDate()
 
-const minDate = new Date(year, month, day + 1).toISOString().split("T")[0]
-const maxDate = new Date(year + 5, month, day + 1).toISOString().split("T")[0]
+const minDate = new Date(year, month, day + 1).toISOString().split('T')[0]
+const maxDate = new Date(year + 5, month, day + 1).toISOString().split('T')[0]
 
 ticketsDate.setAttribute('min', minDate)
 ticketsDate.setAttribute('max', maxDate)
@@ -42,8 +41,12 @@ function addClass() {
 }
 
 function changeDate() {
-  console.log(this.value)
+  const options = { weekday: 'long', month: 'long', day: 'numeric' }
+  const dateToDisplay = new Date().toLocaleDateString('en-us', options)
+  console.log(dateToDisplay)
 }
+
+changeDate()
 
 function incrementDay() {
   let oldVal = Number(expDayInput.value)
