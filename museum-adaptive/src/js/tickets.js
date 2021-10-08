@@ -1,4 +1,4 @@
-import { updateCustomSelectChecked } from './popup'
+import { updateCustomSelectChecked } from './custom-select'
 
 const permOption = document.querySelector('#permOption'),
   tempOption = document.querySelector('#tempOption'),

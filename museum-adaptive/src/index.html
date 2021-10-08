@@ -469,7 +469,7 @@
         <form class="popup-tickets__form">
           <div class="tickets-date tickets-input tickets-input-selectable">
             <div class="icon"></div>
-            <input class="input" type="date" name="date" id="date">
+            <input class="input" type="date" name="date" id="ticketsDateInput">
           </div>
           <div class="tickets-time tickets-input tickets-input-selectable">
             <div class="icon"></div>
@@ -497,7 +497,7 @@
             </select>
 
             <div class="select-custom" id="selectCustom" aria-hidden="true">
-              <div class="select-custom-trigger">Ticket Type</div>
+              <div class="select-custom-trigger tickets-input">Ticket Type</div>
               <div class="select-custom-options">
                 <div class="select-custom-option" data-value="perm">
                   Permanent exhibition
@@ -533,6 +533,7 @@
           </div>
         </form>
       </div>
+
       <div class="popup-payment">
         <div class="popup-payment__overview">
           <div class="info">

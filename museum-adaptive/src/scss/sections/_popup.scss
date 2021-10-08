@@ -177,6 +177,10 @@
   height: 45px;
   border: 1px solid var(--bg-dark);
 
+  &:hover {
+    border-color: var(--text-gold);
+  }
+
   .icon {
     position: absolute;
     top: 50%;
@@ -194,6 +198,15 @@
     padding-left: 43px;
     border: 0;
     outline: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: white 0 0 0 2px, var(--dark-red) 0 0 0 4px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .input:not(.has-value)::-webkit-datetime-edit {
@@ -225,7 +238,7 @@
 }
 
 .tickets-input-selectable {
-  padding-right: 10px;
+  // padding-right: 10px;
   .input::-webkit-calendar-picker-indicator {
     display: block;
     width: 17px;
@@ -376,9 +389,9 @@
     transform: rotate(180deg);
   }
 
-  &:hover {
-    border-color: var(--text-gold);
-  }
+  // &:hover {
+  //   border-color: var(--text-gold);
+  // }
 }
 
 .select-custom-options {
