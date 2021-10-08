@@ -9,7 +9,14 @@ const date = document.querySelector('#date'),
   openPopup = document.querySelector('#openPopup'),
   popup = document.querySelector('#popup'),
   closePopup = document.querySelector('#closePopup'),
-  popupOverlay = document.querySelector('#popupOverlay')
+  popupOverlay = document.querySelector('#popupOverlay'),
+  elSelectNative = document.querySelector('#selectNative'),
+  elSelectCustom = document.querySelector('#selectCustom'),
+  elSelectCustomBox = elSelectCustom.children[0],
+  elSelectCustomOpts = elSelectCustom.children[1],
+  customOptsList = Array.from(elSelectCustomOpts.children),
+  optionsCount = customOptsList.length,
+  defaultLabel = elSelectCustomBox.getAttribute('data-value')
 
 date.addEventListener('change', addClass)
 time.addEventListener('change', addClass)
@@ -26,19 +33,11 @@ function addClass() {
   this.classList.add('has-value')
 }
 
-const elSelectNative = document.querySelector('#selectNative')
-const elSelectCustom = document.querySelector('#selectCustom')
-const elSelectCustomBox = elSelectCustom.children[0]
-const elSelectCustomOpts = elSelectCustom.children[1]
-const customOptsList = Array.from(elSelectCustomOpts.children)
-const optionsCount = customOptsList.length
-const defaultLabel = elSelectCustomBox.getAttribute('data-value')
-
 let optionChecked = ''
 let optionHoveredIndex = -1
 
 // Toggle custom select visibility when clicking the box
-elSelectCustomBox.addEventListener('click', (e) => {
+elSelectCustomBox.addEventListener('click', e => {
   const isClosed = !elSelectCustom.classList.contains('isActive')
 
   if (isClosed) {
@@ -55,9 +54,7 @@ function openSelectCustom() {
   elSelectCustom.setAttribute('aria-hidden', false)
 
   if (optionChecked) {
-    const optionCheckedIndex = customOptsList.findIndex(
-      (el) => el.getAttribute('data-value') === optionChecked
-    )
+    const optionCheckedIndex = customOptsList.findIndex(el => el.getAttribute('data-value') === optionChecked)
     updateCustomSelectHovered(optionCheckedIndex)
   }
 
@@ -95,9 +92,7 @@ function updateCustomSelectHovered(newIndex) {
 function updateCustomSelectChecked(value, text) {
   const prevValue = optionChecked
 
-  const elPrevOption = elSelectCustomOpts.querySelector(
-    `[data-value="${prevValue}"`
-  )
+  const elPrevOption = elSelectCustomOpts.querySelector(`[data-value="${prevValue}"`)
   const elOption = elSelectCustomOpts.querySelector(`[data-value="${value}"`)
 
   if (elPrevOption) {
@@ -156,26 +151,23 @@ function supportKeyboardNavigation(event) {
 // Update selectCustom value when selectNative is changed.
 elSelectNative.addEventListener('change', (e) => {
   const value = e.target.value
-  const elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll(
-    `[data-value="${value}"]`
-  )[0]
+  const elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll(`[data-value="${value}"]`)[0]
 
   updateCustomSelectChecked(value, elRespectiveCustomOption.textContent)
 })
 
 // Update selectCustom value when an option is clicked or hovered
-customOptsList.forEach(function (elOption, index) {
-  elOption.addEventListener('click', (e) => {
+customOptsList.forEach(function(elOption, index) {
+  elOption.addEventListener('click', e => {
     const value = e.target.getAttribute('data-value')
 
     // Sync native select to have the same value
     elSelectNative.value = value
-    console.log(elSelectNative.value)
     updateCustomSelectChecked(value, e.target.textContent)
     closeSelectCustom()
   })
 
-  elOption.addEventListener('mouseenter', (e) => {
+  elOption.addEventListener('mouseenter', e => {
     updateCustomSelectHovered(index)
   })
 })
@@ -232,3 +224,4 @@ function toggleForm() {
 }
 
 // export { selected as selectedType, optionList }
+export { updateCustomSelectChecked }

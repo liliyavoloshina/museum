@@ -1,4 +1,4 @@
-import {selectedType, optionList} from './popup'
+import { selectedType, optionList, updateCustomSelectChecked } from './popup'
 
 const totalSection = document.querySelector('#ticketsTotalSection'),
   permOption = document.querySelector('#permOption'),
@@ -9,7 +9,10 @@ const totalSection = document.querySelector('#ticketsTotalSection'),
   seniorDecr = document.querySelector('#seniorDecr'),
   seniorIncr = document.querySelector('#seniorIncr'),
   seniorAmountInput = document.querySelector('#seniorAmount'),
-  basicAmountInput = document.querySelector('#basicAmount')
+  basicAmountInput = document.querySelector('#basicAmount'),
+  elSelectCustom = document.querySelector('#selectCustom'),
+  elSelectCustomOpts = elSelectCustom.children[1],
+  customOptsList = Array.from(elSelectCustomOpts.children)
 
 class TicketsTotal {
   constructor() {
@@ -22,13 +25,13 @@ class TicketsTotal {
   increment(age) {
     if (age === 'basic') {
       if (this.basicAmount === 20) return
-      this.changeBasicAmount(this.basicAmount + 1)
       this.basicAmount++
+      this.changeBasicAmount(this.basicAmount)
     }
     if (age === 'senior') {
       if (this.seniorAmount === 20) return
-      this.changeSeniorAmount(this.seniorAmount + 1)
       this.seniorAmount++
+      this.changeSeniorAmount(this.seniorAmount)
     }
 
     this.caclulate()
@@ -37,14 +40,13 @@ class TicketsTotal {
   decrement(age) {
     if (age === 'basic') {
       if (this.basicAmount === 0) return
-      this.changeBasicAmount(this.basicAmount - 1)
       this.basicAmount--
+      this.changeBasicAmount(this.basicAmount)
     }
     if (age === 'senior') {
-      console.log('sen decrement');
       if (this.seniorAmount === 0) return
-      this.changeSeniorAmount(this.seniorAmount - 1)
       this.seniorAmount--
+      this.changeSeniorAmount(this.seniorAmount)
     }
 
     this.caclulate()
@@ -58,18 +60,31 @@ class TicketsTotal {
     seniorAmountInput.value = value
   }
 
-  changeTypeSelect(type) {
-    selectedType.innerHTML = type === 'perm' ? 'Permanent exhibition' : type === 'temp' ? 'Temporary exhibition' : 'Combined Admission'
-    const options = optionList.querySelectorAll('div')
-    const optionIdx = type === 'perm' ? 0 : type === 'temp' ? 1 : 2
-    options.forEach(option => option.classList.remove('same-as-selected'))
-    options[optionIdx].setAttribute('class', 'same-as-selected')
-  }
-
   changeType(type) {
     this.type = type
-    // this.changeTypeSelect(type)
+
+    this.changeTypeForm()
+    this.changeTypeSection()
+
     this.caclulate()
+  }
+
+  changeTypeSection() {
+    const types = document.querySelectorAll('.tickets-type-option__input')
+    types.forEach(input => {
+      input.dataset.id === this.type ? (input.checked = true) : (input.checked = false)
+    })
+  }
+
+  changeTypeForm() {
+    let text =
+      this.type === 'perm'
+        ? 'Permanent exhibition'
+        : this.type === 'temp'
+        ? 'Temporary exhibition'
+        : 'Combined Admission'
+
+    updateCustomSelectChecked(this.type, text)
   }
 
   setValue() {
@@ -83,11 +98,7 @@ class TicketsTotal {
     }
 
     if (type) {
-      const types = document.querySelectorAll('.tickets-type-option__input')
-      types.forEach(input => {
-        input.dataset.id === type ? (input.checked = true) : (input.checked = false)
-      })
-      // this.changeTypeSelect(type)
+      this.changeType(type)
     }
 
     if (basicAmount) {
@@ -126,3 +137,14 @@ permOption.addEventListener('click', () => ticketsTotal.changeType('perm'))
 tempOption.addEventListener('click', () => ticketsTotal.changeType('temp'))
 combOption.addEventListener('click', () => ticketsTotal.changeType('comb'))
 
+customOptsList.forEach(elOption => {
+  elOption.addEventListener('click', e => {
+    const value = e.target.getAttribute('data-value')
+    ticketsTotal.changeType(value)
+  })
+
+  elOption.addEventListener('mouseenter', e => {
+    const value = e.target.getAttribute('data-value')
+    ticketsTotal.changeType(value)
+  })
+})
