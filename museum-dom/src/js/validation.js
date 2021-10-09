@@ -48,7 +48,7 @@ function validateEmail() {
 }
 
 function validatePhone() {
-  const pattern = /^(\d{2,3}[ -]?)+$/
+  const pattern = /^(?:[0-9]{2,3}([ -][0-9]{2,3})*|[0-9]{1,10})$/
 
   const value = this.value
   const parent = this.parentNode

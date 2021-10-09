@@ -60,8 +60,8 @@ if (window.matchMedia('(max-width: 420px)').matches) {
   map.jumpTo({ center: [2.336291017475844, 48.86089689766189], zoom: 15.986528579763117 })
 }
 
-// map.on('click', () => {
-//   const center = map.getCenter()
-//   const zoom = map.getZoom()
-//   console.log(center, zoom)
-// })
+map.on('click', () => {
+  const center = map.getCenter()
+  const zoom = map.getZoom()
+  console.log(zoom)
+})
