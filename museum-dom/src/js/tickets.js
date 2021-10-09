@@ -1,5 +1,7 @@
 import { updateCustomSelectChecked } from './custom-select'
 
+// TODO: setting to local storage before onload page 
+
 const permOption = document.querySelector('#permOption'),
   tempOption = document.querySelector('#tempOption'),
   combOption = document.querySelector('#combOption'),
@@ -17,7 +19,8 @@ const permOption = document.querySelector('#permOption'),
   seniorTypeSums = document.querySelectorAll('.seniorTypeSum'),
   basicTotalPrice = document.querySelector('#basicTotalPrice'),
   seniorTotalPrice = document.querySelector('#seniorTotalPrice'),
-  ticketsTotalSum = document.querySelectorAll('.ticketsTotalSum')
+  ticketsTotalSum = document.querySelectorAll('.ticketsTotalSum'),
+  ticketsReset = document.querySelectorAll('.reset-tickets')
 
 class TicketsTotal {
   constructor() {
@@ -82,7 +85,6 @@ class TicketsTotal {
   changeType(type) {
     this.type = type
 
-    
     // how to do this before window is closed???
     localStorage.setItem('tickets-type-museum', this.type)
 
@@ -91,7 +93,6 @@ class TicketsTotal {
     this.changeTypeSum()
 
     this.recalculate()
-
   }
 
   changeTypeSection() {
@@ -144,6 +145,23 @@ class TicketsTotal {
     seniorTotalPrice.textContent = this.seniorTicketsPrice
   }
 
+  reset() {
+    this.total = 0
+    this.basicAmount = 0
+    this.seniorAmount = 0
+    this.type = 'perm'
+    this.typeSum = 20
+    this.basicTicketsPrice = 20
+    this.seniorTicketsPrice = 10
+
+
+    this.changeSeniorAmount()
+    this.changeBasicAmount()
+
+    // in this action recalculating init 
+    this.changeType(this.type)
+  }
+
   getLocalStorage() {
     const total = localStorage.getItem('tickets-total-museum')
     const type = localStorage.getItem('tickets-type-museum')
@@ -167,7 +185,7 @@ class TicketsTotal {
       this.changeSeniorAmount()
     }
 
-    // dont replace cuz it reset local storage 
+    // dont replace cuz it re-set local storage 
     if (type) {
       this.changeType(type)
     }
@@ -192,6 +210,10 @@ seniorIncr.forEach(btn => {
 
 seniorDecr.forEach(btn => {
   btn.addEventListener('click', () => ticketsTotal.decrement('senior'))
+})
+
+ticketsReset.forEach(btn => {
+  btn.addEventListener('click', () => ticketsTotal.reset())
 })
 
 permOption.addEventListener('click', () => ticketsTotal.changeType('perm'))

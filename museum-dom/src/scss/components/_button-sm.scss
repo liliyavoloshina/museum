@@ -12,6 +12,10 @@
   border-radius: 2px;
   border: none;
 
+  &-secondary {
+    background: var(--dark-red);
+  }
+
   &:hover {
     background-color: var(--text-gold);
     transition: var(--base-transition);

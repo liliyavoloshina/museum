@@ -3,7 +3,7 @@
   --tickets-g: 60px;
   --tickets-img-w: 720px;
   --tickets-img-h: 550px;
-  --tickets-amount-w: 150px;
+  --tickets-amount-w: 175px;
   --tickets-amount-ai: flex-end;
   --tickets-amount-subtitle-ta: right;
   --tickets-amount-option-w: 150px;
@@ -27,7 +27,6 @@
     --tickets-g: 80px;
     --tickets-img-w: 700px;
     --tickets-img-h: 440px;
-    --tickets-amount-w: 175px;
     --tickets-amount-ai: center;
     --tickets-amount-subtitle-ta: left;
     --tickets-amount-option-w: 100%;
@@ -93,7 +92,7 @@
   &__info {
     display: flex;
     justify-content: space-between;
-    align-content: flex-start;
+    // align-content: flex-start;
     flex-basis: calc(100% - var(--tickets-img-w) - var(--tickets-g));
     flex-wrap: wrap;
 
@@ -274,5 +273,6 @@
 
 .tickets-total {
   margin-left: auto;
-  margin-top: var(--tickets-title-mt);
+  align-self: flex-end;
+  // margin-top: var(--tickets-title-mt);
 }

@@ -57,8 +57,7 @@ function createPlayer(data) {
     width: '640',
     videoId: id,
     playerVars: {
-      id: number,
-      // origin: 'https://localhost:8080'
+      id: number
     },
     events: {
       onStateChange: event => onPlayerStateChange(event, number)
