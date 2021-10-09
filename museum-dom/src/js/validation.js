@@ -4,6 +4,7 @@ const ticketsName = document.querySelector('#ticketsName'),
 
 ticketsName.addEventListener('input', validateName)
 ticketsEmail.addEventListener('input', validateEmail)
+ticketsPhone.addEventListener('input', validatePhone)
 
 function validateName() {
   const value = this.value
@@ -34,9 +35,28 @@ function validateEmail() {
 
   if (regexp.test(value) !== true) {
     parent.classList.add('error')
-    message.textContent = 'Please enter a valid email'
+    message.textContent = 'Please enter a valid email address'
   } else {
     parent.classList.remove('error')
   }
+}
 
+function validatePhone() {
+  const pattern = /^(\d{2,3}[ -]?)+$/
+
+  const value = this.value
+  const parent = this.parentNode
+
+  const length = (value.match(/\d/g) || []).length
+  const message = parent.querySelector('.error-message')
+
+  if (pattern.test(value) !== true) {
+    parent.classList.add('error')
+    message.textContent = 'Please enter a valid phone number'
+  } else if (length > 10) {
+    parent.classList.add('error')
+    message.textContent = 'Number is too long'
+  } else {
+    parent.classList.remove('error')
+  }
 }
