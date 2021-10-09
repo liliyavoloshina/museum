@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll('.ripple')
 
 buttons.forEach(button => {
-  button.addEventListener('click', function (e) {
+  button.addEventListener('click', function(e) {
     const target = e.target
 
     // Get the bounding rectangle of target
@@ -21,3 +21,19 @@ buttons.forEach(button => {
     setTimeout(() => circle.remove(), 500)
   })
 })
+
+let header = document.querySelector('#header'),
+  headerHeight = header.offsetHeight,
+  prevScrollpos = window.pageYOffset
+
+window.addEventListener('scroll', watchScroll)
+
+function watchScroll() {
+  var currentScrollPos = window.pageYOffset
+  if (prevScrollpos > currentScrollPos) {
+    header.style.top = '0'
+  } else {
+    header.style.top = `-${headerHeight}px`
+  }
+  prevScrollpos = currentScrollPos
+}

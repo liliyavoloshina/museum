@@ -46,7 +46,6 @@
     --welcome-slider-width: calc(100vw - 40px - var(--scrollbar-width));
     --welcome-slider-controls-justify: center;
     --welcome-slider-controls-width: 100%;
-    // --welcome-slider-controls-width: calc(100vw - 40px);
     --welcome-slider-controls-height: 97px;
     --welcome-text-pt: 0;
     --welcome-slider-pag-m: 0 8%;
@@ -70,6 +69,8 @@
 }
 
 .section-welcome {
+  
+  padding-top: 150px;
   &__container {
     max-width: 1920px;
     margin: 0 auto;
