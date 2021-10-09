@@ -5,6 +5,7 @@ import './js/explore-slider'
 import './js/gallery'
 import './js/popup'
 import './js/tickets'
+import './js/validation'
 import './js/styling'
 
 document.documentElement.style.setProperty(

@@ -1,7 +1,9 @@
 import './custom-select'
 
-const ticketsDate = document.querySelector('#ticketsDateInput'),
-  time = document.querySelector('#time'),
+const ticketsDateInput = document.querySelector('#ticketsDateInput'),
+  ticketsDateDisplay = document.querySelector('#ticketsDateDisplay'),
+  ticketsTimeInput = document.querySelector('#ticketsTimeInput'),
+  ticketsTimeDisplay = document.querySelector('#ticketsTimeDisplay'),
   incrExpDay = document.querySelector('#incrExpDay'),
   decrExpDay = document.querySelector('#decrExpDay'),
   expDayInput = document.querySelector('#expDay'),
@@ -13,9 +15,10 @@ const ticketsDate = document.querySelector('#ticketsDateInput'),
   closePopup = document.querySelector('#closePopup'),
   popupOverlay = document.querySelector('#popupOverlay')
 
-ticketsDate.addEventListener('change', addClass)
-ticketsDate.addEventListener('change', changeDate)
-time.addEventListener('change', addClass)
+ticketsDateInput.addEventListener('change', addClass)
+ticketsDateInput.addEventListener('change', changeDate)
+ticketsTimeInput.addEventListener('change', addClass)
+ticketsTimeInput.addEventListener('change', changeTime)
 openPopup.addEventListener('click', toggleForm)
 closePopup.addEventListener('click', toggleForm)
 popupOverlay.addEventListener('click', toggleForm)
@@ -31,22 +34,27 @@ const month = presentDate.getMonth()
 const day = presentDate.getDate()
 
 const minDate = new Date(year, month, day + 1).toISOString().split('T')[0]
-const maxDate = new Date(year + 5, month, day + 1).toISOString().split('T')[0]
+const maxDate = new Date(year, month + 1, day + 1).toISOString().split('T')[0]
 
-ticketsDate.setAttribute('min', minDate)
-ticketsDate.setAttribute('max', maxDate)
+ticketsDateInput.setAttribute('min', minDate)
+ticketsDateInput.setAttribute('max', maxDate)
 
 function addClass() {
   this.classList.add('has-value')
 }
 
 function changeDate() {
+  const newDate = this ? new Date(this.value) : new Date()
   const options = { weekday: 'long', month: 'long', day: 'numeric' }
-  const dateToDisplay = new Date().toLocaleDateString('en-us', options)
-  console.log(dateToDisplay)
+  const dateToDisplay = newDate.toLocaleDateString('en-us', options)
+  ticketsDateDisplay.textContent = dateToDisplay
 }
 
 changeDate()
+
+function changeTime() {
+  ticketsTimeDisplay.textContent = this.value
+}
 
 function incrementDay() {
   let oldVal = Number(expDayInput.value)

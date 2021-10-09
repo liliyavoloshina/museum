@@ -75,8 +75,6 @@ class TicketsTotal {
       el.value ? el.value = this.seniorAmount : el.textContent = this.seniorAmount
     })
 
-    // seniorAmountDisplay.textContent = this.seniorAmount
-
     // how to do this before window is closed???
     localStorage.setItem('tickets-senior-museum', this.seniorAmount)
   }
@@ -84,14 +82,16 @@ class TicketsTotal {
   changeType(type) {
     this.type = type
 
+    
+    // how to do this before window is closed???
+    localStorage.setItem('tickets-type-museum', this.type)
+
     this.changeTypeForm()
     this.changeTypeSection()
     this.changeTypeSum()
 
     this.recalculate()
 
-    // how to do this before window is closed???
-    localStorage.setItem('tickets-type-museum', this.type)
   }
 
   changeTypeSection() {
@@ -155,12 +155,6 @@ class TicketsTotal {
       ticketsTotalSum.forEach(totalEl => {
         totalEl.textContent = this.total
       })
-      // basicTotalPrice.textContent = basicTotal
-      // seniorTotalPrice.textContent = seniorTotal
-    }
-
-    if (type) {
-      this.changeType(type)
     }
 
     if (basicAmount) {
@@ -173,15 +167,12 @@ class TicketsTotal {
       this.changeSeniorAmount()
     }
 
-    this.calcTicketsTotalPrice()
-  }
+    // dont replace cuz it reset local storage 
+    if (type) {
+      this.changeType(type)
+    }
 
-  setLocalStorage() {
-    console.log('set', this.total)
-    localStorage.setItem('tickets-basic-museum', this.basicAmount)
-    localStorage.setItem('tickets-type-museum', this.type)
-    localStorage.setItem('tickets-total-museum', this.total)
-    localStorage.setItem('tickets-senior-museum', this.seniorAmount)
+    this.calcTicketsTotalPrice()
   }
 }
 
