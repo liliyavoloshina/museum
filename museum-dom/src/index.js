@@ -6,6 +6,7 @@ import './js/gallery'
 import './js/popup'
 import './js/tickets'
 import './js/validation'
+import './js/mapbox'
 import './js/styling'
 
 document.documentElement.style.setProperty(
