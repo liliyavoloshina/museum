@@ -1,10 +1,12 @@
 const ticketsName = document.querySelector('#ticketsName'),
   ticketsEmail = document.querySelector('#ticketsEmail'),
-  ticketsPhone = document.querySelector('#ticketsPhone')
+  ticketsPhone = document.querySelector('#ticketsPhone'),
+  ticketsCardNumber = document.querySelector('#ticketsCardNumber')
 
 ticketsName.addEventListener('input', validateName)
 ticketsEmail.addEventListener('input', validateEmail)
 ticketsPhone.addEventListener('input', validatePhone)
+ticketsCardNumber.addEventListener('input', validateCard)
 
 function validateName() {
   const value = this.value
@@ -67,5 +69,24 @@ function validatePhone() {
     message.textContent = 'Number is too long'
   } else {
     parent.classList.remove('error')
+  }
+}
+
+function validateCard() {
+  const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/
+  const mastercardRegEx = /^(?:5[1-5][0-9]{14})$/
+
+  const value = this.value
+  const parent = this.parentNode
+  const message = parent.querySelector('.error-message')
+
+  if (value === '') {
+    parent.classList.add('error')
+    message.textContent = 'This field is required'
+  } else if (visaRegEx.test(value) || mastercardRegEx.test(value)) {
+    parent.classList.remove('error')
+  } else {
+    parent.classList.add('error')
+    message.textContent = 'We accept only Mastercard and Visa'
   }
 }
