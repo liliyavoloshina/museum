@@ -592,7 +592,7 @@
           <div class="card-face">
             <div class="fields-with-cards">
               <div class="inputs">
-                <div class="card-face__field card-field">Card number<input class="input" type="text" id="ticketsCardNumber">
+                <div class="card-face__field card-field">Card number<input class="input" type="text" id="ticketsCardNumber" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
                   <div class="error-message"></div></div>
                 <div class="card-face__field">Expiration date
                   <div class="exp-field">
@@ -603,8 +603,7 @@
                       <button class="card-input-number__btn btn-incr" id="incrExpDay" type="button"></button>
                     </div>
                     <div class="card-input-number">
-                      <input class="card-input-number__input" id="expYear" type="number" min="2020" max="2050"
-                        value="2024" readonly>
+                      <input class="card-input-number__input" id="expYear" type="number" readonly>
                       <button class="card-input-number__btn btn-decr" id="decrExpYear" type="button"></button>
                       <button class="card-input-number__btn btn-incr" id="incrExpYear" type="button"></button>
                     </div>
@@ -617,13 +616,14 @@
               </div>
             </div>
 
-            <div class="card-face__field field-wide">Cardholder name<input class="input" type="text"></div>
+            <div class="card-face__field field-wide card-field">Cardholder name<input class="input" type="text" id="cardholderInput"><div class="error-message"></div></div>
           </div>
           <div class="card-back">
             <div class="stripe"></div>
             <div class="cvv-code">
               <div class="cvv-code__label">CVC/CVV
-                <input class="input" type="text">
+                <input class="input" type="number" id="cvvInput" max="3">
+                <div class="error-message"></div>
               </div>
               <div class="cvv-code__note">
                 The last <br /> 3 or 4 digits on back <br /> of the card

@@ -1,12 +1,16 @@
 const ticketsName = document.querySelector('#ticketsName'),
   ticketsEmail = document.querySelector('#ticketsEmail'),
   ticketsPhone = document.querySelector('#ticketsPhone'),
-  ticketsCardNumber = document.querySelector('#ticketsCardNumber')
+  ticketsCardNumber = document.querySelector('#ticketsCardNumber'),
+  cardholderInput = document.querySelector('#cardholderInput'),
+  cvvInput = document.querySelector('#cvvInput')
 
 ticketsName.addEventListener('input', validateName)
 ticketsEmail.addEventListener('input', validateEmail)
 ticketsPhone.addEventListener('input', validatePhone)
 ticketsCardNumber.addEventListener('input', validateCard)
+cardholderInput.addEventListener('input', validateCardholder)
+cvvInput.addEventListener('input', validateCvv)
 
 function validateName() {
   const value = this.value
@@ -88,5 +92,44 @@ function validateCard() {
   } else {
     parent.classList.add('error')
     message.textContent = 'We accept only Mastercard and Visa'
+  }
+}
+
+function validateCardholder() {
+  const pattern = /^([A-Za-z]{3,})\s([A-Za-z]{3,})$/
+
+  const value = this.value
+  const parent = this.parentNode
+  const message = parent.querySelector('.error-message')
+  if (value === '') {
+    parent.classList.add('error')
+    message.textContent = 'This field is required'
+  } else if (pattern.test(value) !== true) {
+    parent.classList.add('error')
+    message.textContent = 'Please enter a valid name and surname'
+  } else {
+    parent.classList.remove('error')
+  }
+}
+
+function validateCvv() {
+  const pattern = /^[0-9]{3,4}$/
+
+  const value = this.value
+  const parent = this.parentNode
+  const message = parent.querySelector('.error-message')
+  
+  if (value.length > 4) {
+    cvvInput.value = value
+  }
+
+  if (value === '') {
+    parent.classList.add('error')
+    message.textContent = 'This field is required'
+  } else if (pattern.test(value) !== true) {
+    parent.classList.add('error')
+    message.textContent = 'Please enter a valid CVV-code'
+  } else {
+    parent.classList.remove('error')
   }
 }

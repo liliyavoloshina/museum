@@ -39,6 +39,13 @@ const maxDate = new Date(year, month + 1, day + 1).toISOString().split('T')[0]
 ticketsDateInput.setAttribute('min', minDate)
 ticketsDateInput.setAttribute('max', maxDate)
 
+const curDate = new Date().getFullYear()
+const minExpDate = new Date().getFullYear()
+const maxExpDate = new Date(year + 3, month, day).getFullYear()
+expYearInput.value = curDate
+expYearInput.setAttribute('max', maxExpDate)
+expYearInput.setAttribute('min', minExpDate)
+
 function addClass() {
   this.classList.add('has-value')
 }
@@ -69,10 +76,12 @@ function incrementDay() {
 }
 
 function incrementYear() {
-  let oldVal = Number(expYearInput.value)
-  let newVal = oldVal + 1
+  const oldVal = Number(expYearInput.value)
+  const newVal = oldVal + 1
 
-  if (oldVal === 2050) {
+  const maxVal = +expYearInput.getAttribute('max')
+
+  if (oldVal === maxVal) {
     return
   }
 
@@ -92,10 +101,12 @@ function decrementDay() {
 }
 
 function decrementYear() {
-  let oldVal = Number(expYearInput.value)
-  let newVal = oldVal - 1
+  const oldVal = Number(expYearInput.value)
+  const newVal = oldVal - 1
 
-  if (oldVal === 2020) {
+  const minVal = +expYearInput.getAttribute('min')
+
+  if (oldVal === minVal) {
     return
   }
 
