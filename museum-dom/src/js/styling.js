@@ -1,4 +1,16 @@
-const buttons = document.querySelectorAll('.ripple')
+const buttons = document.querySelectorAll('.ripple'),
+inputFocusable = document.querySelectorAll('.input')
+
+inputFocusable.forEach(input => {
+  input.addEventListener('focus', () => {
+    const parent = input.parentNode
+    parent.classList.add('active')
+  })
+  input.addEventListener('blur', () => {
+    const parent = input.parentNode
+    parent.classList.remove('active')
+  })
+})
 
 buttons.forEach(button => {
   button.addEventListener('click', function(e) {

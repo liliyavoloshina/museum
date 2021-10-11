@@ -181,6 +181,10 @@
     border-color: var(--text-gold);
   }
 
+  &.active {
+    box-shadow: white 0 0 0 2px, var(--dark-red) 0 0 0 4px;
+  }
+
   .icon {
     position: absolute;
     top: 50%;
@@ -199,10 +203,9 @@
     border: 0;
     outline: none;
 
-    // &:focus {
-    //   outline: none;
-    //   box-shadow: white 0 0 0 2px, var(--dark-red) 0 0 0 4px;
-    // }
+    &:focus {
+      outline: none;
+    }
 
     &:hover {
       cursor: pointer;
@@ -212,6 +215,7 @@
   .input:not(.has-value)::-webkit-datetime-edit {
     color: transparent;
   }
+  
   .input:not(.has-value)::-webkit-datetime-edit-year-field {
     color: transparent;
   }
@@ -242,7 +246,6 @@
 }
 
 .tickets-input-selectable {
-  // padding-right: 10px;
   .input::-webkit-calendar-picker-indicator {
     display: block;
     width: 17px;
