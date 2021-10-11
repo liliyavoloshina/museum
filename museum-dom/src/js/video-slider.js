@@ -58,7 +58,7 @@ function createPlayer(data) {
     videoId: id,
     playerVars: {
       id: number,
-      origin: 'https://rolling-scopes-school.github.io/liliyavoloshina-JSFE2021Q3/museum-dom/'
+      origin: 'https://www.youtube.com'
     },
     events: {
       onStateChange: event => onPlayerStateChange(event, number)
