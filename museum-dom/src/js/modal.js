@@ -10,18 +10,18 @@ const ticketsDateInput = document.querySelector('#ticketsDateInput'),
   expYearInput = document.querySelector('#expYear'),
   incrExpYear = document.querySelector('#incrExpYear'),
   decrExpYear = document.querySelector('#decrExpYear'),
-  openPopup = document.querySelector('#openPopup'),
-  popup = document.querySelector('#popup'),
-  closePopup = document.querySelector('#closePopup'),
-  popupOverlay = document.querySelector('#popupOverlay')
+  openModal = document.querySelector('#openModal'),
+  modal = document.querySelector('#modal'),
+  closeModal = document.querySelector('#closeModal'),
+  modalOverlay = document.querySelector('#modalOverlay')
 
 ticketsDateInput.addEventListener('change', addClass)
 ticketsDateInput.addEventListener('change', changeDate)
 ticketsTimeInput.addEventListener('change', addClass)
 ticketsTimeInput.addEventListener('change', changeTime)
-openPopup.addEventListener('click', toggleForm)
-closePopup.addEventListener('click', toggleForm)
-popupOverlay.addEventListener('click', toggleForm)
+openModal.addEventListener('click', toggleForm)
+closeModal.addEventListener('click', toggleForm)
+modalOverlay.addEventListener('click', toggleForm)
 
 incrExpDay.addEventListener('click', incrementDay)
 decrExpDay.addEventListener('click', decrementDay)
@@ -114,6 +114,8 @@ function decrementYear() {
 }
 
 function toggleForm() {
-  popup.classList.toggle('opened')
-  popupOverlay.classList.toggle('opened')
+  modal.classList.toggle('opened')
+  modalOverlay.classList.toggle('opened')
 }
+
+export {toggleForm}

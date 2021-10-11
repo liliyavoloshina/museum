@@ -20,7 +20,7 @@ const permOption = document.querySelector('#permOption'),
   basicTotalPrice = document.querySelector('#basicTotalPrice'),
   seniorTotalPrice = document.querySelector('#seniorTotalPrice'),
   ticketsTotalSum = document.querySelectorAll('.ticketsTotalSum'),
-  ticketsReset = document.querySelectorAll('.reset-tickets')
+  ticketsReset = document.querySelector('#ticketsReset')
 
 class TicketsTotal {
   constructor() {
@@ -212,9 +212,7 @@ seniorDecr.forEach(btn => {
   btn.addEventListener('click', () => ticketsTotal.decrement('senior'))
 })
 
-ticketsReset.forEach(btn => {
-  btn.addEventListener('click', () => ticketsTotal.reset())
-})
+ticketsReset.addEventListener('click', () => ticketsTotal.reset())
 
 permOption.addEventListener('click', () => ticketsTotal.changeType('perm'))
 tempOption.addEventListener('click', () => ticketsTotal.changeType('temp'))

@@ -344,8 +344,8 @@
                 <label class="tickets-amount-option__label" for="tickets-amount-basic">Basic 18+</label>
                 <div class="tickets-amount-option__box">
                   <button class="tickets-amount-option__btn basicDecr" type="button">–</button>
-                  <input class="tickets-amount-option__input basicAmountDisplay" type="number" min="0" max="20" value="0"
-                    readonly>
+                  <input class="tickets-amount-option__input basicAmountDisplay" type="number" min="0" max="20"
+                    value="0" readonly>
                   <button class="tickets-amount-option__btn basicIncr" type="button">+</button>
                 </div>
               </div>
@@ -363,8 +363,7 @@
             </div>
 
             <div class="tickets-total">
-              <button class="btn-sm btn-sm-secondary ripple reset-tickets">Reset</button>
-              <button class="btn-sm ripple" id="openPopup">Buy Now</button>
+              <button class="btn-sm ripple" id="openModal">Buy Now</button>
             </div>
           </div>
         </div>
@@ -443,19 +442,19 @@
     </div>
   </footer>
 
-  <div class="popup" id="popup">
-    <div class="popup__close">
-      <button class="popup-close-btn" id="closePopup" title="Close Popup"></button>
+  <div class="modal" id="modal">
+    <div class="modal__close">
+      <button class="modal-close-btn" id="closeModal" title="Close Modal"></button>
     </div>
-    <div class="popup__content">
-      <div class="popup-tickets">
-        <div class="popup-tickets__title-image"></div>
-        <h2 class="popup-tickets__title">
+    <div class="modal__content">
+      <div class="modal-tickets">
+        <div class="modal-tickets__title-image"></div>
+        <h2 class="modal-tickets__title">
           Booking tickets
         </h2>
-        <h3 class="popup-tickets__subtitle">Tour to Louvre</h3>
+        <h3 class="modal-tickets__subtitle">Tour to Louvre</h3>
 
-        <form class="popup-tickets__form">
+        <form class="modal-tickets__form">
           <div class="tickets-date tickets-input tickets-input-selectable">
             <div class="icon"></div>
             <input class="input" type="date" name="date" id="ticketsDateInput">
@@ -549,8 +548,8 @@
         </form>
       </div>
 
-      <div class="popup-payment">
-        <div class="popup-payment__overview">
+      <div class="modal-payment">
+        <div class="modal-payment__overview">
           <div class="info">
             <h2 class="info__title">Overview</h2>
             <h2 class="info__subtitle">Tour to Louvre</h2>
@@ -569,8 +568,8 @@
           </div>
           <div class="image"></div>
         </div>
-        <div class="popup-payment__price">
-          <div class="popup-payment__tickets">
+        <div class="modal-payment__price">
+          <div class="modal-payment__tickets">
             <div class="ticket">
               <div class="ticket__count basicAmountDisplay">0</div>
               <div class="ticket__type">Basic (<span class="basicTypeSum">20</span> €)</div>
@@ -582,18 +581,20 @@
               <div class="ticket__price"><span id="seniorTotalPrice">0</span> €</div>
             </div>
           </div>
-          <div class="popup-payment__total">
+          <div class="modal-payment__total">
             <div class="total__label">Total:</div>
             <div class="total__price"><span class="ticketsTotalSum">0</span> €</div>
           </div>
         </div>
 
-        <div class="popup-payment__card">
+        <div class="modal-payment__card">
           <div class="card-face">
             <div class="fields-with-cards">
               <div class="inputs">
-                <div class="card-face__field card-field">Card number<input class="input" type="text" id="ticketsCardNumber" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
-                  <div class="error-message"></div></div>
+                <div class="card-face__field card-field">Card number<input class="input" type="text"
+                    id="ticketsCardNumber" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
+                  <div class="error-message"></div>
+                </div>
                 <div class="card-face__field">Expiration date
                   <div class="exp-field">
                     <div class="card-input-number">
@@ -616,7 +617,10 @@
               </div>
             </div>
 
-            <div class="card-face__field field-wide card-field">Cardholder name<input class="input" type="text" id="cardholderInput"><div class="error-message"></div></div>
+            <div class="card-face__field field-wide card-field">Cardholder name<input class="input" type="text"
+                id="cardholderInput">
+              <div class="error-message"></div>
+            </div>
           </div>
           <div class="card-back">
             <div class="stripe"></div>
@@ -632,17 +636,24 @@
           </div>
         </div>
 
-        <button class="popup-payment__btn ripple">
-          Book
-        </button>
-
-        <button class="btn-sm btn-sm-secondary ripple reset-tickets">Reset</button>
+        <div class="modal-payment__submit">
+          <button class="btn-sm btn-sm-secondary ripple" id="ticketsReset">Reset</button>
+          <button class="btn-sm ripple" id="ticketsBook">Book</button>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <div class="popup-overlay" id="popupOverlay"></div>
+  <div class="popup-success" id="popupSuccess">
+    <div class="popup-success__wrapper">
+      <h3 class="popup-success__title">Dear <span id="customerName"></span>, thank you for filling out our form!</h3>
+    <p class="popup-success__desc">We will contact you soon for detailed information.</p>
+    <p class="popup-success__desc note">Have a great day!</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay"></div>
 
   <script>
     function deferLink(link, type) {

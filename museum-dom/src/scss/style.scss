@@ -1,17 +1,16 @@
 @charset 'utf-8';
 
-//Abstracts
+// Abstracts
 @import 'abstract/variables';
 
-//Base Styles
-// @import 'base/_base-dir';
-
-//Components
-// @import 'components/_components-dir';
-
-//Layout
-// @import 'layouts/_layouts-dir';
+// Parallax
 @import 'layouts/parallax';
+
+// Modal
+@import 'layouts/modal';
+
+// Popup
+@import 'layouts/popup';
 
 // Sections
 @import 'sections/_sections-dir';
