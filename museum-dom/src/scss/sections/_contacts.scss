@@ -62,6 +62,15 @@
     width: 100%;
     max-width: 960px;
     height: 620px;
+
+    @media screen and (max-width: 768px) {
+     margin-top: 20px;
+     height: 500px;
+    }
+
+    @media screen and (max-width: 420px) {
+     height: 400px;
+    }
   }
 
   @media (max-width: 1024px) {

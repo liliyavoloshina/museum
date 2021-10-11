@@ -9,12 +9,12 @@
   color: #fff;
   background-color: #000;
   transform: translate(-50%, -50%);
-  transition: var(--base-transition);
   opacity: 0;
 
   &.opened {
     opacity: 1;
     z-index: 1000;
+    transition: var(--base-transition);
   }
 
   &__wrapper {

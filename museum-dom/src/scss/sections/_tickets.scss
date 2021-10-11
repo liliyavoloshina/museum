@@ -49,7 +49,7 @@
     --tickets-amount-option-btn-pr: 17px;
     --tickets-amount-option-btn-1-pl: 9px;
     --tickets-amount-option-btn-fs: 36px;
-    --tickets-title-mt: 39px;
+    --tickets-title-mt: 18px;
   }
 }
 
@@ -65,7 +65,7 @@
     --tickets-subtitle-lh: 19px;
     --tickets-amount-option-label-fs: 16px;
     --tickets-amount-option-label-lh: 19px;
-    --tickets-title-mt: 41px;
+    --tickets-title-mt: 25px;
   }
 }
 
@@ -274,5 +274,5 @@
 .tickets-total {
   margin-left: auto;
   align-self: flex-end;
-  // margin-top: var(--tickets-title-mt);
+  margin-top: var(--tickets-title-mt);
 }
