@@ -8,6 +8,8 @@ import './js/tickets'
 import './js/validation'
 import './js/mapbox'
 import './js/styling'
+import './js/custom-select-type'
+import './js/custom-select-time'
 
 document.documentElement.style.setProperty(
   '--scrollbar-width',

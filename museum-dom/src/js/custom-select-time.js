@@ -1,15 +1,14 @@
-const elSelectNative = document.querySelector('#selectNative'),
-  elSelectCustom = document.querySelector('#selectCustom'),
+const elSelectNative = document.querySelector('#selectNativeTime'),
+  elSelectCustom = document.querySelector('#selectCustomTime'),
+  ticketsTimeDisplay = document.querySelector('#ticketsTimeDisplay'),
   elSelectCustomBox = elSelectCustom.children[0],
   elSelectCustomOpts = elSelectCustom.children[1],
   customOptsList = Array.from(elSelectCustomOpts.children),
-  optionsCount = customOptsList.length,
-  defaultLabel = elSelectCustomBox.getAttribute('data-value')
+  optionsCount = customOptsList.length
 
 let optionChecked = ''
 let optionHoveredIndex = -1
 
-// Toggle custom select visibility when clicking the box
 elSelectCustomBox.addEventListener('click', e => {
   const isClosed = !elSelectCustom.classList.contains('isActive')
 
@@ -22,8 +21,6 @@ elSelectCustomBox.addEventListener('click', e => {
 
 function openSelectCustom() {
   elSelectCustom.classList.add('isActive')
-  // Remove aria-hidden in case this was opened by a user
-  // who uses AT (e.g. Screen Reader) and a mouse at the same time.
   elSelectCustom.setAttribute('aria-hidden', false)
 
   if (optionChecked) {
@@ -31,7 +28,6 @@ function openSelectCustom() {
     updateCustomSelectHovered(optionCheckedIndex)
   }
 
-  // Add related event listeners
   document.addEventListener('click', watchClickOutside)
   document.addEventListener('keydown', supportKeyboardNavigation)
 }
@@ -43,7 +39,6 @@ function closeSelectCustom() {
 
   updateCustomSelectHovered(-1)
 
-  // Remove related event listeners
   document.removeEventListener('click', watchClickOutside)
   document.removeEventListener('keydown', supportKeyboardNavigation)
 }
@@ -62,7 +57,11 @@ function updateCustomSelectHovered(newIndex) {
   optionHoveredIndex = newIndex
 }
 
-function updateCustomSelectChecked(value, text) {
+function updateTimeDisplay(text) {
+  ticketsTimeDisplay.textContent = text
+}
+
+function updateCustomSelectTimeChecked(value, text) {
   const prevValue = optionChecked
 
   const elPrevOption = elSelectCustomOpts.querySelector(`[data-value="${prevValue}"`)
@@ -88,20 +87,17 @@ function watchClickOutside(event) {
 }
 
 function supportKeyboardNavigation(event) {
-  // press down -> go next
   if (event.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
     let index = optionHoveredIndex
-    event.preventDefault() // prevent page scrolling
+    event.preventDefault()
     updateCustomSelectHovered(optionHoveredIndex + 1)
   }
 
-  // press up -> go previous
   if (event.keyCode === 38 && optionHoveredIndex > 0) {
-    event.preventDefault() // prevent page scrolling
+    event.preventDefault()
     updateCustomSelectHovered(optionHoveredIndex - 1)
   }
 
-  // press Enter or space -> select the option
   if (event.keyCode === 13 || event.keyCode === 32) {
     event.preventDefault()
 
@@ -110,39 +106,36 @@ function supportKeyboardNavigation(event) {
 
     if (value) {
       elSelectNative.value = value
-      updateCustomSelectChecked(value, option.textContent)
+      updateCustomSelectTimeChecked(value, option.textContent)
     }
     closeSelectCustom()
   }
 
-  // press ESC -> close selectCustom
   if (event.keyCode === 27) {
     closeSelectCustom()
   }
 }
 
-// Update selectCustom value when selectNative is changed.
 elSelectNative.addEventListener('change', e => {
   const value = e.target.value
   const elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll(`[data-value="${value}"]`)[0]
 
-  updateCustomSelectChecked(value, elRespectiveCustomOption.textContent)
+  updateCustomSelectTimeChecked(value, elRespectiveCustomOption.textContent)
 })
 
-// Update selectCustom value when an option is clicked or hovered
-customOptsList.forEach(function(elOption, index) {
+customOptsList.forEach((elOption, index) => {
   elOption.addEventListener('click', e => {
     const value = e.target.getAttribute('data-value')
 
-    // Sync native select to have the same value
     elSelectNative.value = value
-    updateCustomSelectChecked(value, e.target.textContent)
+    updateCustomSelectTimeChecked(value, e.target.textContent)
     closeSelectCustom()
+    updateTimeDisplay(value)
   })
 
   elOption.addEventListener('mouseenter', e => {
+    const value = e.target.getAttribute('data-value')
     updateCustomSelectHovered(index)
+    updateTimeDisplay(value)
   })
 })
-
-export { updateCustomSelectChecked }

@@ -299,17 +299,7 @@
 
 .tickets-time {
   width: var(--modal-tickets-half-w);
-
-  .icon {
-    background-image: url('../svg/time.svg');
-  }
-  .time-select {
-    font-family: var(--font-base);
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
-    color: var(--bg-dark);
-  }
+  border: none;
 }
 
 .tickets-name {
@@ -336,6 +326,17 @@
   height: 45px;
   width: 100%;
 
+  &.type {
+    &::before {
+      background-image: url('../svg/type.svg');
+    }
+  }
+  &.time {
+    &::before {
+      background-image: url('../svg/time.svg');
+    }
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -347,7 +348,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 100%;
-    background-image: url('../svg/type.svg');
   }
 }
 
@@ -415,10 +415,6 @@
   .select-custom.isActive &:after {
     transform: rotate(180deg);
   }
-
-  // &:hover {
-  //   border-color: var(--text-gold);
-  // }
 }
 
 .select-custom-options {
@@ -430,6 +426,11 @@
   background-color: #fff;
   z-index: 1;
   display: none;
+}
+
+.time-select {
+  height: 270px;
+  overflow-y: scroll;
 }
 
 .select-custom.isActive .select-custom-options {
@@ -1025,7 +1026,7 @@
 .modal-payment__submit {
   margin-left: auto;
 
-  @media screen  and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     margin-top: 20px;
   }
 }

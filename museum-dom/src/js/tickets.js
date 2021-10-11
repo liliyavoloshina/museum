@@ -1,4 +1,4 @@
-import { updateCustomSelectChecked } from './custom-select'
+import { updateCustomSelectChecked } from './custom-select-type'
 
 // TODO: setting to local storage before onload page 
 
@@ -9,7 +9,7 @@ const permOption = document.querySelector('#permOption'),
   basicIncr = document.querySelectorAll('.basicIncr'),
   seniorDecr = document.querySelectorAll('.seniorDecr'),
   seniorIncr = document.querySelectorAll('.seniorIncr'),
-  elSelectCustom = document.querySelector('#selectCustom'),
+  elSelectCustom = document.querySelector('#selectCustomType'),
   elSelectCustomOpts = elSelectCustom.children[1],
   customOptsList = Array.from(elSelectCustomOpts.children),
   basicAmountDisplay = document.querySelectorAll('.basicAmountDisplay'),

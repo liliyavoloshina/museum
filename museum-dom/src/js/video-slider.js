@@ -1,9 +1,12 @@
 import { tns } from 'tiny-slider/src/tiny-slider'
 import { pauseVideo, videoPlaying, changeVideo } from './video'
 
+
 let slider
 
 initSlider()
+loadPlayer()
+
 
 slider.events.on('transitionStart', () => changeVideo(slider.getInfo().displayIndex))
 
@@ -20,6 +23,8 @@ function loadPlayer() {
     onYouTubeIframeAPIReady()
   }
 }
+
+
 
 function onYouTubeIframeAPIReady() {
   slides.forEach(slide => {
@@ -57,8 +62,7 @@ function createPlayer(data) {
     width: '640',
     videoId: id,
     playerVars: {
-      id: number,
-      origin: 'https://www.youtube.com'
+      id: number
     },
     events: {
       onStateChange: event => onPlayerStateChange(event, number)
@@ -108,5 +112,3 @@ function initSlider() {
     nextButton: '#videoNext'
   })
 }
-
-loadPlayer()

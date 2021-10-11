@@ -1,9 +1,5 @@
-import './custom-select'
-
 const ticketsDateInput = document.querySelector('#ticketsDateInput'),
   ticketsDateDisplay = document.querySelector('#ticketsDateDisplay'),
-  ticketsTimeInput = document.querySelector('#ticketsTimeInput'),
-  ticketsTimeDisplay = document.querySelector('#ticketsTimeDisplay'),
   incrExpDay = document.querySelector('#incrExpDay'),
   decrExpDay = document.querySelector('#decrExpDay'),
   expDayInput = document.querySelector('#expDay'),
@@ -17,8 +13,6 @@ const ticketsDateInput = document.querySelector('#ticketsDateInput'),
 
 ticketsDateInput.addEventListener('change', addClass)
 ticketsDateInput.addEventListener('change', changeDate)
-ticketsTimeInput.addEventListener('change', addClass)
-ticketsTimeInput.addEventListener('change', changeTime)
 openModal.addEventListener('click', toggleForm)
 closeModal.addEventListener('click', toggleForm)
 modalOverlay.addEventListener('click', toggleForm)
@@ -58,10 +52,6 @@ function changeDate() {
 }
 
 changeDate()
-
-function changeTime() {
-  ticketsTimeDisplay.textContent = this.value
-}
 
 function incrementDay() {
   let oldVal = Number(expDayInput.value)
