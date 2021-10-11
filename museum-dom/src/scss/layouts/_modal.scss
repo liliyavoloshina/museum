@@ -812,7 +812,12 @@
 .card-field {
   position: relative;
 
-  input {
+
+  .input {
+    &:hover {
+      border-color: var(--text-gold);
+    }
+
     &:focus {
       outline: none;
       box-shadow: white 0 0 0 2px, var(--dark-red) 0 0 0 4px;
@@ -820,7 +825,7 @@
   }
 
   &.error {
-    input {
+    .input {
       border: 1px solid red;
       &:focus {
         outline: none;
@@ -958,7 +963,7 @@
       position: relative;
 
       &.error {
-        input {
+        .input {
           border: 1px solid red;
           &:focus {
             outline: none;
@@ -993,6 +998,10 @@
       &:focus {
         outline: none;
         box-shadow: white 0 0 0 2px, var(--dark-red) 0 0 0 4px;
+      }
+
+      &:hover {
+        border-color: var(--text-gold);
       }
 
       @media only screen and (max-width: 420px) {

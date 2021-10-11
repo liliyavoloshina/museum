@@ -615,8 +615,9 @@
           <div class="card-face">
             <div class="fields-with-cards">
               <div class="inputs">
-                <div class="card-face__field card-field">Card number<input class="input" type="text"
-                    id="ticketsCardNumber" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
+                <div class="card-face__field card-field">Card number
+                  <input class="input" type="text" id="ticketsCardNumber" autocomplete="cc-number" maxlength="19"
+                    placeholder="xxxx xxxx xxxx xxxx">
                   <div class="error-message"></div>
                 </div>
                 <div class="card-face__field">Expiration date
@@ -642,7 +643,7 @@
             </div>
 
             <div class="card-face__field field-wide card-field">Cardholder name<input class="input" type="text"
-                id="cardholderInput">
+                id="cardholderInput" placeholder="Jane Doe">
               <div class="error-message"></div>
             </div>
           </div>
@@ -650,7 +651,7 @@
             <div class="stripe"></div>
             <div class="cvv-code">
               <div class="cvv-code__label">CVC/CVV
-                <input class="input" type="number" id="cvvInput" max="3">
+                <input class="input" type="password" id="cvvInput" max="3" placeholder="926">
                 <div class="error-message"></div>
               </div>
               <div class="cvv-code__note">
