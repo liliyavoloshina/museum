@@ -95,6 +95,8 @@
     padding-top: var(--welcome-text-pt);
     transition: var(--base-transition);
     opacity: 1;
+    
+    pointer-events: none;
 
     &.hidden {
       opacity: 0;
@@ -215,6 +217,7 @@
 
 .welcome__text-btn {
   margin-top: var(--welcome-btn-mt);
+  pointer-events: all;
 
   @media only screen and (max-width: 768px) {
     display: none;

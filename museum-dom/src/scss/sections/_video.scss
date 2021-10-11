@@ -214,6 +214,7 @@
   &-volume {
     width: var(--video-volume-w);
     height: var(--video-volume-h);
+    background-image: url('../svg/video-btn-volume-muted.svg');
     background-image: url('../svg/video-btn-volume.svg');
   }
 
