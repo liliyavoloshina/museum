@@ -34,7 +34,7 @@
 
 @media screen and (max-width: 420px) {
   :root {
-    --slider-width: 380px;
+    --slider-width: 100%;
     --slider-height: calc(100vw - 53px);
     --explore-img-pt: 62px;
   }
